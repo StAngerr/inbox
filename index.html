@@ -1,13 +1,71 @@
 <!DOCTYPE html>
-<html lang="en" class="html">
+<html lang="en" ng-app="inbox" class="html" >
 <head>
 	<meta charset="UTF-8">
 	<title>inbox</title>
 	<script src="src/js/frameworks/jquery-1.11.2.js"></script>
+	<script type="text/javascript" src="src/js/frameworks/angular.js"></script>
+	<link rel="stylesheet" type="text/css" href="src/css/styles.css">
 </head>
-<body>
+<body ng-controller = "TasksCtrl">
+	<section id="navigation">
+		<header class="navHeader">	
+			<div class="search"> <input type="search" class="searchField" ng-model="query"></div>
+
+			<div class="taskSection">
+
+				<div class="categories">
+					 <span class="count">3</span>
+					  <span class="categoryName">YOURS</span> 
+				  </div>
+
+				<div class="categories">
+					 <span class="count">6</span> 
+					 <span class="categoryName">UNASSIGNED</span> 
+				 </div>
+
+				<div class="categories active"> 
+					<span class="count">22</span> 
+					<span class="categoryName">ALL</span> 
+				</div>
+
+			</div>
+		</header>
+		<ul class="tasks">
+				<li class="taskBlock" ng-repeat="task in tasks | filter:query"  ng-click="toggle.state = !toggle.state" ng-class="{'activeTask' : toggle.state} ">
+					<p class="taskHeader">{{task.header}}</p>
+
+					<p class="taskDescription">{{task.description}}</p>
+
+					<p class="authorInfo">{{task.author}}</p>
+
+					<div class="taskStatusIcon"></div>
+				</li>
+			</ul>
+		</section>
+
+	</section>
+
+	<section id="mainContent">
+		<header>
+			<p class="info">Jhon@gmail.com  Requested on Friday March 21</p> <a href="#" class="more"><span></span><span></span><span></span></a>
+			<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe quisquam cupiditate dignissimos blanditiis nisi id vero, unde.</h2>
+		</header>
+	
+		<div class="assign">
+		<p>Assigned: Jason Wu</p>
+		</div>
+<ul class="commentBlock">
+	<li class="comment" ng-repeat="comment in commentss">
+		<div class="authorIcon"></div>
+		<p class="author">{{comment.author}}</p>
+		<p class="content">{{comment.content}}</p>
+	</li>
+</ul>
+	</section>
+
 	
 
-	<script src=""></script>
+	<script src="src/js/controller.js"></script>
 </body>
 </html>

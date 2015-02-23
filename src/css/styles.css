@@ -1,0 +1,254 @@
+html,
+body,
+div,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+dfn,
+del,
+p,
+blockquote,
+fieldset,
+input,
+textarea,
+select,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+button,
+canvas,
+video {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+fieldset,
+img {
+  border: none;
+}
+
+input[type="button"],
+input[type="submit"],
+button {
+  cursor: pointer;
+  line-height: normal;
+}
+
+html {
+  height: 100%;
+  background: #ffffff;
+}
+
+body {
+  height: 100%;
+}
+
+main {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+#navigation {
+  float: left;
+  width: 30%;
+  height: 99.5%;
+  border-right: 1px solid #cacaca;
+}
+
+#mainContent {
+  float: left;
+  width: 39.8%;
+  height: 80%;
+  padding: 2% 15% 0 15%;
+}
+
+#navigation {
+  overflow: hidden;
+}
+#navigation .navHeader {
+  height: 16%;
+  width: 100%;
+}
+#navigation .navHeader .search {
+  height: 40%;
+  width: 100%;
+  border-bottom: 1px solid #cacaca;
+}
+#navigation .navHeader .search .searchField {
+  display: block;
+  width: 40%;
+  height: 60%;
+  float: right;
+  margin-top: 2%;
+  margin-right: 2%;
+  background: #fff url("search-icon.png") no-repeat 80% 2px;
+  border: 1px solid #e4e4e4;
+  background-size: 15% 90%;
+  line-height: 100%;
+}
+#navigation .navHeader .search .searchField:focus {
+  background: none;
+}
+#navigation .navHeader .taskSection {
+  height: 50%;
+  width: 100%;
+  border-bottom: 1px solid #cacaca;
+}
+#navigation .navHeader .taskSection .categories {
+  display: block;
+  float: left;
+  width: 25%;
+  height: 100%;
+  text-align: center;
+  margin: 0 4% 0 0;
+  color: #a3a3a3;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+#navigation .navHeader .taskSection .categories:first-child {
+  margin-left: 8%;
+}
+#navigation .navHeader .taskSection .categories .count {
+  display: block;
+  font-size: 1.2em;
+  padding: 15% 0 10% 0;
+  height: 20%;
+}
+#navigation .navHeader .taskSection .categories .categoryName {
+  display: block;
+  font-size: 0.6em;
+  padding: 2% 0 0 0;
+  color: #d6d6d6;
+}
+#navigation .navHeader .taskSection .categories.active {
+  border-bottom: 3px solid #85AE34 !important;
+  color: #000 !important;
+  font-weight: 700 !important;
+}
+#navigation .navHeader .taskSection .categories.active .categoryName {
+  color: #000 !important;
+}
+#navigation .tasks {
+  width: 100%;
+  height: auto;
+}
+#navigation .tasks .taskBlock {
+  display: block;
+  border-bottom: 1px solid #cacaca;
+  width: 92%;
+  height: 50%;
+  padding: 5% 0% 4% 8%;
+  color: #bdbdbd;
+}
+#navigation .tasks .taskBlock .taskHeader {
+  margin: 0 0 5px 0;
+}
+#navigation .tasks .taskBlock .taskDescription {
+  width: 90%;
+  margin: 0 0 5px 0;
+}
+#navigation .tasks .taskBlock .authorInfo {
+  display: inline-block;
+}
+#navigation .tasks .taskBlock .taskStatusIcon {
+  display: inline-block;
+  float: right;
+  width: 20px;
+  height: 20px;
+  margin-right: 8%;
+  background: #B24FB5;
+  border-radius: 50%;
+  opacity: 0.4;
+}
+#navigation .tasks .taskBlock.activeTask {
+  color: #000;
+}
+#navigation .tasks .taskBlock.activeTask .taskHeader {
+  font-weight: 700;
+}
+#navigation .tasks .taskBlock.activeTask .taskStatusIcon {
+  opacity: 1;
+}
+#navigation .tasks .taskBlock:hover {
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#mainContent header {
+  margin-bottom: 10%;
+}
+#mainContent header .info {
+  display: inline-block;
+  color: #b0b0b0;
+  font-style: italic;
+  margin-bottom: 2%;
+}
+#mainContent header .more {
+  display: inline-block;
+  float: right;
+}
+#mainContent header .more span {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background: #a3a3a3;
+  border-radius: 50%;
+  margin-left: 3px;
+}
+#mainContent .assign {
+  color: #b0b0b0;
+  padding-bottom: 4%;
+  border-bottom: 1px solid #cacaca;
+}
+#mainContent .assign:before {
+  content: '';
+  display: inline-block;
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin-right: 2%;
+  background: #B24FB5;
+  border-radius: 50%;
+}
+#mainContent .commentBlock {
+  background: orange;
+  height: 93%;
+}
+#mainContent .commentBlock .comment {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: blue;
+}
+
+/*# sourceMappingURL=styles.css.map */

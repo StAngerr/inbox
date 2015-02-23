@@ -1,0 +1,61 @@
+[
+	{ 
+		"authorIcon" : "src/",
+		"author" : "tom",
+		"content" : "Lorem ipsum
+		 dolor sit amet, consectetur adipisicing elit.
+		  Molestias blanditiis est nisi. Ratione perspiciatis alias recusandae corrupti
+		    voluptates consequuntur natus quas numquam accusantium cupiditate 
+		    necessitatibus delectus incidunt, aliquam facere nam."
+	},
+
+	{ 
+		"authorIcon" : "src/",
+		"author" : "joe",
+		"content" : "Lorem ipsum
+		 dolor sit amet, consectetur adipisicing elit.
+		  Molestias blanditiis est nisi. Ratione perspiciatis alias recusandae corrupti
+		    voluptates consequuntur natus quas numquam accusantium cupiditate 
+		    necessitatibus delectus incidunt, aliquam facere nam."
+	},
+
+	{ 
+		"authorIcon" : "src/",
+		"author" : "mike",
+		"content" : "Lorem ipsum
+		 dolor sit amet, consectetur adipisicing elit.
+		  Molestias blanditiis est nisi. Ratione perspiciatis alias recusandae corrupti
+		    voluptates consequuntur natus quas numquam accusantium cupiditate 
+		    necessitatibus delectus incidunt, aliquam facere nam."
+	},
+
+	{ 
+		"authorIcon" : "src/",
+		"author" : "sam",
+		"content" : "Lorem ipsum
+		 dolor sit amet, consectetur adipisicing elit.
+		  Molestias blanditiis est nisi. Ratione perspiciatis alias recusandae corrupti
+		    voluptates consequuntur natus quas numquam accusantium cupiditate 
+		    necessitatibus delectus incidunt, aliquam facere nam."
+	},
+
+	{ 
+		"authorIcon" : "src/",
+		"author" : "Kim",
+		"content" : "Lorem ipsum
+		 dolor sit amet, consectetur adipisicing elit.
+		  Molestias blanditiis est nisi. Ratione perspiciatis alias recusandae corrupti
+		    voluptates consequuntur natus quas numquam accusantium cupiditate 
+		    necessitatibus delectus incidunt, aliquam facere nam."
+	},
+
+	{ 
+		"authorIcon" : "src/",
+		"author" : "edward",
+		"content" : "Lorem ipsum
+		 dolor sit amet, consectetur adipisicing elit.
+		  Molestias blanditiis est nisi. Ratione perspiciatis alias recusandae corrupti
+		    voluptates consequuntur natus quas numquam accusantium cupiditate 
+		    necessitatibus delectus incidunt, aliquam facere nam."
+	}
+]

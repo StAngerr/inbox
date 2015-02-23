@@ -21,17 +21,31 @@ module.exports = function(grunt) {
 		},
 
 		watch: {
+			css: {
+				options:{
+					livereload: true
+				},
+				files: ['src/css/*.css','index.html']
+			},
 			javaScript: {
 				files: ['src/js/*.js'],
 				tasks: ['jshint']
-			}
+			},
+
+			cssComp: {
+	
+				files: ['src/scss/*.scss'],
+				tasks: ['sass']
+			},
+
+
 		},
 
 		connect: {
 		    server: {
 		      options: {
 		        port: 9009,
-		        base: 'E:/INBOX/',
+		        base: 'D:/git_prj/INBOX/',
 		        livereload: true,
 		      }
 		    }
@@ -39,25 +53,28 @@ module.exports = function(grunt) {
 
  		 sass: {
  		 	dist: {
+ 		 		options: {
+					style: 'expanded'
+				},
  		 		files: {
- 		 			'src/css/styles.css' : 'src/scss/*.scss'
+ 		 			'src/css/styles.css' : 'src/scss/styles.scss'
  		 		}
  		 	}
  		 },
 
  		 cssmin: {
- 		 	options: {
-
- 		 	},
  		 	target: {
  		 		files: {
-
+					'src/css/style.min.css' : 'src/css/*.css'
  		 		}
  		 	}
  		 },
 
  		 uglify: {
- 		 	
+ 		 	build: {
+ 		 		src: 'src/js/scripts.js',
+ 		 		dest: 'src/js/scripts.min.js'
+ 		 	}
  		 }	
 	});
 

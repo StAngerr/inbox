@@ -1,0 +1,15 @@
+@import 'utilities/variables';
+
+#navigation {
+	float: left;
+	width: 30%;
+	height: 99.5%;
+	border-right: 1px solid darken($lightGrey,20%);
+}
+
+#mainContent {
+	float: left;
+	width: 39.8%;
+	height:	80%;
+	padding: 2% 15% 0 15%;
+}

@@ -1,0 +1,65 @@
+/* TASKS LIST    */
+	.tasks {
+ 		width: 100%;
+		height: auto;
+ 
+		.taskBlock {
+			display: block;
+			border-bottom: 1px solid darken($lightGrey,20%);
+			width: 92%;
+			height: 50%;
+			padding: 5% 0% 4% 8%;
+			color : #000;
+			font-weight: 700;
+			header {
+				margin: 0px;
+			}
+			.taskHeader {
+				margin: 0 0 5px 0;
+				font-size: 1.2em;
+			}
+
+			.taskDescription {
+				font-size: 0.9em;
+				width: 90%;
+				margin: 0 0 5px 0;
+			}
+			footer {
+				display: block;
+				width: 100%;
+				height: auto;
+				.meta {
+					display: inline-block;
+				}
+				figure {
+					display: inline-block;
+					float: right;
+					margin-right: 8%;
+					margin-bottom: 0;
+
+					.taskAuthorIcon {
+						display: inline-block;
+						width: 20px;
+						height: 20px;
+						border-radius: 50%;
+						opacity: 1;
+					}
+				}
+			}
+
+			&.activeTask {
+				color: darken($creamColor,20%);
+				.taskAuthorIcon {
+					opacity: 0.4;
+				}
+
+			}
+			&:hover {
+				cursor: pointer;
+				-webkit-user-select: none;
+				   -moz-user-select: none;
+				    -ms-user-select: none;
+				        user-select: none;
+			}
+		}
+	}

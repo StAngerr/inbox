@@ -1,0 +1,93 @@
+/* NEW COMMENT BLOCK.  SIMPLE AND EXPANDED */
+	.newComment {
+		height: 2%;
+		margin: 2% 0 2% 0;
+		background: $dirtyWhite;
+		border: 1px solid darken($lightGrey, 10%);
+		border-radius: 5px;
+		padding: 1% 0% 2% 2%;
+
+		p {			
+			color: darken($creamColor,20%);
+			a {
+				color: darken($clearBlue, 20%);
+				text-decoration: none;
+			}	
+		}
+
+		.commentInput {
+			display: none;
+		}
+
+		button {
+			display: none;
+		}
+		/* EXPANDED */
+		&.newCommentExpanded {
+			height: 25%;
+			background: #fff;
+			padding: 0px;
+			border: none;
+			
+			p {
+				display: none;
+			}
+			.authorIcon {
+				display: inline-block;
+				float: left;
+				width: 30px;
+				height: 30px;
+				margin-right: 2%;
+				border-radius: 50%;
+			}
+
+			.commentInput {
+				display: inline-block;
+				float: right;
+				margin-bottom: 2%;
+				resize: none;
+				width: 91%;
+				height: 140px;
+				padding: 1%;
+				border: 2px solid darken($lightGrey, 20%);
+				border-radius: 5px;
+				
+				&:focus {
+					outline: 0;
+				}
+			}
+
+			button {
+				display: block;
+				float: right;
+				
+				padding: 2% 4%;
+
+				&.replyNSolve {
+					border: none;
+					border:1px solid darken($lightGrey, 15%);
+					border-radius: 3px;
+					background: #fff;
+					font-weight: 700;
+					&:hover {
+						background: darken(#fff,5%);
+					}
+				}
+
+				&.reply {
+					background: $green;
+					border:1px solid darken($green, 10%);
+					margin-left: 2%;
+					border-radius: 3px;
+					color: #fff;
+
+					&:hover {
+						background: lighten($green,5%);
+					}
+				}
+			}
+		}
+		/* _______________________ */
+	}
+	/* ___________________________ */
+	

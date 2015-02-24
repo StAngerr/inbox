@@ -1,0 +1,84 @@
+/* NAVIGATION SECTION HEADER   */
+
+@import "../utilities/variables";
+
+.navHeader {
+		height: 16%;
+		width: 100%;
+
+		.search {
+			height: 40%;
+			width: 100%;
+			border-bottom: 1px solid darken($lightGrey,20%);
+
+			.searchField {
+				display: block;
+				width: 40%;
+				height: 60%;
+				float: right;
+				margin-top: 2%;
+				margin-right: 2%;
+				background:#fff url("search-icon.png") no-repeat  95% 2px;
+				border: 1px solid darken($lightGrey,10%);
+				background-size: 15% 90%;
+				line-height: 100%;
+
+				&:focus {
+					background: none;
+				}
+			}
+		}
+
+/* _________________________________________ */
+
+	/*   TASKS  CTEGORIES  YOURS UNSIGNED .....   */
+		.taskFilter {
+			height: 50%;
+			width: 100%;
+			border-bottom: 1px solid darken($lightGrey,20%);
+			
+			.categories {
+				display: block;
+				float: left;
+				width: 25%;
+				height: 100%;
+				text-align: center;
+				margin: 0 4% 0 0;
+				color: darken($creamColor,30%);
+				-webkit-user-select: none;
+				   -moz-user-select: none;
+				    -ms-user-select: none;
+				        user-select: none;
+				cursor: default;
+
+				&:first-child {
+					margin-left: 8%;
+				}
+					
+				.count {	
+					display: block;
+					font-size: 1.2em;
+					 padding: 15% 0 10% 0; 
+					height: 20%;
+				}
+
+				.categoryName {
+					display: block;
+					font-size: 0.6em;
+					padding: 2% 0 0 0;
+					color: darken($creamColor,10%);
+					text-transform: uppercase;
+				}
+
+				&.active {
+					border-bottom: 3px solid $darkGreen !important;
+					color: #000 !important;
+					font-weight: 700 !important;
+					& .categoryName {
+						color: #000 !important;
+					}
+				}
+			}
+
+		}
+}

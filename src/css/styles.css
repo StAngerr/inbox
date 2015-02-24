@@ -64,12 +64,15 @@ html {
 
 body {
   height: 100%;
+  font-family: 'Open Sans', sans-serif;
 }
 
 main {
-  display: inline-block;
-  width: 100%;
+  display: block;
+  margin: 0 auto;
+  width: 70%;
   height: 100%;
+  background: #fff;
 }
 
 #navigation {
@@ -77,48 +80,52 @@ main {
   width: 30%;
   height: 99.5%;
   border-right: 1px solid #cacaca;
+  overflow: hidden;
 }
 
 #mainContent {
   float: left;
-  width: 39.8%;
-  height: 80%;
-  padding: 2% 15% 0 15%;
+  overflow: hidden;
+  width: 69%;
+  max-width: 100%;
+  height: 98%;
+  margin-top: 1%;
+  /* padding: 2% 15% 0 15%; */
 }
 
-#navigation {
-  overflow: hidden;
-}
-#navigation .navHeader {
+/* NAVIGATION SECTION HEADER   */
+.navHeader {
   height: 16%;
   width: 100%;
+  /* _________________________________________ */
+  /*   TASKS  CTEGORIES  YOURS UNSIGNED .....   */
 }
-#navigation .navHeader .search {
+.navHeader .search {
   height: 40%;
   width: 100%;
   border-bottom: 1px solid #cacaca;
 }
-#navigation .navHeader .search .searchField {
+.navHeader .search .searchField {
   display: block;
   width: 40%;
   height: 60%;
   float: right;
   margin-top: 2%;
   margin-right: 2%;
-  background: #fff url("search-icon.png") no-repeat 80% 2px;
+  background: #fff url("search-icon.png") no-repeat 95% 2px;
   border: 1px solid #e4e4e4;
   background-size: 15% 90%;
   line-height: 100%;
 }
-#navigation .navHeader .search .searchField:focus {
+.navHeader .search .searchField:focus {
   background: none;
 }
-#navigation .navHeader .taskSection {
+.navHeader .taskFilter {
   height: 50%;
   width: 100%;
   border-bottom: 1px solid #cacaca;
 }
-#navigation .navHeader .taskSection .categories {
+.navHeader .taskFilter .categories {
   display: block;
   float: left;
   width: 25%;
@@ -132,71 +139,85 @@ main {
   user-select: none;
   cursor: default;
 }
-#navigation .navHeader .taskSection .categories:first-child {
+.navHeader .taskFilter .categories:first-child {
   margin-left: 8%;
 }
-#navigation .navHeader .taskSection .categories .count {
+.navHeader .taskFilter .categories .count {
   display: block;
   font-size: 1.2em;
   padding: 15% 0 10% 0;
   height: 20%;
 }
-#navigation .navHeader .taskSection .categories .categoryName {
+.navHeader .taskFilter .categories .categoryName {
   display: block;
   font-size: 0.6em;
   padding: 2% 0 0 0;
   color: #d6d6d6;
+  text-transform: uppercase;
 }
-#navigation .navHeader .taskSection .categories.active {
+.navHeader .taskFilter .categories.active {
   border-bottom: 3px solid #85AE34 !important;
   color: #000 !important;
   font-weight: 700 !important;
 }
-#navigation .navHeader .taskSection .categories.active .categoryName {
+.navHeader .taskFilter .categories.active .categoryName {
   color: #000 !important;
 }
-#navigation .tasks {
+
+/* TASKS LIST    */
+.tasks {
   width: 100%;
   height: auto;
 }
-#navigation .tasks .taskBlock {
+.tasks .taskBlock {
   display: block;
   border-bottom: 1px solid #cacaca;
   width: 92%;
   height: 50%;
   padding: 5% 0% 4% 8%;
-  color: #bdbdbd;
+  color: #000;
+  font-weight: 700;
 }
-#navigation .tasks .taskBlock .taskHeader {
+.tasks .taskBlock header {
+  margin: 0px;
+}
+.tasks .taskBlock .taskHeader {
   margin: 0 0 5px 0;
+  font-size: 1.2em;
 }
-#navigation .tasks .taskBlock .taskDescription {
+.tasks .taskBlock .taskDescription {
+  font-size: 0.9em;
   width: 90%;
   margin: 0 0 5px 0;
 }
-#navigation .tasks .taskBlock .authorInfo {
+.tasks .taskBlock footer {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.tasks .taskBlock footer .meta {
   display: inline-block;
 }
-#navigation .tasks .taskBlock .taskStatusIcon {
+.tasks .taskBlock footer figure {
   display: inline-block;
   float: right;
+  margin-right: 8%;
+  margin-bottom: 0;
+}
+.tasks .taskBlock footer figure .taskAuthorIcon {
+  display: inline-block;
   width: 20px;
   height: 20px;
-  margin-right: 8%;
-  background: #B24FB5;
   border-radius: 50%;
-  opacity: 0.4;
-}
-#navigation .tasks .taskBlock.activeTask {
-  color: #000;
-}
-#navigation .tasks .taskBlock.activeTask .taskHeader {
-  font-weight: 700;
-}
-#navigation .tasks .taskBlock.activeTask .taskStatusIcon {
   opacity: 1;
 }
-#navigation .tasks .taskBlock:hover {
+.tasks .taskBlock.activeTask {
+  color: #bdbdbd;
+}
+.tasks .taskBlock.activeTask .taskAuthorIcon {
+  opacity: 0.4;
+}
+.tasks .taskBlock:hover {
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -204,20 +225,18 @@ main {
   user-select: none;
 }
 
-#mainContent header {
-  margin-bottom: 10%;
-}
-#mainContent header .info {
-  display: inline-block;
+/* TITELE AUTHOR */
+#mainContent .metaData {
+  display: block;
   color: #b0b0b0;
   font-style: italic;
   margin-bottom: 2%;
 }
-#mainContent header .more {
+#mainContent .more {
   display: inline-block;
   float: right;
 }
-#mainContent header .more span {
+#mainContent .more span {
   display: inline-block;
   width: 5px;
   height: 5px;
@@ -229,9 +248,114 @@ main {
   color: #b0b0b0;
   padding-bottom: 4%;
   border-bottom: 1px solid #cacaca;
+  margin-top: 10%;
 }
-#mainContent .assign:before {
-  content: '';
+#mainContent .assign .authorIcon {
+  display: inline-block;
+  float: left;
+  width: 30px;
+  height: 30px;
+  margin-right: 2%;
+  background: #B24FB5;
+  border-radius: 50%;
+}
+
+/* NEW COMMENT BLOCK.  SIMPLE AND EXPANDED */
+.newComment {
+  height: 2%;
+  margin: 2% 0 2% 0;
+  background: #FBFBFB;
+  border: 1px solid #e4e4e4;
+  border-radius: 5px;
+  padding: 1% 0% 2% 2%;
+  /* EXPANDED */
+  /* _______________________ */
+}
+.newComment p {
+  color: #bdbdbd;
+}
+.newComment p a {
+  color: #40bde6;
+  text-decoration: none;
+}
+.newComment .commentInput {
+  display: none;
+}
+.newComment button {
+  display: none;
+}
+.newComment.newCommentExpanded {
+  height: 25%;
+  background: #fff;
+  padding: 0px;
+  border: none;
+}
+.newComment.newCommentExpanded p {
+  display: none;
+}
+.newComment.newCommentExpanded .authorIcon {
+  display: inline-block;
+  float: left;
+  width: 30px;
+  height: 30px;
+  margin-right: 2%;
+  border-radius: 50%;
+}
+.newComment.newCommentExpanded .commentInput {
+  display: inline-block;
+  float: right;
+  margin-bottom: 2%;
+  resize: none;
+  width: 91%;
+  height: 140px;
+  padding: 1%;
+  border: 2px solid #cacaca;
+  border-radius: 5px;
+}
+.newComment.newCommentExpanded .commentInput:focus {
+  outline: 0;
+}
+.newComment.newCommentExpanded button {
+  display: block;
+  float: right;
+  padding: 2% 4%;
+}
+.newComment.newCommentExpanded button.replyNSolve {
+  border: none;
+  border: 1px solid #d7d7d7;
+  border-radius: 3px;
+  background: #fff;
+  font-weight: 700;
+}
+.newComment.newCommentExpanded button.replyNSolve:hover {
+  background: #f2f2f2;
+}
+.newComment.newCommentExpanded button.reply {
+  background: #80A911;
+  border: 1px solid #5d7b0c;
+  margin-left: 2%;
+  border-radius: 3px;
+  color: #fff;
+}
+.newComment.newCommentExpanded button.reply:hover {
+  background: #92c013;
+}
+
+/* ___________________________ */
+/* COMMENTS  */
+.commentBlock {
+  height: 80%;
+  overflow: hidden;
+  clear: both;
+}
+.commentBlock .comment {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 5% 0 3% 0;
+  border-bottom: 1px solid #cacaca;
+}
+.commentBlock .comment .authorIcon {
   display: inline-block;
   float: left;
   width: 20px;
@@ -240,15 +364,151 @@ main {
   background: #B24FB5;
   border-radius: 50%;
 }
-#mainContent .commentBlock {
-  background: orange;
-  height: 93%;
+.commentBlock .comment .meta {
+  display: inline-block;
+  float: left;
+  margin-left: 10px;
+  font-weight: 700;
 }
-#mainContent .commentBlock .comment {
-  display: block;
-  width: 100%;
-  height: auto;
-  background: blue;
+.commentBlock .comment .content {
+  clear: both;
+  padding: 2% 0 2% 0;
+  padding-left: 0;
 }
+
+@media only screen and (max-width: 1453px) {
+  body {
+    background: #fff;
+  }
+
+  /* SEARCH n NAVIGATION */
+  #navigation .navHeader .search .searchField {
+    margin-top: 4%;
+    width: 45%;
+    height: 50%;
+    background-position: 95% 1px;
+  }
+
+  /* 	NEW COMMENT BLOCK */
+  #mainContent .newComment {
+    /* EXPANDED */
+    /* _______________________ */
+  }
+  #mainContent .newComment.newCommentExpanded {
+    height: 25%;
+  }
+  #mainContent .newComment.newCommentExpanded:before {
+    content: '';
+    width: 4.5%;
+    height: 11%;
+  }
+  #mainContent .newComment.newCommentExpanded .commentInput {
+    width: 90%;
+    height: 140px;
+  }
+}
+@media only screen and (max-width: 1153px) {
+  body {
+    background: #fff;
+  }
+
+  /* SEARCH n NAVIGATION */
+  #navigation .navHeader .search {
+    height: 40%;
+  }
+  #navigation .navHeader .search .searchField {
+    margin-top: 4%;
+    width: 45%;
+    height: 50%;
+    background-position: 95% 1px;
+  }
+
+  /* 	NEW COMMENT BLOCK */
+  #mainContent .newComment {
+    /* EXPANDED */
+    /* _______________________ */
+  }
+  #mainContent .newComment.newCommentExpanded {
+    height: 25%;
+  }
+  #mainContent .newComment.newCommentExpanded:before {
+    width: 4%;
+    height: 11%;
+  }
+  #mainContent .newComment.newCommentExpanded .commentInput {
+    width: 87%;
+    height: 140px;
+  }
+}
+@media only screen and (max-width: 970px) {
+  body {
+    background: #fff;
+  }
+
+  /* SEARCH n NAVIGATION */
+  #navigation .navHeader .search {
+    height: 40%;
+  }
+  #navigation .navHeader .search .searchField {
+    margin-top: 4%;
+    width: 50%;
+    height: 50%;
+    background-position: 95% 1px;
+  }
+
+  /* 	NEW COMMENT BLOCK */
+  #mainContent .newComment {
+    /* EXPANDED */
+    /* _______________________ */
+  }
+  #mainContent .newComment.newCommentExpanded:before {
+    width: 6.5%;
+    height: 12%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  body {
+    background: #fff;
+  }
+
+  /* SEARCH n NAVIGATION */
+  #navigation .navHeader .search {
+    height: 30%;
+  }
+  #navigation .navHeader .search .searchField {
+    margin-top: 4%;
+    width: 60%;
+    height: 50%;
+    background-position: 95% 1px;
+  }
+
+  /* 	NEW COMMENT BLOCK */
+  #mainContent .newComment {
+    /* EXPANDED */
+    /* _______________________ */
+  }
+  #mainContent .newComment.newCommentExpanded {
+    height: 25%;
+  }
+  #mainContent .newComment.newCommentExpanded:before {
+    width: 8%;
+    height: 11%;
+  }
+  #mainContent .newComment.newCommentExpanded .commentInput {
+    width: 85%;
+    height: 140px;
+  }
+}
+@media only screen and (max-width: 670px) {
+  body {
+    background: orange;
+  }
+}
+@media only screen and (max-width: 520px) {
+  body {
+    background: #fff;
+  }
+}
+/* mibile */
 
 /*# sourceMappingURL=styles.css.map */

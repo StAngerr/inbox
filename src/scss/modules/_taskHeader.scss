@@ -1,0 +1,42 @@
+/* TITELE AUTHOR */
+#mainContent{
+	
+	.metaData {
+		display: block;
+		color: darken($creamColor,25%);
+		font-style: italic;
+		margin-bottom: 2%;
+	}
+
+	.more {
+		display: inline-block;
+		float: right;
+
+		span {
+			display: inline-block;
+			width: 5px;
+			height: 5px;
+			background:  darken($creamColor,30%);
+			border-radius: 50%;
+			margin-left: 3px;
+		}
+	}
+
+	.assign {
+		color: darken($creamColor,25%);
+		padding-bottom: 4%;
+		border-bottom: 1px solid darken($lightGrey,20%);
+		margin-top: 10%;
+
+		.authorIcon {
+			display: inline-block;
+			float: left;
+			width: 30px;
+			height: 30px;
+			margin-right: 2%;
+			background: $violet;
+			border-radius: 50%;
+		}
+	}
+
+}

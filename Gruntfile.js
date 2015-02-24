@@ -34,7 +34,7 @@ module.exports = function(grunt) {
 
 			cssComp: {
 	
-				files: ['src/scss/*.scss'],
+				files: ['src/scss/*.scss','src/scss/modules/*.scss'],
 				tasks: ['sass']
 			},
 

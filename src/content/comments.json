@@ -1,61 +1,37 @@
 [
 	{ 
 		"authorIcon" : "src/",
-		"author" : "tom",
-		"content" : "Lorem ipsum
-		 dolor sit amet, consectetur adipisicing elit.
-		  Molestias blanditiis est nisi. Ratione perspiciatis alias recusandae corrupti
-		    voluptates consequuntur natus quas numquam accusantium cupiditate 
-		    necessitatibus delectus incidunt, aliquam facere nam."
+		"author" : "tom - 7:32 am",
+		"content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
 	},
 
 	{ 
 		"authorIcon" : "src/",
-		"author" : "joe",
-		"content" : "Lorem ipsum
-		 dolor sit amet, consectetur adipisicing elit.
-		  Molestias blanditiis est nisi. Ratione perspiciatis alias recusandae corrupti
-		    voluptates consequuntur natus quas numquam accusantium cupiditate 
-		    necessitatibus delectus incidunt, aliquam facere nam."
+		"author" : "joe - 7:32 am",
+		"content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
 	},
 
 	{ 
 		"authorIcon" : "src/",
-		"author" : "mike",
-		"content" : "Lorem ipsum
-		 dolor sit amet, consectetur adipisicing elit.
-		  Molestias blanditiis est nisi. Ratione perspiciatis alias recusandae corrupti
-		    voluptates consequuntur natus quas numquam accusantium cupiditate 
-		    necessitatibus delectus incidunt, aliquam facere nam."
+		"author" : "mike - 7:32 am",
+		"content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam necessitatibus, atque totam ducimus quos odio sed quis non eius. Nobis tempore deleniti esse, officia dicta aliquid pariatur consectetur molestiae iste? \n  Best regards \n Bob"
 	},
 
 	{ 
 		"authorIcon" : "src/",
-		"author" : "sam",
-		"content" : "Lorem ipsum
-		 dolor sit amet, consectetur adipisicing elit.
-		  Molestias blanditiis est nisi. Ratione perspiciatis alias recusandae corrupti
-		    voluptates consequuntur natus quas numquam accusantium cupiditate 
-		    necessitatibus delectus incidunt, aliquam facere nam."
+		"author" : "sam - 7:32 am",
+		"content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
 	},
 
 	{ 
 		"authorIcon" : "src/",
-		"author" : "Kim",
-		"content" : "Lorem ipsum
-		 dolor sit amet, consectetur adipisicing elit.
-		  Molestias blanditiis est nisi. Ratione perspiciatis alias recusandae corrupti
-		    voluptates consequuntur natus quas numquam accusantium cupiditate 
-		    necessitatibus delectus incidunt, aliquam facere nam."
+		"author" : "Kim - 7:32 am",
+		"content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis inventore pariatur similique, qui ipsam voluptatibus officia deserunt, ad cumque facilis praesentium nemo voluptates. Sequi laudantium aperiam, recusandae iste velit consequatur."
 	},
 
 	{ 
 		"authorIcon" : "src/",
-		"author" : "edward",
-		"content" : "Lorem ipsum
-		 dolor sit amet, consectetur adipisicing elit.
-		  Molestias blanditiis est nisi. Ratione perspiciatis alias recusandae corrupti
-		    voluptates consequuntur natus quas numquam accusantium cupiditate 
-		    necessitatibus delectus incidunt, aliquam facere nam."
+		"author" : "edward - 7:32 am",
+		"content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
 	}
 ]

@@ -1,0 +1,35 @@
+	/* COMMENTS  */
+	.commentBlock {
+		height: 80%;
+		overflow: hidden;
+		clear: both;
+
+		.comment {
+			display: block;
+			width: 100%;
+			height: auto;
+			padding: 5% 0 3% 0;
+			border-bottom: 1px solid darken($lightGrey, 20%);
+			
+			.authorIcon {
+				display: inline-block;
+				float: left;
+				width: 20px;
+				height: 20px;
+				margin-right: 2%;
+				background: $violet;
+				border-radius: 50%;
+			}
+			.meta {
+				display: inline-block;
+				float: left;
+				margin-left: 10px;
+				font-weight: 700;
+			}
+			.content {
+				clear: both;
+				padding:  2% 0 2% 0;
+				padding-left: 0;
+			}
+		}
+	}

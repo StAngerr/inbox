@@ -1,35 +1,70 @@
-	/* COMMENTS  */
-	.commentBlock {
-		height: 80%;
-		overflow: hidden;
-		clear: both;
+/* COMMENTS  */
+.commentList {
+	height: 80%;
+	width: 100%;
+	overflow: auto;
+	 overflow: -moz-scrollbars-none;
+	clear: both;
 
-		.comment {
-			display: block;
-			width: 100%;
-			height: auto;
-			padding: 5% 0 3% 0;
-			border-bottom: 1px solid darken($lightGrey, 20%);
-			
-			.authorIcon {
-				display: inline-block;
-				float: left;
-				width: 20px;
-				height: 20px;
-				margin-right: 2%;
-				background: $violet;
-				border-radius: 50%;
-			}
-			.meta {
-				display: inline-block;
-				float: left;
-				margin-left: 10px;
-				font-weight: 700;
-			}
-			.content {
-				clear: both;
-				padding:  2% 0 2% 0;
-				padding-left: 0;
-			}
+	.commentItem {
+		display: block;
+		width: 100%;
+		height: auto;
+		padding: 3% 0 3% 0;
+		border-bottom: 1px solid darken($lightGrey, 20%);
+		
+		.authorIcon {
+			display: inline-block;
+			float: left;
+			width: 20px;
+			height: 20px;
+			margin-right: 2%;
+			background: $violet;
+			border-radius: 50%;
+		}
+		.meta {
+			display: inline-block;
+			float: left;
+			margin-left: 10px;
+			font-weight: 700;
+		}
+		.content {
+			clear: both;
+			padding:  2% 0 2% 0;
+			padding-left: 0;
 		}
 	}
+}
+
+@media only screen and /* (min-width: $mobileMin) and */ (max-width: $mobileMax) {
+	/* COMMENTS  */
+	#mainContent {
+		.commentList {
+			height: 100%;
+			overflow: hidden;
+			clear: both;
+			padding: 0% 0% 0% 3%;
+		}
+		/* NEW COMMENT BLOCK.  SIMPLE AND EXPANDED */
+		.newComment {
+			height: 3%;
+			margin: 0;
+			background: $asphalt;
+			border: none;
+			border-radius: 0px;
+			padding: 1.5% 0% 2% 0%;
+			border-bottom: 1px solid darken($lightGrey, 20%);
+
+			.newCommentSimple {
+				width: 90%;	
+				margin: 0 auto ;
+				background: #fff !important;		
+				color: darken($creamColor,20%);
+				border-radius: 2px;
+				padding: 1% 1% 1% 2%;
+				border: 1px solid darken($lightGrey, 10%);
+			}
+		}
+	/* ___________________________ */
+	}
+}

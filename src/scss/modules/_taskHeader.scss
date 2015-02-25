@@ -1,6 +1,20 @@
 /* TITELE AUTHOR */
 #mainContent{
 	
+	.headerControls {
+		display: none;
+		border-top: 1px solid darken($lightGrey,20%);
+		
+		.returnBtn{
+			width: 25px;
+			height: 40px;
+			border: none;
+			background: #fff url("arrow-left.png") no-repeat 50% 50%; 
+			margin-left: 3%; 
+			margin-bottom: 1.5%;
+			outline: none;
+		}
+	}	
 	.metaData {
 		display: block;
 		color: darken($creamColor,25%);
@@ -39,4 +53,36 @@
 		}
 	}
 
+}
+
+@media only screen and /* (min-width: $mobileMin) and */ (max-width: $mobileMax) {
+	#mainContent {
+		float: left;
+		width: 49%;
+
+		#mainWrapper {  /* <main>  */
+			width: 100%;
+		}
+		/* TITELE AUTHOR */
+		h2 {
+			padding: 2% 0% 5% 3% ;
+			border-top: 1px solid darken($lightGrey,20%);
+		}
+		.headerControls {
+			display: block;
+			margin-top: 0%;
+		}	
+		.metaData {
+			display: none;
+		}
+
+		.assign {
+			color: #000;
+			padding-bottom: 4%;
+			border-top: 1px solid darken($lightGrey,20%);
+			border-bottom: 1px solid darken($lightGrey,20%);
+			margin-top: 0%;
+			padding: 4% 0% 4% 3%;
+		}
+	}
 }

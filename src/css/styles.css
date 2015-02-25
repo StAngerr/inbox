@@ -57,6 +57,24 @@ button {
   line-height: normal;
 }
 
+/*    COLORS     */
+/* __________________ */
+/*      SIZES     */
+/* __________________ */
+@font-face {
+  font-family: "Open Sans";
+  src: url("../fonts/Open_Sans/OpenSans-Light.ttf");
+}
+@font-face {
+  font-family: "Open Sans";
+  src: url(../fonts/Open_Sans/OpenSans-Bold.ttf);
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Open Sans";
+  src: url(../fonts/Open_Sans/OpenSans-Italic.ttf);
+  font-style: italic;
+}
 html {
   height: 100%;
   background: #ffffff;
@@ -72,28 +90,56 @@ main {
   margin: 0 auto;
   width: 70%;
   height: 100%;
-  background: #fff;
 }
 
+cite {
+  font-style: normal;
+}
+
+/*    COLORS     */
+/* __________________ */
+/*      SIZES     */
+/* __________________ */
 #navigation {
+  box-sizing: border-box;
   float: left;
   width: 30%;
-  height: 99.5%;
+  height: 100%;
   border-right: 1px solid #cacaca;
   overflow: hidden;
 }
 
 #mainContent {
   float: left;
-  overflow: hidden;
-  width: 69%;
+  width: 70%;
   max-width: 100%;
-  height: 98%;
-  margin-top: 1%;
-  /* padding: 2% 15% 0 15%; */
+  height: 100%;
+  overflow: hidden;
 }
 
+#mainWrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 620px) {
+  html {
+    width: 100%;
+    height: 100%;
+  }
+
+  body {
+    height: 100%;
+    width: 200%;
+    overflow: hidden;
+  }
+}
 /* NAVIGATION SECTION HEADER   */
+/*    COLORS     */
+/* __________________ */
+/*      SIZES     */
+/* __________________ */
 .navHeader {
   height: 16%;
   width: 100%;
@@ -164,60 +210,127 @@ main {
   color: #000 !important;
 }
 
+/* RESPONSIVE */
+@media only screen and (max-width: 1453px) {
+  /* SEARCH n NAVIGATION */
+  #navigation .navHeader .search .searchField {
+    margin-top: 4%;
+    width: 45%;
+    height: 50%;
+    background-position: 95% 1px;
+  }
+}
+@media only screen and (max-width: 1153px) {
+  /* SEARCH n NAVIGATION */
+  #navigation .navHeader .search {
+    height: 40%;
+  }
+  #navigation .navHeader .search .searchField {
+    margin-top: 4%;
+    width: 45%;
+    height: 50%;
+    background-position: 95% 1px;
+  }
+}
+@media only screen and (max-width: 970px) {
+  /* SEARCH n NAVIGATION */
+  #navigation .navHeader .search {
+    height: 30%;
+  }
+  #navigation .navHeader .search .searchField {
+    margin-top: 4%;
+    width: 60%;
+    height: 50%;
+    background-position: 95% 1px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  /* SEARCH n NAVIGATION */
+  #navigation .navHeader .search {
+    height: 30%;
+  }
+  #navigation .navHeader .search .searchField {
+    margin-top: 4%;
+    width: 60%;
+    height: 50%;
+    background-position: 95% 1px;
+  }
+}
+@media only screen and (max-width: 620px) {
+  #navigation {
+    float: left;
+    width: 50%;
+  }
+  #navigation.trans {
+    transition: 0.5s;
+  }
+  #navigation .navHeader .search {
+    height: 30%;
+    margin-top: 2%;
+    border-top: 1px solid #cacaca;
+  }
+  #navigation .navHeader .search .searchField {
+    margin-top: 2%;
+    width: 40%;
+    height: 60%;
+    background-position: 95% 1px;
+  }
+}
 /* TASKS LIST    */
 .tasks {
   width: 100%;
   height: auto;
+  overflow: auto;
 }
-.tasks .taskBlock {
+.tasks .taskList {
   display: block;
   border-bottom: 1px solid #cacaca;
   width: 92%;
   height: 50%;
-  padding: 5% 0% 4% 8%;
+  padding: 3% 0% 4% 8%;
   color: #000;
   font-weight: 700;
 }
-.tasks .taskBlock header {
+.tasks .taskList header {
   margin: 0px;
 }
-.tasks .taskBlock .taskHeader {
+.tasks .taskList .taskHeader {
   margin: 0 0 5px 0;
   font-size: 1.2em;
 }
-.tasks .taskBlock .taskDescription {
+.tasks .taskList .taskDescription {
   font-size: 0.9em;
   width: 90%;
   margin: 0 0 5px 0;
 }
-.tasks .taskBlock footer {
+.tasks .taskList footer {
   display: block;
   width: 100%;
   height: auto;
 }
-.tasks .taskBlock footer .meta {
+.tasks .taskList footer .meta {
   display: inline-block;
 }
-.tasks .taskBlock footer figure {
+.tasks .taskList footer figure {
   display: inline-block;
   float: right;
   margin-right: 8%;
   margin-bottom: 0;
 }
-.tasks .taskBlock footer figure .taskAuthorIcon {
+.tasks .taskList footer figure .taskAuthorIcon {
   display: inline-block;
   width: 20px;
   height: 20px;
   border-radius: 50%;
   opacity: 1;
 }
-.tasks .taskBlock.activeTask {
+.tasks .taskList.activeTask {
   color: #bdbdbd;
 }
-.tasks .taskBlock.activeTask .taskAuthorIcon {
+.tasks .taskList.activeTask .taskAuthorIcon {
   opacity: 0.4;
 }
-.tasks .taskBlock:hover {
+.tasks .taskList:hover {
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -226,6 +339,19 @@ main {
 }
 
 /* TITELE AUTHOR */
+#mainContent .headerControls {
+  display: none;
+  border-top: 1px solid #cacaca;
+}
+#mainContent .headerControls .returnBtn {
+  width: 25px;
+  height: 40px;
+  border: none;
+  background: #fff url("arrow-left.png") no-repeat 50% 50%;
+  margin-left: 3%;
+  margin-bottom: 1.5%;
+  outline: none;
+}
 #mainContent .metaData {
   display: block;
   color: #b0b0b0;
@@ -260,6 +386,36 @@ main {
   border-radius: 50%;
 }
 
+@media only screen and (max-width: 620px) {
+  #mainContent {
+    float: left;
+    width: 49%;
+    /* TITELE AUTHOR */
+  }
+  #mainContent #mainWrapper {
+    /* <main>  */
+    width: 100%;
+  }
+  #mainContent h2 {
+    padding: 2% 0% 5% 3%;
+    border-top: 1px solid #cacaca;
+  }
+  #mainContent .headerControls {
+    display: block;
+    margin-top: 0%;
+  }
+  #mainContent .metaData {
+    display: none;
+  }
+  #mainContent .assign {
+    color: #000;
+    padding-bottom: 4%;
+    border-top: 1px solid #cacaca;
+    border-bottom: 1px solid #cacaca;
+    margin-top: 0%;
+    padding: 4% 0% 4% 3%;
+  }
+}
 /* NEW COMMENT BLOCK.  SIMPLE AND EXPANDED */
 .newComment {
   height: 2%;
@@ -271,10 +427,10 @@ main {
   /* EXPANDED */
   /* _______________________ */
 }
-.newComment p {
+.newComment .newCommentSimple {
   color: #bdbdbd;
 }
-.newComment p a {
+.newComment .newCommentSimple a {
   color: #40bde6;
   text-decoration: none;
 }
@@ -284,13 +440,16 @@ main {
 .newComment button {
   display: none;
 }
+.newComment .authorIcon {
+  display: none;
+}
 .newComment.newCommentExpanded {
   height: 25%;
   background: #fff;
   padding: 0px;
   border: none;
 }
-.newComment.newCommentExpanded p {
+.newComment.newCommentExpanded .newCommentSimple {
   display: none;
 }
 .newComment.newCommentExpanded .authorIcon {
@@ -342,53 +501,8 @@ main {
 }
 
 /* ___________________________ */
-/* COMMENTS  */
-.commentBlock {
-  height: 80%;
-  overflow: hidden;
-  clear: both;
-}
-.commentBlock .comment {
-  display: block;
-  width: 100%;
-  height: auto;
-  padding: 5% 0 3% 0;
-  border-bottom: 1px solid #cacaca;
-}
-.commentBlock .comment .authorIcon {
-  display: inline-block;
-  float: left;
-  width: 20px;
-  height: 20px;
-  margin-right: 2%;
-  background: #B24FB5;
-  border-radius: 50%;
-}
-.commentBlock .comment .meta {
-  display: inline-block;
-  float: left;
-  margin-left: 10px;
-  font-weight: 700;
-}
-.commentBlock .comment .content {
-  clear: both;
-  padding: 2% 0 2% 0;
-  padding-left: 0;
-}
-
+/* RESPONSIVE */
 @media only screen and (max-width: 1453px) {
-  body {
-    background: #fff;
-  }
-
-  /* SEARCH n NAVIGATION */
-  #navigation .navHeader .search .searchField {
-    margin-top: 4%;
-    width: 45%;
-    height: 50%;
-    background-position: 95% 1px;
-  }
-
   /* 	NEW COMMENT BLOCK */
   #mainContent .newComment {
     /* EXPANDED */
@@ -408,21 +522,6 @@ main {
   }
 }
 @media only screen and (max-width: 1153px) {
-  body {
-    background: #fff;
-  }
-
-  /* SEARCH n NAVIGATION */
-  #navigation .navHeader .search {
-    height: 40%;
-  }
-  #navigation .navHeader .search .searchField {
-    margin-top: 4%;
-    width: 45%;
-    height: 50%;
-    background-position: 95% 1px;
-  }
-
   /* 	NEW COMMENT BLOCK */
   #mainContent .newComment {
     /* EXPANDED */
@@ -430,6 +529,7 @@ main {
   }
   #mainContent .newComment.newCommentExpanded {
     height: 25%;
+    background: #fff;
   }
   #mainContent .newComment.newCommentExpanded:before {
     width: 4%;
@@ -441,47 +541,6 @@ main {
   }
 }
 @media only screen and (max-width: 970px) {
-  body {
-    background: #fff;
-  }
-
-  /* SEARCH n NAVIGATION */
-  #navigation .navHeader .search {
-    height: 40%;
-  }
-  #navigation .navHeader .search .searchField {
-    margin-top: 4%;
-    width: 50%;
-    height: 50%;
-    background-position: 95% 1px;
-  }
-
-  /* 	NEW COMMENT BLOCK */
-  #mainContent .newComment {
-    /* EXPANDED */
-    /* _______________________ */
-  }
-  #mainContent .newComment.newCommentExpanded:before {
-    width: 6.5%;
-    height: 12%;
-  }
-}
-@media only screen and (max-width: 768px) {
-  body {
-    background: #fff;
-  }
-
-  /* SEARCH n NAVIGATION */
-  #navigation .navHeader .search {
-    height: 30%;
-  }
-  #navigation .navHeader .search .searchField {
-    margin-top: 4%;
-    width: 60%;
-    height: 50%;
-    background-position: 95% 1px;
-  }
-
   /* 	NEW COMMENT BLOCK */
   #mainContent .newComment {
     /* EXPANDED */
@@ -499,16 +558,90 @@ main {
     height: 140px;
   }
 }
-@media only screen and (max-width: 670px) {
-  body {
-    background: orange;
+@media only screen and (max-width: 768px) {
+  /* 	NEW COMMENT BLOCK */
+  #mainContent .newComment {
+    /* EXPANDED */
+    /* _______________________ */
+  }
+  #mainContent .newComment.newCommentExpanded {
+    height: 25%;
+  }
+  #mainContent .newComment.newCommentExpanded:before {
+    width: 8%;
+    height: 11%;
+  }
+  #mainContent .newComment.newCommentExpanded .commentInput {
+    width: 85%;
+    height: 140px;
   }
 }
-@media only screen and (max-width: 520px) {
-  body {
-    background: #fff;
+/* COMMENTS  */
+.commentList {
+  height: 80%;
+  width: 100%;
+  overflow: auto;
+  overflow: -moz-scrollbars-none;
+  clear: both;
+}
+.commentList .commentItem {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 3% 0 3% 0;
+  border-bottom: 1px solid #cacaca;
+}
+.commentList .commentItem .authorIcon {
+  display: inline-block;
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin-right: 2%;
+  background: #B24FB5;
+  border-radius: 50%;
+}
+.commentList .commentItem .meta {
+  display: inline-block;
+  float: left;
+  margin-left: 10px;
+  font-weight: 700;
+}
+.commentList .commentItem .content {
+  clear: both;
+  padding: 2% 0 2% 0;
+  padding-left: 0;
+}
+
+@media only screen and (max-width: 620px) {
+  /* COMMENTS  */
+  #mainContent {
+    /* NEW COMMENT BLOCK.  SIMPLE AND EXPANDED */
+    /* ___________________________ */
+  }
+  #mainContent .commentList {
+    height: 100%;
+    overflow: hidden;
+    clear: both;
+    padding: 0% 0% 0% 3%;
+  }
+  #mainContent .newComment {
+    height: 3%;
+    margin: 0;
+    background: #E2E2E2;
+    border: none;
+    border-radius: 0px;
+    padding: 1.5% 0% 2% 0%;
+    border-bottom: 1px solid #cacaca;
+  }
+  #mainContent .newComment .newCommentSimple {
+    width: 90%;
+    margin: 0 auto;
+    background: #fff !important;
+    color: #bdbdbd;
+    border-radius: 2px;
+    padding: 1% 1% 1% 2%;
+    border: 1px solid #e4e4e4;
   }
 }
-/* mibile */
 
 /*# sourceMappingURL=styles.css.map */

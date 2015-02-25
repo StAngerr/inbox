@@ -1,16 +1,39 @@
+@import "variables";
+
+@font-face {
+	font-family: "Open Sans";
+	src: url("../fonts/Open_Sans/OpenSans-Light.ttf");
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url(../fonts/Open_Sans/OpenSans-Bold.ttf);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url(../fonts/Open_Sans/OpenSans-Italic.ttf);
+    font-style: italic;
+}
+
 html {
     height: 100%;
     background: #ffffff;
 }
+
 body {
 	height: 100%;
 	font-family: 'Open Sans', sans-serif;
 }
+
 main {
 	display: block;
 	margin: 0 auto;
 	width: 70%;
 	height: 100%;
-	background: #fff;
+}
 
+cite {
+	font-style: normal;
 }

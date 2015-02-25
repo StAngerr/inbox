@@ -7,7 +7,7 @@
 		border-radius: 5px;
 		padding: 1% 0% 2% 2%;
 
-		p {			
+		.newCommentSimple {			
 			color: darken($creamColor,20%);
 			a {
 				color: darken($clearBlue, 20%);
@@ -22,6 +22,9 @@
 		button {
 			display: none;
 		}
+		.authorIcon {
+			display: none;
+		}
 		/* EXPANDED */
 		&.newCommentExpanded {
 			height: 25%;
@@ -29,7 +32,7 @@
 			padding: 0px;
 			border: none;
 			
-			p {
+			.newCommentSimple {
 				display: none;
 			}
 			.authorIcon {
@@ -59,8 +62,7 @@
 
 			button {
 				display: block;
-				float: right;
-				
+				float: right;				
 				padding: 2% 4%;
 
 				&.replyNSolve {
@@ -91,3 +93,103 @@
 	}
 	/* ___________________________ */
 	
+	/* RESPONSIVE */
+
+@media only screen and (max-width: $xLarge) {
+
+	/* 	NEW COMMENT BLOCK */
+	#mainContent {
+		.newComment {
+			/* EXPANDED */
+			&.newCommentExpanded {
+				height: 25%;
+				&:before {
+					content: '';
+					width: 4.5%;
+					height: 11%;
+				}
+
+				.commentInput {
+					width: 90%;
+					height: 140px;
+				}
+			}
+			/* _______________________ */
+		}
+	}
+}
+
+@media only screen and (max-width: $large) { 
+
+	/* 	NEW COMMENT BLOCK */
+	#mainContent {
+		.newComment {
+			.commentInput {
+			}
+			/* EXPANDED */
+			&.newCommentExpanded {
+				height: 25%;
+				background: #fff;
+
+				&:before {
+					width: 4%;
+					height: 11%;
+				}
+				.commentInput {
+					width: 87%;
+					height: 140px;
+				}
+			}
+			/* _______________________ */
+		}
+	}
+}
+
+@media only screen and (max-width: $xMedium)  {
+
+	/* 	NEW COMMENT BLOCK */
+	#mainContent {
+		.newComment {
+			.commentInput {
+			}
+			/* EXPANDED */
+			&.newCommentExpanded {
+				height: 25%;
+
+				&:before {
+					width: 8%;
+					height: 11%;
+				}
+				.commentInput {
+					width: 85%;
+					height: 140px;
+				}
+			}
+			/* _______________________ */
+		}
+	}
+}
+
+@media only screen and (max-width: $medium)  {
+	/* 	NEW COMMENT BLOCK */
+	#mainContent {
+		.newComment {
+			.commentInput {
+			}
+			/* EXPANDED */
+			&.newCommentExpanded {
+				height: 25%;
+
+				&:before {
+					width: 8%;
+					height: 11%;
+				}
+				.commentInput {
+					width: 85%;
+					height: 140px;
+				}
+			}
+			/* _______________________ */
+		}
+	}
+}

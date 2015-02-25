@@ -1,6 +1,6 @@
 /* NAVIGATION SECTION HEADER   */
 
-@import "../utilities/variables";
+@import "../_variables";
 
 .navHeader {
 		height: 16%;
@@ -81,4 +81,102 @@
 			}
 
 		}
+}
+	/* RESPONSIVE */
+
+@media only screen and (max-width: $xLarge) {
+		/* SEARCH n NAVIGATION */
+	#navigation {	
+		.navHeader {
+			.search {	
+				.searchField {
+					margin-top: 4%;
+					width: 45%;
+					height: 50%;
+					background-position: 95% 1px;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: $large) { 
+		/* SEARCH n NAVIGATION */
+	#navigation {	
+		.navHeader {
+			.search {	
+				height: 40%;
+				
+				.searchField {
+					margin-top: 4%;
+					width: 45%;
+					height: 50%;
+					background-position: 95% 1px;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: $xMedium)  {
+	/* SEARCH n NAVIGATION */
+	#navigation {	
+		.navHeader {
+			.search {
+				height: 30%;
+
+				.searchField {
+					margin-top: 4%;
+					width: 60%;
+					height: 50%;
+					background-position: 95% 1px;
+				}
+			}
+		}
+	}
+}
+
+
+@media only screen and (max-width: $medium)  {
+	/* SEARCH n NAVIGATION */
+	#navigation {	
+		.navHeader {
+			.search {
+				height: 30%;
+
+				.searchField {
+					margin-top: 4%;
+					width: 60%;
+					height: 50%;
+					background-position: 95% 1px;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and /* (min-width: $mobileMin) and */ (max-width: $mobileMax) {
+	#navigation {
+		float: left;
+		width: 50%;
+
+		&.trans {
+			transition: 0.5s;
+		}
+
+		.navHeader {
+			.search {
+				height: 30%;
+				margin-top: 2%;
+				border-top: 1px solid darken($lightGrey,20%);
+
+				.searchField {
+					margin-top: 2%;
+					width: 40%;
+					height: 60%;
+					background-position: 95% 1px;
+				}
+			}
+		}
+	}
 }

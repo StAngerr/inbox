@@ -1,19 +1,36 @@
-@import 'utilities/variables';
+@import 'variables';
 
 #navigation {
+	box-sizing: border-box;
 	float: left;
 	width: 30%;
-	height: 99.5%;
+	height: 100%;
 	border-right: 1px solid darken($lightGrey,20%);
 	overflow: hidden;
 }
 
 #mainContent {
-	float: left;
-	overflow: hidden;
-	width: 69%;
+	float: left;	
+	width: 70%;
 	max-width: 100%;
-	height:	98%;
-	margin-top: 1%;
-	/* padding: 2% 15% 0 15%; */
+	height:	100%;
+	overflow: hidden;
+}
+
+#mainWrapper {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+@media only screen /* and (min-width: $mobileMin) */ and (max-width: $mobileMax) {
+	html {
+		width: 100%;
+		height: 100%;
+	}
+	body {
+		height: 100%;
+		width: 200%;
+		overflow: hidden;
+	}
 }

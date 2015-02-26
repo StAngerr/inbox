@@ -77,11 +77,13 @@ button {
 }
 html {
   height: 100%;
+  width: 100%;
   background: #ffffff;
 }
 
 body {
   height: 100%;
+  width: 100%;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -96,6 +98,22 @@ cite {
   font-style: normal;
 }
 
+@media only screen and (max-width: 620px) {
+  html {
+    width: 100%;
+    height: 100%;
+  }
+
+  body {
+    height: 100%;
+    width: 200%;
+    overflow: hidden;
+  }
+
+  main {
+    width: 100%;
+  }
+}
 /*    COLORS     */
 /* __________________ */
 /*      SIZES     */
@@ -106,7 +124,7 @@ cite {
   width: 30%;
   height: 100%;
   border-right: 1px solid #cacaca;
-  overflow: hidden;
+  margin: 0%;
 }
 
 #mainContent {
@@ -123,16 +141,51 @@ cite {
   overflow: hidden;
 }
 
+.mainContentInner {
+  overflow-y: scroll;
+}
+
+@media only screen and (max-width: 1453px) {
+  .mainContentInner {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 1153px) {
+  .mainContentInner {
+    width: 85%;
+  }
+}
+@media only screen and (max-width: 970px) {
+  .mainContentInner {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .mainContentInner {
+    width: 95%;
+  }
+}
+@media only screen and (min-width: 620px) {
+  #navigation {
+    margin: 0% !important;
+  }
+}
 @media only screen and (max-width: 620px) {
-  html {
+  #mainWrapper {
     width: 100%;
-    height: 100%;
   }
 
-  body {
-    height: 100%;
-    width: 200%;
-    overflow: hidden;
+  #navigation {
+    float: left;
+    width: 50%;
+  }
+  #navigation.trans {
+    transition: margin 0.5s;
+  }
+
+  #mainContent {
+    float: left;
+    width: 50%;
   }
 }
 /* NAVIGATION SECTION HEADER   */
@@ -169,6 +222,7 @@ cite {
 .navHeader .taskFilter {
   height: 50%;
   width: 100%;
+  padding: 0px;
   border-bottom: 1px solid #cacaca;
 }
 .navHeader .taskFilter .categories {
@@ -177,13 +231,13 @@ cite {
   width: 25%;
   height: 100%;
   text-align: center;
-  margin: 0 4% 0 0;
+  margin: 0 5% 0 0;
   color: #a3a3a3;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  cursor: default;
+  cursor: pointer;
 }
 .navHeader .taskFilter .categories:first-child {
   margin-left: 8%;
@@ -213,7 +267,7 @@ cite {
 /* RESPONSIVE */
 @media only screen and (max-width: 1453px) {
   /* SEARCH n NAVIGATION */
-  #navigation .navHeader .search .searchField {
+  .navHeader .search .searchField {
     margin-top: 4%;
     width: 45%;
     height: 50%;
@@ -222,10 +276,10 @@ cite {
 }
 @media only screen and (max-width: 1153px) {
   /* SEARCH n NAVIGATION */
-  #navigation .navHeader .search {
+  .navHeader .search {
     height: 40%;
   }
-  #navigation .navHeader .search .searchField {
+  .navHeader .search .searchField {
     margin-top: 4%;
     width: 45%;
     height: 50%;
@@ -234,22 +288,34 @@ cite {
 }
 @media only screen and (max-width: 970px) {
   /* SEARCH n NAVIGATION */
-  #navigation .navHeader .search {
+  .navHeader .search {
     height: 30%;
   }
-  #navigation .navHeader .search .searchField {
+  .navHeader .search .searchField {
     margin-top: 4%;
     width: 60%;
     height: 50%;
     background-position: 95% 1px;
   }
 }
+@media only screen and (min-width: 620px) and (max-width: 890px) {
+  .navHeader .taskFilter {
+    height: 40%;
+  }
+  .navHeader .taskFilter .categories .count {
+    font-size: 1.1em;
+  }
+  .navHeader .taskFilter .categories .categoryName {
+    padding-top: 20%;
+    font-size: 0.5em;
+  }
+}
 @media only screen and (max-width: 768px) {
   /* SEARCH n NAVIGATION */
-  #navigation .navHeader .search {
+  .navHeader .search {
     height: 30%;
   }
-  #navigation .navHeader .search .searchField {
+  .navHeader .search .searchField {
     margin-top: 4%;
     width: 60%;
     height: 50%;
@@ -257,19 +323,12 @@ cite {
   }
 }
 @media only screen and (max-width: 620px) {
-  #navigation {
-    float: left;
-    width: 50%;
-  }
-  #navigation.trans {
-    transition: 0.5s;
-  }
-  #navigation .navHeader .search {
+  .navHeader .search {
     height: 30%;
     margin-top: 2%;
     border-top: 1px solid #cacaca;
   }
-  #navigation .navHeader .search .searchField {
+  .navHeader .search .searchField {
     margin-top: 2%;
     width: 40%;
     height: 60%;
@@ -279,58 +338,59 @@ cite {
 /* TASKS LIST    */
 .tasks {
   width: 100%;
-  height: auto;
-  overflow: auto;
+  height: 84%;
+  overflow-y: scroll;
 }
-.tasks .taskList {
+.tasks .taskItem {
   display: block;
   border-bottom: 1px solid #cacaca;
   width: 92%;
-  height: 50%;
+  height: 10%;
   padding: 3% 0% 4% 8%;
   color: #000;
   font-weight: 700;
 }
-.tasks .taskList header {
+.tasks .taskItem header {
   margin: 0px;
+  height: 100%;
 }
-.tasks .taskList .taskHeader {
-  margin: 0 0 5px 0;
+.tasks .taskItem .taskHeader {
+  margin: 0 0 0 0;
   font-size: 1.2em;
 }
-.tasks .taskList .taskDescription {
+.tasks .taskItem .taskDescription {
   font-size: 0.9em;
   width: 90%;
-  margin: 0 0 5px 0;
+  margin: 0 0 0 0;
 }
-.tasks .taskList footer {
+.tasks .taskItem footer {
   display: block;
   width: 100%;
   height: auto;
 }
-.tasks .taskList footer .meta {
+.tasks .taskItem footer .meta {
   display: inline-block;
 }
-.tasks .taskList footer figure {
+.tasks .taskItem footer figure {
   display: inline-block;
   float: right;
   margin-right: 8%;
   margin-bottom: 0;
 }
-.tasks .taskList footer figure .taskAuthorIcon {
+.tasks .taskItem footer figure .taskAuthorIcon {
   display: inline-block;
   width: 20px;
   height: 20px;
   border-radius: 50%;
   opacity: 1;
 }
-.tasks .taskList.activeTask {
+.tasks .taskItem.activeTask {
   color: #bdbdbd;
 }
-.tasks .taskList.activeTask .taskAuthorIcon {
+.tasks .taskItem.activeTask .taskAuthorIcon {
   opacity: 0.4;
 }
-.tasks .taskList:hover {
+.tasks .taskItem:hover {
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -338,12 +398,20 @@ cite {
   user-select: none;
 }
 
+@media only screen and (min-width: 620px) and (max-width: 890px) {
+  .tasks .taskItem {
+    height: 15%;
+  }
+}
 /* TITELE AUTHOR */
-#mainContent .headerControls {
+.headerControls {
   display: none;
   border-top: 1px solid #cacaca;
+  padding: 0px;
+  margin: 0px;
+  margin-top: 2%;
 }
-#mainContent .headerControls .returnBtn {
+.headerControls .returnBtn {
   width: 25px;
   height: 40px;
   border: none;
@@ -352,17 +420,20 @@ cite {
   margin-bottom: 1.5%;
   outline: none;
 }
-#mainContent .metaData {
+
+.metaData {
   display: block;
   color: #b0b0b0;
   font-style: italic;
   margin-bottom: 2%;
+  padding: 2% 0 0 0;
 }
-#mainContent .more {
+
+.more {
   display: inline-block;
   float: right;
 }
-#mainContent .more span {
+.more span {
   display: inline-block;
   width: 5px;
   height: 5px;
@@ -370,13 +441,14 @@ cite {
   border-radius: 50%;
   margin-left: 3px;
 }
-#mainContent .assign {
+
+.assign {
   color: #b0b0b0;
   padding-bottom: 4%;
   border-bottom: 1px solid #cacaca;
-  margin-top: 10%;
+  margin-top: 5%;
 }
-#mainContent .assign .authorIcon {
+.assign .authorIcon {
   display: inline-block;
   float: left;
   width: 30px;
@@ -387,27 +459,22 @@ cite {
 }
 
 @media only screen and (max-width: 620px) {
-  #mainContent {
-    float: left;
-    width: 49%;
-    /* TITELE AUTHOR */
-  }
-  #mainContent #mainWrapper {
-    /* <main>  */
-    width: 100%;
-  }
-  #mainContent h2 {
+  /* TITELE AUTHOR */
+  h2 {
     padding: 2% 0% 5% 3%;
     border-top: 1px solid #cacaca;
   }
-  #mainContent .headerControls {
+
+  .headerControls {
     display: block;
     margin-top: 0%;
   }
-  #mainContent .metaData {
+
+  .metaData {
     display: none;
   }
-  #mainContent .assign {
+
+  .assign {
     color: #000;
     padding-bottom: 4%;
     border-top: 1px solid #cacaca;
@@ -504,74 +571,74 @@ cite {
 /* RESPONSIVE */
 @media only screen and (max-width: 1453px) {
   /* 	NEW COMMENT BLOCK */
-  #mainContent .newComment {
+  .newComment {
     /* EXPANDED */
     /* _______________________ */
   }
-  #mainContent .newComment.newCommentExpanded {
+  .newComment.newCommentExpanded {
     height: 25%;
   }
-  #mainContent .newComment.newCommentExpanded:before {
+  .newComment.newCommentExpanded:before {
     content: '';
     width: 4.5%;
     height: 11%;
   }
-  #mainContent .newComment.newCommentExpanded .commentInput {
+  .newComment.newCommentExpanded .commentInput {
     width: 90%;
     height: 140px;
   }
 }
 @media only screen and (max-width: 1153px) {
   /* 	NEW COMMENT BLOCK */
-  #mainContent .newComment {
+  .newComment {
     /* EXPANDED */
     /* _______________________ */
   }
-  #mainContent .newComment.newCommentExpanded {
+  .newComment.newCommentExpanded {
     height: 25%;
     background: #fff;
   }
-  #mainContent .newComment.newCommentExpanded:before {
+  .newComment.newCommentExpanded:before {
     width: 4%;
     height: 11%;
   }
-  #mainContent .newComment.newCommentExpanded .commentInput {
+  .newComment.newCommentExpanded .commentInput {
     width: 87%;
     height: 140px;
   }
 }
 @media only screen and (max-width: 970px) {
   /* 	NEW COMMENT BLOCK */
-  #mainContent .newComment {
+  .newComment {
     /* EXPANDED */
     /* _______________________ */
   }
-  #mainContent .newComment.newCommentExpanded {
+  .newComment.newCommentExpanded {
     height: 25%;
   }
-  #mainContent .newComment.newCommentExpanded:before {
+  .newComment.newCommentExpanded:before {
     width: 8%;
     height: 11%;
   }
-  #mainContent .newComment.newCommentExpanded .commentInput {
+  .newComment.newCommentExpanded .commentInput {
     width: 85%;
     height: 140px;
   }
 }
 @media only screen and (max-width: 768px) {
   /* 	NEW COMMENT BLOCK */
-  #mainContent .newComment {
+  .newComment {
     /* EXPANDED */
     /* _______________________ */
   }
-  #mainContent .newComment.newCommentExpanded {
+  .newComment.newCommentExpanded {
     height: 25%;
   }
-  #mainContent .newComment.newCommentExpanded:before {
+  .newComment.newCommentExpanded:before {
     width: 8%;
     height: 11%;
   }
-  #mainContent .newComment.newCommentExpanded .commentInput {
+  .newComment.newCommentExpanded .commentInput {
     width: 85%;
     height: 140px;
   }
@@ -580,8 +647,6 @@ cite {
 .commentList {
   height: 80%;
   width: 100%;
-  overflow: auto;
-  overflow: -moz-scrollbars-none;
   clear: both;
 }
 .commentList .commentItem {
@@ -614,17 +679,16 @@ cite {
 
 @media only screen and (max-width: 620px) {
   /* COMMENTS  */
-  #mainContent {
-    /* NEW COMMENT BLOCK.  SIMPLE AND EXPANDED */
-    /* ___________________________ */
-  }
-  #mainContent .commentList {
+  /* #mainContent { */
+  .commentList {
     height: 100%;
     overflow: hidden;
     clear: both;
     padding: 0% 0% 0% 3%;
   }
-  #mainContent .newComment {
+
+  /* NEW COMMENT BLOCK.  SIMPLE AND EXPANDED */
+  .newComment {
     height: 3%;
     margin: 0;
     background: #E2E2E2;
@@ -633,7 +697,7 @@ cite {
     padding: 1.5% 0% 2% 0%;
     border-bottom: 1px solid #cacaca;
   }
-  #mainContent .newComment .newCommentSimple {
+  .newComment .newCommentSimple {
     width: 90%;
     margin: 0 auto;
     background: #fff !important;
@@ -642,6 +706,9 @@ cite {
     padding: 1% 1% 1% 2%;
     border: 1px solid #e4e4e4;
   }
+
+  /* ___________________________ */
+  /* } */
 }
 
 /*# sourceMappingURL=styles.css.map */

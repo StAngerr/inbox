@@ -1,88 +1,81 @@
 /* TITELE AUTHOR */
-#mainContent{
+.headerControls {
+	display: none;
+	border-top: 1px solid darken($lightGrey,20%);
+	padding: 0px;
+	margin: 0px;
+	margin-top: 2%;
 	
-	.headerControls {
-		display: none;
+	.returnBtn{
+		width: 25px;
+		height: 40px;
+		border: none;
+		background: #fff url("arrow-left.png") no-repeat 50% 50%; 
+		margin-left: 3%; 
+		margin-bottom: 1.5%;
+		outline: none;
+	}
+}	
+.metaData {
+	display: block;
+	color: darken($creamColor,25%);
+	font-style: italic;
+	margin-bottom: 2%;
+	padding: 2% 0 0 0;
+}
+
+.more {
+	display: inline-block;
+	float: right;
+
+	span {
+		display: inline-block;
+		width: 5px;
+		height: 5px;
+		background:  darken($creamColor,30%);
+		border-radius: 50%;
+		margin-left: 3px;
+	}
+}
+
+.assign {
+	color: darken($creamColor,25%);
+	padding-bottom: 4%;
+	border-bottom: 1px solid darken($lightGrey,20%);
+	margin-top: 5%;
+
+	.authorIcon {
+		display: inline-block;
+		float: left;
+		width: 30px;
+		height: 30px;
+		margin-right: 2%;
+		background: $violet;
+		border-radius: 50%;
+	}
+}
+
+@media only screen and (max-width: $mobileMax) {
+	/* TITELE AUTHOR */
+	h2 {
+		padding: 2% 0% 5% 3% ;
 		border-top: 1px solid darken($lightGrey,20%);
-		
-		.returnBtn{
-			width: 25px;
-			height: 40px;
-			border: none;
-			background: #fff url("arrow-left.png") no-repeat 50% 50%; 
-			margin-left: 3%; 
-			margin-bottom: 1.5%;
-			outline: none;
-		}
+	}
+	.headerControls {
+		display: block;
+		margin-top: 0%;
 	}	
 	.metaData {
-		display: block;
-		color: darken($creamColor,25%);
-		font-style: italic;
-		margin-bottom: 2%;
-	}
-
-	.more {
-		display: inline-block;
-		float: right;
-
-		span {
-			display: inline-block;
-			width: 5px;
-			height: 5px;
-			background:  darken($creamColor,30%);
-			border-radius: 50%;
-			margin-left: 3px;
-		}
+		display: none;
 	}
 
 	.assign {
-		color: darken($creamColor,25%);
+		color: #000;
 		padding-bottom: 4%;
+		border-top: 1px solid darken($lightGrey,20%);
 		border-bottom: 1px solid darken($lightGrey,20%);
-		margin-top: 10%;
-
-		.authorIcon {
-			display: inline-block;
-			float: left;
-			width: 30px;
-			height: 30px;
-			margin-right: 2%;
-			background: $violet;
-			border-radius: 50%;
-		}
+		margin-top: 0%;
+		padding: 4% 0% 4% 3%;
 	}
-
-}
-
-@media only screen and /* (min-width: $mobileMin) and */ (max-width: $mobileMax) {
-	#mainContent {
-		float: left;
-		width: 49%;
-
-		#mainWrapper {  /* <main>  */
-			width: 100%;
-		}
-		/* TITELE AUTHOR */
-		h2 {
-			padding: 2% 0% 5% 3% ;
-			border-top: 1px solid darken($lightGrey,20%);
-		}
-		.headerControls {
-			display: block;
-			margin-top: 0%;
-		}	
-		.metaData {
-			display: none;
-		}
-
-		.assign {
-			color: #000;
-			padding-bottom: 4%;
-			border-top: 1px solid darken($lightGrey,20%);
-			border-bottom: 1px solid darken($lightGrey,20%);
-			margin-top: 0%;
-			padding: 4% 0% 4% 3%;
-		}
-	}
+	
 }

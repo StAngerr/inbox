@@ -1,195 +1,184 @@
 /* NEW COMMENT BLOCK.  SIMPLE AND EXPANDED */
-	.newComment {
-		height: 2%;
-		margin: 2% 0 2% 0;
-		background: $dirtyWhite;
-		border: 1px solid darken($lightGrey, 10%);
-		border-radius: 5px;
-		padding: 1% 0% 2% 2%;
+.newComment {
+	height: 2%;
+	margin: 2% 0 2% 0;
+	background: $dirtyWhite;
+	border: 1px solid darken($lightGrey, 10%);
+	border-radius: 5px;
+	padding: 1% 0% 2% 2%;
 
-		.newCommentSimple {			
-			color: darken($creamColor,20%);
-			a {
-				color: darken($clearBlue, 20%);
-				text-decoration: none;
-			}	
-		}
+	.newCommentSimple {			
+		color: darken($creamColor,20%);
+		a {
+			color: darken($clearBlue, 20%);
+			text-decoration: none;
+		}	
+	}
 
-		.commentInput {
-			display: none;
-		}
+	.commentInput {
+		display: none;
+	}
 
-		button {
+	button {
+		display: none;
+	}
+	.authorIcon {
+		display: none;
+	}
+	/* EXPANDED */
+	&.newCommentExpanded {
+		height: 25%;
+		background: #fff;
+		padding: 0px;
+		border: none;
+		
+		.newCommentSimple {
 			display: none;
 		}
 		.authorIcon {
-			display: none;
+			display: inline-block;
+			float: left;
+			width: 30px;
+			height: 30px;
+			margin-right: 2%;
+			border-radius: 50%;
 		}
-		/* EXPANDED */
-		&.newCommentExpanded {
-			height: 25%;
-			background: #fff;
-			padding: 0px;
-			border: none;
+
+		.commentInput {
+			display: inline-block;
+			float: right;
+			margin-bottom: 2%;
+			resize: none;
+			width: 91%;
+			height: 140px;
+			padding: 1%;
+			border: 2px solid darken($lightGrey, 20%);
+			border-radius: 5px;
 			
-			.newCommentSimple {
-				display: none;
+			&:focus {
+				outline: 0;
 			}
-			.authorIcon {
-				display: inline-block;
-				float: left;
-				width: 30px;
-				height: 30px;
-				margin-right: 2%;
-				border-radius: 50%;
-			}
+		}
 
-			.commentInput {
-				display: inline-block;
-				float: right;
-				margin-bottom: 2%;
-				resize: none;
-				width: 91%;
-				height: 140px;
-				padding: 1%;
-				border: 2px solid darken($lightGrey, 20%);
-				border-radius: 5px;
-				
-				&:focus {
-					outline: 0;
+		button {
+			display: block;
+			float: right;				
+			padding: 2% 4%;
+
+			&.replyNSolve {
+				border: none;
+				border:1px solid darken($lightGrey, 15%);
+				border-radius: 3px;
+				background: #fff;
+				font-weight: 700;
+				&:hover {
+					background: darken(#fff,5%);
 				}
 			}
 
-			button {
-				display: block;
-				float: right;				
-				padding: 2% 4%;
+			&.reply {
+				background: $green;
+				border:1px solid darken($green, 10%);
+				margin-left: 2%;
+				border-radius: 3px;
+				color: #fff;
 
-				&.replyNSolve {
-					border: none;
-					border:1px solid darken($lightGrey, 15%);
-					border-radius: 3px;
-					background: #fff;
-					font-weight: 700;
-					&:hover {
-						background: darken(#fff,5%);
-					}
-				}
-
-				&.reply {
-					background: $green;
-					border:1px solid darken($green, 10%);
-					margin-left: 2%;
-					border-radius: 3px;
-					color: #fff;
-
-					&:hover {
-						background: lighten($green,5%);
-					}
+				&:hover {
+					background: lighten($green,5%);
 				}
 			}
 		}
-		/* _______________________ */
 	}
+	/* _______________________ */
+}
 	/* ___________________________ */
 	
 	/* RESPONSIVE */
 
 @media only screen and (max-width: $xLarge) {
-
 	/* 	NEW COMMENT BLOCK */
-	#mainContent {
-		.newComment {
-			/* EXPANDED */
-			&.newCommentExpanded {
-				height: 25%;
-				&:before {
-					content: '';
-					width: 4.5%;
-					height: 11%;
-				}
-
-				.commentInput {
-					width: 90%;
-					height: 140px;
-				}
+	.newComment {
+		/* EXPANDED */
+		&.newCommentExpanded {
+			height: 25%;
+			&:before {
+				content: '';
+				width: 4.5%;
+				height: 11%;
 			}
-			/* _______________________ */
+
+			.commentInput {
+				width: 90%;
+				height: 140px;
+			}
 		}
+		/* _______________________ */
 	}
 }
 
 @media only screen and (max-width: $large) { 
-
 	/* 	NEW COMMENT BLOCK */
-	#mainContent {
-		.newComment {
-			.commentInput {
-			}
-			/* EXPANDED */
-			&.newCommentExpanded {
-				height: 25%;
-				background: #fff;
-
-				&:before {
-					width: 4%;
-					height: 11%;
-				}
-				.commentInput {
-					width: 87%;
-					height: 140px;
-				}
-			}
-			/* _______________________ */
+	.newComment {
+		.commentInput {
 		}
+		/* EXPANDED */
+		&.newCommentExpanded {
+			height: 25%;
+			background: #fff;
+
+			&:before {
+				width: 4%;
+				height: 11%;
+			}
+			.commentInput {
+				width: 87%;
+				height: 140px;
+			}
+		}
+		/* _______________________ */
 	}
 }
 
 @media only screen and (max-width: $xMedium)  {
-
-	/* 	NEW COMMENT BLOCK */
-	#mainContent {
-		.newComment {
-			.commentInput {
-			}
-			/* EXPANDED */
-			&.newCommentExpanded {
-				height: 25%;
-
-				&:before {
-					width: 8%;
-					height: 11%;
-				}
-				.commentInput {
-					width: 85%;
-					height: 140px;
-				}
-			}
-			/* _______________________ */
+/* 	NEW COMMENT BLOCK */
+	.newComment {
+		.commentInput {
 		}
+		/* EXPANDED */
+		&.newCommentExpanded {
+			height: 25%;
+
+			&:before {
+				width: 8%;
+				height: 11%;
+			}
+			.commentInput {
+				width: 85%;
+				height: 140px;
+			}
+		}
+		/* _______________________ */
 	}
 }
 
 @media only screen and (max-width: $medium)  {
 	/* 	NEW COMMENT BLOCK */
-	#mainContent {
-		.newComment {
-			.commentInput {
-			}
-			/* EXPANDED */
-			&.newCommentExpanded {
-				height: 25%;
-
-				&:before {
-					width: 8%;
-					height: 11%;
-				}
-				.commentInput {
-					width: 85%;
-					height: 140px;
-				}
-			}
-			/* _______________________ */
+	.newComment {
+		.commentInput {
 		}
+		/* EXPANDED */
+		&.newCommentExpanded {
+			height: 25%;
+
+			&:before {
+				width: 8%;
+				height: 11%;
+			}
+			.commentInput {
+				width: 85%;
+				height: 140px;
+			}
+		}
+		/* _______________________ */
 	}
 }

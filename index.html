@@ -14,27 +14,28 @@
 
 				<menu class="taskFilter">
 
-					<div class="categories">
+					<div class="categories active" ng-click="categoriesSelect($event)">
 						 <span class="count">3</span>
 						  <span class="categoryName">yours</span> 
 					  </div>
 
-					<div class="categories">
+					<div class="categories" ng-click="categoriesSelect($event)">
 						 <span class="count">6</span> 
 						 <span class="categoryName">unassigned</span> 
 					 </div>
 
-					<div class="categories active"> 
+					<div class="categories" ng-click="categoriesSelect($event)"> 
 						<span class="count">22</span> 
 						<span class="categoryName">all</span> 
 					</div>
 
 				</menu>
 			</header>
-
-			<ul class="tasks">
-					<li class="taskList" ng-repeat="task in tasks | filter:query" ><!-- ng-click="toggle.state = !toggle.state" ng-class="{'activeTask' : toggle.state} " -->
-					<article onclick="clickEvent(event)">
+			
+			<ul class="tasks" >
+					<li class="taskItem" ng-repeat="task in tasks | filter:query" 
+					 ng-click="openComment($event)">
+					<article>
 						<header>
 							<h3 class="taskHeader">{{task.header}}</h3>
 						</header>
@@ -52,6 +53,7 @@
 					</article>
 					</li>
 				</ul>
+				
 			</section>
 		</section>
 
@@ -60,11 +62,11 @@
 				<!-- HEADER -->
 				<header>
 					<menu class="headerControls">
-						<button class="returnBtn" onclick="clickEvent1(event)"></button>
+						<button class="returnBtn" ng-click="returnBtn()"></button>
 					</menu>
-					<cite class="metaData">
+					<aside class="metaData">
 						<span>Jhon@gmail.com</span>
-						<span>Requested on Friday March 21</span></cite>
+						<span>Requested on Friday March 21</span></aside>
 					<!--  <a href="#" class="more"><span></span><span></span><span></span></a> -->
 					<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe quisquam cupiditate dignissimos blanditiis nisi id vero, unde.</h2>
 				</header>
@@ -78,7 +80,7 @@
 		<!-- _____________________________ -->
 
 		<!-- NEW COMMENT BLOCK -->
-				<div class="newComment newCommentExpanded">
+				<div class="newComment">
 					<div class="newCommentSimple">
 						<p> Add <a href="#">internal node</a> or <a href="#">public reply</a> 
 						</p>
@@ -105,14 +107,11 @@
 							<figure>
 								<img class="authorIcon" src="src/images/avatar.jpg">
 							</figure>
-							<cite class="meta"><span>{{comment.author}}</span></cite>
+							<aside class="meta"><span>{{comment.author}}</span></aside>
 							<div class="content">
 								<p >{{comment.content}}</p>
 							</div>
 						</article>
-				   <!-- <div class="authorIcon"></div>
-						<p class="author">{{comment.author}}</p>
-						<p class="content">{{comment.content}}</p> -->
 					</li>
 				</ul>
 			</main>

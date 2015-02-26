@@ -2,8 +2,6 @@
 .commentList {
 	height: 80%;
 	width: 100%;
-	overflow: auto;
-	 overflow: -moz-scrollbars-none;
 	clear: both;
 
 	.commentItem {
@@ -38,7 +36,7 @@
 
 @media only screen and /* (min-width: $mobileMin) and */ (max-width: $mobileMax) {
 	/* COMMENTS  */
-	#mainContent {
+	/* #mainContent { */
 		.commentList {
 			height: 100%;
 			overflow: hidden;
@@ -66,5 +64,5 @@
 			}
 		}
 	/* ___________________________ */
-	}
+	/* } */
 }

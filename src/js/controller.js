@@ -37,7 +37,7 @@ inbox.controller('TasksCtrl', function($scope,$http) {
 
 	$scope.returnBtn = function() {
 		document.getElementById('navigation').style.marginLeft = '0%';
-		$('.taskItem').removeClass('activeTask');
+		$('.taskItem').addClass('activeTask');
 	}
 
 	$scope.categoriesSelect = function(event) {

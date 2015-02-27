@@ -63,11 +63,12 @@ button {
 /* __________________ */
 @font-face {
   font-family: "Open Sans";
-  src: url("../fonts/Open_Sans/OpenSans-Light.ttf");
+  src: url("../fonts/Droid_Sans/DroidSans.ttf");
+  font-weight: 400;
 }
 @font-face {
   font-family: "Open Sans";
-  src: url(../fonts/Open_Sans/OpenSans-Bold.ttf);
+  src: url(../fonts/Droid_Sans/DroidSans-Bold.ttf);
   font-weight: bold;
 }
 @font-face {
@@ -90,8 +91,12 @@ body {
 main {
   display: block;
   margin: 0 auto;
-  width: 70%;
+  width: 60%;
   height: 100%;
+}
+
+h2 {
+  font-weight: 700;
 }
 
 cite {
@@ -121,7 +126,7 @@ cite {
 #navigation {
   box-sizing: border-box;
   float: left;
-  width: 30%;
+  width: 27.6%;
   height: 100%;
   border-right: 1px solid #cacaca;
   margin: 0%;
@@ -129,20 +134,15 @@ cite {
 
 #mainContent {
   float: left;
-  width: 70%;
+  width: 72.4%;
   max-width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow-y: scroll;
 }
 
 #mainWrapper {
   width: 100%;
   height: 100%;
-  overflow: hidden;
-}
-
-.mainContentInner {
-  overflow-y: scroll;
 }
 
 @media only screen and (max-width: 1453px) {
@@ -158,11 +158,6 @@ cite {
 @media only screen and (max-width: 970px) {
   .mainContentInner {
     width: 90%;
-  }
-}
-@media only screen and (max-width: 768px) {
-  .mainContentInner {
-    width: 95%;
   }
 }
 @media only screen and (min-width: 620px) {
@@ -205,7 +200,7 @@ cite {
 }
 .navHeader .search {
   position: relative;
-  height: 40%;
+  height: 35%;
   width: 100%;
   border-bottom: 1px solid #cacaca;
 }
@@ -213,19 +208,32 @@ cite {
   position: relative;
   top: 0;
   float: right;
-  margin-right: 5%;
+  margin-top: 1%;
+  margin-right: 4%;
   width: 40%;
   height: 60%;
 }
 .navHeader .search .searchWrap .searchField {
   display: block;
+  visibility: hidden;
   width: 100%;
   height: 100%;
   margin-top: 2%;
   margin-right: 2%;
-  border: 1px solid #e4e4e4;
-  background-size: 15% 90%;
+  border: none;
+  /* border: 1px solid darken($lightGrey,10%); */
   line-height: 100%;
+  border: 1px solid #fff;
+  /* darken($lightGrey,10%); */
+  transition: border 1s;
+}
+.navHeader .search .searchWrap .searchField.borderAnim {
+  background: blue;
+  border-color: #f0c;
+  transition: border 1s;
+}
+.navHeader .search .searchWrap .searchField:focus {
+  outline: none;
 }
 .navHeader .search .searchWrap .searchField:focus + span.glyphicon-search {
   display: none;
@@ -234,9 +242,10 @@ cite {
   position: absolute;
   top: 40%;
   right: 10%;
+  font-size: 1.3em;
 }
 .navHeader .taskFilter {
-  height: 50%;
+  height: 54%;
   width: 100%;
   padding: 0px;
   border-bottom: 1px solid #cacaca;
@@ -248,7 +257,7 @@ cite {
   width: 25%;
   height: 100%;
   text-align: center;
-  margin: 0 5% 0 0;
+  margin: 0 6% 0 0;
   color: #a3a3a3;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -257,18 +266,20 @@ cite {
   cursor: pointer;
 }
 .navHeader .taskFilter .categories:first-child {
-  margin-left: 8%;
+  margin-left: 7%;
 }
 .navHeader .taskFilter .categories .count {
   display: block;
-  font-size: 1.2em;
+  font-size: 2.3em;
   height: 60%;
+  font-weight: 700;
 }
 .navHeader .taskFilter .categories .categoryName {
   display: block;
   height: 40%;
-  font-size: 0.6em;
-  padding: 2% 0 0 0;
+  font-weight: 700;
+  font-size: 0.8em;
+  padding: 0% 0 0% 0;
   color: #d6d6d6;
   text-transform: uppercase;
 }
@@ -294,7 +305,7 @@ cite {
 @media only screen and (max-width: 1153px) {
   /* SEARCH n NAVIGATION */
   .navHeader .search {
-    height: 40%;
+    /* height: 40%; */
   }
   .navHeader .search .searchField {
     margin-top: 4%;
@@ -306,7 +317,7 @@ cite {
 @media only screen and (max-width: 970px) {
   /* SEARCH n NAVIGATION */
   .navHeader .search {
-    height: 30%;
+    /* height: 30%; */
   }
   .navHeader .search .searchField {
     margin-top: 4%;
@@ -315,15 +326,24 @@ cite {
     background-position: 95% 1px;
   }
 }
+@media only screen and (max-width: 890px) {
+  .navHeader .taskFilter .categories .count {
+    font-size: 1.8em;
+  }
+}
 @media only screen and (min-width: 620px) and (max-width: 890px) {
   .navHeader .taskFilter {
     height: 40%;
+  }
+  .navHeader .taskFilter .categories .categoryName {
+    font-size: 0.7em;
   }
 }
 @media only screen and (max-width: 768px) {
   /* SEARCH n NAVIGATION */
   .navHeader .search {
-    height: 30%;
+    			/* height: 30%;
+     */
   }
   .navHeader .search .searchField {
     margin-top: 4%;
@@ -334,7 +354,7 @@ cite {
 }
 @media only screen and (max-width: 620px) {
   .navHeader .search {
-    height: 30%;
+    /* height: 30%; */
     margin-top: 2%;
   }
   .navHeader .search .searchField {
@@ -354,28 +374,30 @@ cite {
   display: block;
   border-bottom: 1px solid #cacaca;
   width: 100%;
-  height: 12%;
-  padding: 3% 0% 4% 8%;
+  height: 18.5%;
+  padding: 6% 0% 0% 7%;
   color: #000;
-  font-weight: 700;
 }
 .tasks .taskItem header {
   margin: 0px;
   height: 100%;
 }
 .tasks .taskItem .taskHeader {
-  margin: 0 0 0 0;
+  margin: 0 0 3% 0;
   font-size: 1.2em;
+  font-weight: 700;
 }
 .tasks .taskItem .taskDescription {
-  font-size: 0.9em;
+  font-size: 1em;
   width: 90%;
-  margin: 0 0 0 0;
+  margin: 0 0 0% 0;
 }
 .tasks .taskItem footer {
   display: block;
   width: 100%;
   height: auto;
+  margin-top: 2%;
+  font-size: 0.9em;
 }
 .tasks .taskItem footer .meta {
   display: inline-block;
@@ -383,13 +405,12 @@ cite {
 .tasks .taskItem footer figure {
   display: inline-block;
   float: right;
-  margin-right: 8%;
-  margin-bottom: 0;
+  margin: -1% 4% 0 0;
 }
 .tasks .taskItem footer figure .taskAuthorIcon {
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   opacity: 1;
 }
@@ -409,12 +430,12 @@ cite {
 
 @media only screen and (min-width: 620px) and (max-width: 890px) {
   .tasks .taskItem {
-    height: 15%;
+    height: 20%;
   }
 }
 @media only screen and (max-width: 235px) {
   .tasks .taskItem {
-    height: 15%;
+    height: 20%;
   }
 }
 /* TITELE AUTHOR */
@@ -440,7 +461,7 @@ cite {
   color: #b0b0b0;
   font-style: italic;
   margin-bottom: 2%;
-  padding: 2% 0 0 0;
+  padding: 7% 0 0 0;
 }
 
 .more {
@@ -458,15 +479,16 @@ cite {
 
 .assign {
   color: #b0b0b0;
-  padding-bottom: 4%;
+  padding-bottom: 3%;
   border-bottom: 1px solid #cacaca;
-  margin-top: 5%;
+  margin-top: 11%;
+  margin-bottom: 7%;
 }
 .assign .authorIcon {
   display: inline-block;
   float: left;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   margin-right: 2%;
   background: #B24FB5;
   border-radius: 50%;
@@ -538,8 +560,8 @@ cite {
 .newComment.newCommentExpanded .authorIcon {
   display: inline-block;
   float: left;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   margin-right: 2%;
   border-radius: 50%;
 }
@@ -548,11 +570,12 @@ cite {
   float: right;
   margin-bottom: 2%;
   resize: none;
-  width: 91%;
-  height: 140px;
+  width: 88%;
+  height: 195px;
   padding: 1%;
   border: 2px solid #cacaca;
   border-radius: 5px;
+  margin-right: 2%;
 }
 .newComment.newCommentExpanded .commentInput:focus {
   outline: 0;
@@ -560,7 +583,7 @@ cite {
 .newComment.newCommentExpanded button {
   display: block;
   float: right;
-  padding: 2% 4%;
+  padding: 1.5% 4%;
 }
 .newComment.newCommentExpanded button.replyNSolve {
   border: none;
@@ -575,9 +598,10 @@ cite {
 .newComment.newCommentExpanded button.reply {
   background: #80A911;
   border: 1px solid #5d7b0c;
-  margin-left: 2%;
+  margin-left: 1%;
   border-radius: 3px;
   color: #fff;
+  margin-right: 2%;
 }
 .newComment.newCommentExpanded button.reply:hover {
   background: #92c013;

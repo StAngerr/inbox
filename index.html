@@ -12,25 +12,25 @@
 			<header class="navHeader">	
 				<div class="search"> 
 					<div class="searchWrap">
-						<input type="search" class="searchField" ng-model="query">
-						<span class="glyphicon glyphicon-search"></span>
+						<input id="searchField" type="search " class="searchField" ng-model="query">
+						<span class="glyphicon glyphicon-search" ng-click="searchAnimationEvent()"></span>
 					</div>
 				</div>
 
 				<menu class="taskFilter">
 
 					<div class="categories active" ng-click="categoriesSelect($event)">
-						 <span class="count">3</span>
+						 <span class="count">7</span>
 						  <span class="categoryName">yours</span> 
 					  </div>
 
 					<div class="categories" ng-click="categoriesSelect($event)">
-						 <span class="count">6</span> 
+						 <span class="count">5</span> 
 						 <span class="categoryName">unassigned</span> 
 					 </div>
 
 					<div class="categories" ng-click="categoriesSelect($event)"> 
-						<span class="count">22</span> 
+						<span class="count">9</span> 
 						<span class="categoryName">all</span> 
 					</div>
 
@@ -73,7 +73,7 @@
 						<span>Jhon@gmail.com</span>
 						<span>Requested on Friday March 21</span></aside>
 					<!--  <a href="#" class="more"><span></span><span></span><span></span></a> -->
-					<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe quisquam cupiditate dignissimos blanditiis nisi id vero, unde.</h2>
+					<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
 				</header>
 					
 				<div class="assign">
@@ -85,7 +85,7 @@
 		<!-- _____________________________ -->
 
 		<!-- NEW COMMENT BLOCK -->
-				<div class="newComment">
+				<div class="newComment ">
 					<div class="newCommentSimple">
 						<p> Add <a href="#">internal node</a> or <a href="#">public reply</a> 
 						</p>

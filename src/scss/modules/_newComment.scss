@@ -40,8 +40,8 @@
 		.authorIcon {
 			display: inline-block;
 			float: left;
-			width: 30px;
-			height: 30px;
+			width: 40px;
+			height: 40px;
 			margin-right: 2%;
 			border-radius: 50%;
 		}
@@ -51,11 +51,12 @@
 			float: right;
 			margin-bottom: 2%;
 			resize: none;
-			width: 91%;
-			height: 140px;
+			width: 88%;
+			height: 195px;
 			padding: 1%;
 			border: 2px solid darken($lightGrey, 20%);
 			border-radius: 5px;
+			margin-right: 2%;
 			
 			&:focus {
 				outline: 0;
@@ -65,7 +66,7 @@
 		button {
 			display: block;
 			float: right;				
-			padding: 2% 4%;
+			padding: 1.5% 4%;
 
 			&.replyNSolve {
 				border: none;
@@ -81,9 +82,10 @@
 			&.reply {
 				background: $green;
 				border:1px solid darken($green, 10%);
-				margin-left: 2%;
+				margin-left: 1%;
 				border-radius: 3px;
 				color: #fff;
+				margin-right: 2%;
 
 				&:hover {
 					background: lighten($green,5%);

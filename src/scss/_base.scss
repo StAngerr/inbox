@@ -1,13 +1,16 @@
 @import "variables";
 
+
+
 @font-face {
 	font-family: "Open Sans";
-	src: url("../fonts/Open_Sans/OpenSans-Light.ttf");
+	src: url("../fonts/Droid_Sans/DroidSans.ttf");
+	font-weight: 400; 
 }
 
 @font-face {
     font-family: "Open Sans";
-    src: url(../fonts/Open_Sans/OpenSans-Bold.ttf);
+    src: url(../fonts/Droid_Sans/DroidSans-Bold.ttf);
     font-weight: bold;
 }
 
@@ -32,8 +35,11 @@ body {
 main {
 	display: block;
 	margin: 0 auto;
-	width: 70%;
+	width: 60%;
 	height: 100%;
+}
+h2 {
+	font-weight: 700;
 }
 
 cite {

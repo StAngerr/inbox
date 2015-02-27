@@ -21,7 +21,7 @@
 	color: darken($creamColor,25%);
 	font-style: italic;
 	margin-bottom: 2%;
-	padding: 2% 0 0 0;
+	padding: 7% 0 0 0;
 }
 
 .more {
@@ -40,15 +40,16 @@
 
 .assign {
 	color: darken($creamColor,25%);
-	padding-bottom: 4%;
+	padding-bottom: 3%;
 	border-bottom: 1px solid darken($lightGrey,20%);
-	margin-top: 5%;
+	margin-top: 11%;
+	margin-bottom: 7%;
 
 	.authorIcon {
 		display: inline-block;
 		float: left;
-		width: 30px;
-		height: 30px;
+		width: 25px;
+		height: 25px;
 		margin-right: 2%;
 		background: $violet;
 		border-radius: 50%;

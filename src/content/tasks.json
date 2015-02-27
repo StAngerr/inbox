@@ -1,28 +1,50 @@
 [
 	 {
 		"header": "Task 1",
-		"description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+		"id" : "json",
+		"description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit.asd asd asdas",
 		"author" : "Jhon • 47m",
 		"avatar" : "src/images/avatar.png"
 	},
 
 	 {
 		"header": "rsk 2",
-		"description" : "Lorem ipsum dolor sit amet, indigo adipisicing elit.",
+		"description" : "Lorem ipsum dolor sit amet, indigo adipisicing elit.sadasd as asdasd",
 		"author" : "Jhon-47m",
 		"avatar" : "src/images/avatar.png"
 	},
 
 	 {
 		"header": "rsk 3",
-		"description" : "Lorem ipsum dolor sit amet, indigo adipisicing elit.",
+		"description" : "Lorem ipsum dolor sit amet, indigo adipisicing elit. adsfad fdad fd",
 		"author" : "Jhon-47m",
 		"avatar" : "src/images/avatar.png"
 	},
 
 	 {
 		"header": "rsk 4",
-		"description" : "Lorem ipsum dolor sit amet, indigo adipisicing elit.",
+		"description" : "Lorem ipsum dolor sit amet, indigo adipisicing elit. adsf ads fdas fads",
+		"author" : "Jhon-47m",
+		"avatar" : "src/images/avatar.png"
+	},
+
+	 {
+		"header": "rsk 2",
+		"description" : "Lorem ipsum dolor sit amet, indigo adipisicing elit.sadasd as asdasd",
+		"author" : "Jhon-47m",
+		"avatar" : "src/images/avatar.png"
+	},
+
+	 {
+		"header": "rsk 3",
+		"description" : "Lorem ipsum dolor sit amet, indigo adipisicing elit. adsfad fdad fd",
+		"author" : "Jhon-47m",
+		"avatar" : "src/images/avatar.png"
+	},
+
+	 {
+		"header": "rsk 4",
+		"description" : "Lorem ipsum dolor sit amet, indigo adipisicing elit. adsf ads fdas fads",
 		"author" : "Jhon-47m",
 		"avatar" : "src/images/avatar.png"
 	}

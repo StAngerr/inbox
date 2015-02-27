@@ -7,7 +7,7 @@
 
 	.search {
 		position: relative;
-		height: 40%;
+		height: 35%;
 		width: 100%;
 		border-bottom: 1px solid darken($lightGrey,20%);
 
@@ -15,20 +15,33 @@
 			position: relative;
 			top:0;
 			float: right;
-			margin-right: 5%;
+			margin-top: 1%;
+			margin-right: 4%;
 			width: 40%;
 			height: 60%;
 
 			.searchField {
 				display: block;
+				visibility: hidden;
 				width: 100%;
 				height: 100%;				
 				margin-top: 2%;
 				margin-right: 2%;
-				border: 1px solid darken($lightGrey,10%);
-				background-size: 15% 90%;
+				border: none;
+				/* border: 1px solid darken($lightGrey,10%); */
 				line-height: 100%;
+				border: 1px solid #fff;
+				 /* darken($lightGrey,10%); */
+				transition: border 1s;
+				&.borderAnim {
+					background: blue;
+					border-color: #f0c;
+					transition: border 1s;
+				}
 
+				&:focus {
+					outline: none;						
+				}
 				&:focus + span.glyphicon-search {
 					display: none;
 				}
@@ -38,6 +51,7 @@
 				position: absolute;
 				top: 40%;
 				right: 10%;
+				font-size: 1.3em;
 			}
 		}
 	}
@@ -46,7 +60,7 @@
 
 /*   TASKS  CTEGORIES  YOURS UNSIGNED .....   */
 	.taskFilter {
-		height: 50%;
+		height: 54%;
 		width: 100%;
 		padding: 0px;
 		border-bottom: 1px solid darken($lightGrey,20%);
@@ -58,7 +72,7 @@
 			width: 25%;
 			height: 100%;
 			text-align: center;
-			margin: 0 5% 0 0;
+			margin: 0 6% 0 0;
 			color: darken($creamColor,30%);
 			-webkit-user-select: none;
 			   -moz-user-select: none;
@@ -67,20 +81,22 @@
 			cursor: pointer;
 
 			&:first-child {
-				margin-left: 8%;
+				margin-left: 7%;
 			}
 				
 			.count {	
 				display: block;
-				font-size: 1.2em;
+				font-size: 2.3em;
 				height: 60%;
+				font-weight: 700;
 			}
 
 			.categoryName {
 				display: block;
-				height: 40%;		
-				font-size: 0.6em;
-				padding: 2% 0 0 0;
+				height: 40%;
+				font-weight: 700;	
+				font-size: 0.8em;
+				padding: 0% 0 0% 0;
 				color: darken($creamColor,10%);
 				text-transform: uppercase;
 			}
@@ -116,7 +132,7 @@
 	/* SEARCH n NAVIGATION */	
 	.navHeader {
 		.search {	
-			height: 40%;
+			/* height: 40%; */
 			
 			.searchField {
 				margin-top: 4%;
@@ -132,7 +148,7 @@
 	/* SEARCH n NAVIGATION */	
 	.navHeader {
 		.search {
-			height: 30%;
+			/* height: 30%; */
 
 			.searchField {
 				margin-top: 4%;
@@ -144,10 +160,28 @@
 	}
 }
 
+@media only screen and (max-width: $middle) { 
+	.navHeader {
+
+		.taskFilter {
+			.categories {
+				.count {	
+					font-size: 1.8em;
+				}
+			}	
+		}
+	}
+}
+
 @media only screen and (min-width: $mobileMax) and (max-width: $middle) { 
 	.navHeader {
 		.taskFilter {
 			height: 40%;
+			.categories {
+				.categoryName {
+					font-size: 0.7em;
+					}
+			}
 		}
 	}
 }
@@ -157,8 +191,8 @@
 /* SEARCH n NAVIGATION */	
 	.navHeader {
 		.search {
-			height: 30%;
-
+			/* height: 30%;
+ */
 			.searchField {
 				margin-top: 4%;
 				width: 60%;
@@ -172,7 +206,7 @@
 @media only screen and (max-width: $mobileMax) {
 	.navHeader {
 		.search {
-			height: 30%;
+			/* height: 30%; */
 			margin-top: 2%;		
 
 			.searchField {

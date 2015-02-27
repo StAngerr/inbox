@@ -17,18 +17,22 @@ inbox.controller('TasksCtrl', function($scope,$http) {
 
 	$scope.openComment = function(event) {
 		var element =  event.currentTarget;
+		var a;
 		
-		if () {
-			
+		if ($('.taskItem.activeTask').length == $('.taskItem').length) {
+			$('.taskItem').removeClass('activeTask');
+			$(element).addClass('activeTask');
+		} else if ($(element).hasClass('activeTask')) {
+			$('.taskItem').addClass('activeTask');
+		} else {
+			$('.taskItem').removeClass('activeTask');
+			$(element).addClass('activeTask');
 		}
 
 		if( $(window).width() < 620) {
 			document.getElementById('navigation').style.marginLeft = '-50%';
 		}
 
-		$('.taskItem').addClass('activeTask');
-
-		$(element).removeClass('activeTask');
 	};
 
 	$scope.returnBtn = function() {

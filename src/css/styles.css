@@ -377,6 +377,8 @@ cite {
   height: 18.5%;
   padding: 6% 0% 0% 7%;
   color: #000;
+  /* darken($creamColor,20%); */
+  opacity: 0.4;
 }
 .tasks .taskItem header {
   margin: 0px;
@@ -412,13 +414,9 @@ cite {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  opacity: 1;
 }
 .tasks .taskItem.activeTask {
-  color: #bdbdbd;
-}
-.tasks .taskItem.activeTask .taskAuthorIcon {
-  opacity: 0.4;
+  opacity: 1;
 }
 .tasks .taskItem:hover {
   cursor: pointer;

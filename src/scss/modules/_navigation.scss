@@ -1,5 +1,4 @@
 /* NAVIGATION SECTION HEADER   */
-
 @import "../_variables";
 
 .navHeader {
@@ -7,24 +6,38 @@
 	width: 100%;
 
 	.search {
+		position: relative;
 		height: 40%;
 		width: 100%;
 		border-bottom: 1px solid darken($lightGrey,20%);
 
-		.searchField {
-			display: block;
+		.searchWrap {
+			position: relative;
+			top:0;
+			float: right;
+			margin-right: 5%;
 			width: 40%;
 			height: 60%;
-			float: right;
-			margin-top: 2%;
-			margin-right: 2%;
-			background:#fff url("search-icon.png") no-repeat  95% 2px;
-			border: 1px solid darken($lightGrey,10%);
-			background-size: 15% 90%;
-			line-height: 100%;
 
-			&:focus {
-				background: none;
+			.searchField {
+				display: block;
+				width: 100%;
+				height: 100%;				
+				margin-top: 2%;
+				margin-right: 2%;
+				border: 1px solid darken($lightGrey,10%);
+				background-size: 15% 90%;
+				line-height: 100%;
+
+				&:focus + span.glyphicon-search {
+					display: none;
+				}
+			}
+			
+			 .glyphicon-search {
+				position: absolute;
+				top: 40%;
+				right: 10%;
 			}
 		}
 	}
@@ -39,6 +52,7 @@
 		border-bottom: 1px solid darken($lightGrey,20%);
 		
 		.categories {
+			position: relative;
 			display: block;
 			float: left;
 			width: 25%;
@@ -59,12 +73,12 @@
 			.count {	
 				display: block;
 				font-size: 1.2em;
-				 padding: 15% 0 10% 0; 
-				height: 20%;
+				height: 60%;
 			}
 
 			.categoryName {
 				display: block;
+				height: 40%;		
 				font-size: 0.6em;
 				padding: 2% 0 0 0;
 				color: darken($creamColor,10%);
@@ -134,15 +148,6 @@
 	.navHeader {
 		.taskFilter {
 			height: 40%;
-			.categories {
-				.count {
-					font-size: 1.1em;
-				}
-				.categoryName {
-					padding-top: 20%;
-					font-size: 0.5em;
-				}
-			}
 		}
 	}
 }
@@ -168,8 +173,7 @@
 	.navHeader {
 		.search {
 			height: 30%;
-			margin-top: 2%;
-			border-top: 1px solid darken($lightGrey,20%);
+			margin-top: 2%;		
 
 			.searchField {
 				margin-top: 2%;

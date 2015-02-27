@@ -187,6 +187,10 @@ cite {
     float: left;
     width: 50%;
   }
+  #mainContent .mainContentInner {
+    width: 100%;
+    margin: 0;
+  }
 }
 /* NAVIGATION SECTION HEADER   */
 /*    COLORS     */
@@ -200,24 +204,36 @@ cite {
   /*   TASKS  CTEGORIES  YOURS UNSIGNED .....   */
 }
 .navHeader .search {
+  position: relative;
   height: 40%;
   width: 100%;
   border-bottom: 1px solid #cacaca;
 }
-.navHeader .search .searchField {
-  display: block;
+.navHeader .search .searchWrap {
+  position: relative;
+  top: 0;
+  float: right;
+  margin-right: 5%;
   width: 40%;
   height: 60%;
-  float: right;
+}
+.navHeader .search .searchWrap .searchField {
+  display: block;
+  width: 100%;
+  height: 100%;
   margin-top: 2%;
   margin-right: 2%;
-  background: #fff url("search-icon.png") no-repeat 95% 2px;
   border: 1px solid #e4e4e4;
   background-size: 15% 90%;
   line-height: 100%;
 }
-.navHeader .search .searchField:focus {
-  background: none;
+.navHeader .search .searchWrap .searchField:focus + span.glyphicon-search {
+  display: none;
+}
+.navHeader .search .searchWrap .glyphicon-search {
+  position: absolute;
+  top: 40%;
+  right: 10%;
 }
 .navHeader .taskFilter {
   height: 50%;
@@ -226,6 +242,7 @@ cite {
   border-bottom: 1px solid #cacaca;
 }
 .navHeader .taskFilter .categories {
+  position: relative;
   display: block;
   float: left;
   width: 25%;
@@ -245,11 +262,11 @@ cite {
 .navHeader .taskFilter .categories .count {
   display: block;
   font-size: 1.2em;
-  padding: 15% 0 10% 0;
-  height: 20%;
+  height: 60%;
 }
 .navHeader .taskFilter .categories .categoryName {
   display: block;
+  height: 40%;
   font-size: 0.6em;
   padding: 2% 0 0 0;
   color: #d6d6d6;
@@ -302,13 +319,6 @@ cite {
   .navHeader .taskFilter {
     height: 40%;
   }
-  .navHeader .taskFilter .categories .count {
-    font-size: 1.1em;
-  }
-  .navHeader .taskFilter .categories .categoryName {
-    padding-top: 20%;
-    font-size: 0.5em;
-  }
 }
 @media only screen and (max-width: 768px) {
   /* SEARCH n NAVIGATION */
@@ -326,7 +336,6 @@ cite {
   .navHeader .search {
     height: 30%;
     margin-top: 2%;
-    border-top: 1px solid #cacaca;
   }
   .navHeader .search .searchField {
     margin-top: 2%;
@@ -344,8 +353,8 @@ cite {
 .tasks .taskItem {
   display: block;
   border-bottom: 1px solid #cacaca;
-  width: 92%;
-  height: 10%;
+  width: 100%;
+  height: 12%;
   padding: 3% 0% 4% 8%;
   color: #000;
   font-weight: 700;
@@ -399,6 +408,11 @@ cite {
 }
 
 @media only screen and (min-width: 620px) and (max-width: 890px) {
+  .tasks .taskItem {
+    height: 15%;
+  }
+}
+@media only screen and (max-width: 235px) {
   .tasks .taskItem {
     height: 15%;
   }
@@ -485,16 +499,18 @@ cite {
 }
 /* NEW COMMENT BLOCK.  SIMPLE AND EXPANDED */
 .newComment {
-  height: 2%;
+  height: 4%;
   margin: 2% 0 2% 0;
   background: #FBFBFB;
   border: 1px solid #e4e4e4;
   border-radius: 5px;
-  padding: 1% 0% 2% 2%;
+  padding: 1% 0% 1% 2%;
   /* EXPANDED */
   /* _______________________ */
 }
 .newComment .newCommentSimple {
+  height: 100%;
+  width: 100%;
   color: #bdbdbd;
 }
 .newComment .newCommentSimple a {
@@ -643,6 +659,40 @@ cite {
     height: 140px;
   }
 }
+@media only screen and (max-width: 620px) {
+  /* COMMENTS  */
+  /* #mainContent { */
+  .commentList {
+    height: 100%;
+    overflow: hidden;
+    clear: both;
+    padding: 0% 0% 0% 3%;
+  }
+
+  /* NEW COMMENT BLOCK.  SIMPLE AND EXPANDED */
+  .newComment {
+    height: 6%;
+    margin: 0;
+    background: #E2E2E2;
+    border: none;
+    border-radius: 0px;
+    padding: 2% 0%;
+    border-bottom: 1px solid #cacaca;
+  }
+  .newComment .newCommentSimple {
+    width: 90%;
+    margin: 0 auto;
+    background: #fff !important;
+    color: #bdbdbd;
+    border-radius: 2px;
+    padding: 1% 1% 1% 2%;
+    border: 1px solid #e4e4e4;
+    border-radius: 4px;
+  }
+
+  /* ___________________________ */
+  /* } */
+}
 /* COMMENTS  */
 .commentList {
   height: 80%;
@@ -675,40 +725,6 @@ cite {
   clear: both;
   padding: 2% 0 2% 0;
   padding-left: 0;
-}
-
-@media only screen and (max-width: 620px) {
-  /* COMMENTS  */
-  /* #mainContent { */
-  .commentList {
-    height: 100%;
-    overflow: hidden;
-    clear: both;
-    padding: 0% 0% 0% 3%;
-  }
-
-  /* NEW COMMENT BLOCK.  SIMPLE AND EXPANDED */
-  .newComment {
-    height: 3%;
-    margin: 0;
-    background: #E2E2E2;
-    border: none;
-    border-radius: 0px;
-    padding: 1.5% 0% 2% 0%;
-    border-bottom: 1px solid #cacaca;
-  }
-  .newComment .newCommentSimple {
-    width: 90%;
-    margin: 0 auto;
-    background: #fff !important;
-    color: #bdbdbd;
-    border-radius: 2px;
-    padding: 1% 1% 1% 2%;
-    border: 1px solid #e4e4e4;
-  }
-
-  /* ___________________________ */
-  /* } */
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -3,14 +3,19 @@
 <head>
 	<meta charset="UTF-8">
 	<title>inbox</title>
-
+	<link rel="stylesheet" type="text/css" href="src/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="src/css/styles.css">
 </head>
 <body ng-controller = "TasksCtrl">
 	<div id="mainWrapper">
 		<section id="navigation" class="trans">
 			<header class="navHeader">	
-				<div class="search"> <input type="search" class="searchField" ng-model="query"></div>
+				<div class="search"> 
+					<div class="searchWrap">
+						<input type="search" class="searchField" ng-model="query">
+						<span class="glyphicon glyphicon-search"></span>
+					</div>
+				</div>
 
 				<menu class="taskFilter">
 

@@ -7,8 +7,8 @@
 	.taskItem {
 		display: block;
 		border-bottom: 1px solid darken($lightGrey,20%);
-		width: 92%;
-		height: 10%;
+		width: 100%;
+		height: 12%;
 		padding: 3% 0% 4% 8%;
 		color : #000;
 		font-weight: 700;
@@ -77,4 +77,12 @@
 	.taskItem {
 		height: 15%;
 	}}
+}
+
+@media only screen and (max-width: 235px) {
+	 .tasks {
+		 .taskItem { 
+		 		height: 15%;
+		 	}
+	}
 }

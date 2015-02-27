@@ -1,13 +1,15 @@
 /* NEW COMMENT BLOCK.  SIMPLE AND EXPANDED */
 .newComment {
-	height: 2%;
+	height: 4%;
 	margin: 2% 0 2% 0;
 	background: $dirtyWhite;
 	border: 1px solid darken($lightGrey, 10%);
 	border-radius: 5px;
-	padding: 1% 0% 2% 2%;
+	padding: 1% 0% 1% 2%;
 
-	.newCommentSimple {			
+	.newCommentSimple {	
+		height: 100%;
+		width: 100%;		
 		color: darken($creamColor,20%);
 		a {
 			color: darken($clearBlue, 20%);
@@ -181,4 +183,39 @@
 		}
 		/* _______________________ */
 	}
+}
+
+@media only screen and (max-width: $mobileMax) {
+	/* COMMENTS  */
+	/* #mainContent { */
+		.commentList {
+			height: 100%;
+			overflow: hidden;
+			clear: both;
+			padding: 0% 0% 0% 3%;
+		}
+		/* NEW COMMENT BLOCK.  SIMPLE AND EXPANDED */
+		.newComment {
+			height: 6%;
+			margin: 0;
+			background: $asphalt;
+			border: none;
+			border-radius: 0px;
+			padding: 2% 0%;
+			border-bottom: 1px solid darken($lightGrey, 20%);
+
+			.newCommentSimple {
+				width: 90%;	
+				
+				margin: 0 auto ;
+				background: #fff !important;		
+				color: darken($creamColor,20%);
+				border-radius: 2px;
+				padding: 1% 1% 1% 2%;
+				border: 1px solid darken($lightGrey, 10%);
+				border-radius: 4px;
+			}
+		}
+	/* ___________________________ */
+	/* } */
 }

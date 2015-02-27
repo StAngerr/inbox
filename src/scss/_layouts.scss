@@ -64,7 +64,7 @@
 	#navigation {
 		float: left;
 		width: 50%;
-
+		
 		&.trans {
 			transition: margin 0.5s;
 		}
@@ -73,5 +73,9 @@
 	#mainContent {
 		float: left;
 		width: 50%;
+		.mainContentInner {
+		width: 100%;	
+		margin: 0;
+	}
 	}
 }

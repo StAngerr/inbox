@@ -1,15 +1,36 @@
 var inbox=angular.module('inbox',[]);
 
+inbox.controller('tasksFilterCtrl', function() {
+	this.active = 1;
+
+	this.setActive = function(value) {
+		this.active = value;
+	};
+
+	this.isSelected = function(value) {
+		return this.active == value;
+	};
+
+	this.categoriesSelect = function(event) {
+		var element =  event.currentTarget;
+
+		if(!$(element).hasClass('active')){
+			$('.categories').removeClass('active');
+			$(element).addClass('active');
+		} 
+	};
+});
+
 inbox.controller('TasksCtrl', function($scope,$http) {
 
-	/*SEARCH event*/
+	
 	$scope.searchAnimationEvent = function() {
-		/*$('#searchField')*/
-/*			$('#searchField').css({'visibility' : 'visible'});*/
-		$('#searchField').css({'visibility' : 'visible'}).addClass('.borderAnim');
+		$('#searchField').css({'display' : 'block'});
 		$('#searchField').focus();
+		 $('#searchField').blur(function() {
+		 	$(this).css({'display' : 'none'});
+		 });
 	};
-	/*   */
 
 	$http.get('src/content/tasks.json').success(function(data, status, headers, config) {
 		 $scope.tasks = data;
@@ -30,24 +51,21 @@ inbox.controller('TasksCtrl', function($scope,$http) {
 		}
 
 		if( $(window).width() < 620) {
-			document.getElementById('navigation').style.marginLeft = '-50%';
+			$('*').removeClass('slideRight');
+			$('#navigation').addClass('slideLeft');
+			$('#mainContent').addClass('slideLeft');
 		}
 
 	};
 
 	$scope.returnBtn = function() {
-		document.getElementById('navigation').style.marginLeft = '0%';
+		$('*').removeClass('slideLeft');
+		$('#navigation').addClass('slideRight');
+		$('#mainContent').addClass('slideRight');
 		$('.taskItem').addClass('activeTask');
-	}
+	};
 
-	$scope.categoriesSelect = function(event) {
-		var element =  event.currentTarget;
 
-		if(!$(element).hasClass('active')){
-			$('.categories').removeClass('active');
-			$(element).addClass('active');
-		} 
-	}
 });
 
 inbox.controller('CommentsCtrl', function($scope,$http) {

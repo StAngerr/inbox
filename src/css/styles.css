@@ -62,17 +62,17 @@ button {
 /*      SIZES     */
 /* __________________ */
 @font-face {
-  font-family: "Open Sans";
+  font-family: "Droid Sans";
   src: url("../fonts/Droid_Sans/DroidSans.ttf");
   font-weight: 400;
 }
 @font-face {
-  font-family: "Open Sans";
+  font-family: "Droid Sans";
   src: url(../fonts/Droid_Sans/DroidSans-Bold.ttf);
   font-weight: bold;
 }
 @font-face {
-  font-family: "Open Sans";
+  font-family: "Droid Sans";
   src: url(../fonts/Open_Sans/OpenSans-Italic.ttf);
   font-style: italic;
 }
@@ -85,7 +85,7 @@ html {
 body {
   height: 100%;
   width: 100%;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Droid Sans', sans-serif;
 }
 
 main {
@@ -175,8 +175,19 @@ cite {
     width: 50%;
     margin: 0%;
   }
-  #navigation.trans {
-    transition: margin 0.5s;
+
+  .slideLeft {
+    transition: -webkit-transform .5s linear;
+    transition: transform .5s linear;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+
+  .slideRight {
+    transition: -webkit-transform .5s linear;
+    transition: transform .5s linear;
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
   }
 
   #mainContent {
@@ -187,6 +198,14 @@ cite {
     width: 100%;
     margin: 0;
   }
+
+  .no-csstransitions .slideLeft, .no-csstransforms .slideLeft {
+    margin-left: -50%;
+  }
+
+  .no-csstransitions .slideRight, .no-csstransforms .slideRight {
+    margin-left: 0%;
+  }
 }
 /* NAVIGATION SECTION HEADER   */
 /*    COLORS     */
@@ -194,14 +213,16 @@ cite {
 /*      SIZES     */
 /* __________________ */
 .navHeader {
-  height: 16%;
+  height: 5%;
   width: 100%;
   /* _________________________________________ */
   /*   TASKS  CTEGORIES  YOURS UNSIGNED .....   */
+  /* 	
+  	} */
 }
 .navHeader .search {
   position: relative;
-  height: 35%;
+  height: 100%;
   width: 100%;
   border-bottom: 1px solid #cacaca;
 }
@@ -215,26 +236,20 @@ cite {
   height: 60%;
 }
 .navHeader .search .searchWrap .searchField {
-  display: block;
-  visibility: hidden;
+  display: none;
   width: 100%;
   height: 100%;
   margin-top: 2%;
   margin-right: 2%;
-  border: none;
-  /* border: 1px solid darken($lightGrey,10%); */
-  line-height: 100%;
   border: 1px solid #fff;
-  /* darken($lightGrey,10%); */
-  transition: border 1s;
-}
-.navHeader .search .searchWrap .searchField.borderAnim {
-  background: blue;
-  border-color: #f0c;
-  transition: border 1s;
+  transition: border-color 0.5s;
 }
 .navHeader .search .searchWrap .searchField:focus {
   outline: none;
+  border-color: #ccc;
+}
+.navHeader .search .searchWrap .searchField:not(:focus) {
+  display: none;
 }
 .navHeader .search .searchWrap .searchField:focus + span.glyphicon-search {
   display: none;
@@ -245,20 +260,27 @@ cite {
   right: 10%;
   font-size: 1.3em;
 }
-.navHeader .taskFilter {
-  height: 54%;
+
+.filterWrap {
+  width: 100%;
+  height: 95%;
+  overflow-y: scroll;
+}
+
+.taskFilter {
+  height: 10%;
   width: 100%;
   padding: 0px;
   border-bottom: 1px solid #cacaca;
 }
-.navHeader .taskFilter .categories {
+.taskFilter .categories {
   position: relative;
   display: block;
   float: left;
   width: 25%;
   height: 100%;
   text-align: center;
-  margin: 0 6% 0 0;
+  margin: 0 7% 0 0;
   color: #a3a3a3;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -266,16 +288,19 @@ cite {
   user-select: none;
   cursor: pointer;
 }
-.navHeader .taskFilter .categories:first-child {
+.taskFilter .categories:first-child {
   margin-left: 7%;
 }
-.navHeader .taskFilter .categories .count {
+.taskFilter .categories:last-child {
+  margin-right: 0;
+}
+.taskFilter .categories .count {
   display: block;
   font-size: 2.3em;
   height: 60%;
-  font-weight: 700;
+  font-weight: normal;
 }
-.navHeader .taskFilter .categories .categoryName {
+.taskFilter .categories .categoryName {
   display: block;
   height: 40%;
   font-weight: 700;
@@ -284,12 +309,12 @@ cite {
   color: #d6d6d6;
   text-transform: uppercase;
 }
-.navHeader .taskFilter .categories.active {
+.taskFilter .categories.active {
   border-bottom: 3px solid #85AE34 !important;
   color: #000 !important;
   font-weight: 700 !important;
 }
-.navHeader .taskFilter .categories.active .categoryName {
+.taskFilter .categories.active .categoryName {
   color: #000 !important;
 }
 
@@ -305,9 +330,6 @@ cite {
 }
 @media only screen and (max-width: 1153px) {
   /* SEARCH n NAVIGATION */
-  .navHeader .search {
-    /* height: 40%; */
-  }
   .navHeader .search .searchField {
     margin-top: 4%;
     width: 45%;
@@ -317,9 +339,6 @@ cite {
 }
 @media only screen and (max-width: 970px) {
   /* SEARCH n NAVIGATION */
-  .navHeader .search {
-    /* height: 30%; */
-  }
   .navHeader .search .searchField {
     margin-top: 4%;
     width: 60%;
@@ -333,19 +352,12 @@ cite {
   }
 }
 @media only screen and (min-width: 620px) and (max-width: 890px) {
-  .navHeader .taskFilter {
-    height: 40%;
-  }
-  .navHeader .taskFilter .categories .categoryName {
+  .taskFilter .categories .categoryName {
     font-size: 0.7em;
   }
 }
 @media only screen and (max-width: 768px) {
   /* SEARCH n NAVIGATION */
-  .navHeader .search {
-    			/* height: 30%;
-     */
-  }
   .navHeader .search .searchField {
     margin-top: 4%;
     width: 60%;
@@ -365,18 +377,22 @@ cite {
     background-position: 95% 1px;
   }
 }
+@media only screen and (max-width: 190px) {
+  .taskFilter .categories .categoryName {
+    font-size: 0.5em;
+  }
+}
 /* TASKS LIST    */
 .tasks {
   width: 100%;
-  height: 84%;
-  overflow-y: scroll;
+  height: 85%;
 }
 .tasks .taskItem {
   display: block;
   border-bottom: 1px solid #cacaca;
   width: 100%;
   height: 18.5%;
-  padding: 6% 0% 0% 7%;
+  padding: 5% 0% 0% 7%;
   color: #000;
   /* darken($creamColor,20%); */
   opacity: 0.4;
@@ -432,9 +448,9 @@ cite {
     height: 20%;
   }
 }
-@media only screen and (max-width: 235px) {
+@media only screen and (max-width: 190px) {
   .tasks .taskItem {
-    height: 20%;
+    height: 25%;
   }
 }
 /* TITELE AUTHOR */

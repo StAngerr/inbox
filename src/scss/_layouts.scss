@@ -40,7 +40,7 @@
 }
 
 @media only screen and (max-width: $xMedium) { 
-		.mainContentInner {
+	.mainContentInner {
 		width: 90%
 	}
 }
@@ -48,6 +48,9 @@
 @media only screen and (min-width: $mobileMax) { 
 	#navigation {
 		margin: 0% !important;
+	}
+	#mainContent {
+		
 	}
 
 }
@@ -61,18 +64,37 @@
 		float: left;
 		width: 50%;
 		margin: 0%;
-		
-		&.trans {
-			transition: margin 0.5s;
-		}
+	}
+
+	.slideLeft {
+		transition: -webkit-transform .5s linear;
+		transition: transform .5s linear;
+		-webkit-transform:translateX(-100%);
+		        transform:translateX(-100%);
+	}
+
+	.slideRight {
+		transition: -webkit-transform .5s linear;
+		transition: transform .5s linear;
+		-webkit-transform:translateX(0%);
+		        transform:translateX(0%);
 	}
 
 	#mainContent {
 		float: left;
 		width: 50%;
+		
 		.mainContentInner {
-		width: 100%;	
-		margin: 0;
+			width: 100%;	
+			margin: 0;
+		}
 	}
+
+	.no-csstransitions .slideLeft, .no-csstransforms .slideLeft {
+		margin-left: -50%;
+	}
+
+	.no-csstransitions .slideRight, .no-csstransforms .slideRight  {
+		margin-left: 0%;
 	}
 }

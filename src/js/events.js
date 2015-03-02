@@ -1,6 +1,5 @@
-/*function clickEvent(event) {
-	document.getElementById('navigation').style.marginLeft = '-50%';
-}
-function clickEvent1(event) {
-	document.getElementById('navigation').style.marginLeft = '0%';
-}*/
+$(window).resize(function() {
+	if($( window ).width() > 620) {
+		$('*').removeClass('slideLeft');
+	}
+});

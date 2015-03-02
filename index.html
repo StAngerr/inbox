@@ -5,39 +5,40 @@
 	<title>inbox</title>
 	<link rel="stylesheet" type="text/css" href="src/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="src/css/styles.css">
+	
 </head>
-<body ng-controller = "TasksCtrl">
+<body >
 	<div id="mainWrapper">
-		<section id="navigation" class="trans">
+		<section id="navigation">
 			<header class="navHeader">	
-				<div class="search"> 
+				<div class="search" ng-controller="SearchFieldCtrl as searchField"> 
 					<div class="searchWrap">
 						<input id="searchField" type="search " class="searchField" ng-model="query">
-						<span class="glyphicon glyphicon-search" ng-click="searchAnimationEvent()"></span>
+						<span class="glyphicon glyphicon-search" ng-click="searchField.searchAnimationEvent()"></span>
 					</div>
 				</div>
-
-				<menu class="taskFilter">
-
-					<div class="categories active" ng-click="categoriesSelect($event)">
-						 <span class="count">7</span>
-						  <span class="categoryName">yours</span> 
-					  </div>
-
-					<div class="categories" ng-click="categoriesSelect($event)">
-						 <span class="count">5</span> 
-						 <span class="categoryName">unassigned</span> 
-					 </div>
-
-					<div class="categories" ng-click="categoriesSelect($event)"> 
-						<span class="count">9</span> 
-						<span class="categoryName">all</span> 
-					</div>
-
-				</menu>
 			</header>
+			<div class="filterWrap" ng-controller="TasksFilterCtrl as taskFilter">	
 			
-			<ul class="tasks" >
+<!-- <menu class="taskFilter" ng-controller="TasksFilterCtrl as taskFilter">
+
+	<div class="categories" ng-class="{active:taskFilter.isSelected(1) }" ng-click="taskFilter.setActive(1)">
+		 <span class="count">7</span>
+		  <span class="categoryName">yours</span> 
+	  </div>
+
+	<div class="categories" ng-class="{active:taskFilter.isSelected(2) }" ng-click="taskFilter.setActive(2)">
+		 <span class="count">5</span> 
+		 <span class="categoryName">unassigned</span> 
+	 </div>
+
+	<div class="categories" ng-class="{active:taskFilter.isSelected(3) }" ng-click="taskFilter.setActive(3)"> 
+		<span class="count">9</span> 
+		<span class="categoryName">all</span> 
+	</div>
+</menu>
+		 -->
+				<ul class="tasks" ng-controller="TasksCtrl">
 					<li class="taskItem activeTask" ng-repeat="task in tasks | filter:query" 
 					 ng-click="openComment($event)">
 					<article>
@@ -58,14 +59,14 @@
 					</article>
 					</li>
 				</ul>
-				
+			</div>
 			</section>
 		</section>
 
 		<section id="mainContent">
 			<main class="mainContentInner"> 
 				<!-- HEADER -->
-				<header>
+				<header ng-controller="ExpandedTaskCtrl">
 					<menu class="headerControls">
 						<button class="returnBtn" ng-click="returnBtn()"></button>
 					</menu>
@@ -119,14 +120,15 @@
 						</article>
 					</li>
 				</ul>
-			</main>/
+			</main>
 		</section>
 	</div>
-	
+
 	<script src="src/js/frameworks/jquery-1.11.2.js"></script>
+	<script src="src/js/frameworks/modernizr.js"></script>
 	<script src="src/js/frameworks/angular.js"></script>
 	<script src="src/js/controller.js"></script>
 	<script src="src/js/events.js"></script>
-
+	<script src="src/js/tasksFilter.js"></script>
 </body>
 </html>

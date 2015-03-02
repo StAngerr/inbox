@@ -1,23 +1,35 @@
-var inbox=angular.module('inbox',[]);
 
-inbox.controller('TasksCtrl', function($scope,$http) {
+var inbox = angular.module('inbox',['tastks-filter']);
 
-	/*SEARCH event*/
-	$scope.searchAnimationEvent = function() {
-		/*$('#searchField')*/
-/*			$('#searchField').css({'visibility' : 'visible'});*/
-		$('#searchField').css({'visibility' : 'visible'}).addClass('.borderAnim');
-		$('#searchField').focus();
+inbox.controller('TasksFilterCtrl', function() {
+	this.active = 1;
+
+	this.setActive = function(value) {
+		this.active = value;
 	};
-	/*   */
 
+	this.isSelected = function(value) {
+		return this.active == value;
+	};
+});
+
+inbox.controller('SearchFieldCtrl', function() {
+	this.searchAnimationEvent = function() {
+		$('#searchField').css({'display' : 'block'}).focus();
+		
+		$('#searchField').blur(function() {
+		 	$(this).css({'display' : 'none'});
+		});
+	};
+});
+
+inbox.controller('TasksCtrl', function($scope, $http) {
 	$http.get('src/content/tasks.json').success(function(data, status, headers, config) {
 		 $scope.tasks = data;
 	});
 
 	$scope.openComment = function(event) {
 		var element =  event.currentTarget;
-		var a;
 		
 		if ($('.taskItem.activeTask').length == $('.taskItem').length) {
 			$('.taskItem').removeClass('activeTask');
@@ -30,24 +42,21 @@ inbox.controller('TasksCtrl', function($scope,$http) {
 		}
 
 		if( $(window).width() < 620) {
-			document.getElementById('navigation').style.marginLeft = '-50%';
+			$('*').removeClass('slideRight');
+			$('#navigation').addClass('slideLeft');
+			$('#mainContent').addClass('slideLeft');
 		}
 
 	};
+});
 
+inbox.controller('ExpandedTaskCtrl', function($scope) {
 	$scope.returnBtn = function() {
-		document.getElementById('navigation').style.marginLeft = '0%';
+		$('*').removeClass('slideLeft');
+		$('#navigation').addClass('slideRight');
+		$('#mainContent').addClass('slideRight');
 		$('.taskItem').addClass('activeTask');
-	}
-
-	$scope.categoriesSelect = function(event) {
-		var element =  event.currentTarget;
-
-		if(!$(element).hasClass('active')){
-			$('.categories').removeClass('active');
-			$(element).addClass('active');
-		} 
-	}
+	};
 });
 
 inbox.controller('CommentsCtrl', function($scope,$http) {
@@ -56,3 +65,5 @@ inbox.controller('CommentsCtrl', function($scope,$http) {
      	$scope.comments = data;
       });
 });
+
+

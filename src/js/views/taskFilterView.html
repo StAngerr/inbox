@@ -1,0 +1,17 @@
+<menu class="taskFilter" ng-controller="TasksFilterCtrl as taskFilter">
+
+	<div class="categories" ng-class="{active:taskFilter.isSelected(1) }" ng-click="taskFilter.setActive(1)">
+		 <span class="count">7</span>
+		  <span class="categoryName">yours</span> 
+	  </div>
+
+	<div class="categories" ng-class="{active:taskFilter.isSelected(2) }" ng-click="taskFilter.setActive(2)">
+		 <span class="count">5</span> 
+		 <span class="categoryName">unassigned</span> 
+	 </div>
+
+	<div class="categories" ng-class="{active:taskFilter.isSelected(3) }" ng-click="taskFilter.setActive(3)"> 
+		<span class="count">9</span> 
+		<span class="categoryName">all</span> 
+	</div>
+</menu>	

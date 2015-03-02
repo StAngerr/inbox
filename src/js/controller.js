@@ -1,4 +1,5 @@
-var inbox=angular.module('inbox',[]);
+
+var inbox = angular.module('inbox',['tastks-filter']);
 
 inbox.controller('TasksFilterCtrl', function() {
 	this.active = 1;
@@ -64,3 +65,5 @@ inbox.controller('CommentsCtrl', function($scope,$http) {
      	$scope.comments = data;
       });
 });
+
+

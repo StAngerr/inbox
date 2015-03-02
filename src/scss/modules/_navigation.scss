@@ -107,6 +107,7 @@
 		}
 
 		&.active {
+			transition: color 0.3s, border .3s;
 			border-bottom: 3px solid $darkGreen !important;
 			color: #000 !important;
 			font-weight: 700 !important;

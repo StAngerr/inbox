@@ -310,6 +310,7 @@ cite {
   text-transform: uppercase;
 }
 .taskFilter .categories.active {
+  transition: color 0.3s, border .3s;
   border-bottom: 3px solid #85AE34 !important;
   color: #000 !important;
   font-weight: 700 !important;
@@ -433,6 +434,7 @@ cite {
   border-radius: 50%;
 }
 .tasks .taskItem.activeTask {
+  transition: opacity 0.3s;
   opacity: 1;
 }
 .tasks .taskItem:hover {

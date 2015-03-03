@@ -42,6 +42,8 @@
 		});
 
 		$scope.setActive = function(value) {
+			var openedElem;
+			$('.taskItem').addClass('activeTask');
 			if(value === 1) {
 				$scope.curStatus = 'your';
 			} else if(value === 2) {

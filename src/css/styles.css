@@ -395,7 +395,6 @@ cite {
   height: 18.5%;
   padding: 5% 0% 0% 7%;
   color: #000;
-  /* darken($creamColor,20%); */
   opacity: 0.4;
   transition: opacity 0.3s;
 }

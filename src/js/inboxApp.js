@@ -1,7 +1,7 @@
 
 var inbox = angular.module('inbox',['tastks-filter','tasks-list','comments-list']);
 
-inbox.controller('TasksFilterCtrl', function() {
+/*inbox.controller('TasksFilterCtrl', function() {
 	this.active = 1;
 
 	this.setActive = function(value) {
@@ -11,9 +11,9 @@ inbox.controller('TasksFilterCtrl', function() {
 	this.isSelected = function(value) {
 		return this.active == value;
 	};
-});
+});*/
 
-inbox.controller('SearchFieldCtrl', function() {
+/*inbox.controller('SearchFieldCtrl', function() {
 	this.searchAnimationEvent = function() {
 		$('#searchField').css({'display' : 'block'}).focus();
 		
@@ -21,9 +21,9 @@ inbox.controller('SearchFieldCtrl', function() {
 		 	$(this).css({'display' : 'none'});
 		});
 	};
-});
+});*/
 
-inbox.controller('TasksCtrl', function($scope, $http) {
+/*inbox.controller('TasksCtrl', function($scope, $http) {
 	$http.get('src/content/tasks.json').success(function(data, status, headers, config) {
 		 $scope.tasks = data;
 	});
@@ -49,21 +49,21 @@ inbox.controller('TasksCtrl', function($scope, $http) {
 
 	};
 });
-
-inbox.controller('ExpandedTaskCtrl', function($scope) {
+*/
+/*inbox.controller('ExpandedTaskCtrl', function($scope) {
 	$scope.returnBtn = function() {
 		$('*').removeClass('slideLeft');
 		$('#navigation').addClass('slideRight');
 		$('#mainContent').addClass('slideRight');
 		$('.taskItem').addClass('activeTask');
 	};
-});
+});*/
 
-inbox.controller('CommentsCtrl', function($scope,$http) {
+/*inbox.controller('CommentsCtrl', function($scope,$http) {
 
 	$http.get('src/content/comments.json').success(function(data, status, headers, config) {
      	$scope.comments = data;
       });
-});
+});*/
 
 

@@ -7,4 +7,5 @@
 			templateUrl : 'src/js/templates/commentsTmpl.html'
 		}
 	});
+	
 })();

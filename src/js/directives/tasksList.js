@@ -1,12 +1,17 @@
 (function() {
-	
-	var app = angular.module('tasks-list',[]);
+    var app = angular.module('tasks-list',[]);
+    app.directive('tasksList', tasksList);
 
-	app.directive('tasksList', function() {
-		return {
-			strict : 'E',
-			templateUrl : 'src/js/templates/tasksTempl.html'
-		};
-	});
+    function tasksList() {
+        var directive = {
+            restrict: 'E',
+            templateUrl: 'src/js/templates/tasksTempl.html',
+           /* controller: 'TasksFilterCtrl',*/
+/*            scope1: {
+                tasks: '='
+            }*/
+        };
+        return directive;
+    }
 
 })();

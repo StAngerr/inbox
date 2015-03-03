@@ -1,20 +1,23 @@
 
-<li class="taskItem activeTask" ng-repeat="task in tasks | filter:query" 
-	 ng-click="openComment($event)">
-	<article>
-		<header>
-			<h3 class="taskHeader">{{task.header}}</h3>
-		</header>
+<ul class="tasks">
+	<li class="taskItem activeTask" ng-repeat="task in tasks | filter:{status : curStatus}" 
+		 ng-click="openComment($event)">
+		<article>
+			<header>
+			
+				<h3 class="taskHeader">{{task.header}}</h3>
+			</header>
 
-		<section>
-			<p class="taskDescription">{{task.description}}</p>
-		</section>
+			<section>
+				<p class="taskDescription">{{task.description}}</p>
+			</section>
 
-		<footer>
-			<p class="meta">{{task.author}}</p> 
-			<figure>
-				<img class="taskAuthorIcon" src="src/images/avatar.jpg" />
-			</figure>
-		</footer>
-	</article>
-</li>
+			<footer>
+				<p class="meta">{{task.author}}</p> 
+				<figure>
+					<img class="taskAuthorIcon" src="{{task.avatar}}" />
+				</figure>
+			</footer>
+		</article>
+	</li>
+</ul>

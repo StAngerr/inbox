@@ -20,14 +20,9 @@
 				</div>
 			</header>
 
-			<div class="filterWrap" ng-controller="TasksFilterCtrl as taskFilter">	
+			<div class="filterWrap" ng-controller="TasksFilterCtrl">	
 				<task-filter></task-filter>
-
-				<ul class="tasks" ng-controller="TasksCtrl">
-					<tasks-list>
-
-					</tasks-list>	
-				</ul>
+				<tasks-list ></tasks-list>	
 			</div>
 			</section>
 		</section>
@@ -91,7 +86,7 @@
 	<!-- CONTROLLERS -->
 	<script src="src/js/controllers/TasksFilterCtrl.js"></script>
 	<script src="src/js/controllers/SearchFieldCtrl.js"></script>
-	<script src="src/js/controllers/TasksCtrl.js"></script>
+	<!-- /*<script src="src/js/controllers/TasksCtrl.js"></script>*/ -->
 	<script src="src/js/controllers/ExpandedTaskCtrl.js"></script>
 	<script src="src/js/controllers/CommentsCtrl.js"></script>
 

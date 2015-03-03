@@ -1,51 +1,57 @@
 [
 	 {
 		"header": "How to customuize my Help...",
-		"id" : "json",
+		"status" : "your",
 		"description" : "Zendesk, the thought arises as to how this ca be exported and created",
 		"author" : "Jhon • 47m",
-		"avatar" : "src/images/avatar.png"
+		"avatar" : "src/images/avatar6.jpg"
 	},
 
 	 {
 		"header": "Good Data",
+		"status" : "unassigned",
 		"description" : "How do i add someone else to be able to log in to Good Data?",
 		"author" : "Jhon-47m",
-		"avatar" : "src/images/avatar.png"
+		"avatar" : "src/images/avatar1.jpg"
 	},
 
 	 {
 		"header": "Backing up Data help within....",
+		"status" : "unassigned",
 		"description" : " As we are now storing more and data within Zendesk, the thought....",
 		"author" : "Jhon-47m",
-		"avatar" : "src/images/avatar.png"
+		"avatar" : "src/images/avatar2.jpg"
 	},
 
 	 {
 		"header": "Mobile login Help..",
+		"status" : "unassigned",
 		"description" : "Lorem ipsum dolor sit amet, indigo adipisicing elit. adsf ads fdas fads",
 		"author" : "Jhon-47m",
-		"avatar" : "src/images/avatar.png"
+		"avatar" : "src/images/avatar3.jpg"
 	},
 
 	 {
 		"header": "Linking Zendesk tickets to Salesforce accounts",
+		"status" : "your",
 		"description" : "Losds rem ipsum dolor sit amet, indigo adisds sd pisicing elit.sadasd as asdasd",
 		"author" : "Jhon-47m",
-		"avatar" : "src/images/avatar.png"
+		"avatar" : "src/images/avatar4.jpg"
 	},
 
 	 {
 		"header": "Ticket type is  required for solving customer ",
+		"status" : "unassigned",
 		"description" : "Lorem ipsum dolor sit amet, indigo adipisicing elit. adsfad fdad fd",
 		"author" : "Jhon-47m",
-		"avatar" : "src/images/avatar.png"
+		"avatar" : "src/images/avatar5.jpg"
 	},
 
 	 {
 		"header": "Something else is ",
+		"status" : "your",
 		"description" : " dolor sit amet, indigo adipisicing elit. adsf ads fdas fads Lorem ipsum dolor.",
 		"author" : "Jhon-47m",
-		"avatar" : "src/images/avatar.png"
+		"avatar" : "src/images/avatar6.jpg"
 	}
 ]

@@ -10,7 +10,7 @@
 		padding: 5% 0% 0% 7%;
 		color : #000;/* darken($creamColor,20%); */
 		opacity: 0.4;
-		
+		transition: opacity 0.3s;
 
 		header {
 			margin: 0px;
@@ -54,7 +54,7 @@
 		}
 
 		&.activeTask {
-			transition: opacity 0.3s;
+			
 			opacity: 1;
 			.taskAuthorIcon {
 				

@@ -397,6 +397,7 @@ cite {
   color: #000;
   /* darken($creamColor,20%); */
   opacity: 0.4;
+  transition: opacity 0.3s;
 }
 .tasks .taskItem header {
   margin: 0px;
@@ -434,7 +435,6 @@ cite {
   border-radius: 50%;
 }
 .tasks .taskItem.activeTask {
-  transition: opacity 0.3s;
   opacity: 1;
 }
 .tasks .taskItem:hover {

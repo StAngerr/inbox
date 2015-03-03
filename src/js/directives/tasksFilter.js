@@ -1,9 +1,12 @@
+(function() {
 
 	var app=angular.module('tastks-filter',[]);
 
 	app.directive('taskFilter',function() {
 		return {
 			strict : 'E',
-			templateUrl : 'views/taskFilterView.html'
+			templateUrl : 'src/js/templates/taskFilterTempl.html'
 		}
 	});
+	
+})();

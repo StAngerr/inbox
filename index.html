@@ -9,7 +9,9 @@
 </head>
 <body >
 	<div id="mainWrapper">
+
 		<section id="navigation">
+
 			<header class="navHeader">	
 				<div class="search" ng-controller="SearchFieldCtrl as searchField"> 
 					<div class="searchWrap">
@@ -18,46 +20,14 @@
 					</div>
 				</div>
 			</header>
+
 			<div class="filterWrap" ng-controller="TasksFilterCtrl as taskFilter">	
-			
-<!-- <menu class="taskFilter" ng-controller="TasksFilterCtrl as taskFilter">
+				<task-filter></task-filter>
 
-	<div class="categories" ng-class="{active:taskFilter.isSelected(1) }" ng-click="taskFilter.setActive(1)">
-		 <span class="count">7</span>
-		  <span class="categoryName">yours</span> 
-	  </div>
-
-	<div class="categories" ng-class="{active:taskFilter.isSelected(2) }" ng-click="taskFilter.setActive(2)">
-		 <span class="count">5</span> 
-		 <span class="categoryName">unassigned</span> 
-	 </div>
-
-	<div class="categories" ng-class="{active:taskFilter.isSelected(3) }" ng-click="taskFilter.setActive(3)"> 
-		<span class="count">9</span> 
-		<span class="categoryName">all</span> 
-	</div>
-</menu>
-		 -->
 				<ul class="tasks" ng-controller="TasksCtrl">
-					<li class="taskItem activeTask" ng-repeat="task in tasks | filter:query" 
-					 ng-click="openComment($event)">
-					<article>
-						<header>
-							<h3 class="taskHeader">{{task.header}}</h3>
-						</header>
+					<tasks-list>
 
-						<section>
-							<p class="taskDescription">{{task.description}}</p>
-						</section>
-
-						<footer>
-							<p class="meta">{{task.author}}</p> 
-							<figure>
-								<img class="taskAuthorIcon" src="src/images/avatar.jpg" />
-							</figure>
-						</footer>
-					</article>
-					</li>
+					</tasks-list>	
 				</ul>
 			</div>
 			</section>
@@ -108,17 +78,7 @@
 
 			<!-- COMMENT BLOCKS -->		
 				<ul class="commentList" ng-controller="CommentsCtrl">
-					<li ng-repeat="comment in comments">
-						<article class="commentItem">
-							<figure>
-								<img class="authorIcon" src="src/images/avatar.jpg">
-							</figure>
-							<aside class="meta"><span>{{comment.author}}</span></aside>
-							<div class="content">
-								<p >{{comment.content}}</p>
-							</div>
-						</article>
-					</li>
+					<comments-list> </comments-list>
 				</ul>
 			</main>
 		</section>
@@ -129,6 +89,11 @@
 	<script src="src/js/frameworks/angular.js"></script>
 	<script src="src/js/controller.js"></script>
 	<script src="src/js/events.js"></script>
-	<script src="src/js/tasksFilter.js"></script>
+
+	<script src="src/js/directives/tasksFilter.js"></script>
+	<script src="src/js/directives/tasksList.js"></script>
+
+	<script src="src/js/directives/commentsList.js"></script>
+
 </body>
 </html>

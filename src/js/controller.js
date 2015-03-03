@@ -1,5 +1,5 @@
 
-var inbox = angular.module('inbox',['tastks-filter']);
+var inbox = angular.module('inbox',['tastks-filter','tasks-list','comments-list']);
 
 inbox.controller('TasksFilterCtrl', function() {
 	this.active = 1;

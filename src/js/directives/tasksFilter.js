@@ -74,9 +74,15 @@
 
 				removeLogo();
 
+				removePreloader();
+
+				if($(window).width() > 620 ) addPreloader();
+
 				initComments();
 
 				openNewTaskAnimation();
+
+				
 
 			} else if ( $(element).hasClass('activeTask') ) {
 
@@ -89,17 +95,24 @@
 				
 				initClickedObj(element);
 
+				removePreloader();  
+
 				removeLogo();
+
+				if($(window).width() > 620 ) addPreloader();
 
 				initComments();
 
-				openNewTaskAnimation();    
+				openNewTaskAnimation();  
+				
+
 			}
 
 			if( $(window).width() < 620) {
 				$('*').removeClass('slideRight');
 				$('#navigation').addClass('slideLeft');
 				$('#mainContent').addClass('slideLeft');
+				removeLogo();
 			}
 
 		};
@@ -121,9 +134,10 @@
 		};
 
 		function addLogo() {
+		
 			$('#mainContent').css({
-				'background' : 'url("src/images/inboxLogo.png") no-repeat -100% 50%',
-				'opacity' : '0.4'
+				'background' : '#fff url("src/images/inboxLogo1.png") no-repeat 50% 50%',
+
 			});
 		};
 
@@ -146,6 +160,15 @@
 				'background' : '#fff',
 				'opacity' : '1'
 			});
+		};
+
+		function addPreloader() {
+			$("#mainContent").append('<div id="fakeloader"></div>');
+			$("#fakeloader").fakeLoader();
+		};
+
+		function removePreloader() {
+			$("#fakeloader").remove();
 		};
 
 	}]);

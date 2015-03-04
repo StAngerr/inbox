@@ -41,6 +41,8 @@
 			$scope.allTasks = $scope.unassignedTasks + $scope.yoursTasks;
 		});
 
+		addLogo();
+
 		$scope.setActive = function(value) {
 			var openedElem;
 			$('.taskItem').addClass('activeTask');
@@ -52,6 +54,9 @@
 				$scope.curStatus = '';
 			}
 
+			hideMainContent();
+			addLogo();
+			
 			$scope.active = value;
 		};
 
@@ -62,43 +67,33 @@
 		$scope.openComment = function(event) {
 			var element =  event.currentTarget;
 			
-			if ($('.taskItem.activeTask').length == $('.taskItem').length) {
+			if ( $('.taskItem.activeTask').length == $('.taskItem').length ) {
+				toggleActiveClass(element);
 
-				$('.taskItem').removeClass('activeTask');
-				$(element).addClass('activeTask');
-				
-				for (var i=0; i < $scope.tasks.length; i++ ) {
-					if($scope.tasks[i].id === element.id) {
-						$scope.$parent.obj = $scope.tasks[i];
-					}
-				}
+				initClickedObj(element);
 
-				$http.get($scope.$parent.obj.comments).success(function(data, status, headers, config) {
-			     	$scope.$parent.commentsToTask = data;
-			    });
-			$('.mainContentInner').css({'display' : 'none','opacity' : '0'});
-			$('.mainContentInner').css({'display' : 'block'}).animate({'opacity' : '1'}, 600);
+				removeLogo();
 
-			} else if ($(element).hasClass('activeTask')) {
-				 $('.mainContentInner').css({'display' : 'none','opacity' : '0'});
+				initComments();
+
+				openNewTaskAnimation();
+
+			} else if ( $(element).hasClass('activeTask') ) {
+
+				hideMainContent();
+				addLogo();
+
 				$('.taskItem').addClass('activeTask');
 			} else {
-				$('.taskItem').removeClass('activeTask');
-				$(element).addClass('activeTask');
+				toggleActiveClass(element);
+				
+				initClickedObj(element);
 
-				for (var i=0; i < $scope.tasks.length; i++ ) {
-					if($scope.tasks[i].id === element.id) {
-						$scope.$parent.obj = $scope.tasks[i];
-					}
-				}
+				removeLogo();
 
+				initComments();
 
-				$http.get($scope.$parent.obj.comments).success(function(data, status, headers, config) {
-			     	$scope.$parent.commentsToTask = data;
-			    });
-				    $('.mainContentInner').css({'display' : 'none','opacity' : '0'});
-				$('.mainContentInner').css({'display' : 'block'}).animate({'opacity' : '1'}, 600);
-    
+				openNewTaskAnimation();    
 			}
 
 			if( $(window).width() < 620) {
@@ -107,6 +102,50 @@
 				$('#mainContent').addClass('slideLeft');
 			}
 
+		};
+
+		function openNewTaskAnimation() {
+			$('.mainContentInner').css({'display' : 'none','opacity' : '0'});
+			$('.mainContentInner').css({'display' : 'block'}).animate({'opacity' : '1'}, 600);
+		};
+
+		function initComments() {
+			$http.get($scope.$parent.obj.comments).success(function(data, status, headers, config) {
+			     	$scope.$parent.commentsToTask = data;
+			});
+		};
+
+		function toggleActiveClass(element) {
+			$('.taskItem').removeClass('activeTask');
+			$(element).addClass('activeTask');
+		};
+
+		function addLogo() {
+			$('#mainContent').css({
+				'background' : 'url("src/images/inboxLogo.png") no-repeat -100% 50%',
+				'opacity' : '0.4'
+			});
+		};
+
+		function hideMainContent() {
+			$('.mainContentInner').animate({'opacity' : '0'}, 300,function() {
+				$(this).css({'display' : 'none','opacity' : '0'});
+			});
+		};
+
+		function initClickedObj(element) {
+			for (var i=0; i < $scope.tasks.length; i++ ) {
+				if($scope.tasks[i].id === element.id) {
+					$scope.$parent.obj = $scope.tasks[i];
+				}
+			}
+		};
+
+		function removeLogo() {
+			$('#mainContent').css({
+				'background' : '#fff',
+				'opacity' : '1'
+			});
 		};
 
 	}]);

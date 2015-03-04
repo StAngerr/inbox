@@ -26,7 +26,7 @@
 		"status" : "unassigned",
 		"description" : " As we are now storing more and data within Zendesk, the thought....",
 		"author" : "Kim •",
-		"time" : "78",
+		"time" : "17",
 		"date" : "Requested on Friday March 1",
 		"avatar" : "src/images/avatar2.jpg",
 		"comments" : "src/content/comments/comments2.json"
@@ -59,7 +59,7 @@
 		"status" : "unassigned",
 		"description" : "Lorem ipsum dolor sit amet, indigo adipisicing elit. adsfad fdad fd",
 		"author" : "Edward •",
-		"time" : "28",
+		"time" : "8",
 		"date" : "Requested on Friday March 3",
 		"avatar" : "src/images/avatar5.jpg",
 		"comments" : "src/content/comments/comments5.json"
@@ -70,7 +70,7 @@
 		"status" : "your",
 		"description" : " dolor sit amet, indigo adipisicing elit. adsf ads fdas fads Lorem ipsum dolor.",
 		"author" : "Jhon •",
-		"time" : "5",
+		"time" : "8",
 		"date" : "Requested on Friday November 5",
 		"avatar" : "src/images/avatar6.jpg",
 		"comments" : "src/content/comments/comments6.json"

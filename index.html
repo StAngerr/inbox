@@ -15,7 +15,7 @@
 			<header class="navHeader">	
 				<div class="search" ng-controller="SearchFieldCtrl as searchField"> 
 					<div class="searchWrap">
-						<input id="searchField" type="search " class="searchField" ng-model="query">
+						<input id="searchField" type="search " class="searchField" ng-model="$parent.searchFieldInput">
 						<span class="glyphicon glyphicon-search" ng-click="searchField.searchAnimationEvent()"></span>
 					</div>
 				</div>
@@ -23,16 +23,16 @@
 
 			<div class="filterWrap" ng-controller="TasksFilterCtrl">	
 				<task-filter></task-filter>
-				<tasks-list ></tasks-list>	
+				<tasks-list></tasks-list>	
 			</div>
 			</section>
 		</section>
 
 		<section id="mainContent">
 		
-			<main class="mainContentInner"> 
+			<main class="mainContentInner" ng-controller="ExpandedTaskCtrl"> 
 				<!-- HEADER -->
-				<header ng-controller="ExpandedTaskCtrl">
+				<header >
 					<menu class="headerControls">
 						<button class="returnBtn" ng-click="returnBtn()"></button>
 					</menu>
@@ -54,7 +54,8 @@
 		<!-- NEW COMMENT BLOCK -->
 				<div class="newComment ">
 					<div class="newCommentSimple">
-						<p> Add <a href="#">internal node</a> or <a href="#">public reply</a> 
+						<p> Add <a ng-click="writeCommentInput()" href="#">internal node</a> or 
+						<a ng-click="writeCommentInput()" href="#">public reply</a> 
 						</p>
 					</div>
 					<div class="newCommentExpanded">
@@ -64,7 +65,7 @@
 				 		<textarea class="commentInput"  rows="1"></textarea>
 
 				 		<menu class="controls">
-				 			<button class="reply">Reply</button>
+				 			<button ng-click="addComment()" class="reply">Reply</button>
 				 			<button class="replyNSolve">Reply and solve</button> 		
 				 		</menu>
 				 		

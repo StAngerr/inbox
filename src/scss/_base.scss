@@ -46,6 +46,13 @@ cite {
 	font-style: normal;
 }
 
+li[category=your] { 
+     background: linear-gradient(#fff, #F8FFF5);
+}
+li[category=unassigned] { 
+     background: linear-gradient(#fff, #FFEDED);
+}
+
 
 @media only screen and (max-width: $mobileMax) {
 	html {

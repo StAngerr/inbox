@@ -1,6 +1,6 @@
 
 <ul class="tasks">
-	<li id="{{task.id}}" class="taskItem activeTask" ng-repeat="task in tasks | filter:{status : curStatus} | orderBy:'date'" 
+	<li id="{{task.id}}" category="{{task.status}}" class="taskItem activeTask" ng-repeat="task in tasks | filter:{ header : searchFieldInput} | filter:{status : curStatus} | orderBy:'time'" 
 		 ng-click="openComment($event)">
 		<article>
 			<header>			

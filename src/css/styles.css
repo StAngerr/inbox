@@ -103,6 +103,14 @@ cite {
   font-style: normal;
 }
 
+li[category=your] {
+  background: linear-gradient(#fff, #F8FFF5);
+}
+
+li[category=unassigned] {
+  background: linear-gradient(#fff, #FFEDED);
+}
+
 @media only screen and (max-width: 620px) {
   html {
     width: 100%;
@@ -562,12 +570,18 @@ cite {
 }
 .newComment .commentInput {
   display: none;
+  opacity: 0;
+  transition: opacity 1s;
 }
 .newComment button {
   display: none;
+  opacity: 0;
+  transition: opacity 1s;
 }
 .newComment .authorIcon {
   display: none;
+  opacity: 0;
+  transition: opacity 1s;
 }
 .newComment.newCommentExpanded {
   height: 25%;

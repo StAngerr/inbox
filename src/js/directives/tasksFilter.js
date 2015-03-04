@@ -2,6 +2,8 @@
 
 	var app=angular.module('tastks-filter',[]);
 
+
+
 	app.directive('tasksList', function() {
         var directive = {
             restrict: 'E',
@@ -53,11 +55,12 @@
 			} else {
 				$scope.curStatus = '';
 			}
-
-			hideMainContent();
-			addLogo();
-			
+			if( $('.mainContentInner').css('display') == 'block' ) {
+				hideMainContent();
+				addLogo();
+			}
 			$scope.active = value;
+				
 		};
 
 		$scope.isSelected = function(value) {
@@ -66,7 +69,9 @@
 
 		$scope.openComment = function(event) {
 			var element =  event.currentTarget;
-			
+			$('.newCommentExpanded .newCommentExpanded *').css({'opacity' : '0'})
+			$('.newComment').removeClass('newCommentExpanded');
+
 			if ( $('.taskItem.activeTask').length == $('.taskItem').length ) {
 				toggleActiveClass(element);
 
@@ -104,8 +109,6 @@
 				initComments();
 
 				openNewTaskAnimation();  
-				
-
 			}
 
 			if( $(window).width() < 620) {
@@ -114,8 +117,20 @@
 				$('#mainContent').addClass('slideLeft');
 				removeLogo();
 			}
-
+		
 		};
+
+		function paintedTasks() {
+			var allList = $('.taskItem');
+
+			for(listItem in allList) {
+				if( $(listItem).attr('category') == 'your') {
+					$(listItem).css({'background' : 'green'});
+				} else if( $(listItem).attr('category') == 'unassigned' ) {
+					$(listItem).css({'background' : 'red'});
+				} 
+			}
+		}
 
 		function openNewTaskAnimation() {
 			$('.mainContentInner').css({'display' : 'none','opacity' : '0'});
@@ -136,9 +151,9 @@
 		function addLogo() {
 		
 			$('#mainContent').css({
+				'opacity' : '0',
 				'background' : '#fff url("src/images/inboxLogo1.png") no-repeat 50% 50%',
-
-			});
+			}).animate({'opacity' : '1'},  1500);
 		};
 
 		function hideMainContent() {
@@ -172,5 +187,6 @@
 		};
 
 	}]);
+
 	
 })();

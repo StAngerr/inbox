@@ -19,13 +19,19 @@
 
 	.commentInput {
 		display: none;
+		opacity: 0;
+		transition: opacity 1s;
 	}
 
 	button {
 		display: none;
+				opacity: 0;
+		transition: opacity 1s;
 	}
 	.authorIcon {
 		display: none;
+				opacity: 0;
+		transition: opacity 1s;
 	}
 	/* EXPANDED */
 	&.newCommentExpanded {
@@ -44,6 +50,7 @@
 			height: 40px;
 			margin-right: 2%;
 			border-radius: 50%;
+
 		}
 
 		.commentInput {
@@ -57,7 +64,6 @@
 			border: 2px solid darken($lightGrey, 20%);
 			border-radius: 5px;
 			margin-right: 2%;
-			
 			&:focus {
 				outline: 0;
 			}

@@ -1,10 +1,9 @@
 
 <ul class="tasks">
-	<li class="taskItem activeTask" ng-repeat="task in tasks | filter:{status : curStatus} | orderBy:'date'" 
+	<li id="{{task.id}}" class="taskItem activeTask" ng-repeat="task in tasks | filter:{status : curStatus} | orderBy:'date'" 
 		 ng-click="openComment($event)">
 		<article>
-			<header>
-			
+			<header>			
 				<h3 class="taskHeader">{{task.header}}</h3>
 			</header>
 
@@ -13,7 +12,7 @@
 			</section>
 
 			<footer>
-				<p class="meta">{{task.author + task.date + "m"}}</p> 
+				<p class="meta">{{task.author + task.time + "m"}}</p> 
 				<figure>
 					<img class="taskAuthorIcon" src="{{task.avatar}}" />
 				</figure>

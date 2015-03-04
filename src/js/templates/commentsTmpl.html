@@ -1,11 +1,13 @@
-<li ng-repeat="comment in comments">
-	<article class="commentItem">
-		<figure>
-			<img class="authorIcon" src="src/images/avatar.jpg">
-		</figure>
-		<aside class="meta"><span>{{comment.author}}</span></aside>
-		<div class="content">
-			<p >{{comment.content}}</p>
-		</div>
-	</article>
-</li>
+<ul class="commentList" >
+	<li ng-repeat="comment in commentsToTask">
+		<article class="commentItem">
+			<figure>
+				<img class="authorIcon" src="{{comment.authorIcon}}">
+			</figure>
+			<aside class="meta"><span>{{comment.author}}</span></aside>
+			<div class="content">
+				<p >{{comment.content}}</p>
+			</div>
+		</article>
+	</li>
+</ul>

@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="src/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="src/css/styles.css">
 </head>
-<body >
+<body ng-controller= "mainCtrl">
 	<div id="mainWrapper">
 
 		<section id="navigation">
@@ -35,17 +35,17 @@
 						<button class="returnBtn" ng-click="returnBtn()"></button>
 					</menu>
 					<aside class="metaData">
-						<span>Jhon@gmail.com</span>
-						<span>Requested on Friday March 21</span></aside>
+						<span>{{obj.author}}</span>
+						<span>{{obj.date}}</span></aside>
 					<!--  <a href="#" class="more"><span></span><span></span><span></span></a> -->
-					<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+					<h2>{{obj.header}}</h2>
 				</header>
 					
 				<div class="assign">
 					<figure>
-						<img class="authorIcon" src="src/images/avatar.jpg">
+						<img class="authorIcon" src="{{(obj.avatar || 'src/images/avatar2.jpg')}}">
 					</figure>
-					<cite><p>Assigned: Jason Wu</p></cite>
+					<cite><p>Assigned: {{obj.author}}</p></cite>
 				</div>
 		<!-- _____________________________ -->
 
@@ -69,11 +69,10 @@
 					</div>	
 				</div>
 		<!-- ___________________________________________-->
-	<a href="#"></a>
 			<!-- COMMENT BLOCKS -->		
-				<ul class="commentList" ng-controller="CommentsCtrl">
+				
 					<comments-list> </comments-list>
-				</ul>
+				
 			</main>
 		</section>
 	</div>
@@ -84,7 +83,7 @@
 	<script src="src/js/inboxApp.js"></script>
 	<script src="src/js/events.js"></script>
 	<!-- CONTROLLERS -->
-	<script src="src/js/controllers/TasksFilterCtrl.js"></script>
+<!-- 	/*<script src="src/js/controllers/TasksFilterCtrl.js"></script>*/ -->
 	<script src="src/js/controllers/SearchFieldCtrl.js"></script>
 	<!-- /*<script src="src/js/controllers/TasksCtrl.js"></script>*/ -->
 	<script src="src/js/controllers/ExpandedTaskCtrl.js"></script>
@@ -92,7 +91,7 @@
 
 	<!-- DIRECTIVES -->
 	<script src="src/js/directives/tasksFilter.js"></script>
-	<script src="src/js/directives/tasksList.js"></script>
+<!-- 	<script src="src/js/directives/tasksList.js"></script> -->
 
 	<script src="src/js/directives/commentsList.js"></script>
 

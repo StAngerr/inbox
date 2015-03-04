@@ -63,13 +63,42 @@
 			var element =  event.currentTarget;
 			
 			if ($('.taskItem.activeTask').length == $('.taskItem').length) {
+
 				$('.taskItem').removeClass('activeTask');
 				$(element).addClass('activeTask');
+				
+				for (var i=0; i < $scope.tasks.length; i++ ) {
+					if($scope.tasks[i].id === element.id) {
+						$scope.$parent.obj = $scope.tasks[i];
+					}
+				}
+
+				$http.get($scope.$parent.obj.comments).success(function(data, status, headers, config) {
+			     	$scope.$parent.commentsToTask = data;
+			    });
+			$('.mainContentInner').css({'display' : 'none','opacity' : '0'});
+			$('.mainContentInner').css({'display' : 'block'}).animate({'opacity' : '1'}, 600);
+
 			} else if ($(element).hasClass('activeTask')) {
+				 $('.mainContentInner').css({'display' : 'none','opacity' : '0'});
 				$('.taskItem').addClass('activeTask');
 			} else {
 				$('.taskItem').removeClass('activeTask');
 				$(element).addClass('activeTask');
+
+				for (var i=0; i < $scope.tasks.length; i++ ) {
+					if($scope.tasks[i].id === element.id) {
+						$scope.$parent.obj = $scope.tasks[i];
+					}
+				}
+
+
+				$http.get($scope.$parent.obj.comments).success(function(data, status, headers, config) {
+			     	$scope.$parent.commentsToTask = data;
+			    });
+				    $('.mainContentInner').css({'display' : 'none','opacity' : '0'});
+				$('.mainContentInner').css({'display' : 'block'}).animate({'opacity' : '1'}, 600);
+    
 			}
 
 			if( $(window).width() < 620) {

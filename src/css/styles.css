@@ -145,6 +145,11 @@ cite {
   height: 100%;
 }
 
+.mainContentInner {
+  display: none;
+  opacity: 0;
+}
+
 @media only screen and (max-width: 1453px) {
   .mainContentInner {
     width: 80%;

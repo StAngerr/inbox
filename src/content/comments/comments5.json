@@ -1,0 +1,25 @@
+[
+	{ 
+		"authorIcon" : "src/images/avatar1.jpg",
+		"author" : "tom - 7:32 am",
+		"content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+	},
+
+	{ 
+		"authorIcon" : "src/images/avatar3.jpg",
+		"author" : "joe - 7:32 am",
+		"content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+	},
+
+	{ 
+		"authorIcon" : "src/images/avatar2.jpg",
+		"author" : "mike - 7:32 am",
+		"content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam necessitatibus, atque totam ducimus quos odio sed quis non eius. Nobis tempore deleniti esse, officia dicta aliquid pariatur consectetur molestiae iste? \n  Best regards \n Bob"
+	},
+
+	{ 
+		"authorIcon" : "src/images/avatar1.jpg",
+		"author" : "sam - 7:32 am",
+		"content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+	}
+]

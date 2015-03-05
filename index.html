@@ -8,30 +8,34 @@
 	<link rel="stylesheet" href="preloader/fakeLoader.css">
 </head>
 <body ng-controller= "mainCtrl">
+
 	<div id="mainWrapper">
-
 		<section id="navigation">
-
-			<header class="navHeader">	
-				<div class="search" ng-controller="SearchFieldCtrl as searchField"> 
+<!-- SEARCH -->
+			<header class="navHeader">
+			<!-- <a href="#/state/your/task/13">new</a>
+			<a href="#/stae/unassigned/task/1">new1</a> -->
+				<div class="search" ng-controller="SearchFieldCtrl"> 
 					<div class="searchWrap">
 						<input id="searchField" type="search " class="searchField" ng-model="$parent.searchFieldInput">
-						<span class="glyphicon glyphicon-search" ng-click="searchField.searchAnimationEvent()"></span>
+						<span class="glyphicon glyphicon-search" ng-click="searchAnimationEvent()"></span>
 					</div>
 				</div>
 			</header>
-
-			<div class="filterWrap" ng-controller="TasksFilterCtrl">	
+<!-- ___________________________________________________________________________ -->
+			
+<!-- TASKS -->
+			<div class="filterWrap" ng-controller="TasksFilterCtrl">	<ng-view></ng-view>
 				<task-filter></task-filter>
 				<tasks-list></tasks-list>	
 			</div>
+<!-- ___________________________________________________________________________ -->
 			</section>
 		</section>
 
-		<section id="mainContent">
-		
+		<section id="mainContent">		
 			<main class="mainContentInner" ng-controller="ExpandedTaskCtrl"> 
-				<!-- HEADER -->
+<!--	HEADER -->
 				<header >
 					<menu class="headerControls">
 						<button class="returnBtn" ng-click="returnBtn()"></button>
@@ -45,11 +49,11 @@
 					
 				<div class="assign">
 					<figure>
-						<img class="authorIcon" src="{{(obj.avatar || 'src/images/avatar2.jpg')}}">
+						<img class="authorIcon" ng-src="{{obj.avatar}}">
 					</figure>
 					<cite><p>Assigned: {{obj.author}}</p></cite>
 				</div>
-		<!-- _____________________________ -->
+<!-- ___________________________________________________________________________ -->
 
 		<!-- NEW COMMENT BLOCK -->
 				<div class="newComment ">
@@ -60,22 +64,22 @@
 					</div>
 					<div class="newCommentExpanded">
 					<figure>
-						<img class="authorIcon" src="src/images/avatar.jpg">
+						<img class="authorIcon" ng-src="src/images/avatar.jpg">
 					</figure>
-				 		<textarea class="commentInput"  rows="1"></textarea>
+				 		<textarea class="commentInput"  rows="1" ng-model="comment.value"></textarea>
 
 				 		<menu class="controls">
-				 			<button ng-click="addComment()" class="reply">Reply</button>
+				 			<button ng-click="addComment(comment)" class="reply">Reply</button>
 				 			<button class="replyNSolve">Reply and solve</button> 		
 				 		</menu>
 				 		
 					</div>	
 				</div>
-		<!-- ___________________________________________-->
-			<!-- COMMENT BLOCKS -->		
-				
+<!-- ___________________________________________________________________________ -->
+
+			<!-- COMMENT BLOCKS -->					
 					<comments-list> </comments-list>
-				
+<!-- ___________________________________________________________________________ -->				
 			</main>
 		</section>
 	</div>
@@ -83,20 +87,13 @@
 	<script src="src/js/frameworks/jquery-1.11.2.js"></script>
 	<script src="src/js/frameworks/modernizr.js"></script>
 	<script src="src/js/frameworks/angular.js"></script>
+	<script src="src/js/frameworks/angular-route.js"></script>
 	<script src="src/js/inboxApp.js"></script>
 	<script src="src/js/events.js"></script>
-	<!-- CONTROLLERS -->
-<!-- 	/*<script src="src/js/controllers/TasksFilterCtrl.js"></script>*/ -->
-	<script src="src/js/controllers/SearchFieldCtrl.js"></script>
-	<!-- /*<script src="src/js/controllers/TasksCtrl.js"></script>*/ -->
-	<script src="src/js/controllers/ExpandedTaskCtrl.js"></script>
-	<script src="src/js/controllers/CommentsCtrl.js"></script>
-
 	<!-- DIRECTIVES -->
 	<script src="src/js/directives/tasksFilter.js"></script>
-<!-- 	<script src="src/js/directives/tasksList.js"></script> -->
-
 	<script src="src/js/directives/commentsList.js"></script>
+	<!-- PRELOADER -->
 	<script src="preloader/fakeLoader.js"></script>
 
 </body>

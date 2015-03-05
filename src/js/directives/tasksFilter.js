@@ -1,9 +1,7 @@
 (function() {
 
 	var app=angular.module('tastks-filter',[]);
-
-
-
+/*DIRS*/
 	app.directive('tasksList', function() {
         var directive = {
             restrict: 'E',
@@ -19,7 +17,22 @@
 		}
 	});
 
-	app.controller('TasksFilterCtrl',['$rootScope', '$scope','$http','$filter', function($rootScope, $scope, $http,$filter) {
+/*CONTROLLERS*/
+
+	app.controller('SearchFieldCtrl',['$scope', function($scope) {
+		$scope.searchAnimationEvent = function() {
+			$('#searchField').css({'display' : 'block'}).focus();
+			
+			$('#searchField').blur(function() {
+				$scope.$parent.searchFieldInput = '';
+			/*	$(this).focus();*/
+			 	$(this).css({'display' : 'none'});
+			 	
+			});
+		};
+	}]);
+
+	app.controller('TasksFilterCtrl',['$scope','$http','$routeParams','$location','$rootScope',  function($scope, $http, $routeParams, $location, $rootScope) {
 		$scope.curStatus = 'your';
 		$scope.active = 1;
 		
@@ -28,6 +41,8 @@
 
 		$scope.tasks = [];
 		$scope.filteredTasks =  [];
+
+
 
 		$http.get('src/content/tasks.json').success(function(data, status, headers, config) {
 			$scope.tasks = data;
@@ -47,10 +62,14 @@
 
 		$scope.setActive = function(value) {
 			var openedElem;
+			if(value == "null") {
+				return;
+			}
+
 			$('.taskItem').addClass('activeTask');
-			if(value === 1) {
+			if(value == 1) {
 				$scope.curStatus = 'your';
-			} else if(value === 2) {
+			} else if(value == 2) {
 				$scope.curStatus = 'unassigned';
 			} else {
 				$scope.curStatus = '';
@@ -67,8 +86,11 @@
 			return $scope.active == value;
 		};
 
-		$scope.openComment = function(event) {
-			var element =  event.currentTarget;
+		$scope.openComment = function(id) {
+			if( id == "null") {
+				return;
+			}
+			var element = $('#' + event.currentTarget.id)[0];
 			$('.newCommentExpanded .newCommentExpanded *').css({'opacity' : '0'})
 			$('.newComment').removeClass('newCommentExpanded');
 
@@ -86,8 +108,6 @@
 				initComments();
 
 				openNewTaskAnimation();
-
-				
 
 			} else if ( $(element).hasClass('activeTask') ) {
 
@@ -186,6 +206,47 @@
 			$("#fakeloader").remove();
 		};
 
+	}]);
+
+
+
+	app.controller('subCtrl',['$scope','$http','$routeParams','$location','$rootScope',function($scope, $http, $routeParams, $location, $rootScope) {
+		var state = $routeParams.state;
+		var id = $routeParams.id;
+		var url = $location.path().split("/");
+		var state;
+		var task ;
+
+		if(url.length > 3) {
+			$scope.setActive(url[2]);
+			$(document).ready(function() {
+				$scope.openComment(url[4])
+			});
+			/*$scope.openComment(url[4]);*/
+		};
+
+		$scope.changeUrlState = function(value) {
+			initUrlVars();
+			$location.path('/state/' + value + '/task/' + task);
+			
+		};
+
+		$scope.cangeUrlTaskId = function(event) {
+			initUrlVars();
+			var id = event.currentTarget.id;
+			$location.path('/state/' + state + '/task/' + id);
+		};
+
+		function initUrlVars() {
+			if($location.path().split("/").length < 3) {
+				state = null;
+				task = null;
+			} else {
+				
+				state = $location.path().split("/")[2];
+				task = $location.path().split("/")[4];
+			}
+		}
 	}]);
 
 	

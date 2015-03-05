@@ -11,14 +11,14 @@
 
         //Defaults
         var settings = $.extend({
-            timeToHide: 200, // Default Time to hide fakeLoader
+            timeToHide: 300, // Default Time to hide fakeLoader
             pos:'fixed',// Default Position
             top:'0px',  // Default Top value
             left:'0px', // Default Left value
             width: $('#mainContent').width() + 'px', // Default width 
             height:'100%', // Default Height
             zIndex: '999',  // Default zIndex 
-            bgColor: '#DCD6D6', // Default background color
+            bgColor: '#E6E4E4', // Default background color
             spinner:'spinner3', // Default Spinner
             imagePath:'' // Default Path custom image
         }, options);

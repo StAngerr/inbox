@@ -2,7 +2,7 @@
 	<li ng-repeat="comment in commentsToTask">
 		<article class="commentItem">
 			<figure>
-				<img class="authorIcon" src="{{comment.authorIcon}}">
+				<img class="authorIcon" ng-src="{{comment.authorIcon}}">
 			</figure>
 			<aside class="meta"><span>{{comment.author}}</span></aside>
 			<div class="content">

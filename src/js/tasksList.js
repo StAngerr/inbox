@@ -1,4 +1,4 @@
-(function() {
+/*(function() {
 
 	var app = angular.module('tasks-list',[]);
 
@@ -9,4 +9,4 @@
 		}
 	});
 
-})();
+})();*/

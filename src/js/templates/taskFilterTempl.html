@@ -1,16 +1,16 @@
-<menu class="taskFilter">
+<menu class="taskFilter" ng-controller="subCtrl" >
 
-	<div class="categories" ng-class="{active:isSelected(1) }" ng-click="setActive(1)">
+	<div class="categories" ng-class="{active:$parent.isSelected(1) }" ng-click="changeUrlState(1)">
 		 <span class="count">{{yoursTasks}} </span>
 		  <span class="categoryName">yours</span> 
 	  </div>
 
-	<div class="categories" ng-class="{active:isSelected(2) }" ng-click="setActive(2)">
+	<div class="categories" ng-class="{active:$parent.isSelected(2) }" ng-click="changeUrlState(2)">
 		 <span class="count">{{unassignedTasks}}</span> 
 		 <span class="categoryName">unassigned</span> 
 	 </div>
 
-	<div class="categories" ng-class="{active:isSelected(3) }" ng-click="setActive(3)"> 
+	<div class="categories" ng-class="{active:$parent.isSelected(3) }" ng-click="changeUrlState(3)"> 
 		<span class="count">{{allTasks}}</span> 
 		<span class="categoryName">all</span> 
 	</div>

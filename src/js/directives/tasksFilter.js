@@ -40,20 +40,23 @@
 		$scope.unassignedTasks = 0;
 
 		$scope.tasks = [];
-		$scope.filteredTasks =  [];
 
-
+		$scope.activeTasks = {};		
 
 		$http.get('src/content/tasks.json').success(function(data, status, headers, config) {
 			$scope.tasks = data;
 
 			for (var i=0; i < data.length; i++) {
+				var id ="" + $scope.tasks[i].id;
+				$scope.activeTasks[id] = true;
+
 				if(data[i].status === 'your') {
 					$scope.yoursTasks++;
 				} else if(data[i].status === 'unassigned') {
 					$scope.unassignedTasks++;
 				}
 			}
+
 
 			$scope.allTasks = $scope.unassignedTasks + $scope.yoursTasks;
 		});
@@ -65,8 +68,6 @@
 			if(value == "null") {
 				return;
 			}
-
-			$('.taskItem').addClass('activeTask');
 			if(value == 1) {
 				$scope.curStatus = 'your';
 			} else if(value == 2) {
@@ -74,12 +75,7 @@
 			} else {
 				$scope.curStatus = '';
 			}
-			if( $('.mainContentInner').css('display') == 'block' ) {
-				hideMainContent();
-				addLogo();
-			}
-			$scope.active = value;
-				
+			$scope.active = value;		
 		};
 
 		$scope.isSelected = function(value) {
@@ -169,7 +165,6 @@
 		};
 
 		function addLogo() {
-		
 			$('#mainContent').css({
 				'opacity' : '0',
 				'background' : '#fff url("src/images/inboxLogo1.png") no-repeat 50% 50%',
@@ -206,47 +201,138 @@
 			$("#fakeloader").remove();
 		};
 
+		$scope.urlState = "1";
+		$scope.urlTask = "undefined";
+
 	}]);
 
 
 
 	app.controller('subCtrl',['$scope','$http','$routeParams','$location','$rootScope',function($scope, $http, $routeParams, $location, $rootScope) {
-		var state = $routeParams.state;
-		var id = $routeParams.id;
+		$scope.$parent.urlState = $routeParams.state;
+		$scope.$parent.urlTask = $routeParams.id;
 		var url = $location.path().split("/");
-		var state;
-		var task ;
 
 		if(url.length > 3) {
 			$scope.setActive(url[2]);
-			$(document).ready(function() {
-				$scope.openComment(url[4])
-			});
-			/*$scope.openComment(url[4]);*/
+			
+			openTask(url[4]);
 		};
 
 		$scope.changeUrlState = function(value) {
-			initUrlVars();
-			$location.path('/state/' + value + '/task/' + task);
+			$scope.urlTask = "undefined";
+			for (var id in $scope.activeTasks) {
+				$scope.activeTasks[id] = true;
+			}	
+			
+			$scope.urlState = value;
+			$location.path('/state/' + $scope.urlState + '/task/' + $scope.urlTask);
 			
 		};
 
 		$scope.cangeUrlTaskId = function(event) {
-			initUrlVars();
-			var id = event.currentTarget.id;
-			$location.path('/state/' + state + '/task/' + id);
+			if(event.currentTarget.id == $scope.urlTask) {
+				$scope.urlTask = "undefined";
+			} else {
+				$scope.urlTask = event.currentTarget.id;
+			}
+			$location.path('/state/' + ($scope.urlState || "1") + '/task/' + $scope.urlTask);
 		};
 
-		function initUrlVars() {
-			if($location.path().split("/").length < 3) {
-				state = null;
-				task = null;
-			} else {
+		function openTask(id) {
+			var curElemID =  id;
+			
+			if(curElemID == 'undefined') {
+				hideMainContent();
 				
-				state = $location.path().split("/")[2];
-				task = $location.path().split("/")[4];
+				for (var id in $scope.activeTasks) {
+					$scope.activeTasks[id] = true;
+				}	
+
+
+				addLogo();	
+				return;
+			}
+
+			if ( $('.activeTask').length == $('.taskItem').length ) {
+				for (var id in $scope.activeTasks) {
+					if(curElemID == id) continue;
+					$scope.activeTasks[id] = false;
+				}
+				removeLogo();
+
+				initClickedObj(curElemID);
+
+				initComments();
+
+				openNewTaskAnimation();
+
+			} else if ( id == 'underfined' ) { 
+				for (var id in $scope.activeTasks) {
+					$scope.activeTasks[id] = true;
+				}
+
+				hideMainContent();
+
+				addLogo();	
+			} else if ( $('.activeTask').length == 1 ) {
+				for (var id in $scope.activeTasks) {
+					if(curElemID == id) {
+						$scope.activeTasks[id] = true;
+						continue;
+					}	
+					$scope.activeTasks[id] = false;
+				}
+
+				initClickedObj(curElemID);
+
+				initComments();
+
+				openNewTaskAnimation();
+
 			}
 		}
+
+
+		function initClickedObj(id) {
+			for (var i=0; i < $scope.tasks.length; i++ ) {
+				if($scope.tasks[i].id === id) {
+					$scope.$parent.$parent.obj = $scope.tasks[i];
+				}
+			}
+		};
+
+		function initComments() {
+			$http.get($scope.$parent.obj.comments).success(function(data, status, headers, config) {
+			     	$scope.$parent.$parent.commentsToTask = data;
+			});
+		};
+
+		function removeLogo() {
+			$('#mainContent').css({
+				'background' : '#fff',
+				'opacity' : '1'
+			});
+		};
+
+		function addLogo() {
+			$('#mainContent').css({
+				'opacity' : '0',
+				'background' : '#fff url("src/images/inboxLogo1.png") no-repeat 50% 50%',
+			}).animate({'opacity' : '1'},  1500);
+		};
+
+		function openNewTaskAnimation() {
+			$('.mainContentInner').css({'display' : 'none','opacity' : '0'});
+			$('.mainContentInner').css({'display' : 'block'}).animate({'opacity' : '1'}, 600);
+		};
+
+		function hideMainContent() {
+			$('.mainContentInner').animate({'opacity' : '0'}, 300,function() {
+				$(this).css({'display' : 'none','opacity' : '0'});
+			});
+		};
+
 	}]);
 
 	

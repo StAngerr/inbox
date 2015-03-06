@@ -3,3 +3,11 @@ $(window).resize(function() {
 		$('*').removeClass('slideLeft');
 	}
 });
+
+$(document).on('click', function(event) {
+	if( $(event.target).hasClass('taskMenu') ) {
+
+	}else {
+		if($('.dropDownMenu').css('display') == 'block') $('.dropDownMenu').hide(300);
+	}
+});

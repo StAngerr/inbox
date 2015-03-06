@@ -42,8 +42,14 @@
 					</menu>
 					<aside class="metaData">
 						<span>{{obj.author}}</span>
-						<span>{{obj.date}}</span></aside>
-					<!--  <a href="#" class="more"><span></span><span></span><span></span></a> -->
+						<span>{{obj.date}}</span>
+					</aside>
+					<a class="taskMenu" ng-click="dropDownShowHide()"><span></span><span></span><span></span></a>
+					<div class="dropDownMenu">
+						<button class="taskMenuBtn">Edit</button>
+						<button class="taskMenuBtn">Close</button>
+						<button class="taskMenuBtn">Delete</button>
+					</div>
 					<h2>{{obj.header}}</h2>
 				</header>
 					
@@ -77,7 +83,7 @@
 				</div>
 <!-- ___________________________________________________________________________ -->
 
-			<!-- COMMENT BLOCKS -->					
+<!-- COMMENT BLOCKS -->					
 					<comments-list> </comments-list>
 <!-- ___________________________________________________________________________ -->				
 			</main>

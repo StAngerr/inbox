@@ -8,10 +8,15 @@
 		}
 	});
 	
-	app.controller('ExpandedTaskCtrl',['$scope', function($scope) {
-
+	app.controller('ExpandedTaskCtrl',['$scope','$location', function($scope,$location) {
 
 		$scope.returnBtn = function() {
+			var taskUrl = $location.path().split("/");
+
+			taskUrl[4]='undefined';
+
+			$location.path(taskUrl.join("/"));
+
 			$('*').removeClass('slideLeft');
 			$('#navigation').addClass('slideRight');
 			$('#mainContent').addClass('slideRight');

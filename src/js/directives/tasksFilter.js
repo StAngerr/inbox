@@ -39,7 +39,10 @@
 
 		$scope.tasks = [];
 
-		$scope.activeTasks = {};		
+		$scope.activeTasks = {};	
+
+		$scope.urlState = "1";
+		$scope.urlTask = "undefined";	
 
 		$http.get('src/content/tasks.json').success(function(data, status, headers, config) {
 			$scope.tasks = data;
@@ -54,7 +57,6 @@
 					$scope.unassignedTasks++;
 				}
 			}
-
 
 			$scope.allTasks = $scope.unassignedTasks + $scope.yoursTasks;
 		});
@@ -85,14 +87,9 @@
 
 		$scope.isSelected = function(value) {
 			return $scope.active == value;
-		};
-
-		$scope.urlState = "1";
-		$scope.urlTask = "undefined";
+		};	
 
 	}]);
-
-
 
 	app.controller('subCtrl',['$scope','$http','$routeParams','$location','$rootScope',function($scope, $http, $routeParams, $location, $rootScope) {
 		$scope.$parent.urlState = $routeParams.state;

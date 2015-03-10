@@ -59,7 +59,12 @@
 		}
 
 		$scope.showEditWindow = function() {
-			$('.mainContentInner').append('<div class="editWindow"><h1> Edit </h1><button class="windowBtn">Reassign</button><button class="windowBtn">Button2</button><button class="windowBtn">Button3</button></div>');
+			$('.mainContentInner').append('<div class="editWindow">
+				<h1> Edit </h1>
+					<button class="windowBtn">Reassign</button>
+					<button class="windowBtn">Button2</button>
+					<button class="windowBtn">Button3</button>
+				</div>');
 		}
 
 		$scope.showEditWindow();

@@ -12,13 +12,10 @@ inbox.config(['$routeProvider',function($routeProvide) {
 }]);
 
 inbox.controller('mainCtrl',['$scope','$routeParams','$location','$rootScope', function($scope,$routeParams,$location,$rootScope) {
-	$scope.obj = {
-		author : '11111111111',
-		date: '222222222222',
-		header : 'dasfsafasfsada',
-		
-	};
+	$scope.obj = {};
+
 	$scope.commentsToTask = [];
+	
 	$scope.searchFieldInput = '';
 
 } ]);

@@ -1,0 +1,30 @@
+[
+	{
+		"id" : "0",
+		"avatar" : "src/images/avatar.jpg"
+	},
+	{
+		"id" : "1",
+		"avatar" : "src/images/avatar1.jpg"
+	},
+	{
+		"id" : "2",
+		"avatar" : "src/images/avatar2.jpg"
+	},
+	{
+		"id" : "3",
+		"avatar" : "src/images/avatar3.jpg"
+	},
+	{
+		"id" : "4",
+		"avatar" : "src/images/avatar4.jpg"
+	},
+	{
+		"id" : "5",
+		"avatar" : "src/images/avatar5.jpg"
+	},
+	{
+		"id" : "6",
+		"avatar" : "src/images/avatar6.jpg"
+	}
+]

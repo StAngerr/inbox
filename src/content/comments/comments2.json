@@ -1,18 +1,21 @@
 [
 	{ 
-		"authorIcon" : "src/images/avatar1.jpg",
+		"userId" : "3",
+		"authorIcon" : "",
 		"author" : "tom - 7:32 am",
 		"content" : "Lorem ipsum dolor sit alorem5met, Lorem ipsum dolor sit amet.consectetur adipisicing elit."
 	},
 
 	{ 
-		"authorIcon" : "src/images/avatar5.jpg",
+		"userId" : "4",
+		"authorIcon" : "",
 		"author" : "jodsdse - 7:32 am",
 		"content" : "Lorem Lorem ipsum dolor sit amet. ipsum dolor sit amet, consectetur adipisicing elit."
 	},
 
 	{ 
-		"authorIcon" : "src/images/avatar4.jpg",
+		"userId" : "5",
+		"authorIcon" : "",
 		"author" : "misads asdke - 7:32 am",
 		"content" : "Lorem ipsum dolor sit amet, consecteturlorem8 Lorem ipsum dolor sit amet, consectetur adipisicing elit. adipisicing elit. Quam necessitatibus, atque totam ducimus quos odio sed quis non eius. Nobis tempore deleniti esse, officia dicta aliquid pariatur consectetur molestiae iste? \n  Best regards \n Bob"
 	}

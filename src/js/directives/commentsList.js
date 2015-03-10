@@ -58,16 +58,28 @@
 			}
 		}
 
-		$scope.showEditWindow = function() {
-			$('.mainContentInner').append('<div class="editWindow">
-				<h1> Edit </h1>
-					<button class="windowBtn">Reassign</button>
-					<button class="windowBtn">Button2</button>
-					<button class="windowBtn">Button3</button>
+		/*$scope.showEditWindow = function() {
+			$('.mainContentInner').append('<div class="editWindow">\
+				<h1> Edit </h1>\
+					<button class="windowBtn reassign" ng-click="editButtonsEvents()">Reassign</button>\
+					<button class="windowBtn" click="editButtonsEvents($event)">Button2</button>\
+					<button class="windowBtn" ng-click="editButtonsEvents($event)">Button3</button>\
 				</div>');
+
+		}
+*/
+		$scope.addEvents = function(event) {
+			$scope.showEditWindow();
 		}
 
-		$scope.showEditWindow();
+		 $scope.editButtonsEvents = function() {
+			if( $(event.target).hasClass('reassign') ) {
+				alert('ok');
+			}
+
+		}	
+/*
+		$scope.showEditWindow();*/
 	}]);
 
 

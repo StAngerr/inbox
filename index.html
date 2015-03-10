@@ -8,7 +8,6 @@
 	<link rel="stylesheet" href="preloader/fakeLoader.css">
 </head>
 <body ng-controller= "mainCtrl">
-	<a href="">asdasds</a>
 	<div id="mainWrapper">
 		<section id="navigation">
 <!-- SEARCH -->
@@ -35,6 +34,13 @@
 
 		<section id="mainContent">		
 			<main class="mainContentInner" ng-controller="ExpandedTaskCtrl"> 
+			
+		<div class="editWindow" style="display: none;">
+			<h1> Edit </h1>
+			<button class="windowBtn reassign" ng-click="editButtonsEvents()">Reassign</button>
+			<button class="windowBtn" click="editButtonsEvents($event)">Button2</button>
+			<button class="windowBtn" ng-click="editButtonsEvents($event)">Button3</button>
+		</div>
 <!--	HEADER -->
 				<header >
 					<menu class="headerControls">
@@ -45,8 +51,8 @@
 						<span>{{obj.date}}</span>
 					</aside>
 					<a class="taskMenu" ng-click="dropDownShowHide(); "><span></span><span></span><span></span></a>
-					<div class="dropDownMenu">
-						<button class="taskMenuBtn">Edit</button>
+					<div class="dropDownMenu" >
+						<button class="taskMenuBtn" ng-click="addEvents($event)">Edit</button>
 						<button class="taskMenuBtn">Close</button>
 						<button class="taskMenuBtn">Delete</button>
 					</div>
@@ -55,7 +61,7 @@
 					
 				<div class="assign">
 					<figure>
-						<img class="authorIcon" ng-src="{{obj.avatar}}">
+						<img class="authorIcon" ng-src="{{obj.user.avatar}}">
 					</figure>
 					<cite><p>Assigned: {{obj.author}}</p></cite>
 				</div>
@@ -94,6 +100,8 @@
 	<script src="src/js/frameworks/modernizr.js"></script>
 	<script src="src/js/frameworks/angular.js"></script>
 	<script src="src/js/frameworks/angular-route.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+    <script src="bower_components/js/angular-local-storage.min.js"></script>
 	<script src="src/js/inboxApp.js"></script>
 	<script src="src/js/events.js"></script>
 	<!-- DIRECTIVES -->

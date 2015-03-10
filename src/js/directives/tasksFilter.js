@@ -47,6 +47,8 @@
 		$http.get('src/content/tasks.json').success(function(data, status, headers, config) {
 			$scope.tasks = data;
 
+			setUsersToTasks();
+
 			for (var i=0; i < data.length; i++) {
 				var id ="" + $scope.tasks[i].id;
 				$scope.activeTasks[id] = true;
@@ -60,6 +62,24 @@
 
 			$scope.allTasks = $scope.unassignedTasks + $scope.yoursTasks;
 		});
+
+		function setUsersToTasks() {
+			$http.get('src/content/users.json').success(function(data, status, headers, config) { 
+				var users = data;
+				
+				for (var i=0; i < $scope.tasks.length; i++ ) {
+					$scope.tasks[i].user = findUser(users, $scope.tasks[i].userId);
+				}
+			});
+		}
+
+		function findUser(users,id) {
+			for( var i=0; i < users.length; i++) {
+				if(users[i].id == id) {
+					return users[i];
+				}
+			}
+		}
 
 		$scope.addLogo = function() {
 			$('#mainContent').css({
@@ -91,7 +111,7 @@
 
 	}]);
 
-	app.controller('subCtrl',['$scope','$http','$routeParams','$location','$rootScope',function($scope, $http, $routeParams, $location, $rootScope) {
+	app.controller('subCtrl',['$scope','$http','$routeParams','$location','$rootScope', function($scope, $http, $routeParams, $location, $rootScope) {
 		$scope.$parent.urlState = $routeParams.state;
 		$scope.$parent.urlTask = $routeParams.id;
 		var url = $location.path().split("/");
@@ -200,7 +220,22 @@
 
 		function initComments() {
 			$http.get($scope.$parent.obj.comments).success(function(data, status, headers, config) {
-			     	$scope.$parent.$parent.commentsToTask = data;
+			     	var comments = data;
+			     	
+			     	$http.get('src/content/users.json').success(function(data, status, headers, config) { 
+			     		var users = data;
+
+			     		for ( var i=0; i < comments.length; i++ ) {
+			     			for (var j=0; j < users.length; j++) {
+			     				if( users[j].id == comments[i].userId) {
+			     					comments[i].authorIcon = users[j].avatar;
+			     				}
+			     			}
+			     		}
+			     		$scope.$parent.$parent.commentsToTask = comments;
+
+			     	});
+			     	
 			});
 		};
 

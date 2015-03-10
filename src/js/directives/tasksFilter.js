@@ -30,7 +30,7 @@
 		};
 	}]);
 
-	app.controller('TasksFilterCtrl',['$scope','$http','$routeParams','$location','$rootScope',  function($scope, $http, $routeParams, $location, $rootScope) {
+	app.controller('TasksFilterCtrl',['$scope','$http','$routeParams','$location','$rootScope','localStorageService',  function($scope, $http, $routeParams, $location, $rootScope, localStorageService) {
 		$scope.curStatus = 'your';
 		$scope.active = 1;
 		
@@ -44,24 +44,43 @@
 		$scope.urlState = "1";
 		$scope.urlTask = "undefined";	
 
-		$http.get('src/content/tasks.json').success(function(data, status, headers, config) {
-			$scope.tasks = data;
+		$scope.tasks = [];
+		
+		function initTasks() {	
 
-			setUsersToTasks();
+			if( localStorageService.get('tasks') ) {
+				$scope.tasks = localStorageService.get('tasks');
+				setUsersToTasks();
+				initCategories();
+			} else {
+				getTasksFromServ();
+			}	
+		}
 
-			for (var i=0; i < data.length; i++) {
-				var id ="" + $scope.tasks[i].id;
-				$scope.activeTasks[id] = true;
+		function getTasksFromServ() {
+			$http.get('src/content/tasks.json').success(function(data, status, headers, config) {
+				$scope.tasks = data;
 
-				if(data[i].status === 'your') {
-					$scope.yoursTasks++;
-				} else if(data[i].status === 'unassigned') {
-					$scope.unassignedTasks++;
-				}
+				setUsersToTasks();
+				initCategories();
+
+				localStorageService.set('tasks', $scope.tasks);
+			});
+		}
+
+		function initCategories() {
+			for (var i=0; i < $scope.tasks.length; i++) {
+					var id ="" + $scope.tasks[i].id;
+					$scope.activeTasks[id] = true;
+
+					if($scope.tasks[i].status === 'your') {
+						$scope.yoursTasks++;
+					} else if($scope.tasks[i].status === 'unassigned') {
+						$scope.unassignedTasks++;
+					}
 			}
-
 			$scope.allTasks = $scope.unassignedTasks + $scope.yoursTasks;
-		});
+		}
 
 		function setUsersToTasks() {
 			$http.get('src/content/users.json').success(function(data, status, headers, config) { 
@@ -88,7 +107,7 @@
 			}).animate({'opacity' : '1'},  1500);
 		};
 
-		$scope.addLogo();
+		
 
 		$scope.setActive = function(value) {
 			var openedElem;
@@ -108,6 +127,15 @@
 		$scope.isSelected = function(value) {
 			return $scope.active == value;
 		};	
+
+		/*onload actions : tasks list initialization, logo.*/
+		(function() {
+			initTasks();
+
+			$scope.addLogo();
+
+		})();		
+/*_______________*/
 
 	}]);
 

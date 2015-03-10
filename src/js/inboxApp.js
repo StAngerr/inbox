@@ -1,4 +1,4 @@
-var inbox = angular.module('inbox',['tastks-filter','comments-list','ngRoute']);
+var inbox = angular.module('inbox',['tastks-filter','comments-list','ngRoute','LocalStorageModule']);
 
 inbox.config(['$routeProvider',function($routeProvide) {
 	$routeProvide

@@ -1,30 +1,37 @@
 [
 	{
 		"id" : "0",
-		"avatar" : "src/images/avatar.jpg"
+		"avatar" : "src/images/avatar.jpg",
+		"name" : "Kim"
 	},
 	{
 		"id" : "1",
-		"avatar" : "src/images/avatar1.jpg"
+		"avatar" : "src/images/avatar1.jpg",
+		"name" : "Tom"
 	},
 	{
 		"id" : "2",
-		"avatar" : "src/images/avatar2.jpg"
+		"avatar" : "src/images/avatar2.jpg",
+		"name" : "Edward"
 	},
 	{
 		"id" : "3",
-		"avatar" : "src/images/avatar3.jpg"
+		"avatar" : "src/images/avatar3.jpg",
+		"name" : "Fred"
 	},
 	{
 		"id" : "4",
-		"avatar" : "src/images/avatar4.jpg"
+		"avatar" : "src/images/avatar4.jpg",
+		"name" : "Jhon"
 	},
 	{
 		"id" : "5",
-		"avatar" : "src/images/avatar5.jpg"
+		"avatar" : "src/images/avatar5.jpg",
+		"name" : "Criss"
 	},
 	{
 		"id" : "6",
-		"avatar" : "src/images/avatar6.jpg"
+		"avatar" : "src/images/avatar6.jpg",
+		"name" : "Homer"
 	}
 ]

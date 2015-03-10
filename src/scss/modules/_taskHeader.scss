@@ -98,12 +98,14 @@
 }
 
 .editWindow {
+	display: none;
 	position: absolute;
 	width: 43%;
 	height: 400px;
 	background: #ccc;
 	top: 10%;
-	opacity: 0.98;
+	opacity: 1;
+	z-index: 18;
 
 	h1 {
 		float: left;
@@ -135,7 +137,37 @@
 				border-color: #8D8C8C;
 			}
 	}
-}
+
+	.users {
+		display: none;
+		float: left;
+		width: 70%;
+		height: 50%;
+		margin-left: 5%;
+		
+		
+		.singleUser {
+			display: inline-block;
+			width: 20%;
+			height: auto;
+			text-align: center;
+			margin-top: 2%;
+			&:hover {
+				cursor: pointer;
+				background: #DBDBDB;
+				border-bottom: 2px solid #252323;
+			}
+		}
+
+	}
+
+	.glyphicon.glyphicon-remove {		
+		font-size: 1.8em;
+		border-radius: 2px;	
+		cursor: pointer;
+	}
+
+	}
 
 @media only screen and (max-width: $mobileMax) {
 	/* TITELE AUTHOR */

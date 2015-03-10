@@ -45,60 +45,6 @@
 		$scope.urlTask = "undefined";	
 
 		$scope.tasks = [];
-		
-		function initTasks() {	
-
-			if( localStorageService.get('tasks') ) {
-				$scope.tasks = localStorageService.get('tasks');
-				setUsersToTasks();
-				initCategories();
-			} else {
-				getTasksFromServ();
-			}	
-		}
-
-		function getTasksFromServ() {
-			$http.get('src/content/tasks.json').success(function(data, status, headers, config) {
-				$scope.tasks = data;
-
-				setUsersToTasks();
-				initCategories();
-
-				localStorageService.set('tasks', $scope.tasks);
-			});
-		}
-
-		function initCategories() {
-			for (var i=0; i < $scope.tasks.length; i++) {
-					var id ="" + $scope.tasks[i].id;
-					$scope.activeTasks[id] = true;
-
-					if($scope.tasks[i].status === 'your') {
-						$scope.yoursTasks++;
-					} else if($scope.tasks[i].status === 'unassigned') {
-						$scope.unassignedTasks++;
-					}
-			}
-			$scope.allTasks = $scope.unassignedTasks + $scope.yoursTasks;
-		}
-
-		function setUsersToTasks() {
-			$http.get('src/content/users.json').success(function(data, status, headers, config) { 
-				var users = data;
-				
-				for (var i=0; i < $scope.tasks.length; i++ ) {
-					$scope.tasks[i].user = findUser(users, $scope.tasks[i].userId);
-				}
-			});
-		}
-
-		function findUser(users,id) {
-			for( var i=0; i < users.length; i++) {
-				if(users[i].id == id) {
-					return users[i];
-				}
-			}
-		}
 
 		$scope.addLogo = function() {
 			$('#mainContent').css({
@@ -106,8 +52,6 @@
 				'background' : '#fff url("src/images/inboxLogo1.png") no-repeat 50% 50%',
 			}).animate({'opacity' : '1'},  1500);
 		};
-
-		
 
 		$scope.setActive = function(value) {
 			var openedElem;
@@ -128,7 +72,74 @@
 			return $scope.active == value;
 		};	
 
-		/*onload actions : tasks list initialization, logo.*/
+		function initTasks() {	
+
+			if( localStorageService.get('tasks') ) {
+				$scope.tasks = localStorageService.get('tasks');
+				setUsersToTasks();
+				initCategories();
+
+			} else {
+				getTasksFromServ();
+			}	
+		};
+
+		function getTasksFromServ() {
+			$http.get('src/content/tasks.json').success(function(data, status, headers, config) {
+				$scope.tasks = data;
+
+				setUsersToTasks();
+				initCategories();
+
+				localStorageService.set('tasks', $scope.tasks);
+			});
+		};
+
+		function initCategories() {
+			for (var i=0; i < $scope.tasks.length; i++) {
+					var id ="" + $scope.tasks[i].id;
+					$scope.activeTasks[id] = true;
+
+					if($scope.tasks[i].status === 'your') {
+						$scope.yoursTasks++;
+					} else if($scope.tasks[i].status === 'unassigned') {
+						$scope.unassignedTasks++;
+					}
+			}
+			$scope.allTasks = $scope.unassignedTasks + $scope.yoursTasks;
+		};
+
+		function setUsersToTasks() {
+
+			if(localStorageService.get('users')) {
+				var users = localStorageService.get('users');
+					
+				for (var i=0; i < $scope.tasks.length; i++ ) {
+					$scope.tasks[i].user = findUser(users, $scope.tasks[i].userId);
+				}
+
+			} else {
+
+				$http.get('src/content/users.json').success(function(data, status, headers, config) { 
+					var users = data;
+					
+					for (var i=0; i < $scope.tasks.length; i++ ) {
+						$scope.tasks[i].user = findUser(users, $scope.tasks[i].userId);
+					}
+				});
+
+			}
+		};
+
+		function findUser(users,id) {
+			for( var i=0; i < users.length; i++) {
+				if(users[i].id == id) {
+					return users[i];
+				}
+			}
+		}
+
+/*onload actions : tasks list initialization, logo.*/
 		(function() {
 			initTasks();
 
@@ -139,7 +150,7 @@
 
 	}]);
 
-	app.controller('subCtrl',['$scope','$http','$routeParams','$location','$rootScope', function($scope, $http, $routeParams, $location, $rootScope) {
+	app.controller('subCtrl',['$scope','$http','$routeParams','$location','$rootScope','localStorageService', function($scope, $http, $routeParams, $location, $rootScope,localStorageService) {
 		$scope.$parent.urlState = $routeParams.state;
 		$scope.$parent.urlTask = $routeParams.id;
 		var url = $location.path().split("/");
@@ -247,24 +258,39 @@
 		};
 
 		function initComments() {
-			$http.get($scope.$parent.obj.comments).success(function(data, status, headers, config) {
-			     	var comments = data;
-			     	
-			     	$http.get('src/content/users.json').success(function(data, status, headers, config) { 
-			     		var users = data;
+			/*localStorageService.clearAll();*/
+			if( localStorageService.get('comments' + $scope.$parent.obj.id) && localStorageService.get('users') ) {
+				var comments = localStorageService.get('comments' + $scope.$parent.obj.id);
+				var users = localStorageService.get('users');
 
-			     		for ( var i=0; i < comments.length; i++ ) {
-			     			for (var j=0; j < users.length; j++) {
-			     				if( users[j].id == comments[i].userId) {
-			     					comments[i].authorIcon = users[j].avatar;
-			     				}
-			     			}
-			     		}
-			     		$scope.$parent.$parent.commentsToTask = comments;
+				setAuthorsToComments(comments,users);
+			} else {
 
-			     	});
-			     	
-			});
+				$http.get($scope.$parent.obj.comments).success(function(data, status, headers, config) {
+				     	var comments = data;
+				     	var str = 'comments' + $scope.$parent.obj.id;
+				     	
+				     	localStorageService.set('comments' + $scope.$parent.obj.id, comments);
+
+				     	$http.get('src/content/users.json').success(function(data, status, headers, config) { 
+				     		var users = data;
+				     		setAuthorsToComments(comments,users);
+
+				     		localStorageService.set('users',users);
+				     	});
+				});
+			}
+		};
+
+		function setAuthorsToComments(comments,users) {
+     		for ( var i=0; i < comments.length; i++ ) {
+				for (var j=0; j < users.length; j++) {
+					if( users[j].id == comments[i].userId) {
+						comments[i].authorIcon = users[j].avatar;
+					}
+				}
+			}
+			$scope.$parent.$parent.commentsToTask = comments;
 		};
 
 		function removeLogo() {

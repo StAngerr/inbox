@@ -36,8 +36,10 @@
 		<section id="mainContent">		
 			<main class="mainContentInner" ng-controller="ExpandedTaskCtrl"> 
 			
-		<div class="editWindow" style="display: none;">
+		<div class="editWindow" >
 			<h1> Edit </h1>
+			<span class="glyphicon glyphicon-remove" ng-click="closeEditWindow()"></span>
+			<!-- <button class="closeBtn" ng-click="closeEditWindow()"> </button> -->
 			<button class="windowBtn reassign" ng-click="editButtonsEvents()">Reassign</button>
 			<button class="windowBtn" click="editButtonsEvents($event)">Button2</button>
 			<button class="windowBtn" ng-click="editButtonsEvents($event)">Button3</button>
@@ -53,7 +55,8 @@
 					</aside>
 					<a class="taskMenu" ng-click="dropDownShowHide(); "><span></span><span></span><span></span></a>
 					<div class="dropDownMenu" >
-						<button class="taskMenuBtn" ng-click="addEvents($event)">Edit</button>
+
+						<button class="taskMenuBtn" ng-click="openEdit()">Edit</button>
 						<button class="taskMenuBtn">Close</button>
 						<button class="taskMenuBtn">Delete</button>
 					</div>
@@ -98,6 +101,7 @@
 	</div>
 
 	<script src="src/js/frameworks/jquery-1.11.2.js"></script>
+	<script src="src/js/frameworks/jquery-ui.min.js"></script>
 	<script src="src/js/frameworks/modernizr.js"></script>
 	<script src="src/js/frameworks/angular.js"></script>
 	<script src="src/js/frameworks/angular-route.js"></script>

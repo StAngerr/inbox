@@ -559,12 +559,14 @@ li[category=unassigned] {
 }
 
 .editWindow {
+  display: none;
   position: absolute;
   width: 43%;
   height: 400px;
   background: #ccc;
   top: 10%;
-  opacity: 0.98;
+  opacity: 1;
+  z-index: 18;
 }
 .editWindow h1 {
   float: left;
@@ -594,6 +596,30 @@ li[category=unassigned] {
   border-bottom: 1px;
   border-style: solid;
   border-color: #8D8C8C;
+}
+.editWindow .users {
+  display: none;
+  float: left;
+  width: 70%;
+  height: 50%;
+  margin-left: 5%;
+}
+.editWindow .users .singleUser {
+  display: inline-block;
+  width: 20%;
+  height: auto;
+  text-align: center;
+  margin-top: 2%;
+}
+.editWindow .users .singleUser:hover {
+  cursor: pointer;
+  background: #DBDBDB;
+  border-bottom: 2px solid #252323;
+}
+.editWindow .glyphicon.glyphicon-remove {
+  font-size: 1.8em;
+  border-radius: 2px;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 620px) {

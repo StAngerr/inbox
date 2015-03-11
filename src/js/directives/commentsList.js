@@ -19,6 +19,8 @@
 	
 	app.controller('ExpandedTaskCtrl',['$scope','$location','$http','localStorageService','$compile', function($scope,$location,$http,localStorageService,$compile) {
 
+		$scope.users;
+
 		$scope.returnBtn = function() {
 			var taskUrl = $location.path().split("/");
 
@@ -75,51 +77,42 @@
 			if( $(event.target).hasClass('reassign') ) {
 				//$('.editWindow').append('<div class="users"><h2>Reassign to: </h2></div>');
 				showUsers();
-
 			}
 		};
 
 		function showUsers() {
+
+			if($('.users').css('display') == 'block' ) {
+				return;
+			}
+
 			if( localStorageService.get('users') ) {
-				var users = localStorageService.get('users');
-
-					paintUsers(users);
-					//$('.users').append(paintUsers(users));
-					$('.users').toggle( "bounce", { times: 3 }, "slow" );
-
+				$scope.users = localStorageService.get('users');
+					
+					paintUsers($scope.users);
+					$('.users').toggle( "bounce", { times: 3 }, "slow"); 
+					
+					/*$('.users').toggle( "boun ce", { times: 3 }, "slow" );*/
+					
 			} else {
 				$http.get('src/content/users.json').success(function(data, status, headers, config) { 
-					var users = data;
+					$scope.users = data;
 
-					paintUsers(users);
-					//$('.users').append(paintUsers(users));
+					paintUsers($scope.users);
+					
 					$('.users').toggle( "bounce", { times: 3 }, "slow" );
 				});	
 			}
 		}
 
 		function paintUsers(users) {
-			var temp = '';
-			var $el;
-
-		/*	for (var i=0; i < users.length; i++) {
-				temp += '<div name="' + users[i].id + '" class="singleUser" ng-click="reassignTask($event)">' +
-					'<figure class="singleUserAvatar">' +
-					'<img src="' + users[i].avatar + '">' +
-					'</figure>' +
-					'<p class="singleUserName">' +  users[i].name +'</p>'+
-				'</div>';
-			}*/
-
-			$el = temp;
-			
-			$($el).appendTo('.users');
-			$compile($el)($scope);
-			$scope.$apply();
-			
+			angular.element(document.getElementById('editWindow'))
+					.append($compile("<users></users>")($scope));
+	
 		}
 
 		$scope.closeEditWindow = function() {
+			$('.users').remove();
 			$('.editWindow').css({'display' : 'none'});
 		};
 

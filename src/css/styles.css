@@ -598,7 +598,7 @@ li[category=unassigned] {
   border-color: #8D8C8C;
 }
 .editWindow .users {
-  display: none;
+  display: block;
   float: left;
   width: 70%;
   height: 50%;

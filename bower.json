@@ -1,0 +1,23 @@
+{
+  "name": "inbox",
+  "version": "1.1.1",
+  "homepage": "https://github.com/StAngerr/inbox",
+  "authors": [
+    "Taras Stekhnovych <violet.infierno@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-local-storage": "~0.1.5",
+    "angular-route": "~1.3.14",
+    "angular": "~1.3.14",
+    "jquery": "~2.1.3",
+    "modernizr": "~2.8.3"
+  }
+}

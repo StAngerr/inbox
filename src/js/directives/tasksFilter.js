@@ -168,7 +168,6 @@
 			
 			$scope.urlState = value;
 			$location.path('/state/' + $scope.urlState + '/task/' + $scope.urlTask);
-			
 		};
 
 		$scope.cangeUrlTaskId = function(event) {

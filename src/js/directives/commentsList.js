@@ -7,8 +7,26 @@
 			templateUrl : 'src/js/templates/commentsTmpl.html'
 		}
 	});
+
+	app.directive('editWindow', function() {
+		return {
+			strict : 'E',
+			templateUrl : 'src/js/templates/editPopup.html'
+		}
+	});
+
+	app.directive('users', function() {
+		return {
+			strict : 'E',
+			templateUrl : 'src/js/templates/usersTemplate.html',
+			controller : 'ExpandedTaskCtrl'
+		}
+
+	});
 	
-	app.controller('ExpandedTaskCtrl',['$scope','$location', function($scope,$location) {
+	app.controller('ExpandedTaskCtrl',['$scope','$location','$http','localStorageService','$compile', function($scope,$location,$http,localStorageService,$compile) {
+
+		$scope.users;
 
 		$scope.returnBtn = function() {
 			var taskUrl = $location.path().split("/");
@@ -56,14 +74,92 @@
 			} else {
 				$('.dropDownMenu').hide(300);
 			}
+		};
+
+		$scope.addEvents = function(event) {
+			$scope.showEditWindow();
 		}
 
-		$scope.showEditWindow = function() {
-			$('.mainContentInner').append('<div class="editWindow"><h1> Edit </h1><button class="windowBtn">Reassign</button><button class="windowBtn">Button2</button><button class="windowBtn">Button3</button></div>');
+		 $scope.editButtonsEvents = function() {
+			if( $(event.target).hasClass('reassign') ) {
+				if($('.users').css('display') == 'block') {
+					$('.users').remove();
+				} else {
+					showUsers();
+				}
+			}
+		};
+
+		function showUsers() {
+
+			if($('.users').css('display') == 'block' ) {
+				return;
+			}
+
+			if( localStorageService.get('users') ) {
+				$scope.users = localStorageService.get('users');
+					
+				paintUsers($scope.users);
+				
+				$('.users').toggle( "bounce", { times: 3 }, "slow"); 
+				
+			} else {
+				$http.get('src/content/users.json').success(function(data, status, headers, config) { 
+					$scope.users = data;
+
+					paintUsers($scope.users);
+					
+					$('.users').toggle( "bounce", { times: 3 }, "slow" );
+				});	
+			}
 		}
 
-		$scope.showEditWindow();
+		function paintUsers(users) {
+			angular.element(document.getElementById('editWindow'))
+					.append($compile("<users></users>")($scope));
+	
+		}
+
+		$scope.closeEditWindow = function() {
+			$('.users').remove();
+			$('.editWindow').remove();
+		};
+
+		$scope.reassignTask =function(event) {
+			var  check = confirm("You sure you want to reassign this task to " + $(event.currentTarget).attr('name'));
+
+			if(!check) {
+				return;
+			}
+
+			var currentUserId = event.currentTarget.id; 
+			var users = localStorageService.get('users');
+			
+			for (var i=0; i < users.length; i++) {
+				if( users[i].id == currentUserId) $scope.$parent.obj.user = users[i];	
+			}
+
+			writeReasingInStorage();
+		};
+
+		$scope.openWindow = function(event) {
+			if(event.target.name == 'edit') {
+				angular.element(document.getElementById('mainContentInner'))
+					.append($compile("<edit-window></edit-window>")($scope));
+			}
+		}
+
+		function writeReasingInStorage() {
+			var tasks = localStorageService.get('tasks');
+			var temp = $scope.$parent.obj;
+
+			for (var i = 0; i < tasks.length; i++) {
+				if(tasks[i].id == temp.id) {
+					tasks[i].userId =temp.user.id;
+				}
+			}
+			localStorageService.set('tasks',tasks);
+		};
+
 	}]);
-
-
 })();

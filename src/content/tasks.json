@@ -6,7 +6,7 @@
 		"author" : "Jhon • ",
 		"time" : "78",
 		"date" : "Requested on Friday March 21",
-		"avatar" : "src/images/avatar6.jpg",
+		"userId" : "0",
 		"comments" : "src/content/comments/comments0.json"
 	},
 
@@ -17,7 +17,7 @@
 		"author" : "Mike •",
 		"time" : "44",
 		"date" : "Requested on Friday May 11",
-		"avatar" : "src/images/avatar1.jpg",
+		"userId" : "1",
 		"comments" : "src/content/comments/comments1.json"
 	},
 
@@ -28,7 +28,7 @@
 		"author" : "Kim •",
 		"time" : "17",
 		"date" : "Requested on Friday March 1",
-		"avatar" : "src/images/avatar2.jpg",
+		"userId" : "2",
 		"comments" : "src/content/comments/comments2.json"
 	},
 
@@ -39,7 +39,7 @@
 		"author" : "Tom •",
 		"time" : "11",
 		"date" : "Requested on Friday March 21",
-		"avatar" : "src/images/avatar3.jpg",
+		"userId" : "3",
 		"comments" : "src/content/comments/comments3.json"
 	},
 
@@ -50,7 +50,7 @@
 		"author" : "Jhon •",
 		"time" : "53",
 		"date" : "Requested on Friday October 21",
-		"avatar" : "src/images/avatar4.jpg",
+		"userId" : "4",
 		"comments" : "src/content/comments/comments4.json"
 	},
 
@@ -61,7 +61,7 @@
 		"author" : "Edward •",
 		"time" : "8",
 		"date" : "Requested on Friday March 3",
-		"avatar" : "src/images/avatar5.jpg",
+		"userId" : "5",
 		"comments" : "src/content/comments/comments5.json"
 	},
 
@@ -72,7 +72,7 @@
 		"author" : "Jhon •",
 		"time" : "8",
 		"date" : "Requested on Friday November 5",
-		"avatar" : "src/images/avatar6.jpg",
+		"userId" : "6",
 		"comments" : "src/content/comments/comments6.json"
 	}
 ]

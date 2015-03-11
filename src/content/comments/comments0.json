@@ -1,36 +1,42 @@
 [
 	{ 
-		"authorIcon" : "src/images/avatar3.jpg",
+		"userId" : "2",
+		"authorIcon" : "",
 		"author" : "to as dasdm - 7:32 am",
 		"content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
 	},
 
 	{ 
-		"authorIcon" : "src/images/avatar4.jpg",
+		"userId" : "1",
+		"authorIcon" : "",
 		"author" : "joe - 7:32 am",
 		"content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
 	},
 
 	{ 
-		"authorIcon" : "src/images/avatar1.jpg",
+		"userId" : "4",
+		"authorIcon" : "",
 		"author" : "mike - 7:32 am",
 		"content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam necessitatibus, atque totam ducimus quos odio sed quis non eius. Nobis tempore deleniti esse, officia dicta aliquid pariatur consectetur molestiae iste? \n  Best regards \n Bob"
 	},
 
 	{ 
-		"authorIcon" : "src/images/avatar3.jpg",
+		"userId" : "6",
+		"authorIcon" : "",
 		"author" : "sam - 7:32 am",
 		"content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
 	},
 
 	{ 
-		"authorIcon" : "src/images/avatar2.jpg",
+		"userId" : "2",
+		"authorIcon" : "",
 		"author" : "Kim - 7:32 am",
 		"content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis inventore pariatur similique, qui ipsam voluptatibus officia deserunt, ad cumque facilis praesentium nemo voluptates. Sequi laudantium aperiam, recusandae iste velit consequatur."
 	},
 
 	{ 
-		"authorIcon" : "src/images/avatar.jpg",
+		"userId" : "0",
+		"authorIcon" : "",
 		"author" : "edward - 7:32 am",
 		"content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
 	}

@@ -30,7 +30,7 @@
 		};
 	}]);
 
-	app.controller('TasksFilterCtrl',['$scope','$http','$routeParams','$location','$rootScope',  function($scope, $http, $routeParams, $location, $rootScope) {
+	app.controller('TasksFilterCtrl',['$scope','$http','$routeParams','$location','$rootScope','localStorageService',  function($scope, $http, $routeParams, $location, $rootScope, localStorageService) {
 		$scope.curStatus = 'your';
 		$scope.active = 1;
 		
@@ -44,22 +44,7 @@
 		$scope.urlState = "1";
 		$scope.urlTask = "undefined";	
 
-		$http.get('src/content/tasks.json').success(function(data, status, headers, config) {
-			$scope.tasks = data;
-
-			for (var i=0; i < data.length; i++) {
-				var id ="" + $scope.tasks[i].id;
-				$scope.activeTasks[id] = true;
-
-				if(data[i].status === 'your') {
-					$scope.yoursTasks++;
-				} else if(data[i].status === 'unassigned') {
-					$scope.unassignedTasks++;
-				}
-			}
-
-			$scope.allTasks = $scope.unassignedTasks + $scope.yoursTasks;
-		});
+		$scope.tasks = [];
 
 		$scope.addLogo = function() {
 			$('#mainContent').css({
@@ -67,8 +52,6 @@
 				'background' : '#fff url("src/images/inboxLogo1.png") no-repeat 50% 50%',
 			}).animate({'opacity' : '1'},  1500);
 		};
-
-		$scope.addLogo();
 
 		$scope.setActive = function(value) {
 			var openedElem;
@@ -89,9 +72,85 @@
 			return $scope.active == value;
 		};	
 
+		function initTasks() {	
+
+			if( localStorageService.get('tasks') ) {
+				$scope.tasks = localStorageService.get('tasks');
+				setUsersToTasks();
+				initCategories();
+
+			} else {
+				getTasksFromServ();
+			}	
+		};
+
+		function getTasksFromServ() {
+			$http.get('src/content/tasks.json').success(function(data, status, headers, config) {
+				$scope.tasks = data;
+
+				setUsersToTasks();
+				initCategories();
+
+				localStorageService.set('tasks', $scope.tasks);
+			});
+		};
+
+		function initCategories() {
+			for (var i=0; i < $scope.tasks.length; i++) {
+					var id ="" + $scope.tasks[i].id;
+					$scope.activeTasks[id] = true;
+
+					if($scope.tasks[i].status === 'your') {
+						$scope.yoursTasks++;
+					} else if($scope.tasks[i].status === 'unassigned') {
+						$scope.unassignedTasks++;
+					}
+			}
+			$scope.allTasks = $scope.unassignedTasks + $scope.yoursTasks;
+		};
+
+		function setUsersToTasks() {
+
+			if(localStorageService.get('users')) {
+				var users = localStorageService.get('users');
+					
+				for (var i=0; i < $scope.tasks.length; i++ ) {
+					$scope.tasks[i].user = findUser(users, $scope.tasks[i].userId);
+				}
+
+			} else {
+
+				$http.get('src/content/users.json').success(function(data, status, headers, config) { 
+					var users = data;
+					
+					for (var i=0; i < $scope.tasks.length; i++ ) {
+						$scope.tasks[i].user = findUser(users, $scope.tasks[i].userId);
+					}
+				});
+
+			}
+		};
+
+		function findUser(users,id) {
+			for( var i=0; i < users.length; i++) {
+				if(users[i].id == id) {
+					return users[i];
+				}
+			}
+		}
+
+/*onload actions : tasks list initialization, logo.*/
+		(function() {
+			initTasks();
+
+			$scope.addLogo();
+
+		})();		
+/*_______________*/
+
 	}]);
 
-	app.controller('subCtrl',['$scope','$http','$routeParams','$location','$rootScope',function($scope, $http, $routeParams, $location, $rootScope) {
+	app.controller('subCtrl',['$scope','$http','$routeParams','$location','$rootScope','localStorageService', function($scope, $http, $routeParams, $location, $rootScope,localStorageService) {
 		$scope.$parent.urlState = $routeParams.state;
 		$scope.$parent.urlTask = $routeParams.id;
 		var url = $location.path().split("/");
@@ -135,11 +194,14 @@
 				return;
 			}
 
+
+
 			if ( $('.activeTask').length == $('.taskItem').length ) {
 				for (var id in $scope.activeTasks) {
 					if(curElemID == id) continue;
 					$scope.activeTasks[id] = false;
 				}
+
 				removeLogo();
 
 				initClickedObj(curElemID);
@@ -180,6 +242,7 @@
 				openNewTaskAnimation();
 			}
 
+			closeEditWindow();
 
 			if( $(window).width() < 620) {
 				$('*').removeClass('slideRight');
@@ -199,9 +262,38 @@
 		};
 
 		function initComments() {
-			$http.get($scope.$parent.obj.comments).success(function(data, status, headers, config) {
-			     	$scope.$parent.$parent.commentsToTask = data;
-			});
+			if( localStorageService.get('comments' + $scope.$parent.obj.id) && localStorageService.get('users') ) {
+				var comments = localStorageService.get('comments' + $scope.$parent.obj.id);
+				var users = localStorageService.get('users');
+
+				setAuthorsToComments(comments,users);
+			} else {
+
+				$http.get($scope.$parent.obj.comments).success(function(data, status, headers, config) {
+				     	var comments = data;
+				     	var str = 'comments' + $scope.$parent.obj.id;
+				     	
+				     	localStorageService.set('comments' + $scope.$parent.obj.id, comments);
+
+				     	$http.get('src/content/users.json').success(function(data, status, headers, config) { 
+				     		var users = data;
+				     		setAuthorsToComments(comments,users);
+
+				     		localStorageService.set('users',users);
+				     	});
+				});
+			}
+		};
+
+		function setAuthorsToComments(comments,users) {
+     		for ( var i=0; i < comments.length; i++ ) {
+				for (var j=0; j < users.length; j++) {
+					if( users[j].id == comments[i].userId) {
+						comments[i].authorIcon = users[j].avatar;
+					}
+				}
+			}
+			$scope.$parent.$parent.commentsToTask = comments;
 		};
 
 		function removeLogo() {
@@ -229,128 +321,17 @@
 
 		function removePreloader() {
 			$("#fakeloader").remove();
+		};
+
+		function closeEditWindow() {
+			if( $('.mainContentInner > .window').css('display') == 'block' ) {
+				$('.users').remove();
+				$('.mainContentInner > .window').css({'display' : 'none'});
+			}
+
 		};
 
 	}]);
 
 	
 })();
-
-/*		$scope.openComment = function(id) {
-			if( id == "null") {
-				return;
-			}
-			var element = $('#' + event.currentTarget.id)[0];
-			$('.newCommentExpanded .newCommentExpanded *').css({'opacity' : '0'})
-			$('.newComment').removeClass('newCommentExpanded');
-
-			if ( $('.taskItem.activeTask').length == $('.taskItem').length ) {
-				toggleActiveClass(element);
-
-				initClickedObj(element);
-
-				removeLogo();
-
-				removePreloader();
-
-				if($(window).width() > 620 ) addPreloader();
-
-				initComments();
-
-				openNewTaskAnimation();
-
-			} else if ( $(element).hasClass('activeTask') ) {
-
-				hideMainContent();
-				addLogo();
-
-				$('.taskItem').addClass('activeTask');
-			} else {
-				toggleActiveClass(element);
-				
-				initClickedObj(element);
-
-				removePreloader();  
-
-				removeLogo();
-
-				if($(window).width() > 620 ) addPreloader();
-
-				initComments();
-
-				openNewTaskAnimation();  
-			}
-
-			if( $(window).width() < 620) {
-				$('*').removeClass('slideRight');
-				$('#navigation').addClass('slideLeft');
-				$('#mainContent').addClass('slideLeft');
-				removeLogo();
-			}
-		
-		};
-
-		function paintedTasks() {
-			var allList = $('.taskItem');
-
-			for(listItem in allList) {
-				if( $(listItem).attr('category') == 'your') {
-					$(listItem).css({'background' : 'green'});
-				} else if( $(listItem).attr('category') == 'unassigned' ) {
-					$(listItem).css({'background' : 'red'});
-				} 
-			}
-		}
-
-		function openNewTaskAnimation() {
-			$('.mainContentInner').css({'display' : 'none','opacity' : '0'});
-			$('.mainContentInner').css({'display' : 'block'}).animate({'opacity' : '1'}, 600);
-		};
-
-		function initComments() {
-			$http.get($scope.$parent.obj.comments).success(function(data, status, headers, config) {
-			     	$scope.$parent.commentsToTask = data;
-			});
-		};
-
-		function toggleActiveClass(element) {
-			$('.taskItem').removeClass('activeTask');
-			$(element).addClass('activeTask');
-		};
-
-		function addLogo() {
-			$('#mainContent').css({
-				'opacity' : '0',
-				'background' : '#fff url("src/images/inboxLogo1.png") no-repeat 50% 50%',
-			}).animate({'opacity' : '1'},  1500);
-		};
-
-		function hideMainContent() {
-			$('.mainContentInner').animate({'opacity' : '0'}, 300,function() {
-				$(this).css({'display' : 'none','opacity' : '0'});
-			});
-		};
-
-		function initClickedObj(element) {
-			for (var i=0; i < $scope.tasks.length; i++ ) {
-				if($scope.tasks[i].id === element.id) {
-					$scope.$parent.obj = $scope.tasks[i];
-				}
-			}
-		};
-
-		function removeLogo() {
-			$('#mainContent').css({
-				'background' : '#fff',
-				'opacity' : '1'
-			});
-		};
-
-		function addPreloader() {
-			$("#mainContent").append('<div id="fakeloader"></div>');
-			$("#fakeloader").fakeLoader();
-		};
-
-		function removePreloader() {
-			$("#fakeloader").remove();
-		};*/

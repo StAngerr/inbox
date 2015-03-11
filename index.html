@@ -8,8 +8,7 @@
 	<link rel="stylesheet" href="preloader/fakeLoader.css">
 </head>
 <body ng-controller= "mainCtrl">
-	<a href=""></a>
-	<hr>	
+
 	<div id="mainWrapper">
 		<section id="navigation">
 <!-- SEARCH -->
@@ -27,6 +26,7 @@
 			
 <!-- TASKS -->
 			<div class="filterWrap" ng-controller="TasksFilterCtrl">	<ng-view></ng-view>
+			<a href=""> {{helloWorld}}</a>
 				<task-filter></task-filter>
 				<tasks-list></tasks-list>	
 			</div>
@@ -35,9 +35,9 @@
 		</section>
 
 		<section id="mainContent">		
-			<main class="mainContentInner" ng-controller="ExpandedTaskCtrl"> 
+			<main id="mainContentInner" class="mainContentInner" ng-controller="ExpandedTaskCtrl"> 
 <!--	HEADER -->
-				<header >
+				<header>
 					<menu class="headerControls">
 						<button class="returnBtn" ng-click="returnBtn()"></button>
 					</menu>
@@ -45,18 +45,19 @@
 						<span>{{obj.author}}</span>
 						<span>{{obj.date}}</span>
 					</aside>
-					<a class="taskMenu" ng-click="dropDownShowHide()"><span></span><span></span><span></span></a>
-					<div class="dropDownMenu">
-						<button class="taskMenuBtn">Edit</button>
-						<button class="taskMenuBtn">Close</button>
-						<button class="taskMenuBtn">Delete</button>
+					<a class="taskMenu" ng-click="dropDownShowHide(); "><span></span><span></span><span></span></a>
+					<div class="dropDownMenu" >
+
+						<button name="edit" class="taskMenuBtn" ng-click="openWindow($event)">Edit</button>
+						<button name="" class="taskMenuBtn">Close</button>
+						<button name="" class="taskMenuBtn">Delete</button>
 					</div>
 					<h2>{{obj.header}}</h2>
 				</header>
 					
 				<div class="assign">
 					<figure>
-						<img class="authorIcon" ng-src="{{obj.avatar}}">
+						<img class="authorIcon" ng-src="{{obj.user.avatar}}">
 					</figure>
 					<cite><p>Assigned: {{obj.author}}</p></cite>
 				</div>
@@ -65,8 +66,8 @@
 		<!-- NEW COMMENT BLOCK -->
 				<div class="newComment ">
 					<div class="newCommentSimple">
-						<p> Add <a ng-click="writeCommentInput()" href="#">internal node</a> or 
-						<a ng-click="writeCommentInput()" href="#">public reply</a> 
+						<p> Add <a ng-click="writeCommentInput()">internal node</a> or 
+						<a ng-click="writeCommentInput()">public reply</a> 
 						</p>
 					</div>
 					<div class="newCommentExpanded">
@@ -92,9 +93,11 @@
 	</div>
 
 	<script src="src/js/frameworks/jquery-1.11.2.js"></script>
+	<script src="src/js/frameworks/jquery-ui.min.js"></script>
 	<script src="src/js/frameworks/modernizr.js"></script>
 	<script src="src/js/frameworks/angular.js"></script>
 	<script src="src/js/frameworks/angular-route.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
 	<script src="src/js/inboxApp.js"></script>
 	<script src="src/js/events.js"></script>
 	<!-- DIRECTIVES -->

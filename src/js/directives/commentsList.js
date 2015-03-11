@@ -11,7 +11,8 @@
 	app.directive('editWindow', function() {
 		return {
 			strict : 'E',
-			templateUrl : 'src/js/templates/editPopup.html'
+			templateUrl : 'src/js/templates/editPopup.html',
+			controller : 'ExpandedTaskCtrl'
 		}
 	});
 
@@ -58,12 +59,16 @@
 			};
 			var time = new Date();
 
+
+
 			newComment.authorIcon = $('.newCommentExpanded figure .authorIcon').attr('src');
 			newComment.author += time.getHours() + ':' + time.getMinutes();
 			
 			$('.newCommentExpanded .commentInput').val('');
 			
 			$scope.$parent.commentsToTask.push(newComment);
+
+			localStorageService.set('comments' + $scope.$parent.obj.id + '',$scope.$parent.commentsToTask);
 
 			$('.newComment').removeClass('newCommentExpanded');
 		};
@@ -80,7 +85,7 @@
 			$scope.showEditWindow();
 		}
 
-		 $scope.editButtonsEvents = function() {
+		$scope.editButtonsEvents = function() {
 			if( $(event.target).hasClass('reassign') ) {
 				if($('.users').css('display') == 'block') {
 					$('.users').remove();

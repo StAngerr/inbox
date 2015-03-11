@@ -8,6 +8,13 @@
 		}
 	});
 
+	app.directive('editWindow', function() {
+		return {
+			strict : 'E',
+			templateUrl : 'src/js/templates/editPopup.html'
+		}
+	});
+
 	app.directive('users', function() {
 		return {
 			strict : 'E',
@@ -115,7 +122,7 @@
 
 		$scope.closeEditWindow = function() {
 			$('.users').remove();
-			$('.editWindow').css({'display' : 'none'});
+			$('.editWindow').remove();
 		};
 
 		$scope.reassignTask =function(event) {
@@ -135,9 +142,12 @@
 			writeReasingInStorage();
 		};
 
-		$scope.openEdit = function() {
-			$('.editWindow').css({'display' : 'block'});
-		};
+		$scope.openWindow = function(event) {
+			if(event.target.name == 'edit') {
+				angular.element(document.getElementById('mainContentInner'))
+					.append($compile("<edit-window></edit-window>")($scope));
+			}
+		}
 
 		function writeReasingInStorage() {
 			var tasks = localStorageService.get('tasks');

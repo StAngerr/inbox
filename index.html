@@ -34,17 +34,9 @@
 		</section>
 
 		<section id="mainContent">		
-			<main class="mainContentInner" ng-controller="ExpandedTaskCtrl"> 
-			
-		<div id="editWindow" class="window editWindow" >
-			<h1> Edit </h1>
-			<span class="glyphicon glyphicon-remove" ng-click="closeEditWindow()"></span>
-			<button class="windowBtn reassign" ng-click="editButtonsEvents()">Reassign</button>
-			<button class="windowBtn" click="editButtonsEvents($event)">Rename</button>
-			<button class="windowBtn" ng-click="editButtonsEvents($event)">Button3</button>
-		</div>
+			<main id="mainContentInner" class="mainContentInner" ng-controller="ExpandedTaskCtrl"> 
 <!--	HEADER -->
-				<header >
+				<header>
 					<menu class="headerControls">
 						<button class="returnBtn" ng-click="returnBtn()"></button>
 					</menu>
@@ -55,9 +47,9 @@
 					<a class="taskMenu" ng-click="dropDownShowHide(); "><span></span><span></span><span></span></a>
 					<div class="dropDownMenu" >
 
-						<button class="taskMenuBtn" ng-click="openEdit()">Edit</button>
-						<button class="taskMenuBtn">Close</button>
-						<button class="taskMenuBtn">Delete</button>
+						<button name="edit" class="taskMenuBtn" ng-click="openWindow($event)">Edit</button>
+						<button name="" class="taskMenuBtn">Close</button>
+						<button name="" class="taskMenuBtn">Delete</button>
 					</div>
 					<h2>{{obj.header}}</h2>
 				</header>

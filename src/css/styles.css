@@ -563,7 +563,7 @@ li[category=unassigned] {
 }
 
 .editWindow {
-  display: none;
+  display: block;
   position: absolute;
   width: 43%;
   height: 400px;

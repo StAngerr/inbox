@@ -194,11 +194,14 @@
 				return;
 			}
 
+
+
 			if ( $('.activeTask').length == $('.taskItem').length ) {
 				for (var id in $scope.activeTasks) {
 					if(curElemID == id) continue;
 					$scope.activeTasks[id] = false;
 				}
+
 				removeLogo();
 
 				initClickedObj(curElemID);
@@ -239,6 +242,7 @@
 				openNewTaskAnimation();
 			}
 
+			closeEditWindow();
 
 			if( $(window).width() < 620) {
 				$('*').removeClass('slideRight');
@@ -318,6 +322,14 @@
 
 		function removePreloader() {
 			$("#fakeloader").remove();
+		};
+
+		function closeEditWindow() {
+			if( $('.mainContentInner > .window').css('display') == 'block' ) {
+				$('.users').remove();
+				$('.mainContentInner > .window').css({'display' : 'none'});
+			}
+
 		};
 
 	}]);

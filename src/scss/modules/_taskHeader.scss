@@ -117,10 +117,10 @@
 	}
 	.windowBtn {
 		display: inline-block;
-		width: 25%;
+		width: 20%;
 		height: 10%;
 		background: #A1A1A1;
-		margin: 1%;
+		margin: 1% 1% 1% 4%;
 		float: left;
 		margin-top: 0;
 		color: #E6E6E6;
@@ -158,10 +158,12 @@
 				border-bottom: 2px solid #252323;
 			}
 		}
-
 	}
 
-	.glyphicon.glyphicon-remove {		
+	.glyphicon.glyphicon-remove {
+	position: absolute;
+	top: 0;
+	right: 0;		
 		font-size: 1.8em;
 		border-radius: 2px;	
 		cursor: pointer;
@@ -169,6 +171,36 @@
 
 	}
 
+@media only screen and (max-width: $xLarge) {
+	.editWindow {
+		width: 57%;
+	 }
+}
+
+@media only screen and (max-width: $large) {
+	.editWindow {
+		width: 60%;
+	 }
+}
+
+@media only screen and (max-width: $large) {
+	.editWindow {
+		width: 64%;
+	 }	
+}
+
+@media only screen and (max-width: $medium) {
+	.editWindow {
+		h1 {
+			font-size: 1.9em;
+		 }
+	 }	
+}
+@media only screen and (max-width: $mobileMax) {
+	.editWindow {
+		width: 100%;
+	 }	
+}
 @media only screen and (max-width: $mobileMax) {
 	/* TITELE AUTHOR */
 	h2 {
@@ -192,4 +224,12 @@
 		padding: 4% 0% 4% 3%;
 	}
 	
+}
+
+@media only screen and (max-width: 425px) {
+	.editWindow {
+		h1 {
+			font-size: 1.5em;
+		 }
+	 }	
 }

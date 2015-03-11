@@ -36,12 +36,11 @@
 		<section id="mainContent">		
 			<main class="mainContentInner" ng-controller="ExpandedTaskCtrl"> 
 			
-		<div id="editWindow" class="editWindow" >
+		<div id="editWindow" class="window editWindow" >
 			<h1> Edit </h1>
 			<span class="glyphicon glyphicon-remove" ng-click="closeEditWindow()"></span>
-			<!-- <button class="closeBtn" ng-click="closeEditWindow()"> </button> -->
 			<button class="windowBtn reassign" ng-click="editButtonsEvents()">Reassign</button>
-			<button class="windowBtn" click="editButtonsEvents($event)">Button2</button>
+			<button class="windowBtn" click="editButtonsEvents($event)">Rename</button>
 			<button class="windowBtn" ng-click="editButtonsEvents($event)">Button3</button>
 		</div>
 <!--	HEADER -->
@@ -74,8 +73,8 @@
 		<!-- NEW COMMENT BLOCK -->
 				<div class="newComment ">
 					<div class="newCommentSimple">
-						<p> Add <a ng-click="writeCommentInput()" href="#">internal node</a> or 
-						<a ng-click="writeCommentInput()" href="#">public reply</a> 
+						<p> Add <a ng-click="writeCommentInput()">internal node</a> or 
+						<a ng-click="writeCommentInput()">public reply</a> 
 						</p>
 					</div>
 					<div class="newCommentExpanded">

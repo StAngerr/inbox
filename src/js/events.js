@@ -5,7 +5,7 @@ $(window).resize(function() {
 });
 
 $(document).on('click', function(event) {
-	if( $(event.target).hasClass('taskMenu') ) {
+	if( $(event.target).hasClass('taskMenu') || $(event.target.offsetParent).hasClass('taskMenu')) {
 
 	}else {
 		if($('.dropDownMenu').css('display') == 'block') $('.dropDownMenu').hide(300);

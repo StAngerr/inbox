@@ -103,6 +103,10 @@ cite {
   font-style: normal;
 }
 
+a {
+  cursor: pointer;
+}
+
 li[category=your] {
   background: linear-gradient(#fff, #F8FFF5);
 }
@@ -578,10 +582,10 @@ li[category=unassigned] {
 }
 .editWindow .windowBtn {
   display: inline-block;
-  width: 25%;
+  width: 20%;
   height: 10%;
   background: #A1A1A1;
-  margin: 1%;
+  margin: 1% 1% 1% 4%;
   float: left;
   margin-top: 0;
   color: #E6E6E6;
@@ -617,11 +621,39 @@ li[category=unassigned] {
   border-bottom: 2px solid #252323;
 }
 .editWindow .glyphicon.glyphicon-remove {
+  position: absolute;
+  top: 0;
+  right: 0;
   font-size: 1.8em;
   border-radius: 2px;
   cursor: pointer;
 }
 
+@media only screen and (max-width: 1453px) {
+  .editWindow {
+    width: 57%;
+  }
+}
+@media only screen and (max-width: 1153px) {
+  .editWindow {
+    width: 60%;
+  }
+}
+@media only screen and (max-width: 1153px) {
+  .editWindow {
+    width: 64%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .editWindow h1 {
+    font-size: 1.9em;
+  }
+}
+@media only screen and (max-width: 620px) {
+  .editWindow {
+    width: 100%;
+  }
+}
 @media only screen and (max-width: 620px) {
   /* TITELE AUTHOR */
   h2 {
@@ -645,6 +677,11 @@ li[category=unassigned] {
     border-bottom: 1px solid #cacaca;
     margin-top: 0%;
     padding: 4% 0% 4% 3%;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .editWindow h1 {
+    font-size: 1.5em;
   }
 }
 /* NEW COMMENT BLOCK.  SIMPLE AND EXPANDED */

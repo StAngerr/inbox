@@ -75,8 +75,11 @@
 
 		 $scope.editButtonsEvents = function() {
 			if( $(event.target).hasClass('reassign') ) {
-				//$('.editWindow').append('<div class="users"><h2>Reassign to: </h2></div>');
-				showUsers();
+				if($('.users').css('display') == 'block') {
+					$('.users').remove();
+				} else {
+					showUsers();
+				}
 			}
 		};
 
@@ -89,11 +92,10 @@
 			if( localStorageService.get('users') ) {
 				$scope.users = localStorageService.get('users');
 					
-					paintUsers($scope.users);
-					$('.users').toggle( "bounce", { times: 3 }, "slow"); 
-					
-					/*$('.users').toggle( "boun ce", { times: 3 }, "slow" );*/
-					
+				paintUsers($scope.users);
+				
+				$('.users').toggle( "bounce", { times: 3 }, "slow"); 
+				
 			} else {
 				$http.get('src/content/users.json').success(function(data, status, headers, config) { 
 					$scope.users = data;
@@ -117,15 +119,37 @@
 		};
 
 		$scope.reassignTask =function(event) {
-			alert('asdas');
+			var  check = confirm("You sure you want to reassign this task to " + $(event.currentTarget).attr('name'));
+
+			if(!check) {
+				return;
+			}
+
 			var currentUserId = event.currentTarget.id; 
 			var users = localStorageService.get('users');
+			
+			for (var i=0; i < users.length; i++) {
+				if( users[i].id == currentUserId) $scope.$parent.obj.user = users[i];	
+			}
 
-
+			writeReasingInStorage();
 		};
 
 		$scope.openEdit = function() {
 			$('.editWindow').css({'display' : 'block'});
 		};
+
+		function writeReasingInStorage() {
+			var tasks = localStorageService.get('tasks');
+			var temp = $scope.$parent.obj;
+
+			for (var i = 0; i < tasks.length; i++) {
+				if(tasks[i].id == temp.id) {
+					tasks[i].userId =temp.user.id;
+				}
+			}
+			localStorageService.set('tasks',tasks);
+		};
+
 	}]);
 })();

@@ -47,7 +47,7 @@
 				$('.newComment').removeClass('newCommentExpanded');
 			} else {
 				$('.newComment').addClass('newCommentExpanded');
-				$('.newCommentExpanded *').animate({'opacity' : '1'},200);
+				$('.newCommentExpanded *').animate({'opacity' : '1'}, 200);
 			}
 		};
 
@@ -68,7 +68,7 @@
 			
 			$scope.$parent.commentsToTask.push(newComment);
 
-			localStorageService.set('comments' + $scope.$parent.obj.id + '',$scope.$parent.commentsToTask);
+			localStorageService.set('comments' + $scope.$parent.obj.id + '', $scope.$parent.commentsToTask);
 
 			$('.newComment').removeClass('newCommentExpanded');
 		};

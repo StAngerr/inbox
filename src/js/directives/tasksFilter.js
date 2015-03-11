@@ -78,7 +78,6 @@
 				$scope.tasks = localStorageService.get('tasks');
 				setUsersToTasks();
 				initCategories();
-
 			} else {
 				getTasksFromServ();
 			}	

@@ -1,4 +1,10 @@
 /* TITELE AUTHOR */
+.mainContentInner {
+	header {
+		position: relative;
+	}
+}
+
 .headerControls {
 	display: none;
 	border-top: 1px solid darken($lightGrey,20%);
@@ -6,7 +12,7 @@
 	margin: 0px;
 	margin-top: 2%;
 	
-	.returnBtn{
+	.returnBtn {
 		width: 25px;
 		height: 40px;
 		border: none;
@@ -16,6 +22,7 @@
 		outline: none;
 	}
 }	
+
 .metaData {
 	display: block;
 	color: darken($creamColor,25%);
@@ -47,9 +54,10 @@
 		width: 100px;
 		height: 140px;
 		background: #ccc;
-		top: 11%;
-		right: 16%;
+		top: 110px;
+		right: 1%;
 		border-top: 4px solid #393939;
+		z-index: 8;
 
 		.taskMenuBtn {
 			width: 100%;
@@ -74,8 +82,6 @@
 				border-color: #8D8C8C;
 			}
 		}
-
-
 	}
 }
 
@@ -161,9 +167,9 @@
 	}
 
 	.glyphicon.glyphicon-remove {
-	position: absolute;
-	top: 0;
-	right: 0;		
+		position: absolute;
+		top: 0;
+		right: 0;		
 		font-size: 1.8em;
 		border-radius: 2px;	
 		cursor: pointer;
@@ -172,24 +178,45 @@
 	}
 
 @media only screen and (max-width: $xLarge) {
+	.taskMenu {
+		& + .dropDownMenu { 
+		
+		}
+	}
 	.editWindow {
 		width: 57%;
 	 }
+
 }
 
 @media only screen and (max-width: $large) {
+	.taskMenu {
+		& + .dropDownMenu { 
+		
+		}
+	}
 	.editWindow {
 		width: 60%;
 	 }
 }
 
 @media only screen and (max-width: $large) {
+	.taskMenu {
+		& + .dropDownMenu { 
+			top: 95px;
+		}
+	}
 	.editWindow {
 		width: 64%;
 	 }	
 }
 
 @media only screen and (max-width: $medium) {
+	.taskMenu {
+		& + .dropDownMenu { 
+			top: 80px;
+		}
+	}
 	.editWindow {
 		h1 {
 			font-size: 1.9em;
@@ -201,6 +228,23 @@
 		width: 100%;
 	 }	
 }
+
+@media only screen and (max-width: $middle) {
+	.taskMenu {
+		& + .dropDownMenu { 
+			top: 85px;
+		}
+	}	
+}
+
+@media only screen and (max-width: $medium) {
+	.taskMenu {
+		& + .dropDownMenu { 
+			top: 75px;
+		}
+	}	
+}
+
 @media only screen and (max-width: $mobileMax) {
 	/* TITELE AUTHOR */
 	h2 {

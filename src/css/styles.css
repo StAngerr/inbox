@@ -472,6 +472,10 @@ li[category=unassigned] {
   }
 }
 /* TITELE AUTHOR */
+.mainContentInner header {
+  position: relative;
+}
+
 .headerControls {
   display: none;
   border-top: 1px solid #cacaca;
@@ -519,9 +523,10 @@ li[category=unassigned] {
   width: 100px;
   height: 140px;
   background: #ccc;
-  top: 11%;
-  right: 16%;
+  top: 110px;
+  right: 1%;
   border-top: 4px solid #393939;
+  z-index: 8;
 }
 .taskMenu + .dropDownMenu .taskMenuBtn {
   width: 100%;
@@ -640,11 +645,19 @@ li[category=unassigned] {
   }
 }
 @media only screen and (max-width: 1153px) {
+  .taskMenu + .dropDownMenu {
+    top: 95px;
+  }
+
   .editWindow {
     width: 64%;
   }
 }
 @media only screen and (max-width: 768px) {
+  .taskMenu + .dropDownMenu {
+    top: 80px;
+  }
+
   .editWindow h1 {
     font-size: 1.9em;
   }
@@ -652,6 +665,16 @@ li[category=unassigned] {
 @media only screen and (max-width: 620px) {
   .editWindow {
     width: 100%;
+  }
+}
+@media only screen and (max-width: 890px) {
+  .taskMenu + .dropDownMenu {
+    top: 85px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .taskMenu + .dropDownMenu {
+    top: 75px;
   }
 }
 @media only screen and (max-width: 620px) {

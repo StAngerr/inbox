@@ -4,14 +4,14 @@
 	app.directive('commentsList', function() {
 		return {
 			strict : 'E',
-			templateUrl : 'src/js/templates/commentsTmpl.html'
+			templateUrl : 'dist/templates/commentsTmpl.html'
 		}
 	});
 
 	app.directive('editWindow', function() {
 		return {
 			strict : 'E',
-			templateUrl : 'src/js/templates/editPopup.html',
+			templateUrl : 'dist/templates/editPopup.html',
 			controller : 'ExpandedTaskCtrl'
 		}
 	});
@@ -19,7 +19,7 @@
 	app.directive('users', function() {
 		return {
 			strict : 'E',
-			templateUrl : 'src/js/templates/usersTemplate.html',
+			templateUrl : 'dist/templates/usersTemplate.html',
 			controller : 'ExpandedTaskCtrl'
 		}
 

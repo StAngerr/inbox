@@ -6,6 +6,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-concat-css');
 
 	grunt.initConfig({
 
@@ -28,17 +30,18 @@ module.exports = function(grunt) {
 				files: ['**/*.css','**/*.html']
 			},
 			javaScript: {
-				files: ['src/js/*.js'],
-				tasks: ['jshint']
+				options:{
+					livereload: true
+				},
+				files: ['src/js/directives/*.js'],
+				tasks: ['buildJS','jshint']
 			},
 
 			cssComp: {
 	
 				files: ['src/scss/*.scss','src/scss/modules/*.scss'],
-				tasks: ['sass']
+				tasks: ['sass','buildCss']
 			},
-
-
 		},
 
 		connect: {
@@ -49,7 +52,7 @@ module.exports = function(grunt) {
 		        livereload: true,
 		      }
 		    }
- 		 },
+ 		},
 
  		 sass: {
  		 	dist: {
@@ -65,18 +68,46 @@ module.exports = function(grunt) {
  		 cssmin: {
  		 	target: {
  		 		files: {
-					'src/css/style.min.css' : 'src/css/*.css'
+					'dist/css/styles.min.css' : 'dist/css/styles.css'
  		 		}
  		 	}
  		 },
 
+ 		 concat_css: {
+		    options: {},
+		    all: {
+		    	src: ['src/css/bootstrap.css','src/css/styles.css', 'src/css/fakeLoader.css'],
+      			dest: "dist/css/styles.css"
+		    },
+  		 },
+
  		 uglify: {
  		 	build: {
- 		 		src: 'src/js/scripts.js',
- 		 		dest: 'src/js/scripts.min.js'
+ 		 		src: 'dist/scripts/scripts.js',
+ 		 		dest: 'dist/scripts/scripts.min.js'
  		 	}
- 		 }	
+ 		 },
+		concat: {
+			farmeworks: {
+			  src: ['bower_components/jquery/dist/jquery.js', 
+			  'bower_components/modernizr/modernizr.js',
+			  'bower_components/angular/angular.js',
+			  'bower_components/angular-route/angular-route.js',
+			  'bower_components/angular-local-storage/dist/angular-local-storage.js',
+			  'src/js/inboxApp.js',
+			  'src/js/events.js',
+			  'src/js/directives/tasksFilter.js',
+			  'src/js/directives/commentsList.js',
+			  'src/js/fakeLoader.js'			  
+			  ],
+			  dest: 'dist/scripts/scripts.js',
+			},
+		},	
 	});
+
+	grunt.registerTask('buildCss',['sass','concat_css','cssmin']);
+	grunt.registerTask('buildJS',['concat','uglify']);
+	grunt.registerTask('buildAll',['buildCss','buildJS']);
 
 	grunt.registerTask('runServ', [
 		'connect:server',

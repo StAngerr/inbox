@@ -3,9 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>inbox</title>
-	<link rel="stylesheet" type="text/css" href="src/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="src/css/styles.css">
-	<link rel="stylesheet" href="preloader/fakeLoader.css">
+
+	<link rel="stylesheet" type="text/css" href="dist/css/styles.min.css">
 </head>
 <body ng-controller= "mainCtrl">
 
@@ -13,8 +12,6 @@
 		<section id="navigation">
 <!-- SEARCH -->
 			<header class="navHeader">
-			<!-- <a href="#/state/your/task/13">new</a>
-			<a href="#/stae/unassigned/task/1">new1</a> -->
 				<div class="search" ng-controller="SearchFieldCtrl"> 
 					<div class="searchWrap">
 						<input id="searchField" type="search " class="searchField" ng-model="$parent.searchFieldInput">
@@ -25,8 +22,8 @@
 <!-- ___________________________________________________________________________ -->
 			
 <!-- TASKS -->
-			<div class="filterWrap" ng-controller="TasksFilterCtrl">	<ng-view></ng-view>
-			<a href=""> {{helloWorld}}</a>
+			<div class="filterWrap" ng-controller="TasksFilterCtrl">
+				<ng-view></ng-view>
 				<task-filter></task-filter>
 				<tasks-list></tasks-list>	
 			</div>
@@ -45,9 +42,12 @@
 						<span>{{obj.author}}</span>
 						<span>{{obj.date}}</span>
 					</aside>
-					<a class="taskMenu" ng-click="dropDownShowHide(); "><span></span><span></span><span></span></a>
+					<a class="taskMenu" ng-click="dropDownShowHide(); ">
+						<span></span>
+						<span></span>
+						<span></span>
+					</a>
 					<div class="dropDownMenu" >
-
 						<button name="edit" class="taskMenuBtn" ng-click="openWindow($event)">Edit</button>
 						<button name="" class="taskMenuBtn">Close</button>
 						<button name="" class="taskMenuBtn">Delete</button>
@@ -59,7 +59,7 @@
 					<figure>
 						<img class="authorIcon" ng-src="{{obj.user.avatar}}">
 					</figure>
-					<cite><p>Assigned: {{obj.user.name}</p></cite>
+					<aside><p>Assigned: {{obj.user.name}}</p></cite>
 				</div>
 <!-- ___________________________________________________________________________ -->
 
@@ -92,19 +92,6 @@
 		</section>
 	</div>
 
-	<script src="bower_components/jquery/dist/jquery.js"></script>
-	<script src="src/libs/jquery-ui.min.js"></script>
-	<script src="bower_components/modernizr/modernizr.js"></script>
-	<script src="bower_components/angular/angular.js"></script>
-	<script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
-	<script src="src/js/inboxApp.js"></script>
-	<script src="src/js/events.js"></script>
-	<!-- DIRECTIVES -->
-	<script src="src/js/directives/tasksFilter.js"></script>
-	<script src="src/js/directives/commentsList.js"></script>
-	<!-- PRELOADER -->
-	<script src="preloader/fakeLoader.js"></script>
-
+	<script src="dist/scripts/scripts.min.js"></script>
 </body>
 </html>

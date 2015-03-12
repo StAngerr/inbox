@@ -1,0 +1,22 @@
+
+<ul class="tasks" ng-controller="subCtrl">
+	<li id="{{task.id}}" category="{{task.status}}" class="taskItem" ng-repeat="task in tasks | filter:{ header : searchFieldInput} | filter:{status : curStatus} | orderBy:'time'" 
+		 ng-click="cangeUrlTaskId($event)" ng-class="{activeTask : activeTasks[task.id]}">
+		<article>
+			<header>			
+				<h3 class="taskHeader">{{task.header}}</h3>
+			</header>
+
+			<section>
+				<p class="taskDescription">{{task.description}}</p>
+			</section>
+
+			<footer>
+				<p class="meta">{{task.author + task.time + "m"}}</p> 
+				<figure>
+					<img class="taskAuthorIcon" ng-src="{{task.user.avatar}}" />
+				</figure>
+			</footer>
+		</article>
+	</li>
+</ul>

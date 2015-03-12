@@ -1,0 +1,9 @@
+<div class="users">
+	<h2>Reassign to: </h2>
+	<div ng-repeat="user in users" id="{{user.id}}" name="{{user.name}}" class="singleUser" ng-click="reassignTask($event)">
+		<figure class="singleUserAvatar">
+			<img ng-src="{{user.avatar}}">
+		</figure>
+		<p class="singleUserName">{{user.name}}</p>
+	</div>
+</div>

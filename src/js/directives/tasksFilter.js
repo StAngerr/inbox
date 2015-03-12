@@ -1,11 +1,10 @@
 (function() {
-
 	var app=angular.module('tastks-filter',[]);
 /*DIRS*/
 	app.directive('tasksList', function() {
         var directive = {
             restrict: 'E',
-            templateUrl: 'src/js/templates/tasksTempl.html'
+            templateUrl: 'dist/templates/tasksTempl.html'
         };
         return directive;
     });
@@ -13,7 +12,7 @@
 	app.directive('taskFilter', function() {
 		return {
 			strict : 'E',
-			templateUrl : 'src/js/templates/taskFilterTempl.html'
+			templateUrl : 'dist/templates/taskFilterTempl.html'
 		}
 	});
 
@@ -42,7 +41,7 @@
 		$scope.activeTasks = {};	
 
 		$scope.urlState = "1";
-		$scope.urlTask = "undefined";	
+		$scope.urlTask = "none";	
 
 		$scope.tasks = [];
 
@@ -161,7 +160,7 @@
 		};
 
 		$scope.changeUrlState = function(value) {
-			$scope.urlTask = "undefined";
+			$scope.urlTask = "none";
 			for (var id in $scope.activeTasks) {
 				$scope.activeTasks[id] = true;
 			}	
@@ -172,7 +171,7 @@
 
 		$scope.cangeUrlTaskId = function(event) {
 			if(event.currentTarget.id == $scope.urlTask) {
-				$scope.urlTask = "undefined";
+				$scope.urlTask = "none";
 			} else {
 				$scope.urlTask = event.currentTarget.id;
 			}
@@ -182,7 +181,7 @@
 		function openTask(id) {
 			var curElemID =  id;
 			
-			if(curElemID == 'undefined') {
+			if(curElemID == 'none') {
 				hideMainContent();
 
 				for (var id in $scope.activeTasks) {

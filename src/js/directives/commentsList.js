@@ -102,7 +102,7 @@
  			
  			$('#navigation').removeClass('slideMore');
 			$('#mainContent').removeClass('slideMore');
-			
+
 			setTimeout(function()
 			   $("reassign-section").remove();
 			}, 600);
@@ -123,16 +123,6 @@
 					.append($compile("<reassign-section></reassign-section>")($scope));
 		}
 /* ________________________________________________*/
-
-		$scope.editButtonsEvents = function() {
-			if( $(event.target).hasClass('reassign') ) {
-				if($('.users').css('display') == 'block') {
-					$('.users').remove();
-				} else {
-					showUsers();
-				}
-			}
-		};
 
 		$scope.closeEditWindow = function() {
 			$('.users').remove();

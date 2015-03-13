@@ -166,5 +166,9 @@
 			localStorageService.set('tasks',tasks);
 		};
 
+		function checkAppearance() {
+			
+		}
+
 	}]);
 })();

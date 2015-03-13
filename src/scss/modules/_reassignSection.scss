@@ -5,12 +5,13 @@
 		width: 25%;
 		height: 100%;
 		margin: 0%;	
+
 		transition: -webkit-transform .5s linear;
 		transition: transform .5s linear;
 		.reassignSectHeader {
 			width: 100%;
 			height: 10%;
-			border-top: 1px solid darken($lightGrey,20%);
+			
 			border-bottom: 1px solid darken($lightGrey,20%);
 
 			.returnButton {
@@ -32,6 +33,44 @@
 				float: left;
 			}
 		}
+		
+		.userList {
+			overflow-y: scroll;
+			height: 90%;
+			
+			.userItem {
+				width: 100%;
+				padding: 0 0 0% 0%;
+				transition: background .5s;
+				cursor: pointer;
+				&:hover {
+					background: #F0F0F0
+				}
+
+				.singleUserAvatar {
+					display: inline-block;
+					width: 4%;
+					margin-right: 9%;
+					padding-left: 5%;
+					&>img {
+
+						width: 40px;
+						height: 40px;
+						border-radius: 50%;
+					}
+				}
+				
+				.singleUserName {
+					display: inline-block;
+					width: 85%;
+					border-bottom: 2px solid darken($lightGrey,20%);
+					font-size: 1.5em;
+					
+					padding: 20px 0 20px 0px;
+				}
+			}
+		}
+
 	}
 	.slideMore {
 		transition: -webkit-transform .5s linear;

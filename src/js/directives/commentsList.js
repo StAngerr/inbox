@@ -42,7 +42,7 @@
 
 		$scope.users;
 
-		$scope.returnBtn = function() {
+		$scope.returnBtnHead = function() {
 			var taskUrl = $location.path().split("/");
 
 			taskUrl[4]='none';
@@ -97,7 +97,7 @@
 			$scope.showEditWindow();
 		}
 /* ________________________________________________*/
-		$scope.returnBtn = function() {
+		$scope.closeReassign = function() {
 			$('#reassignSection').removeClass('slideMore');
  			
  			$('#navigation').removeClass('slideMore');
@@ -111,9 +111,22 @@
 			var button = event.target;
 
 			if(button.name == 'reassign') {
+				initUsers();
+
 				$('#navigation').addClass('slideMore');
 				$('#mainContent').addClass('slideMore');
+
 				addReassignSection();
+			}
+		}
+
+		function initUsers() {
+			if( localStorageService.get('users') ) {
+				$scope.users = localStorageService.get('users');
+			} else {
+				$http.get('src/content/users.json').success(function(data, status, headers, config) { 
+					$scope.users = data;					
+				});	
 			}
 		}
 
@@ -123,18 +136,16 @@
 		}
 /* ________________________________________________*/
 
-		$scope.closeEditWindow = function() {
-			$('.users').remove();
-			$('.editWindow').remove();
-		};
 
-		$scope.reassignTask =function(event) {
+		$scope.reassignTask = function(event) {
 			var  check = confirm("You sure you want to reassign this task to " + $(event.currentTarget).attr('name'));
 
 			if(!check) {
 				return;
 			}
 
+			$scope.closeReassign();
+			
 			var currentUserId = event.currentTarget.id; 
 			var users = localStorageService.get('users');
 			
@@ -145,6 +156,18 @@
 			writeReasingInStorage();
 		};
 
+		function writeReasingInStorage() {
+			var tasks = localStorageService.get('tasks');
+			var temp = $scope.$parent.obj;
+
+			for (var i = 0; i < tasks.length; i++) {
+				if(tasks[i].id == temp.id) {
+					tasks[i].userId =temp.user.id;
+				}
+			}
+			localStorageService.set('tasks',tasks);
+		};
+
 		$scope.openWindow = function(event) {
 			if(event.target.name == 'edit') {
 				angular.element(document.getElementById('mainContentInner'))
@@ -152,7 +175,14 @@
 			}
 		}
 
-		function showUsers() {
+
+		$scope.closeEditWindow = function() {
+			$('.users').remove();
+			$('.editWindow').remove();
+		};
+
+
+/*		function showUsers() {
 
 			if($('.users').css('display') == 'block' ) {
 				return;
@@ -160,7 +190,7 @@
 
 			if( localStorageService.get('users') ) {
 				$scope.users = localStorageService.get('users');
-					
+
 				paintUsers($scope.users);
 				
 				$('.users').toggle( "bounce", { times: 3 }, "slow"); 
@@ -180,19 +210,9 @@
 			angular.element(document.getElementById('editWindow'))
 					.append($compile("<users></users>")($scope));
 	
-		}
+		}*/
 
-		function writeReasingInStorage() {
-			var tasks = localStorageService.get('tasks');
-			var temp = $scope.$parent.obj;
 
-			for (var i = 0; i < tasks.length; i++) {
-				if(tasks[i].id == temp.id) {
-					tasks[i].userId =temp.user.id;
-				}
-			}
-			localStorageService.set('tasks',tasks);
-		};
 
 	}]);
 })();

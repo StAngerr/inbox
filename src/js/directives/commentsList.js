@@ -102,8 +102,7 @@
  			
  			$('#navigation').removeClass('slideMore');
 			$('#mainContent').removeClass('slideMore');
-
-			setTimeout(function()
+			setTimeout(function(){
 			   $("reassign-section").remove();
 			}, 600);
  		}

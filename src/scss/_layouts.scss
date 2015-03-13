@@ -61,7 +61,7 @@
 
 	#navigation {
 		float: left;
-		width: 50%;
+		width: 25%;
 		margin: 0%;
 	}
 
@@ -73,15 +73,17 @@
 	}
 
 	.slideRight {
-		transition: -webkit-transform .5s linear;
-		transition: transform .5s linear;
+		transition: -webkit-transform .4s linear;
+		transition: transform .4s linear;
 		-webkit-transform:translateX(0%);
 		        transform:translateX(0%);
 	}
 
+	
+
 	#mainContent {
 		float: left;
-		width: 50%;
+		width: 25%;
 		
 		.mainContentInner {
 			width: 100%;	

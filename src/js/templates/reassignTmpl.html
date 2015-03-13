@@ -1,0 +1,14 @@
+<section id="reassignSection">
+	<header class="reassignSectHeader">
+		<button class="returnButton" ng-click="closeReassign()"></button>
+		<h1 class="title">Reassign to:</h1>
+	</header>
+	<ul class="userList">
+		<li class="userItem" ng-repeat="user in users" id="{{user.id}}" name="{{user.name}}" ng-click="reassignTask($event)">
+			<figure class="singleUserAvatar">
+				<img ng-src="{{user.avatar}}">
+			</figure>
+			<p class="singleUserName">{{user.name}}</p>
+		</li>
+	</ul>
+</section>

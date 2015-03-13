@@ -29,18 +29,17 @@ module.exports = function(grunt) {
 				},
 				files: ['**/*.css','**/*.html']
 			},
-			javaScript: {
+/*			javaScript: {
 				options:{
 					livereload: true
 				},
 				files: ['src/js/directives/*.js'],
-				tasks: ['buildJS','jshint']
-			},
+				tasks: ['jshint']
+			},*/
 
 			cssComp: {
-	
 				files: ['src/scss/*.scss','src/scss/modules/*.scss'],
-				tasks: ['sass','buildCss']
+				tasks: ['sass']
 			},
 		},
 
@@ -93,7 +92,13 @@ module.exports = function(grunt) {
 			  'bower_components/modernizr/modernizr.js',
 			  'bower_components/angular/angular.js',
 			  'bower_components/angular-route/angular-route.js',
-			  'bower_components/angular-local-storage/dist/angular-local-storage.js',
+			  'bower_components/angular-local-storage/dist/angular-local-storage.js'		  
+			  ],
+			  dest: 'dist/scripts/farmeworks.js',
+			},
+
+			/*scripts: {
+			  src: [
 			  'src/js/inboxApp.js',
 			  'src/js/events.js',
 			  'src/js/directives/tasksFilter.js',
@@ -101,7 +106,7 @@ module.exports = function(grunt) {
 			  'src/js/fakeLoader.js'			  
 			  ],
 			  dest: 'dist/scripts/scripts.js',
-			},
+			},*/
 		},	
 	});
 

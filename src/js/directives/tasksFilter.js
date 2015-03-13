@@ -4,7 +4,7 @@
 	app.directive('tasksList', function() {
         var directive = {
             restrict: 'E',
-            templateUrl: 'dist/templates/tasksTempl.html'
+            templateUrl: 'src/js/templates/tasksTempl.html'
         };
         return directive;
     });
@@ -12,7 +12,7 @@
 	app.directive('taskFilter', function() {
 		return {
 			strict : 'E',
-			templateUrl : 'dist/templates/taskFilterTempl.html'
+			templateUrl : 'src/js/templates/taskFilterTempl.html'
 		}
 	});
 

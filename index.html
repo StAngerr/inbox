@@ -4,7 +4,11 @@
 	<meta charset="UTF-8">
 	<title>inbox</title>
 
-	<link rel="stylesheet" type="text/css" href="dist/css/styles.min.css">
+	<link rel="stylesheet" href="src/css/bootstrap.css">
+	<link rel="stylesheet" href="src/css/styles.css">
+	<link rel="stylesheet" href="src/css/fakeLoader.css">
+
+	<!-- <link rel="stylesheet" href="dist/css/styles.min.css"> -->
 </head>
 <body ng-controller= "mainCtrl">
 
@@ -49,7 +53,7 @@
 					</a>
 					<div class="dropDownMenu" >
 						<button name="edit" class="taskMenuBtn" ng-click="openWindow($event)">Edit</button>
-						<button name="" class="taskMenuBtn">Close</button>
+						<button name="reassign" class="taskMenuBtn" ng-click="menuBtnEvents($event)">Close</button>
 						<button name="" class="taskMenuBtn">Delete</button>
 					</div>
 					<h2>{{obj.header}}</h2>
@@ -90,8 +94,20 @@
 <!-- ___________________________________________________________________________ -->				
 			</main>
 		</section>
-	</div>
 
-	<script src="dist/scripts/scripts.min.js"></script>
+	</div>
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/modernizr/modernizr.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+
+	<script src="src/js/inboxApp.js"></script>
+	<script src="src/js/events.js"></script>
+	<script src="src/js/directives/tasksFilter.js"></script>
+	<script src="src/js/directives/commentsList.js"></script>
+	<script src="src/js/fakeLoader.js"></script>
+
+<!-- 	<script src="dist/scripts/scripts.min.js"></script>   -->
 </body>
 </html>

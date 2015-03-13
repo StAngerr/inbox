@@ -4,23 +4,36 @@
 	app.directive('commentsList', function() {
 		return {
 			strict : 'E',
-			templateUrl : 'dist/templates/commentsTmpl.html'
+			templateUrl : 'src/js/templates/commentsTmpl.html'
 		}
 	});
 
 	app.directive('editWindow', function() {
 		return {
 			strict : 'E',
-			templateUrl : 'dist/templates/editPopup.html',
+			templateUrl : 'src/js/templates/editPopup.html',
 			controller : 'ExpandedTaskCtrl'
 		}
 	});
 
-	app.directive('users', function() {
+	app.directive('reassignSection', function() {
+		function link(scope, element, attrs) { 
+		 		$('#reassignSection').addClass('slideMore');
+		 	}
 		return {
 			strict : 'E',
-			templateUrl : 'dist/templates/usersTemplate.html',
-			controller : 'ExpandedTaskCtrl'
+			templateUrl : 'src/js/templates/reassignTmpl.html',
+			controller : 'ExpandedTaskCtrl',
+			link : link
+			}
+	});
+
+	app.directive('users', function() {
+
+		return {
+			strict : 'E',
+			templateUrl : 'src/js/templates/usersTemplate.html',
+			controller : 'ExpandedTaskCtrl',
 		}
 
 	});
@@ -32,7 +45,7 @@
 		$scope.returnBtn = function() {
 			var taskUrl = $location.path().split("/");
 
-			taskUrl[4]='undefined';
+			taskUrl[4]='none';
 
 			$location.path(taskUrl.join("/"));
 
@@ -43,6 +56,7 @@
 		};
 
 		$scope.writeCommentInput = function() {
+			
 			if( $('.newComment').hasClass('newCommentExpanded') ) {
 				$('.newComment').removeClass('newCommentExpanded');
 			} else {
@@ -58,8 +72,6 @@
 				content : comment.value
 			};
 			var time = new Date();
-
-
 
 			newComment.authorIcon = $('.newCommentExpanded figure .authorIcon').attr('src');
 			newComment.author += time.getHours() + ':' + time.getMinutes();
@@ -84,6 +96,33 @@
 		$scope.addEvents = function(event) {
 			$scope.showEditWindow();
 		}
+/* ________________________________________________*/
+		$scope.returnBtn = function() {
+			$('#reassignSection').removeClass('slideMore');
+ 			
+ 			$('#navigation').removeClass('slideMore');
+			$('#mainContent').removeClass('slideMore');
+			
+			setTimeout(function()
+			   $("reassign-section").remove();
+			}, 600);
+ 		}
+
+		$scope.menuBtnEvents = function(event) {
+			var button = event.target;
+
+			if(button.name == 'reassign') {
+				$('#navigation').addClass('slideMore');
+				$('#mainContent').addClass('slideMore');
+				addReassignSection();
+			}
+		}
+
+		function addReassignSection() {
+			angular.element(document.getElementById('mainWrapper'))
+					.append($compile("<reassign-section></reassign-section>")($scope));
+		}
+/* ________________________________________________*/
 
 		$scope.editButtonsEvents = function() {
 			if( $(event.target).hasClass('reassign') ) {
@@ -94,6 +133,35 @@
 				}
 			}
 		};
+
+		$scope.closeEditWindow = function() {
+			$('.users').remove();
+			$('.editWindow').remove();
+		};
+
+		$scope.reassignTask =function(event) {
+			var  check = confirm("You sure you want to reassign this task to " + $(event.currentTarget).attr('name'));
+
+			if(!check) {
+				return;
+			}
+
+			var currentUserId = event.currentTarget.id; 
+			var users = localStorageService.get('users');
+			
+			for (var i=0; i < users.length; i++) {
+				if( users[i].id == currentUserId) $scope.$parent.obj.user = users[i];	
+			}
+
+			writeReasingInStorage();
+		};
+
+		$scope.openWindow = function(event) {
+			if(event.target.name == 'edit') {
+				angular.element(document.getElementById('mainContentInner'))
+					.append($compile("<edit-window></edit-window>")($scope));
+			}
+		}
 
 		function showUsers() {
 
@@ -123,35 +191,6 @@
 			angular.element(document.getElementById('editWindow'))
 					.append($compile("<users></users>")($scope));
 	
-		}
-
-		$scope.closeEditWindow = function() {
-			$('.users').remove();
-			$('.editWindow').remove();
-		};
-
-		$scope.reassignTask =function(event) {
-			var  check = confirm("You sure you want to reassign this task to " + $(event.currentTarget).attr('name'));
-
-			if(!check) {
-				return;
-			}
-
-			var currentUserId = event.currentTarget.id; 
-			var users = localStorageService.get('users');
-			
-			for (var i=0; i < users.length; i++) {
-				if( users[i].id == currentUserId) $scope.$parent.obj.user = users[i];	
-			}
-
-			writeReasingInStorage();
-		};
-
-		$scope.openWindow = function(event) {
-			if(event.target.name == 'edit') {
-				angular.element(document.getElementById('mainContentInner'))
-					.append($compile("<edit-window></edit-window>")($scope));
-			}
 		}
 
 		function writeReasingInStorage() {

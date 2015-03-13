@@ -1,7 +1,5 @@
 @import "variables";
 
-
-
 @font-face {
 	font-family: "Droid Sans";
 	src: url("../fonts/Droid_Sans/DroidSans.ttf");
@@ -38,6 +36,7 @@ main {
 	width: 60%;
 	height: 100%;
 }
+
 h2 {
 	font-weight: 700;
 }
@@ -45,12 +44,15 @@ h2 {
 cite {
 	font-style: normal;
 }
+
 a {
 	cursor: pointer;
 }
+
 li[category=your] { 
      background: linear-gradient(#fff, #F8FFF5);
 }
+
 li[category=unassigned] { 
      background: linear-gradient(#fff, #FFEDED);
 }
@@ -63,7 +65,7 @@ li[category=unassigned] {
 	}
 	body {
 		height: 100%;
-		width: 200%;
+		width: 400%;
 		overflow: hidden;
 	}
 	main {

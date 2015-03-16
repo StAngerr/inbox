@@ -2,12 +2,12 @@ var inbox = angular.module('inbox',['tastks-filter','comments-list','ngRoute','L
 
 inbox.config(['$routeProvider',function($routeProvide) {
 	$routeProvide
-		.when('/state/:state/task/:id',{
-			templateUrl : 'src/js/templates/new.html',
+		.when('/state/:state/task/:id', {
+			template : ' ',
 			controller : 'subCtrl'
 		})
 		.otherwise({
-			redirectTo: '/'
+			template :' '
 		});
 }]);
 

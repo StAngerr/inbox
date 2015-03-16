@@ -14,7 +14,7 @@
 			<footer>
 				<p class="meta">{{task.author + task.time + "m"}}</p> 
 				<figure>
-					<img class="taskAuthorIcon" ng-src="{{task.user.avatar}}" />
+					<img class="taskAuthorIcon" user="{{task.user.id}}" ng-src="{{task.user.avatar}}" />
 				</figure>
 			</footer>
 		</article>

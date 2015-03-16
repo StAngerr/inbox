@@ -1,18 +1,84 @@
 (function() {
 	var app=angular.module('tastks-filter',[]);
 /*DIRS*/
-	app.directive('tasksList', function() {
-        var directive = {
-            restrict: 'E',
-            templateUrl: 'src/js/templates/tasksTempl.html'
+	app.directive('tasksList',['$compile','localStorageService', function($compile, localStorageService) {
+
+        var link = function(scope, element, attr) {
+        	element.on('click', function(event) {
+        		event.preventDefault();
+        		var elem = event.target;
+        		var userId = $(elem).attr('user');
+        		scope.userTasks = [];
+
+        		if ( $(elem).hasClass('taskAuthorIcon') ) {
+        			$('.filterWrap > task-filter').remove();
+        			$('.filterWrap > tasks-list').remove();
+
+        			scope.currentUser = findUser();
+
+        			addUserOverviewHeader();
+
+        			findAssignedTasks();
+
+        			addUserOverviewTasks();
+        		}
+
+        		function findAssignedTasks() {
+        			var tasks = localStorageService.get('tasks');
+        			
+   					for (var i=0; i < tasks.length; i++) {
+   						if(tasks[i].userId == userId) scope.userTasks.push(tasks[i]);
+   					}
+        		}
+
+        		function addUserOverviewTasks() {
+        			angular.element(document.getElementById('tasksFilter'))
+						.append($compile("<cur-user-tasks></cur-user-tasks>")(scope));
+
+        		}
+
+        		function addUserOverviewHeader() {
+        			angular.element(document.getElementById('tasksFilter'))
+						.prepend($compile("<user-overview></user-overview>")(scope));
+        		}
+
+        		function findUser() {
+					
+        			var users = localStorageService.get('users');
+
+        			for (var i=0; i < users.length; i++ ) {
+        				if (users[i].id == userId) return users[i];
+        			}	
+        		}
+
+        	});
         };
-        return directive;
-    });
+
+        return {
+            restrict: 'E',
+            templateUrl: 'src/js/templates/tasksTempl.html',
+			link : link
+        }
+    }]);
+
+	app.directive('curUserTasks', function() {
+		return {
+			strict : 'E',
+			templateUrl : 'src/js/templates/singleUserTasks.html'
+		}
+	});
 
 	app.directive('taskFilter', function() {
 		return {
 			strict : 'E',
 			templateUrl : 'src/js/templates/taskFilterTempl.html'
+		}
+	});
+
+	app.directive('userOverview', function() {
+		return {
+			strict : 'E',
+			templateUrl : 'src/js/templates/singleUserOverview.html'
 		}
 	});
 
@@ -54,6 +120,7 @@
 
 		$scope.setActive = function(value) {
 			var openedElem;
+
 			if(value == "null") {
 				return;
 			}

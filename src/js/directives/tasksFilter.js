@@ -4,19 +4,57 @@
 	app.directive('tasksList',['$compile','$routeParams','$location', function($compile, $routeParams, $location) {
 
         var link = function(scope, element, attr) {
-        	element.on('click', function(event) {
-        		var elem = event.target;
-        		var userId = $(elem).attr('user');
-        		var url = $location.path().split("/");
+	        	element.on('click', function(event) {
+	        		var elem = event.target;
+	        		var userId = $(elem).attr('user');
+	        		var url = $location.path().split("/");
 
-      		if ( $(elem).hasClass('taskAuthorIcon') ) {
-					
-					$location.path('user/' + userId + '/' + (url[3] || 'task') + '/'  + (url[4] || 'none'));
-					scope.$apply();
-        		}
+	        		scope.DRAGONNNNNN = [];
+
+	      		if ( $(elem).hasClass('taskAuthorIcon') ) {
+						addReturnButton();
+						$location.path('user/' + userId + '/' + (url[3] || 'task') + '/'  + (url[4] || 'none'));
+						scope.$apply();
+
+						return;
+	        		}
+
+
+	        	var task;
+
+	        	if( $(event.target).hasClass('taskItem') ) {
+	        		task = event.target;
+	        	} else {
+	        		task = $(event.target).closest('.taskItem')[0];
+	        	}
+
+/*				if( $(event.target).attr('user') ) {
+				  event.preventDefault();
+				  return;
+				}*/
+				if(task.id == scope.$parent.urlTask) {
+					scope.$parent.urlTask = "none";
+				} else {
+					scope.$parent.urlTask = task.id;
+				}
+
+				var temp = $location.path().split('/');
+
+				if (temp.length < 3) {
+					$location.path('/state/' + (scope.$parent.urlState || "1") + '/task/' + scope.$parent.urlTask);
+				} else {
+					$location.path(temp[1] + '/' + temp[2] + '/task/' + scope.$parent.urlTask);
+				}
 
         	});
-        };
+
+
+        	/*button*/
+        	function addReturnButton() {
+				angular.element(document.getElementById('navHeader'))
+						.append($compile('<button ng-click="alert11()" class="returnBtn" style="background: orange; width: 15px; height: 44px; position: absolute; top: 0; left: 0;"> </button>')(scope.$parent));
+	        	}
+            };
 
         return {
             restrict: 'E',
@@ -63,10 +101,11 @@
 				$scope.$parent.searchFieldInput = '';
 			 	$(this).css({'display' : 'none'}); 	
 			});
+
 		};
 	}]);
 
-	app.controller('TasksFilterCtrl',['$scope','$http','$routeParams','$location','$rootScope','localStorageService',  function($scope, $http, $routeParams, $location, $rootScope, localStorageService) {
+	app.controller('TasksFilterCtrl',['$scope','$http','$routeParams','$location','$rootScope','localStorageService','$compile',  function($scope, $http, $routeParams, $location, $rootScope, localStorageService,$compile) {
 		$scope.curStatus = 'your';
 		$scope.active = 1;
 		
@@ -91,6 +130,8 @@
 		};
 
 		$scope.setActive = function(value) {
+			checkStateBlockExistence();
+
 			var openedElem;
 
 			if(value == "null") {
@@ -109,6 +150,20 @@
 		$scope.isSelected = function(value) {
 			return $scope.active == value;
 		};	
+
+		function checkStateBlockExistence() {
+			if( !( $('.filterWrap > task-filter').length ) ) {
+				$('.filterWrap > cur-user-tasks').remove();
+				$('.filterWrap > user-overview').remove();
+				
+				addUserTasksFilter();
+			}
+		}
+
+		function addUserTasksFilter() {
+			angular.element(document.getElementById('tasksFilter'))
+				.append($compile("<task-filter></task-filter>")($scope));
+		}
 
 		function initTasks() {	
 
@@ -199,6 +254,7 @@
 			} else {
 				$scope.setActive(url[2]);
 				openTask(url[4]);
+				
 			}
 		};
 
@@ -212,7 +268,7 @@
 			$location.path('/state/' + $scope.$parent.urlState + '/task/' + $scope.$parent.urlTask);
 		};
 
-		$scope.cangeUrlTaskId = function(event) {
+/*		$scope.cangeUrlTaskId = function(event) {
 			
 			if( $(event.target).attr('user') ) {
 			  event.preventDefault();
@@ -231,12 +287,18 @@
 			} else {
 				$location.path(temp[1] + '/' + temp[2] + '/task/' + $scope.$parent.urlTask);
 			}
-		};
+		};*/
 /*_____________________________________________________________________*/
 		function openUser(userID) {
 
 			if( ($('.filterWrap > user-overview').length) ) {
 				return;
+			}
+			/* RETURN BTN  */
+			if( !($('.navHeader > .returnBtn').length) ) {
+				angular.element(document.getElementById('navHeader'))
+						.append($compile('<button ng-click="alert11()" class="returnBtn" style="background: orange; width: 15px; height: 44px; position: absolute; top: 0; left: 0;"> </button>')($scope.$parent));
+	        	
 			}
 
 			$scope.$parent.currentUser = {};
@@ -245,6 +307,8 @@
 			$scope.$parent.currentUser = findUser(userID);
 
 			findAssignedTasks(userID);
+
+			/* CLEAR ALL SECTIONS*/
 
 			$('.filterWrap > task-filter').remove();
 			$('.filterWrap > tasks-list').remove();
@@ -264,13 +328,13 @@
 					if(tasks[i].userId == userId) $scope.$parent.userTasks.push(tasks[i]);
 				}
 		}
-
+/*   APPEND  USER VIEW TASKS*/
 		function addUserOverviewTasks() {
 			angular.element(document.getElementById('tasksFilter'))
 				.append($compile("<cur-user-tasks></cur-user-tasks>")($scope.$parent));
 
 		}
-
+/*   APPEND  USER VIEW HEAD*/
 		function addUserOverviewHeader() {
 			angular.element(document.getElementById('tasksFilter'))
 				.prepend($compile("<user-overview></user-overview>")($scope.$parent));
@@ -285,6 +349,8 @@
 		} 
 /*_____________________________________________________________________*/
 		function openTask(id) {
+			checkTasksBlockExistence();
+
 			var curElemID =  id;
 			
 			if(curElemID == 'none') {
@@ -353,6 +419,17 @@
 			}
 		}
 
+		function checkTasksBlockExistence() {
+			if( !($('.filterWrap > tasks-list').length) && !($('.filterWrap > cur-user-tasks').length)) {
+				addTasksBlock();
+			}
+		}
+
+		function addTasksBlock() {
+			angular.element(document.getElementById('tasksFilter'))
+				.append($compile("<tasks-list></tasks-list>")($scope.$parent));
+
+		}
 
 		function initClickedObj(id) {
 			for (var i=0; i < $scope.tasks.length; i++ ) {

@@ -12,9 +12,3 @@ $(document).on('click', function(event) {
 	}
 });
 
-$('.XD').on('click', function() {
-	$('#navigation').addClass('slideMore');
-	$('#mainContent').addClass('slideMore');
-	$('.three').addClass('slideLeft');
-	$('.three').addClass('slideMore');
-});

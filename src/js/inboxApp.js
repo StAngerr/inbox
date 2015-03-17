@@ -22,4 +22,14 @@ inbox.controller('mainCtrl',['$scope','$routeParams','$location','$rootScope', f
 	
 	$scope.searchFieldInput = '';
 
+
+	
+	$scope.alert11 =  function() {
+ 		$('.filterWrap > cur-user-tasks').remove();
+		$('.filterWrap > user-overview').remove();
+ 		
+ 		$location.path('/state/1/task/none');
+
+ 		$('.navHeader > .returnBtn').remove();
+ 	}   
 } ]);

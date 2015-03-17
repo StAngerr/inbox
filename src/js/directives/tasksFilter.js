@@ -5,50 +5,15 @@
 
         var link = function(scope, element, attr) {
         	element.on('click', function(event) {
-        	/*$location.path( 'usersSS/' + userId + '/' + (url[3] || 'task') + '/'  + (url[4] || 'none') );*/
-
         		var elem = event.target;
         		var userId = $(elem).attr('user');
         		var url = $location.path().split("/");
-        		//window.location = 'user/' + userId + '/' + (url[3] || 'task') + '/'  + (url[4] || 'none');
-        	/*	$location.path('user/' + userId + '/' + (url[3] || 'task') + '/'  + (url[4] || 'none'));*/
 
       		if ( $(elem).hasClass('taskAuthorIcon') ) {
-        			$('.filterWrap > task-filter').remove();
-        			$('.filterWrap > tasks-list').remove();
 					
 					$location.path('user/' + userId + '/' + (url[3] || 'task') + '/'  + (url[4] || 'none'));
 					scope.$apply();
         		}
-
-
-        		/*function findAssignedTasks() {
-					var tasks = localStorageService.get('tasks');
-			
-					for (var i=0; i < tasks.length; i++) {
-						if(tasks[i].userId == userId) scope.userTasks.push(tasks[i]);
-					}
-				}
-
-				function addUserOverviewTasks() {
-					angular.element(document.getElementById('tasksFilter'))
-						.append($compile("<cur-user-tasks></cur-user-tasks>")(scope));
-
-				}
-
-				function addUserOverviewHeader() {
-					angular.element(document.getElementById('tasksFilter'))
-						.prepend($compile("<user-overview></user-overview>")(scope));
-				}
-
-				function findUser() {
-					
-					var users = localStorageService.get('users');
-
-					for (var i=0; i < users.length; i++ ) {
-						if (users[i].id == userId) return users[i];
-					}	
-				}     		*/
 
         	});
         };
@@ -56,21 +21,28 @@
         return {
             restrict: 'E',
             templateUrl: 'src/js/templates/tasksTempl.html',
-			link : link
+			link : link,
+			controller : 'subCtrl'
         }
     }]);
 
 	app.directive('curUserTasks', function() {
 		return {
 			strict : 'E',
-			templateUrl : 'src/js/templates/singleUserTasks.html'
+			templateUrl : 'src/js/templates/singleUserTasks.html',
+			controller : 'subCtrl'
 		}
 	});
 
 	app.directive('taskFilter', function() {
+		var link = function(scope, element, attr) {
+        	
+        	
+        };
 		return {
 			strict : 'E',
-			templateUrl : 'src/js/templates/taskFilterTempl.html'
+			templateUrl : 'src/js/templates/taskFilterTempl.html',
+			link : link
 		}
 	});
 
@@ -108,7 +80,8 @@
 		$scope.urlState = "1";
 		$scope.urlTask = "none";	
 
-		$scope.tasks = [];
+		$scope.currentUser = {};
+		$scope.userTasks = [];
 
 		$scope.addLogo = function() {
 			$('#mainContent').css({
@@ -214,7 +187,7 @@
 
 	}]);
 
-	app.controller('subCtrl',['$scope','$http','$routeParams','$location','$rootScope','localStorageService', function($scope, $http, $routeParams, $location, $rootScope,localStorageService) {
+	app.controller('subCtrl',['$scope','$http','$routeParams','$location','$rootScope','localStorageService','$compile', function($scope, $http, $routeParams, $location, $rootScope,localStorageService, $compile) {
 		$scope.$parent.urlState = $routeParams.state;
 		$scope.$parent.urlTask = $routeParams.id;
 		var url = $location.path().split("/");
@@ -230,60 +203,87 @@
 		};
 
 		$scope.changeUrlState = function(value) {
-			$scope.urlTask = "none";
+			$scope.$parent.urlTask = "none";
 			for (var id in $scope.activeTasks) {
 				$scope.activeTasks[id] = true;
 			}	
 			
-			$scope.urlState = value;
-			$location.path('/state/' + $scope.urlState + '/task/' + $scope.urlTask);
+			$scope.$parent.urlState = value;
+			$location.path('/state/' + $scope.$parent.urlState + '/task/' + $scope.$parent.urlTask);
 		};
 
 		$scope.cangeUrlTaskId = function(event) {
+			
 			if( $(event.target).attr('user') ) {
 			  event.preventDefault();
 			  return;
 			}
-			if(event.currentTarget.id == $scope.urlTask) {
-				$scope.urlTask = "none";
+			if(event.currentTarget.id == $scope.$parent.urlTask) {
+				$scope.$parent.urlTask = "none";
 			} else {
-				$scope.urlTask = event.currentTarget.id;
+				$scope.$parent.urlTask = event.currentTarget.id;
 			}
-			$location.path('/state/' + ($scope.urlState || "1") + '/task/' + $scope.urlTask);
-		};
 
-		function openUser() {
-			var userID = id;
+			var temp = $location.path().split('/');
+
+			if (temp.length < 3) {
+				$location.path('/state/' + ($scope.$parent.urlState || "1") + '/task/' + $scope.$parent.urlTask);
+			} else {
+				$location.path(temp[1] + '/' + temp[2] + '/task/' + $scope.$parent.urlTask);
+			}
+		};
+/*_____________________________________________________________________*/
+		function openUser(userID) {
+
+			if( ($('.filterWrap > user-overview').length) ) {
+				return;
+			}
+
+			$scope.$parent.currentUser = {};
+			$scope.$parent.userTasks = [];
+
+			$scope.$parent.currentUser = findUser(userID);
+
+			findAssignedTasks(userID);
+
+			$('.filterWrap > task-filter').remove();
+			$('.filterWrap > tasks-list').remove();
+
+			$('.filterWrap > cur-user-tasks').remove();
+			$('.filterWrap > user-overview').remove();
+
+			addUserOverviewHeader();
+			addUserOverviewTasks();
+
 		}
 
-		function findAssignedTasks() {
-		var tasks = localStorageService.get('tasks');
-		
-		for (var i=0; i < tasks.length; i++) {
-				if(tasks[i].userId == userId) scope.userTasks.push(tasks[i]);
-			}
+		function findAssignedTasks(userId) {
+			var tasks = localStorageService.get('tasks');
+			
+			for (var i=0; i < tasks.length; i++) {
+					if(tasks[i].userId == userId) $scope.$parent.userTasks.push(tasks[i]);
+				}
 		}
 
 		function addUserOverviewTasks() {
 			angular.element(document.getElementById('tasksFilter'))
-				.append($compile("<cur-user-tasks></cur-user-tasks>")(scope));
+				.append($compile("<cur-user-tasks></cur-user-tasks>")($scope.$parent));
 
 		}
 
 		function addUserOverviewHeader() {
 			angular.element(document.getElementById('tasksFilter'))
-				.prepend($compile("<user-overview></user-overview>")(scope));
+				.prepend($compile("<user-overview></user-overview>")($scope.$parent));
 		}
 
-		function findUser() {
-			
+		function findUser(userId) {
 			var users = localStorageService.get('users');
 
 			for (var i=0; i < users.length; i++ ) {
 				if (users[i].id == userId) return users[i];
 			}	
 		} 
-
+/*_____________________________________________________________________*/
 		function openTask(id) {
 			var curElemID =  id;
 			

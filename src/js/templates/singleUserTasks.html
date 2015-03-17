@@ -1,5 +1,5 @@
 
-<ul class="tasks" ng-controller="subCtrl">
+<ul class="tasks" >
 	<li id="{{userTask.id}}" category="{{userTask.status}}" class="taskItem" ng-repeat="userTask in userTasks | filter:{ header : searchFieldInput} | orderBy:'time'" 
 		 ng-click="cangeUrlTaskId($event)" ng-class="{activeTask : activeTasks[userTask.id]}">
 		<article>

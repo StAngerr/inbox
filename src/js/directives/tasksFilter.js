@@ -37,7 +37,7 @@
         	/*button*/
         	function addReturnButton() {
 				angular.element(document.getElementById('navHeader'))
-						.append($compile('<button ng-click="alert11()" class="returnBtn" style="background: orange; width: 15px; height: 44px; position: absolute; top: 0; left: 0;"> </button>')(scope.$parent));
+						.append($compile('<button ng-click="alert11()" class="returnBtn" > </button>')(scope.$parent));
 	        	}
             };
         return {
@@ -61,17 +61,6 @@
 				$location.path('/state/' + ($(".taskFilter > div").index(target) + 1) + '/task/none');
 				scope.$apply();
 			});
-
-
-/*		$scope.changeUrlState = function(value) {
-			$scope.$parent.urlTask = "none";
-
-			for (var id in $scope.activeTasks) {
-				$scope.activeTasks[id] = true;
-			}			
-			$scope.$parent.urlState = value;
-			$location.path('/state/' + $scope.$parent.urlState + '/task/' + $scope.$parent.urlTask);
-		};*/
         };
 		return {
 			strict : 'E',
@@ -270,11 +259,10 @@
 			}
 
 			$scope.$parent.currentUser = {};
-			$scope.$parent.userTasks = [];
-
+			$scope.$parent.assignedTasksCount = 0;
 			$scope.$parent.currentUser = findUser(userID);
 
-			findAssignedTasks(userID);
+			initAssignedTaskCount(userID);
 
 			/* CLEAR ALL SECTIONS*/
 			$('.filterWrap > task-filter').remove();
@@ -283,13 +271,13 @@
 
 			addUserOverviewHeader();
 		};
-
-		function findAssignedTasks(userId) {
+/* Just counts how many tasksare assigned to  user*/
+		function initAssignedTaskCount(userId) {
 			var tasks = localStorageService.get('tasks');
-			
+
 			for (var i=0; i < tasks.length; i++) {
-					if(tasks[i].userId == userId) $scope.$parent.userTasks.push(tasks[i]);
-				}
+					if(tasks[i].userId == userId) $scope.$parent.assignedTasksCount++;
+			}
 		};
 /*   APPENDs  USER VIEW HEAD*/
 		function addUserOverviewHeader() {

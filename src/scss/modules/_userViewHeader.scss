@@ -1,0 +1,51 @@
+.navHeader {
+	.returnBtn {
+		position: absolute;
+		top: 7px;
+		left: 0;
+		width: 25px;
+		height: 40px;
+		border: none;
+		background: #fff url("../images/arrow-left.png") no-repeat 50% 50%; 
+		margin-left: 1%; 
+		outline: none;
+	}	
+}
+
+.filterWrap {	
+	.userOverviewHeader {
+		height: 10%;
+		width: 100%;
+		border-bottom: 1px solid #ccc;
+		background: $creamColor; 
+ 		
+		.userOverviewAvatar {
+			width: 30%;
+			float: left;
+			margin: 4% 0 0 9%;
+			img {
+				border-radius: 4px;
+			}
+		}
+
+		.userOverviewInfo {
+			width: 60%;
+			float: right;
+			cursor: default;
+			.subTag {
+				display: inline-block;
+				margin-right: 5px;
+				font-weight: bold;
+				font-size: 1.1em;
+				color: $darkGrey;
+			}
+			
+			.userName, .userId, .userTasksCount {
+				margin-bottom: 10px;
+				
+			}
+		}
+	}
+
+
+}

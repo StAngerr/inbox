@@ -713,6 +713,48 @@ li[category=unassigned] {
     font-size: 1.5em;
   }
 }
+.navHeader .returnBtn {
+  position: absolute;
+  top: 7px;
+  left: 0;
+  width: 25px;
+  height: 40px;
+  border: none;
+  background: #fff url("../images/arrow-left.png") no-repeat 50% 50%;
+  margin-left: 1%;
+  outline: none;
+}
+
+.filterWrap .userOverviewHeader {
+  height: 10%;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  background: #F0F0F0;
+}
+.filterWrap .userOverviewHeader .userOverviewAvatar {
+  width: 30%;
+  float: left;
+  margin: 4% 0 0 9%;
+}
+.filterWrap .userOverviewHeader .userOverviewAvatar img {
+  border-radius: 4px;
+}
+.filterWrap .userOverviewHeader .userOverviewInfo {
+  width: 60%;
+  float: right;
+  cursor: default;
+}
+.filterWrap .userOverviewHeader .userOverviewInfo .subTag {
+  display: inline-block;
+  margin-right: 5px;
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #727070;
+}
+.filterWrap .userOverviewHeader .userOverviewInfo .userName, .filterWrap .userOverviewHeader .userOverviewInfo .userId, .filterWrap .userOverviewHeader .userOverviewInfo .userTasksCount {
+  margin-bottom: 10px;
+}
+
 /* NEW COMMENT BLOCK.  SIMPLE AND EXPANDED */
 .newComment {
   height: 4%;

@@ -1,10 +1,10 @@
-<header class="userOverviewHeader" style="height: 10%; width: 100%; border-bottom: 1px solid #ccc; background: red;">
-	<figure>
-		<img src="{{currentUser.avatar}}">
+<header class="userOverviewHeader" style="">
+	<figure class="userOverviewAvatar">
+		<img  src="{{currentUser.avatar}}">
 	</figure>
 	<section class="userOverviewInfo">
-		<p class="userName">Name: {{currentUser.name}}</p>
-		<p class="userId">ID: {{currentUser.id}}</p>
-		<p class="userTasksCount">Assigned tasks: {{userTasks.length}}</p>
+		<p class="userName"><span class="subTag">Name:</span> {{currentUser.name}}</p>
+		<p class="userId"><span class="subTag">ID:</span> {{currentUser.id}}</p>
+		<p class="userTasksCount"><span class="subTag">Assigned tasks:</span> {{ assignedTasksCount }}</p>
 	</section>
 </header>

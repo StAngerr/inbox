@@ -135,8 +135,6 @@
 					.append($compile("<reassign-section></reassign-section>")($scope));
 		}
 /* ________________________________________________*/
-
-
 		$scope.reassignTask = function(event) {
 			var  check = confirm("You sure you want to reassign this task to " + $(event.currentTarget).attr('name'));
 
@@ -162,7 +160,7 @@
 
 			for (var i = 0; i < tasks.length; i++) {
 				if(tasks[i].id == temp.id) {
-					tasks[i].userId =temp.user.id;
+					tasks[i].userId = temp.user.id;
 				}
 			}
 			localStorageService.set('tasks',tasks);

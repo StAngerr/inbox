@@ -2,7 +2,6 @@
 	var app=angular.module('tastks-filter',[]);
 /*DIRS*/
 	app.directive('tasksList',['$compile','$routeParams','$location', function($compile, $routeParams, $location) {
-
         var link = function(scope, element, attr) {
         	var ssss = scope.tasks;
 	        	element.on('click', function(event) {
@@ -50,9 +49,7 @@
     }]);
 
 	app.directive('taskFilter', function() {
-		var link = function(scope, element, attr) {
-        	
-        	
+		var link = function(scope, element, attr) {	
         };
 		return {
 			strict : 'E',
@@ -69,7 +66,6 @@
 	});
 
 /*CONTROLLERS*/
-
 	app.controller('SearchFieldCtrl',['$scope', function($scope) {
 		$scope.searchAnimationEvent = function() {
 			$('#searchField').css({'display' : 'block'}).focus();
@@ -234,7 +230,7 @@
 		$scope.$parent.urlState = $routeParams.state;
 		$scope.$parent.urlTask = $routeParams.id;
 		var url = $location.path().split("/");
-
+		/*Router direction controller*/
 		if(url.length > 3) {
 			if(url[1] == 'user') {
 				openUser(url[2]);
@@ -260,6 +256,11 @@
 
 			if( ($('.filterWrap > user-overview').length) ) {
 				return;
+			}
+			/*For refresh only when filterParams are default*/
+			if( !($scope.$parent.filterParams.userId) ) {
+				$scope.$parent.filterParams.userId = userID;
+				$scope.$parent.filterParams.status = '' 
 			}
 			/* RETURN BUTTON  */
 			if( !($('.navHeader > .returnBtn').length) ) {

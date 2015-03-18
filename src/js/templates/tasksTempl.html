@@ -1,7 +1,7 @@
 
 <ul class="tasks" >
 	<li id="{{task.id}}" category="{{task.status}}" class="taskItem" ng-repeat="task in tasks | filter:{ header : searchFieldInput} | filter : filterParams | orderBy:'time'" 
-		 ng-click="cangeUrlTaskId($event)" ng-class="{activeTask : activeTasks[task.id]}">
+		 ng-class="{activeTask : activeTasks[task.id]}">
 		<article>
 			<header>			
 				<h3 class="taskHeader">{{task.header}}</h3>

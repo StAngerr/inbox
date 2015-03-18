@@ -4,58 +4,43 @@
 	app.directive('tasksList',['$compile','$routeParams','$location', function($compile, $routeParams, $location) {
 
         var link = function(scope, element, attr) {
+        	var ssss = scope.tasks;
 	        	element.on('click', function(event) {
+	        		var task;
 	        		var elem = event.target;
 	        		var userId = $(elem).attr('user');
 	        		var url = $location.path().split("/");
 
-	        		scope.DRAGONNNNNN = [];
-
-	      		if ( $(elem).hasClass('taskAuthorIcon') ) {
-						addReturnButton();
-						$location.path('user/' + userId + '/' + (url[3] || 'task') + '/'  + (url[4] || 'none'));
-						scope.$apply();
-
-						return;
-	        		}
-
-
-	        	var task;
-
-	        	if( $(event.target).hasClass('taskItem') ) {
-	        		task = event.target;
-	        	} else {
-	        		task = $(event.target).closest('.taskItem')[0];
-	        	}
-
-/*				if( $(event.target).attr('user') ) {
-				  event.preventDefault();
-				  return;
-				}*/
-				if(task.id == scope.$parent.urlTask) {
-					scope.$parent.urlTask = "none";
-				} else {
-					scope.$parent.urlTask = task.id;
-				}
-
-				var temp = $location.path().split('/');
-
-				if (temp.length < 3) {
-					$location.path('/state/' + (scope.$parent.urlState || "1") + '/task/' + scope.$parent.urlTask);
-				} else {
-					$location.path(temp[1] + '/' + temp[2] + '/task/' + scope.$parent.urlTask);
-				}
-
+	        		/*Check if event didn't fired on user*/
+		      		if ( $(elem).hasClass('taskAuthorIcon') ) {
+		      				scope.changeFilterTo('user',userId);
+							addReturnButton();
+							$location.path('user/' + userId + '/' + (url[3] || 'task') + '/'  + (url[4] || 'none'));
+							scope.$apply();
+							return;
+		        		}	        	
+					/*Detect clicked li element*/
+		        	if( $(event.target).hasClass('taskItem') ) {
+		        		task = event.target;
+		        	} else {
+		        		task = $(event.target).closest('.taskItem')[0];
+		        	}
+		       		/* Change url */
+					if (url.length < 3) {
+						$location.path('/state/1/task/' + task.id);
+					} else if(task.id == url[4]) {
+						$location.path(url[1] + '/' + url[2] + '/task/' + 'none');
+					} else {
+						$location.path(url[1] + '/' + url[2] + '/task/' + task.id);
+					}
+					scope.$apply();
         	});
-
-
         	/*button*/
         	function addReturnButton() {
 				angular.element(document.getElementById('navHeader'))
 						.append($compile('<button ng-click="alert11()" class="returnBtn" style="background: orange; width: 15px; height: 44px; position: absolute; top: 0; left: 0;"> </button>')(scope.$parent));
 	        	}
             };
-
         return {
             restrict: 'E',
             templateUrl: 'src/js/templates/tasksTempl.html',
@@ -63,14 +48,6 @@
 			controller : 'subCtrl'
         }
     }]);
-
-	app.directive('curUserTasks', function() {
-		return {
-			strict : 'E',
-			templateUrl : 'src/js/templates/singleUserTasks.html',
-			controller : 'subCtrl'
-		}
-	});
 
 	app.directive('taskFilter', function() {
 		var link = function(scope, element, attr) {
@@ -106,7 +83,6 @@
 	}]);
 
 	app.controller('TasksFilterCtrl',['$scope','$http','$routeParams','$location','$rootScope','localStorageService','$compile',  function($scope, $http, $routeParams, $location, $rootScope, localStorageService,$compile) {
-		$scope.curStatus = 'your';
 		$scope.active = 1;
 		
 		$scope.yoursTasks = 0;
@@ -121,6 +97,18 @@
 
 		$scope.currentUser = {};
 		$scope.userTasks = [];
+
+    	$scope.filterParams = {status : 'your', userId : ''};
+    	/*Change filter between filtering by user assigned tasks and filtering by category*/
+	    $scope.changeFilterTo = function(type, value) {
+	       if (type == 'status' ) {
+	       		$scope.filterParams.status = value;
+	       		$scope.filterParams.userId = '';
+	       } else if(type === 'user') {
+	       		$scope.filterParams.userId = value;
+	       		$scope.filterParams.status = '' 	
+	       }
+	    }
 
 		$scope.addLogo = function() {
 			$('#mainContent').css({
@@ -138,11 +126,11 @@
 				return;
 			}
 			if(value == 1) {
-				$scope.curStatus = 'your';
+				$scope.changeFilterTo('status','your');				
 			} else if(value == 2) {
-				$scope.curStatus = 'unassigned';
+				$scope.changeFilterTo('status','unassigned');				
 			} else {
-				$scope.curStatus = '';
+				$scope.changeFilterTo('status','');
 			}
 			$scope.active = value;		
 		};
@@ -267,38 +255,16 @@
 			$scope.$parent.urlState = value;
 			$location.path('/state/' + $scope.$parent.urlState + '/task/' + $scope.$parent.urlTask);
 		};
-
-/*		$scope.cangeUrlTaskId = function(event) {
-			
-			if( $(event.target).attr('user') ) {
-			  event.preventDefault();
-			  return;
-			}
-			if(event.currentTarget.id == $scope.$parent.urlTask) {
-				$scope.$parent.urlTask = "none";
-			} else {
-				$scope.$parent.urlTask = event.currentTarget.id;
-			}
-
-			var temp = $location.path().split('/');
-
-			if (temp.length < 3) {
-				$location.path('/state/' + ($scope.$parent.urlState || "1") + '/task/' + $scope.$parent.urlTask);
-			} else {
-				$location.path(temp[1] + '/' + temp[2] + '/task/' + $scope.$parent.urlTask);
-			}
-		};*/
 /*_____________________________________________________________________*/
 		function openUser(userID) {
 
 			if( ($('.filterWrap > user-overview').length) ) {
 				return;
 			}
-			/* RETURN BTN  */
+			/* RETURN BUTTON  */
 			if( !($('.navHeader > .returnBtn').length) ) {
 				angular.element(document.getElementById('navHeader'))
 						.append($compile('<button ng-click="alert11()" class="returnBtn" style="background: orange; width: 15px; height: 44px; position: absolute; top: 0; left: 0;"> </button>')($scope.$parent));
-	        	
 			}
 
 			$scope.$parent.currentUser = {};
@@ -309,16 +275,11 @@
 			findAssignedTasks(userID);
 
 			/* CLEAR ALL SECTIONS*/
-
 			$('.filterWrap > task-filter').remove();
 			$('.filterWrap > tasks-list').remove();
-
-			$('.filterWrap > cur-user-tasks').remove();
 			$('.filterWrap > user-overview').remove();
 
 			addUserOverviewHeader();
-			addUserOverviewTasks();
-
 		}
 
 		function findAssignedTasks(userId) {
@@ -328,13 +289,7 @@
 					if(tasks[i].userId == userId) $scope.$parent.userTasks.push(tasks[i]);
 				}
 		}
-/*   APPEND  USER VIEW TASKS*/
-		function addUserOverviewTasks() {
-			angular.element(document.getElementById('tasksFilter'))
-				.append($compile("<cur-user-tasks></cur-user-tasks>")($scope.$parent));
-
-		}
-/*   APPEND  USER VIEW HEAD*/
+/*   APPENDs  USER VIEW HEAD*/
 		function addUserOverviewHeader() {
 			angular.element(document.getElementById('tasksFilter'))
 				.prepend($compile("<user-overview></user-overview>")($scope.$parent));

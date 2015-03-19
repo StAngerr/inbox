@@ -207,6 +207,14 @@ li[category=unassigned] {
     transform: translateX(0%);
   }
 
+  .slideMore {
+    display: block;
+    transition: -webkit-transform .5s linear;
+    transition: transform .5s linear;
+    -webkit-transform: translateX(-200%);
+    transform: translateX(-200%);
+  }
+
   #mainContent {
     float: left;
     width: 25%;
@@ -1009,12 +1017,8 @@ li[category=unassigned] {
     width: 25%;
     height: 100%;
     margin: 0%;
-    transition: -webkit-transform .5s linear;
-    transition: transform .5s linear, background 1s;
-  }
-  #reassignSection.slideMore {
-    -webkit-transform: translateX(-200%);
-    transform: translateX(-200%);
+    transition: -webkit-transform 1s linear;
+    transition: transform 1s linear;
   }
   #reassignSection .reassignSectHeader {
     width: 100%;
@@ -1067,20 +1071,6 @@ li[category=unassigned] {
     border-bottom: 2px solid #cacaca;
     font-size: 1.5em;
     padding: 20px 0 20px 0px;
-  }
-
-  /* .slideMore {
-  	transition: -webkit-transform 0.5s linear;
-  	transition: transform 0.5s linear; 
-  	-webkit-transform: translateX(-200%);
-  	transform: translateX(-200%);
-  	
-  } */
-  .slideMore {
-    transition: -webkit-transform 0.5s linear !important;
-    transition: transform 0.5s linear !important;
-    -webkit-transform: translateX(-200%);
-    transform: translateX(-200%);
   }
 }
 

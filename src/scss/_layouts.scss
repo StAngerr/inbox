@@ -79,7 +79,13 @@
 		        transform:translateX(0%);
 	}
 
-	
+	.slideMore {
+		display: block;
+		transition: -webkit-transform .5s linear;
+		transition: transform .5s linear; 
+		-webkit-transform: translateX(-200%);
+		transform: translateX(-200%);
+	} 
 
 	#mainContent {
 		float: left;

@@ -4,19 +4,13 @@
 		float: left;
 		width: 25%;
 		height: 100%;
-		margin: 0%;	
-		transition: -webkit-transform .5s linear;
-		transition: transform .5s linear, background 1s;
-		
-			
-		&.slideMore {
-			-webkit-transform: translateX(-200%);
-			transform: translateX(-200%);
-		}
+		margin: 0%;
+		transition: -webkit-transform 1s linear;
+		transition: transform 1s linear;
+
 		.reassignSectHeader {
 			width: 100%;
 			height: 10%;
-			
 			border-bottom: 1px solid darken($lightGrey,20%);
 
 			.returnButton {
@@ -26,15 +20,13 @@
 				border: none;
 				background: #fff url("../images/arrow-left.png") no-repeat 50% 50%; 				
 				outline: none;
-				float: left;
-				
+				float: left;			
 			}
 			.title {
 				width: 80%;
 				margin-top: 5%;
 				display: inline-block;
 				text-align: center;
-				
 				float: left;
 			}
 		}
@@ -58,7 +50,6 @@
 					margin-right: 9%;
 					padding-left: 5%;
 					&>img {
-
 						width: 40px;
 						height: 40px;
 						border-radius: 50%;
@@ -75,20 +66,5 @@
 				}
 			}
 		}
-
 	}
-
-/* .slideMore {
-	transition: -webkit-transform 0.5s linear;
-	transition: transform 0.5s linear; 
-	-webkit-transform: translateX(-200%);
-	transform: translateX(-200%);
-	
-} */
- .slideMore {
-			transition: -webkit-transform 0.5s linear !important;
-		transition: transform 0.5s linear !important; 
-		-webkit-transform: translateX(-200%);
-		transform: translateX(-200%);
-	} 
 }

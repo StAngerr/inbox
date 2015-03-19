@@ -17,8 +17,13 @@
 	});
 
 	app.directive('reassignSection', function() {
-		function link(scope, element, attrs) { 
-		 		$('#reassignSection').addClass('slideMore');
+		function link(scope, element, attrs) {
+				/*$('#reassignSection').css({
+					'-webkit-transform': 'translateX(-200%)',
+					'transform': 'translateX(-200%)'
+				});*/
+				setTimeout(function(){ $('#reassignSection').addClass('slideMore'); }, 40);
+								
 		 	}
 		return {
 			strict : 'E',

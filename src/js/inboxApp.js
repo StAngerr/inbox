@@ -42,6 +42,12 @@ inbox.controller('mainCtrl',['$scope','$routeParams','$location','$rootScope', f
  	}
 
  	$scope.openUser1 = function(id) {
+ 		
+			$('*').removeClass('slideLeft');
+			$('#navigation').addClass('slideRight');
+			$('#mainContent').addClass('slideRight');
+			$('.taskItem').addClass('activeTask');
  		$location.path('user/'+ id +'/task/none');
+
  	}   
 } ]);

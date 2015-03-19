@@ -101,7 +101,6 @@
 			link : link
 		}
 	});
-
 /*CONTROLLERS*/
 	app.controller('SearchFieldCtrl',['$scope', function($scope) {
 		$scope.searchAnimationEvent = function() {
@@ -267,12 +266,14 @@
 				openTask(url[4]);		
 			}
 		};
-/*_____________________________________________________________________*/
-		function openUser(userID) {
 
+		function openUser(userID) {
 			if( ($('.filterWrap > user-overview').length) ) {
 				return;
 			}
+			
+			$scope.$parent.currentUser = {};
+			$scope.$parent.assignedTasksCount = 0;
 			/*For refresh only when filterParams are default*/
 			if( !($scope.$parent.filterParams.userId) ) {
 				$scope.$parent.filterParams.userId = userID;
@@ -281,26 +282,31 @@
 			/* RETURN BUTTON  */
 			if( !($('.navHeader > .returnBtn').length) ) {
 				angular.element(document.getElementById('navHeader'))
-						.append($compile('<button ng-click="alert11()" class="returnBtn" style="background: orange; width: 15px; height: 44px; position: absolute; top: 0; left: 0;"> </button>')($scope.$parent));
+						.append($compile('<button ng-click="alert11()" class="returnBtn" > </button>')($scope.$parent));
 			}
+			
+			refreshTaskList();		
 
-			$scope.$parent.currentUser = {};
-			$scope.$parent.assignedTasksCount = 0;
 			$scope.$parent.currentUser = findUser(userID);
 
 			initAssignedTaskCount(userID);
-
 			/* CLEAR ALL SECTIONS*/
 			$('.filterWrap > task-filter').remove();
-			$('.filterWrap > tasks-list').remove();
 			$('.filterWrap > user-overview').remove();
 
 			addUserOverviewHeader();
 		};
+/*refresh tasks if some tasks were reassigned (!!!!!!!!!!!!!!!!!!!!!!!!!!!!!)*/
+		function refreshTaskList() {
+			var temp = localStorageService.get('tasks');
+			for (var i=0; i < $scope.tasks.length; i++) {
+				$scope.tasks[i].userId = temp[i].userId;
+			}	
+		}
 /* Just counts how many tasksare assigned to  user*/
 		function initAssignedTaskCount(userId) {
 			var tasks = localStorageService.get('tasks');
-
+			$scope.$parent.assignedTasksCount = 0;
 			for (var i=0; i < tasks.length; i++) {
 					if(tasks[i].userId == userId) $scope.$parent.assignedTasksCount++;
 			}
@@ -323,7 +329,9 @@
 			checkTasksBlockExistence();
 
 			var curElemID =  id;
-			
+
+			refreshTaskList();
+
 			if(curElemID == 'none') {
 				hideMainContent();
 
@@ -386,6 +394,7 @@
 				$('*').removeClass('slideRight');
 				$('#navigation').addClass('slideLeft');
 				$('#mainContent').addClass('slideLeft');
+
 				removeLogo();
 			}
 		};

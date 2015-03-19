@@ -96,7 +96,7 @@
 		$scope.addEvents = function(event) {
 			$scope.showEditWindow();
 		}
-/* ________________________________________________*/
+
 		$scope.closeReassign = function() {
 			$('#reassignSection').removeClass('slideMore');
  			
@@ -134,7 +134,7 @@
 			angular.element(document.getElementById('mainWrapper'))
 					.append($compile("<reassign-section></reassign-section>")($scope));
 		}
-/* ________________________________________________*/
+
 		$scope.reassignTask = function(event) {
 			var  check = confirm("You sure you want to reassign this task to " + $(event.currentTarget).attr('name'));
 

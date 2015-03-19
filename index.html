@@ -62,7 +62,7 @@
 					
 				<div class="assign">
 					<figure>
-						<img class="authorIcon" ng-src="{{obj.user.avatar}}">
+						<img class="authorIcon" ng-src="{{obj.user.avatar}}" ng-mouseover="zoomAvatar($event)" ng-click="openUser1(obj.user.id)">
 					</figure>
 					<aside><p>Assigned: {{obj.user.name}}</p></cite>
 				</div>

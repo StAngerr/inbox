@@ -34,6 +34,16 @@
 					}
 					scope.$apply();
         	});
+
+			element.on('mouseover', function(event) {
+				var target = event.target;
+
+				if( $(target).hasClass('taskAuthorIcon') ) {
+					$(target).addClass('XD');
+				} else {
+					$('.taskAuthorIcon').removeClass('XD');
+				}
+			});
         	/*button*/
         	function addReturnButton() {
 				angular.element(document.getElementById('navHeader'))
@@ -61,6 +71,13 @@
 				$location.path('/state/' + ($(".taskFilter > div").index(target) + 1) + '/task/none');
 				scope.$apply();
 			});
+
+			$('.taskFilter').css({
+				'position' : 'relative',
+				'left' : '100%'
+			});
+
+			$('.taskFilter').animate({'left' : '0'}, 300);
         };
 		return {
 			strict : 'E',
@@ -70,9 +87,18 @@
 	}]);
 
 	app.directive('userOverview', function() {
+		var link = function(scope, element, attr) {	
+			$('.userOverviewHeader').css({
+				'position' : 'relative',
+				'left' : '-100%'
+			});
+
+			$('.userOverviewHeader').animate({'left' : '0'},300);
+		};
 		return {
 			strict : 'E',
-			templateUrl : 'src/js/templates/singleUserOverview.html'
+			templateUrl : 'src/js/templates/singleUserOverview.html',
+			link : link
 		}
 	});
 
@@ -154,7 +180,7 @@
 
 		function addUserTasksFilter() {
 			angular.element(document.getElementById('tasksFilter'))
-				.append($compile("<task-filter></task-filter>")($scope));
+				.prepend($compile("<task-filter></task-filter>")($scope));
 		};
 
 		function initTasks() {	

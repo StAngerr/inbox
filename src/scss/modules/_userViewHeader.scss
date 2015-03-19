@@ -14,10 +14,11 @@
 
 .filterWrap {	
 	.userOverviewHeader {
-		height: 10%;
+		height: 12%;
 		width: 100%;
 		border-bottom: 1px solid #ccc;
 		background: $creamColor; 
+		opacity: 1;
  		
 		.userOverviewAvatar {
 			width: 30%;
@@ -49,3 +50,24 @@
 
 
 }
+
+.XD {
+/* outline-color: #000;
+outline-style: solid;
+outline-width: 2px; */
+
+	border: 1px solid #A4A4A4;
+	box-shadow: rgba(0,0,0,0.2) 0px 2px 3px;
+
+  -webkit-transform: scale(1, 1); 
+  -webkit-transition-duration: 200ms;
+  -webkit-transition-timing-function: ease-out;
+  -moz-transform: scale(1, 1);
+  -moz-transition-duration: 200ms;
+  -moz-transition-timing-function: ease-out;
+  -ms-transform: scale(1, 1);
+  -ms-transition-duration: 200ms;
+  -ms-transition-timing-function: ease-out;
+	transform: scale(1.5,1.5);
+}
+

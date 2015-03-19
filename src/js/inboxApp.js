@@ -6,7 +6,7 @@ inbox.config(['$routeProvider',function($routeProvide) {
 			template : ' ',
 			controller : 'subCtrl'
 		})
-		.when('/user/:id/task/:id', {
+		.when('/user/:userID/task/:id', {
 			template : ' ',
 			controller : 'subCtrl'
 		})

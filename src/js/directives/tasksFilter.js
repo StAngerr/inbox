@@ -253,25 +253,23 @@
 	}]);
 
 	app.controller('subCtrl',['$scope','$http','$routeParams','$location','$rootScope','localStorageService','$compile', function($scope, $http, $routeParams, $location, $rootScope,localStorageService, $compile) {
-		$scope.$parent.urlState = $routeParams.state;
-		$scope.$parent.urlTask = $routeParams.id;
-		var url = $location.path().split("/");
+		var state = $routeParams.state;
+		var taskID = $routeParams.id;
+		var user = $routeParams.userID;
 		/*Router direction controller*/
-		if(url.length > 3) {
-			if(url[1] == 'user') {
-				openUser(url[2]);
-				openTask(url[4]);
-			} else {
-				$scope.setActive(url[2]);
-				openTask(url[4]);		
-			}
-		};
+		if(user) {
+			openUser(user);
+			openTask(taskID);
+		} else if(state){
+			$scope.setActive(state);
+			openTask(taskID);
+		}
 
 		function openUser(userID) {
 			if( ($('.filterWrap > user-overview').length) ) {
 				return;
 			}
-			
+
 			$scope.$parent.currentUser = {};
 			$scope.$parent.assignedTasksCount = 0;
 			/*For refresh only when filterParams are default*/

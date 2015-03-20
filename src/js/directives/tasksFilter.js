@@ -46,7 +46,7 @@
         	/*button*/
         	function addReturnButton() {
 				angular.element(document.getElementById('navHeader'))
-						.append($compile('<button ng-click="alert11()" class="returnBtn" > </button>')(scope.$parent));
+						.append($compile('<button ng-click="actorViewReturnBtn()" class="returnBtn" > </button>')(scope.$parent));
 	        	}
             };
         return {
@@ -97,7 +97,6 @@
 		return {
 			strict : 'E',
 			templateUrl : 'src/js/templates/singleUserOverview.html',
-		/*	controller : 'subCtrl',*/
 			link : link
 		}
 	});
@@ -110,7 +109,6 @@
 				$scope.$parent.searchFieldInput = '';
 			 	$(this).css({'display' : 'none'}); 	
 			});
-
 		};
 	}]);
 
@@ -274,7 +272,7 @@
 			/* RETURN BUTTON  */
 			if( !($('.navHeader > .returnBtn').length) ) {
 				angular.element(document.getElementById('navHeader'))
-						.append($compile('<button ng-click="alert11()" class="returnBtn" > </button>')($scope.$parent));
+						.append($compile('<button ng-click="actorViewReturnBtn()" class="returnBtn" > </button>')($scope.$parent));
 			}
 			
 			refreshTaskList();		
@@ -480,5 +478,6 @@
 				$('.mainContentInner > .window').css({'display' : 'none'});
 			}
 		};
+
 	}]);
 })();

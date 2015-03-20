@@ -19,7 +19,7 @@
 	app.directive('reassignSection', function() {
 		function link(scope, element, attrs) {
 				setTimeout(function(){ $('#reassignSection').addClass('slideMore'); }, 25);				
-		 	}
+		 }
 		return {
 			strict : 'E',
 			templateUrl : 'src/js/templates/reassignTmpl.html',
@@ -173,5 +173,23 @@
 			$('.users').remove();
 			$('.editWindow').remove();
 		};
+
+		/*Events for avatar icons in main content block*/
+	 	$scope.zoomAvatarExpTask = function(event) {
+	 		$(event.target).addClass('XD');
+
+	 		$(event.target).on('mouseleave', function() {
+	 			$(this).removeClass('XD');
+	 		});
+	 	}
+
+	 	$scope.openUserExpTask = function(id) {
+			$('*').removeClass('slideLeft');
+			$('#navigation').addClass('slideRight');
+			$('#mainContent').addClass('slideRight');
+			$('.taskItem').addClass('activeTask');
+			$location.path('user/'+ id +'/task/none');
+	 	}
+  
 	}]);
 })();

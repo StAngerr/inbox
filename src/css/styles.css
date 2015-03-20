@@ -755,6 +755,46 @@ li[category=unassigned] {
   margin-bottom: 10px;
 }
 
+@media only screen and (max-width: 970px) {
+  .filterWrap .userOverviewHeader .userOverviewInfo {
+    font-size: 0.9em;
+  }
+}
+@media only screen and (max-width: 890px) {
+  .filterWrap .userOverviewHeader .userOverviewAvatar {
+    margin: 4% 0 0 5%;
+  }
+  .filterWrap .userOverviewHeader .userOverviewInfo {
+    font-size: 1em;
+  }
+  .filterWrap .userOverviewHeader .userOverviewInfo .subTag {
+    font-size: 0.9em;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .filterWrap .userOverviewHeader .userOverviewInfo {
+    font-size: 0.9em;
+  }
+}
+@media only screen and (max-width: 620px) {
+  .filterWrap .userOverviewHeader .userOverviewAvatar {
+    margin: 4% 0 0 10%;
+  }
+  .filterWrap .userOverviewHeader .userOverviewInfo {
+    font-size: 1.1em;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .filterWrap .userOverviewHeader .userOverviewAvatar {
+    margin: 4% 0 0 5%;
+  }
+  .filterWrap .userOverviewHeader .userOverviewInfo {
+    font-size: 1em;
+  }
+  .filterWrap .userOverviewHeader .userOverviewInfo .subTag {
+    font-size: 0.9em;
+  }
+}
 .XD {
   border: 1px solid #A4A4A4;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 3px;

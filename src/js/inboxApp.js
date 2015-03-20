@@ -22,32 +22,12 @@ inbox.controller('mainCtrl',['$scope','$routeParams','$location','$rootScope', f
 	
 	$scope.searchFieldInput = '';
 
-	/*   Take all events avay after */
-	
-	$scope.alert11 =  function() {
- 		$('.filterWrap > cur-user-tasks').remove();
+	$scope.actorViewReturnBtn =  function() {
+		$('.filterWrap > cur-user-tasks').remove();
 		$('.filterWrap > user-overview').remove();
- 		
- 		$location.path('/state/1/task/none');
 
- 		$('.navHeader > .returnBtn').remove();
- 	}
+		$location.path('/state/1/task/none');
 
- 	$scope.zoomAvatar = function(event) {
- 		$(event.target).addClass('XD');
-
- 		$(event.target).on('mouseleave', function() {
- 			$(this).removeClass('XD');
- 		})
- 	}
-
- 	$scope.openUser1 = function(id) {
- 		
-			$('*').removeClass('slideLeft');
-			$('#navigation').addClass('slideRight');
-			$('#mainContent').addClass('slideRight');
-			$('.taskItem').addClass('activeTask');
- 		$location.path('user/'+ id +'/task/none');
-
- 	}   
+		$('.navHeader > .returnBtn').remove();
+	} 	
 } ]);

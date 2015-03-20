@@ -51,6 +51,74 @@
 
 }
 
+@media only screen and (max-width: $xMedium)  {
+	.filterWrap {	
+		.userOverviewHeader {
+			.userOverviewInfo {
+				font-size: 0.9em;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: $middle)  {
+	.filterWrap {	
+		.userOverviewHeader {
+			.userOverviewAvatar {
+				margin: 4% 0 0 5%;
+			}
+			.userOverviewInfo {
+				font-size: 1em;
+				.subTag {
+					font-size: 0.9em;	
+				}
+				
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: $medium)  {
+	.filterWrap {	
+		.userOverviewHeader {
+			.userOverviewInfo {
+				font-size: 0.9em;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: $mobileMax)  {
+	.filterWrap {	
+		.userOverviewHeader {
+			.userOverviewAvatar {
+				margin: 4% 0 0 10%;
+			}
+			.userOverviewInfo {
+				font-size: 1.1em;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: $mobileMin)  {
+	.filterWrap {	
+		.userOverviewHeader {
+			.userOverviewAvatar {
+				margin: 4% 0 0 5%;
+			}
+			.userOverviewInfo {
+				font-size: 1em;
+				.subTag {
+					font-size: 0.9em;	
+				}
+				
+			}
+		}
+	}
+}
+
+
 .XD {
 	border: 1px solid #A4A4A4;
 	box-shadow: rgba(0,0,0,0.2) 0px 2px 3px;

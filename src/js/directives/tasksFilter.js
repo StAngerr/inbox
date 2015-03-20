@@ -266,17 +266,18 @@
 		}
 
 		function openUser(userID) {
-			if( ($('.filterWrap > user-overview').length) ) {
+			var lem = $('.userOverviewHeader')[0];
+			if( ($('.filterWrap > user-overview').length)  && ($(lem).attr('userid') == userID) ) {
 				return;
 			}
 
 			$scope.$parent.currentUser = {};
 			$scope.$parent.assignedTasksCount = 0;
 			/*For refresh only when filterParams are default*/
-			if( !($scope.$parent.filterParams.userId) ) {
+			//if( !($scope.$parent.filterParams.userId) ) {
 				$scope.$parent.filterParams.userId = userID;
 				$scope.$parent.filterParams.status = '' 
-			}
+			//}
 			/* RETURN BUTTON  */
 			if( !($('.navHeader > .returnBtn').length) ) {
 				angular.element(document.getElementById('navHeader'))
@@ -285,6 +286,7 @@
 			
 			refreshTaskList();		
 
+			//$scope.$parent.currentUser = findUser(userID);
 			$scope.$parent.currentUser = findUser(userID);
 
 			initAssignedTaskCount(userID);

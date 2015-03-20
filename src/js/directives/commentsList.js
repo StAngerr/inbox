@@ -18,33 +18,25 @@
 
 	app.directive('reassignSection', function() {
 		function link(scope, element, attrs) {
-				/*$('#reassignSection').css({
-					'-webkit-transform': 'translateX(-200%)',
-					'transform': 'translateX(-200%)'
-				});*/
-				setTimeout(function(){ $('#reassignSection').addClass('slideMore'); }, 40);
-								
+				setTimeout(function(){ $('#reassignSection').addClass('slideMore'); }, 25);				
 		 	}
 		return {
 			strict : 'E',
 			templateUrl : 'src/js/templates/reassignTmpl.html',
 			controller : 'ExpandedTaskCtrl',
 			link : link
-			}
+		}
 	});
 
 	app.directive('users', function() {
-
 		return {
 			strict : 'E',
 			templateUrl : 'src/js/templates/usersTemplate.html',
-			controller : 'ExpandedTaskCtrl',
+			controller : 'ExpandedTaskCtrl'
 		}
-
 	});
 	
-	app.controller('ExpandedTaskCtrl',['$scope','$location','$http','localStorageService','$compile', function($scope,$location,$http,localStorageService,$compile) {
-
+	app.controller('ExpandedTaskCtrl',['$scope','$location','$http','localStorageService','$compile', function($scope, $location, $http, localStorageService, $compile) {
 		$scope.users;
 
 		$scope.returnBtnHead = function() {
@@ -61,7 +53,6 @@
 		};
 
 		$scope.writeCommentInput = function() {
-			
 			if( $('.newComment').hasClass('newCommentExpanded') ) {
 				$('.newComment').removeClass('newCommentExpanded');
 			} else {
@@ -178,43 +169,9 @@
 			}
 		}
 
-
 		$scope.closeEditWindow = function() {
 			$('.users').remove();
 			$('.editWindow').remove();
 		};
-
-
-/*		function showUsers() {
-
-			if($('.users').css('display') == 'block' ) {
-				return;
-			}
-
-			if( localStorageService.get('users') ) {
-				$scope.users = localStorageService.get('users');
-
-				paintUsers($scope.users);
-				
-				$('.users').toggle( "bounce", { times: 3 }, "slow"); 
-				
-			} else {
-				$http.get('src/content/users.json').success(function(data, status, headers, config) { 
-					$scope.users = data;
-
-					paintUsers($scope.users);
-					
-					$('.users').toggle( "bounce", { times: 3 }, "slow" );
-				});	
-			}
-		}
-
-		function paintUsers(users) {
-			angular.element(document.getElementById('editWindow'))
-					.append($compile("<users></users>")($scope));
-	
-		}*/
-
-
 	}]);
 })();

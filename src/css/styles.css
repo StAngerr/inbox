@@ -208,9 +208,6 @@ li[category=unassigned] {
   }
 
   .slideMore {
-    display: block;
-    transition: -webkit-transform .5s linear;
-    transition: transform .5s linear;
     -webkit-transform: translateX(-200%);
     transform: translateX(-200%);
   }
@@ -1017,8 +1014,13 @@ li[category=unassigned] {
     width: 25%;
     height: 100%;
     margin: 0%;
+    background: #fff;
     transition: -webkit-transform 1s linear;
     transition: transform 1s linear;
+  }
+  #reassignSection.slideMore {
+    transition: -webkit-transform .415s linear;
+    transition: transform .415s linear;
   }
   #reassignSection .reassignSectHeader {
     width: 100%;

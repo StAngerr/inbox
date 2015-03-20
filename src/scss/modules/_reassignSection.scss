@@ -5,9 +5,14 @@
 		width: 25%;
 		height: 100%;
 		margin: 0%;
-		transition: -webkit-transform 1s linear;
-		transition: transform 1s linear;
-
+		background: #fff;
+		transition: -webkit-transform 1s/* .37s */ linear;
+		transition: transform 1s/* .37s */ linear;
+		
+		&.slideMore {
+			transition: -webkit-transform .415s linear;
+			transition: transform .415s linear;
+		}
 		.reassignSectHeader {
 			width: 100%;
 			height: 10%;

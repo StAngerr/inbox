@@ -9,7 +9,6 @@
 	        		var elem = event.target;
 	        		var userId = $(elem).attr('user');
 	        		var url = $location.path().split("/");
-
 	        		/*Check if event didn't fired on user*/
 		      		if ( $(elem).hasClass('taskAuthorIcon') ) {
 		      				scope.changeFilterTo('user',userId);
@@ -98,6 +97,7 @@
 		return {
 			strict : 'E',
 			templateUrl : 'src/js/templates/singleUserOverview.html',
+		/*	controller : 'subCtrl',*/
 			link : link
 		}
 	});
@@ -123,9 +123,6 @@
 		$scope.tasks = [];
 
 		$scope.activeTasks = {};	
-
-		$scope.urlState = "1";
-		$scope.urlTask = "none";	
 
     	$scope.filterParams = {status : 'your', userId : ''};
     	/*Change filter between filtering by user assigned tasks and filtering by category*/
@@ -183,7 +180,6 @@
 		};
 
 		function initTasks() {	
-
 			if( localStorageService.get('tasks') ) {
 				$scope.tasks = localStorageService.get('tasks');
 				setUsersToTasks();
@@ -247,12 +243,11 @@
 /*onload actions : tasks list initialization, logo.*/
 		(function() {
 			initTasks();
-
 			$scope.addLogo();
 		})();
 	}]);
 
-	app.controller('subCtrl',['$scope','$http','$routeParams','$location','$rootScope','localStorageService','$compile', function($scope, $http, $routeParams, $location, $rootScope,localStorageService, $compile) {
+	app.controller('subCtrl',['$scope','$http','$routeParams','$location','$rootScope','localStorageService','$compile', function($scope, $http, $routeParams, $location, $rootScope, localStorageService, $compile) {
 		var state = $routeParams.state;
 		var taskID = $routeParams.id;
 		var user = $routeParams.userID;
@@ -271,12 +266,12 @@
 				return;
 			}
 
-			$scope.$parent.currentUser = {};
-			$scope.$parent.assignedTasksCount = 0;
+			$scope.currentUser = {};
+			$scope.assignedTasksCount = 0;
 			/*For refresh only when filterParams are default*/
 			//if( !($scope.$parent.filterParams.userId) ) {
-				$scope.$parent.filterParams.userId = userID;
-				$scope.$parent.filterParams.status = '' 
+				$scope.filterParams.userId = userID;
+				$scope.filterParams.status = ''; 
 			//}
 			/* RETURN BUTTON  */
 			if( !($('.navHeader > .returnBtn').length) ) {
@@ -285,7 +280,6 @@
 			}
 			
 			refreshTaskList();		
-
 			//$scope.$parent.currentUser = findUser(userID);
 			$scope.$parent.currentUser = findUser(userID);
 

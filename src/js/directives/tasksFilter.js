@@ -16,7 +16,7 @@
 							$location.path('user/' + userId + '/' + (url[3] || 'task') + '/'  + (url[4] || 'none'));
 							scope.$apply();
 							return;
-		        		}	        	
+		        	}	        	
 					/*Detect clicked <li> element*/
 		        	if( $(event.target).hasClass('taskItem') ) {
 		        		task = event.target;
@@ -269,10 +269,8 @@
 			$scope.currentUser = {};
 			$scope.assignedTasksCount = 0;
 			/*For refresh only when filterParams are default*/
-			//if( !($scope.$parent.filterParams.userId) ) {
-				$scope.filterParams.userId = userID;
-				$scope.filterParams.status = ''; 
-			//}
+			$scope.filterParams.userId = userID;
+			$scope.filterParams.status = ''; 
 			/* RETURN BUTTON  */
 			if( !($('.navHeader > .returnBtn').length) ) {
 				angular.element(document.getElementById('navHeader'))

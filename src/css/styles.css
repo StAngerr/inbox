@@ -1116,6 +1116,7 @@ li[category=unassigned] {
   }
 }
 #locationBlock {
+  position: relative;
   width: 100%;
   min-height: 30px;
   background: #AC88CD;
@@ -1130,9 +1131,9 @@ li[category=unassigned] {
   background: #D3BDE9;
   cursor: pointer;
 }
-#locationBlock figure {
-  display: block;
-  height: 600px;
+#locationBlock #map {
+  opacity: 0;
+  height: 0;
   width: 100%;
 }
 

@@ -40,10 +40,12 @@
 		$scope.users;
 
 /*_____________________________________________________________________________*/
-		$scope.openLocation = function() {
+		$scope.openLocation = function(event) {
 			var img = new Image();
-
+			if(event.target.id !== 'locationBlock') return;
 			if( document.getElementById('map') ){
+				$('#map').remove();
+				$('#locationBlock').animate({'height' : '0'},150);
 				return;
 			}
 
@@ -53,7 +55,7 @@
 				error('Geo Location is not supported');
 			}
 
-			$('#locationBlock').append('<figure id="map"></figure>')
+			$('#locationBlock').append('<figure id="map"></figure>');
 
 			function success(position) {
 				var latitude  = 49.845356;
@@ -64,7 +66,7 @@
 				    center: coordinates,
 				    mapTypeControl: true,
 				    navigationControlOptions: {
-				    	style: google.maps.NavigationControlStyle.SMALL
+				    	style: google.maps.NavigationControlStyle.LARGE
 				    },
 				    mapTypeId: google.maps.MapTypeId.ROADMAP
 				};
@@ -75,8 +77,10 @@
 					title:"Delivery point!"
 				});
 
-				/*img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=" + zoom + "&size=" + width + "x" + height + "&sensor=false";
-				document.getElementById('locationBlock').appendChild(img);*/
+				$('#map').animate({opacity: '1', height: '300px'}, 500, function() {
+					google.maps.event.trigger(map,'resize');
+					$('#locationBlock').css({height: '300px'}).animate({height: '350px'}, 600);
+				});
 			}
 		}
 /*_____________________________________________________________________________*/

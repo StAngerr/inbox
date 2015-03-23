@@ -1115,5 +1115,25 @@ li[category=unassigned] {
     padding: 20px 0 20px 0px;
   }
 }
+#locationBlock {
+  width: 100%;
+  min-height: 30px;
+  background: #AC88CD;
+  border-radius: 3px;
+  transition: background .3s;
+  text-align: center;
+  color: #555555;
+  font-weight: 1.3em;
+  letter-spacing: 7px;
+}
+#locationBlock:hover {
+  background: #D3BDE9;
+  cursor: pointer;
+}
+#locationBlock figure {
+  display: block;
+  height: 600px;
+  width: 100%;
+}
 
 /*# sourceMappingURL=styles.css.map */

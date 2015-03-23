@@ -1,0 +1,21 @@
+#locationBlock {
+	width: 100%;
+	min-height: 30px;
+	background: #AC88CD;
+	border-radius: 3px; 
+	transition: background .3s;
+	text-align: center;
+	color: #555555;
+	font-weight: 1.3em;
+	letter-spacing: 7px;
+	&:hover {
+		background: #D3BDE9;
+		cursor: pointer;
+	}
+
+	figure {
+		display: block;
+		height: 600px;
+		width: 100%;
+	}
+}

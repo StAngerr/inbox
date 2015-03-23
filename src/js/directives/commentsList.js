@@ -39,6 +39,47 @@
 	app.controller('ExpandedTaskCtrl',['$scope','$location','$http','localStorageService','$compile', function($scope, $location, $http, localStorageService, $compile) {
 		$scope.users;
 
+/*_____________________________________________________________________________*/
+		$scope.openLocation = function() {
+			var img = new Image();
+
+			if( document.getElementById('map') ){
+				return;
+			}
+
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(success);
+			} else {
+				error('Geo Location is not supported');
+			}
+
+			$('#locationBlock').append('<figure id="map"></figure>')
+
+			function success(position) {
+				var latitude  = 49.845356;
+				var longitude = 24.0054151;
+				var coordinates = new google.maps.LatLng(latitude,longitude);
+				var options = {
+					zoom: 15,
+				    center: coordinates,
+				    mapTypeControl: true,
+				    navigationControlOptions: {
+				    	style: google.maps.NavigationControlStyle.SMALL
+				    },
+				    mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+				var map = new google.maps.Map($('#map')[0], options);
+				var marker = new google.maps.Marker({
+					position: coordinates,
+					map: map,
+					title:"Delivery point!"
+				});
+
+				/*img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=" + zoom + "&size=" + width + "x" + height + "&sensor=false";
+				document.getElementById('locationBlock').appendChild(img);*/
+			}
+		}
+/*_____________________________________________________________________________*/
 		$scope.returnBtnHead = function() {
 			var taskUrl = $location.path().split("/");
 

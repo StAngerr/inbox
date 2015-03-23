@@ -54,7 +54,7 @@
 					<div class="dropDownMenu" >
 						<button name="edit" class="taskMenuBtn" ng-click="openWindow($event)">Edit</button>
 						<button name="reassign" class="taskMenuBtn" ng-click="menuBtnEvents($event)">EditResp</button>
-						<button name="" class="taskMenuBtn">Delete</button>
+						<button name="changeLocation" class="taskMenuBtn" ng-click="menuBtnEvents($event)">Relocate</button>
 					</div>
 					<h2>{{obj.header}}</h2>
 				</header>
@@ -69,7 +69,9 @@
 
 <!--  LOCATION -->
 	<section id="locationBlock" ng-click="openLocation($event)">
-		
+		<button class="locationEditBtn" ng-click="replaceMarker()">Submit</button>
+		<button class="locationEditBtn" ng-click="hideMap()">Cancel</button>
+		<button class="openMap"></button>
 	</section>
 <!--  -->
 		<!-- NEW COMMENT BLOCK -->

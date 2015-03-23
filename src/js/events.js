@@ -11,4 +11,3 @@ $(document).on('click', function(event) {
 		if($('.dropDownMenu').is(':visible')) $('.dropDownMenu').hide(300);
 	}
 });
-

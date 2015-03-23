@@ -125,7 +125,7 @@
     	$scope.filterParams = {status : 'your', userId : ''};
     	/*Change filter between filtering by user assigned tasks and filtering by category*/
 	    $scope.changeFilterTo = function(type, value) {
-	       if (type == 'status' ) {
+	       if (type === 'status' ) {
 	       		$scope.filterParams.status = value;
 	       		$scope.filterParams.userId = '';
 	       } else if(type === 'user') {

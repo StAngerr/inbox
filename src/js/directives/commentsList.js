@@ -74,17 +74,14 @@
 
 			function success(position) {
 				map = new google.maps.Map($('#map')[0], mapParams.options);
-					 marker = new google.maps.Marker({
-						position: mapParams.coordinates,
-						map: map,
-						title:"Delivery point!"
-					});
-				/*0.003*/
+				 marker = createMarker();
 				map.setCenter(new google.maps.LatLng((mapParams.coordinates.k + 0.003), mapParams.coordinates.D));
-				var infowindow = new google.maps.InfoWindow({
-		        	content: 'Location info:<br/>Country Name:<br/>LatLng:'
-		    	});
 				marker.setMap(map);
+				/* When click on markes shows window with location info*/
+				var infowindow = new google.maps.InfoWindow({content: 'Location info: ' + $scope.$parent.obj.header});
+		    	google.maps.event.addListener(marker, 'click', function () {
+		        	infowindow.open(map, marker);
+		    	});
 				$('#map').animate({opacity: '1', height: '300px'}, 500, function() {
 					google.maps.event.trigger(map,'resize');
 				});
@@ -104,40 +101,33 @@
 
 			function success(position) {
 				map = new google.maps.Map($('#map')[0], mapParams.options);
-				if( !marker) {
-					 marker = new google.maps.Marker({
-						position: mapParams.coordinates,
-						map: map,
-						title:"Delivery point!"
-					});
-				}
-
-				map.setCenter(new google.maps.LatLng((mapParams.coordinates.k/* + 0.003*/), mapParams.coordinates.D));
-				var infowindow = new google.maps.InfoWindow({
-		        	content: 'Location info:<br/>Country Name:<br/>LatLng:'
-		    	});
-		    	
+				marker = createMarker();
+				marker.setMap(map);
+				/*This line is to set map center to marker. "+0,003" because in other case mark is over map borders*/
+				map.setCenter(new google.maps.LatLng((mapParams.coordinates.k + 0.003), mapParams.coordinates.D));
+				/*When click on map changes marker position*/
 		    	google.maps.event.addListener(map, 'click', function (event) {
-		    		var av = event.latLng;
+		    		var pos = event.latLng;
 		    		marker.setMap(null);
-		    		marker = new google.maps.Marker({
-						position: av,
-						map: map,
-						title:"Delivery point!"
-					});
-
+		    		marker = createMarker(pos);
 	    			marker.setMap(map);
 		    	});
-
+		    	/* When click on markes shows window with location info*/
+				var infowindow = new google.maps.InfoWindow({content: 'Location info: ' + $scope.$parent.obj.header});
 		    	google.maps.event.addListener(marker, 'click', function () {
-
 		        	infowindow.open(map, marker);
 		    	});
-		    	marker.setMap(map);
 				$('#map').animate({opacity: '1', height: '300px'}, 500, function() {
 					google.maps.event.trigger(map,'resize');
 				});
 			}
+		}
+
+		function createMarker(coordinates) {
+			return new google.maps.Marker({
+					position: coordinates || mapParams.coordinates,
+					title:$scope.$parent.obj.header
+				});
 		}
 
 		$scope.replaceMarker = function() {
@@ -145,7 +135,7 @@
 			$scope.$parent.obj.location.latitude = marker.position.k;
 			$scope.$parent.obj.location.longitude = marker.position.D;
 			writeInLocalStorage();
-			$scope.hideMap();
+			$scope.hideEdit();
 		}
 
 		function writeInLocalStorage() {
@@ -158,10 +148,9 @@
 				}
 			}			
 		}
-		$scope.hideMap = function() {
+		$scope.hideEdit = function() {
 			$('#locationBlock').addClass('openArrow');			
 			$('.locationEditBtn').hide();
-			
 		}
 
 		function initMapParams() {

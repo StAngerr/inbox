@@ -416,6 +416,7 @@
 		function closeMap() {
 			$('#locationBlock > figure').remove();
 			$('#locationBlock').removeClass('closeArrow');
+			$('.locationEditBtn').hide();
 		}
 
 		function setAuthorsToComments(comments,users) {

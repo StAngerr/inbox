@@ -74,13 +74,13 @@
 
 			function success(position) {
 				map = new google.maps.Map($('#map')[0], mapParams.options);
-				if( !marker) {
+			/*	if( !marker) {*/
 					 marker = new google.maps.Marker({
 						position: mapParams.coordinates,
 						map: map,
 						title:"Delivery point!"
 					});
-				}				/*0.003*/
+				/*}*/				/*0.003*/
 				map.setCenter(new google.maps.LatLng((mapParams.coordinates.k + 0.003), mapParams.coordinates.D));
 				var infowindow = new google.maps.InfoWindow({
 		        	content: 'Location info:<br/>Country Name:<br/>LatLng:'

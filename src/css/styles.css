@@ -1127,20 +1127,47 @@ li[category=unassigned] {
   font-weight: 1.3em;
   letter-spacing: 7px;
 }
+#locationBlock:after {
+  content: "";
+  visibility: hidden;
+  display: inline-block;
+  width: 40px;
+  height: 30px;
+  border: none;
+  background: url("../images/1.png") no-repeat 50% 50%;
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+  transition: transform .3s;
+}
 #locationBlock:hover {
   background: #C1C1C1;
   cursor: pointer;
+  /*  */
+  /*  */
 }
-#locationBlock:hover > .openMap {
+#locationBlock:hover:after {
+  content: "";
   visibility: visible;
   -ms-transform: rotate(0deg);
   -webkit-transform: rotate(0deg);
   transform: rotate(0deg);
 }
-#locationBlock:hover > .openMap.openedArrow {
+#locationBlock:hover.closeArrow:after {
+  content: "";
+  visibility: hidden;
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  transition: transform .3s;
+}
+#locationBlock:hover.closeArrow:hover:after {
+  content: "";
+  visibility: visible;
   -ms-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
+  transition: transform .3s;
 }
 #locationBlock #map {
   opacity: 0;
@@ -1162,18 +1189,6 @@ li[category=unassigned] {
   background: #FAF8F8;
   border-style: solid;
   border-color: #8D8C8C;
-}
-#locationBlock .openMap {
-  display: inline-block;
-  visibility: hidden;
-  width: 40px;
-  height: 30px;
-  border: none;
-  background: url("../images/1.png") no-repeat 50% 50%;
-  -ms-transform: rotate(180deg);
-  -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
-  transition: transform .5s;
 }
 
 /*# sourceMappingURL=styles.css.map */

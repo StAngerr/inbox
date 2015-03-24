@@ -38,7 +38,7 @@
 	
 	app.controller('ExpandedTaskCtrl',['$scope','$location','$http','localStorageService','$compile', function($scope, $location, $http, localStorageService, $compile) {
 		$scope.users;
-		/*localStorageService.clearAll();*/
+/*		localStorageService.clearAll();*/
 		var mapParams = {
 			coordinates : {},
 			options : {
@@ -59,9 +59,8 @@
 		$scope.openLocation = function(event) {
 			if(event.target.id !== 'locationBlock') return;
 			if( document.getElementById('map') ){
-				$('.openMap').removeClass('openedArrow');
+				$('#locationBlock').removeClass('closeArrow');
 				$('#map').remove();
-				$('#locationBlock').animate({'height' : '0'}, 250);
 				return;
 			}
 			initMapParams();
@@ -70,32 +69,32 @@
 			} else {
 				error('Geo Location is not supported');
 			}
-
 			$('#locationBlock').prepend('<figure id="map"></figure>');
+			$('#locationBlock').addClass('closeArrow');
 
 			function success(position) {
-				/*var*/ map = new google.maps.Map($('#map')[0], mapParams.options);
+				map = new google.maps.Map($('#map')[0], mapParams.options);
 				if( !marker) {
 					 marker = new google.maps.Marker({
 						position: mapParams.coordinates,
 						map: map,
 						title:"Delivery point!"
 					});
-				}
+				}				/*0.003*/
+				map.setCenter(new google.maps.LatLng((mapParams.coordinates.k + 0.003), mapParams.coordinates.D));
 				var infowindow = new google.maps.InfoWindow({
 		        	content: 'Location info:<br/>Country Name:<br/>LatLng:'
 		    	});
 				marker.setMap(map);
 				$('#map').animate({opacity: '1', height: '300px'}, 500, function() {
 					google.maps.event.trigger(map,'resize');
-					$('#locationBlock').css({height: '300px'}).animate({height: '350px'}, 200);
-					$('.openMap').addClass('openedArrow');
 				});
 			}
 		}
 
 		$scope.editLocation = function() {
 			$('#locationBlock').prepend('<figure id="map"></figure>');
+
 			$('.locationEditBtn').show("fast");
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(success);
@@ -103,9 +102,9 @@
 				error('Geo Location is not supported');
 			}
 			initMapParams();
-		/*	tempForMarker = marker;*/
+
 			function success(position) {
-				/*var*/ map = new google.maps.Map($('#map')[0], mapParams.options);
+				map = new google.maps.Map($('#map')[0], mapParams.options);
 				if( !marker) {
 					 marker = new google.maps.Marker({
 						position: mapParams.coordinates,
@@ -157,7 +156,7 @@
 			}			
 		}
 		$scope.hideMap = function() {
-			
+			$('#locationBlock').removeClass('closeArrow');
 			$('#map').remove();			
 			$('.locationEditBtn').hide();
 			$('#locationBlock').animate({'height' : '0'}, 250);

@@ -43,7 +43,6 @@
 			coordinates : {},
 			options : {
 				zoom : 15,
-				/*center : {},*/
 				mapTypeControl: true,
 				navigationControlOptions: {
 					style: google.maps.NavigationControlStyle.LARGE
@@ -55,7 +54,6 @@
 		var marker;
 		var tempForMarker = {};
 
-/*_____________________________________________________________________________*/
 		$scope.openLocation = function(event) {
 			if(event.target.id !== 'locationBlock') return;
 			if( document.getElementById('map') ){
@@ -74,7 +72,7 @@
 
 			function success(position) {
 				map = new google.maps.Map($('#map')[0], mapParams.options);
-				 marker = createMarker();
+				marker = createMarker();
 				map.setCenter(new google.maps.LatLng((mapParams.coordinates.k + 0.003), mapParams.coordinates.D));
 				marker.setMap(map);
 				/* When click on markes shows window with location info*/
@@ -122,14 +120,10 @@
 				});
 			}
 		}
-
-		function createMarker(coordinates) {
-			return new google.maps.Marker({
-					position: coordinates || mapParams.coordinates,
-					title:$scope.$parent.obj.header
-				});
+		$scope.hideEdit = function() {
+			$('#locationBlock').addClass('openArrow');			
+			$('.locationEditBtn').hide();
 		}
-
 		$scope.replaceMarker = function() {
 			if( !(confirm('You sure you want to change delivery location?')) ) return;
 			$scope.$parent.obj.location.latitude = marker.position.k;
@@ -137,6 +131,13 @@
 			writeInLocalStorage();
 			$scope.hideEdit();
 		}
+
+		function createMarker(coordinates) {
+			return new google.maps.Marker({
+					position: coordinates || mapParams.coordinates,
+					title: $scope.$parent.obj.header
+				});
+		}		
 
 		function writeInLocalStorage() {
 			var tasks = localStorageService.get('tasks');
@@ -148,16 +149,12 @@
 				}
 			}			
 		}
-		$scope.hideEdit = function() {
-			$('#locationBlock').addClass('openArrow');			
-			$('.locationEditBtn').hide();
-		}
 
 		function initMapParams() {
 			mapParams.coordinates = new google.maps.LatLng($scope.$parent.obj.location.latitude, $scope.$parent.obj.location.longitude);
 			mapParams.options.center = mapParams.coordinates;
 		}
-/*_____________________________________________________________________________*/
+
 		$scope.returnBtnHead = function() {
 			var taskUrl = $location.path().split("/");
 

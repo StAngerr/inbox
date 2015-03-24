@@ -9,7 +9,8 @@
 	color: #555555;
 	font-weight: 1.3em;
 	letter-spacing: 7px;
-	&:after {
+	&.openArrow {
+		&:after {
 			content: "";
 			visibility: hidden;
 			display: inline-block;
@@ -22,6 +23,7 @@
 	    	transform: rotate(180deg);
 			transition: transform .3s;
 		}
+	}
 	
 	&:hover {
 		background: #C1C1C1;

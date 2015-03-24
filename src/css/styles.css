@@ -1127,7 +1127,7 @@ li[category=unassigned] {
   font-weight: 1.3em;
   letter-spacing: 7px;
 }
-#locationBlock:after {
+#locationBlock.openArrow:after {
   content: "";
   visibility: hidden;
   display: inline-block;

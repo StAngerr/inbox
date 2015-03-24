@@ -43,7 +43,7 @@
 			coordinates : {},
 			options : {
 				zoom : 15,
-				center : {},
+				/*center : {},*/
 				mapTypeControl: true,
 				navigationControlOptions: {
 					style: google.maps.NavigationControlStyle.LARGE
@@ -74,13 +74,12 @@
 
 			function success(position) {
 				map = new google.maps.Map($('#map')[0], mapParams.options);
-			/*	if( !marker) {*/
 					 marker = new google.maps.Marker({
 						position: mapParams.coordinates,
 						map: map,
 						title:"Delivery point!"
 					});
-				/*}*/				/*0.003*/
+				/*0.003*/
 				map.setCenter(new google.maps.LatLng((mapParams.coordinates.k + 0.003), mapParams.coordinates.D));
 				var infowindow = new google.maps.InfoWindow({
 		        	content: 'Location info:<br/>Country Name:<br/>LatLng:'
@@ -93,8 +92,8 @@
 		}
 
 		$scope.editLocation = function() {
-			$('#locationBlock').prepend('<figure id="map"></figure>');
-
+			if(!$('#map')[0]) $('#locationBlock').prepend('<figure id="map"></figure>');
+			$('#locationBlock').removeClass('openArrow');
 			$('.locationEditBtn').show("fast");
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(success);
@@ -113,6 +112,7 @@
 					});
 				}
 
+				map.setCenter(new google.maps.LatLng((mapParams.coordinates.k/* + 0.003*/), mapParams.coordinates.D));
 				var infowindow = new google.maps.InfoWindow({
 		        	content: 'Location info:<br/>Country Name:<br/>LatLng:'
 		    	});
@@ -125,7 +125,8 @@
 						map: map,
 						title:"Delivery point!"
 					});
-		    			marker.setMap(map);
+
+	    			marker.setMap(map);
 		    	});
 
 		    	google.maps.event.addListener(marker, 'click', function () {
@@ -140,9 +141,11 @@
 		}
 
 		$scope.replaceMarker = function() {
+			if( !(confirm('You sure you want to change delivery location?')) ) return;
 			$scope.$parent.obj.location.latitude = marker.position.k;
 			$scope.$parent.obj.location.longitude = marker.position.D;
 			writeInLocalStorage();
+			$scope.hideMap();
 		}
 
 		function writeInLocalStorage() {
@@ -156,10 +159,9 @@
 			}			
 		}
 		$scope.hideMap = function() {
-			$('#locationBlock').removeClass('closeArrow');
-			$('#map').remove();			
+			$('#locationBlock').addClass('openArrow');			
 			$('.locationEditBtn').hide();
-			$('#locationBlock').animate({'height' : '0'}, 250);
+			
 		}
 
 		function initMapParams() {

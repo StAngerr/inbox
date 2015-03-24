@@ -38,7 +38,6 @@
 	
 	app.controller('ExpandedTaskCtrl',['$scope','$location','$http','localStorageService','$compile', function($scope, $location, $http, localStorageService, $compile) {
 		$scope.users;
-
 		var mapParams = {
 			coordinates : {},
 			options : {
@@ -123,6 +122,9 @@
 		$scope.hideEdit = function() {
 			$('#locationBlock').addClass('openArrow');			
 			$('.locationEditBtn').hide();
+			marker.setMap(null);
+			marker = createMarker();
+	    	marker.setMap(map);
 		}
 		$scope.replaceMarker = function() {
 			if( !(confirm('You sure you want to change delivery location?')) ) return;
@@ -155,7 +157,7 @@
 			mapParams.options.center = mapParams.coordinates;
 		}
 
->>>>>>> Geolocation
+
 		$scope.returnBtnHead = function() {
 			var taskUrl = $location.path().split("/");
 

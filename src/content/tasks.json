@@ -7,7 +7,11 @@
 		"time" : "78",
 		"date" : "Requested on Friday March 21",
 		"userId" : "0",
-		"comments" : "src/content/comments/comments0.json"
+		"comments" : "src/content/comments/comments0.json",
+		"location" : {
+			"latitude" : "49.845356",
+			"longitude" : "24.0054151"
+		}
 	},
 
 	 {	"id" : "1",
@@ -18,7 +22,11 @@
 		"time" : "44",
 		"date" : "Requested on Friday May 11",
 		"userId" : "1",
-		"comments" : "src/content/comments/comments1.json"
+		"comments" : "src/content/comments/comments1.json",
+		"location" : {
+			"latitude" : "49.845356",
+			"longitude" : "24.0054151"
+		}
 	},
 
 	 {	"id" : "2",
@@ -29,7 +37,11 @@
 		"time" : "17",
 		"date" : "Requested on Friday March 1",
 		"userId" : "2",
-		"comments" : "src/content/comments/comments2.json"
+		"comments" : "src/content/comments/comments2.json",
+		"location" : {
+			"latitude" : "49.845356",
+			"longitude" : "24.0054151"
+		}
 	},
 
 	 {	"id" : "3",
@@ -40,7 +52,11 @@
 		"time" : "11",
 		"date" : "Requested on Friday March 21",
 		"userId" : "3",
-		"comments" : "src/content/comments/comments3.json"
+		"comments" : "src/content/comments/comments3.json",
+		"location" : {
+			"latitude" : "49.845356",
+			"longitude" : "24.0054151"
+		}
 	},
 
 	 {	"id" : "4",
@@ -51,7 +67,11 @@
 		"time" : "53",
 		"date" : "Requested on Friday October 21",
 		"userId" : "4",
-		"comments" : "src/content/comments/comments4.json"
+		"comments" : "src/content/comments/comments4.json",
+		"location" : {
+			"latitude" : "49.845356",
+			"longitude" : "24.0054151"
+		}
 	},
 
 	 {	"id" : "5",
@@ -62,7 +82,11 @@
 		"time" : "8",
 		"date" : "Requested on Friday March 3",
 		"userId" : "5",
-		"comments" : "src/content/comments/comments5.json"
+		"comments" : "src/content/comments/comments5.json",
+		"location" : {
+			"latitude" : "49.845356",
+			"longitude" : "24.0054151"
+		}
 	},
 
 	 {	"id" : "6",
@@ -73,6 +97,10 @@
 		"time" : "8",
 		"date" : "Requested on Friday November 5",
 		"userId" : "6",
-		"comments" : "src/content/comments/comments6.json"
+		"comments" : "src/content/comments/comments6.json",
+		"location" : {
+			"latitude" : "49.845356",
+			"longitude" : "24.0054151"
+		}
 	}
 ]

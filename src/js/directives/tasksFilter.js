@@ -317,47 +317,36 @@
 
 		function openTask(id) {
 			checkTasksBlockExistence();
-
 			var curElemID =  id;
-
 			refreshTaskList();
-
+			closeMap();
 			if(curElemID == 'none') {
 				hideMainContent();
-
 				for (var id in $scope.activeTasks) {
 					$scope.activeTasks[id] = true;
 				}	
 				$scope.addLogo();	
 				return;
 			}
-
 			if ( $('.activeTask').length == $('.taskItem').length ) {
 				for (var id in $scope.activeTasks) {
 					if(curElemID == id) continue;
 					$scope.activeTasks[id] = false;
 				}
-
 				removeLogo();
-
 				initClickedObj(curElemID);
-
 				initComments();
-
 				removePreloader();
-
 				if($(window).width() > 620 ) addPreloader();
-
 				openNewTaskAnimation();
 
 			} else if ( id == 'underfined' ) { 
 				for (var id in $scope.activeTasks) {
 					$scope.activeTasks[id] = true;
 				}
-
 				hideMainContent();
-
 				$scope.addLogo();	
+
 			} else if ( $('.activeTask').length == 1 ) {
 				for (var id in $scope.activeTasks) {
 					if(curElemID == id) {
@@ -366,25 +355,17 @@
 					}	
 					$scope.activeTasks[id] = false;
 				}
-
 				initClickedObj(curElemID);
-
 				initComments();
-
 				removePreloader();
-
 				if($(window).width() > 620 ) addPreloader();
-
 				openNewTaskAnimation();
 			}
-
 			closeEditWindow();
-
 			if( $(window).width() < 620) {
 				$('*').removeClass('slideRight');
 				$('#navigation').addClass('slideLeft');
 				$('#mainContent').addClass('slideLeft');
-
 				removeLogo();
 			}
 		};
@@ -432,6 +413,11 @@
 				});
 			}
 		};
+		function closeMap() {
+			$('#locationBlock > figure').remove();
+			$('#locationBlock').removeClass('closeArrow');
+			$('.locationEditBtn').hide();
+		}
 
 		function setAuthorsToComments(comments,users) {
      		for ( var i=0; i < comments.length; i++ ) {
@@ -441,7 +427,6 @@
 					}
 				}
 			}
-
 			$scope.$parent.$parent.commentsToTask = comments;
 		};
 

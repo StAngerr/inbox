@@ -38,7 +38,124 @@
 	
 	app.controller('ExpandedTaskCtrl',['$scope','$location','$http','localStorageService','$compile', function($scope, $location, $http, localStorageService, $compile) {
 		$scope.users;
-	/*	localStorageService.clearAll();*/
+
+		var mapParams = {
+			coordinates : {},
+			options : {
+				zoom : 15,
+				mapTypeControl: true,
+				navigationControlOptions: {
+					style: google.maps.NavigationControlStyle.LARGE
+				},
+				mapTypeId : google.maps.MapTypeId.ROADMAP
+			}
+		};
+		var map = {}; 
+		var marker;
+		var tempForMarker = {};
+
+		$scope.openLocation = function(event) {
+			if(event.target.id !== 'locationBlock') return;
+			if( document.getElementById('map') ){
+				$('#locationBlock').removeClass('closeArrow');
+				$('#map').remove();
+				return;
+			}
+			initMapParams();
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(success);
+			} else {
+				error('Geo Location is not supported');
+			}
+			$('#locationBlock').prepend('<figure id="map"></figure>');
+			$('#locationBlock').addClass('closeArrow');
+
+			function success(position) {
+				map = new google.maps.Map($('#map')[0], mapParams.options);
+				marker = createMarker();
+				map.setCenter(new google.maps.LatLng((mapParams.coordinates.k + 0.003), mapParams.coordinates.D));
+				marker.setMap(map);
+				/* When click on markes shows window with location info*/
+				var infowindow = new google.maps.InfoWindow({content: 'Location info: ' + $scope.$parent.obj.header});
+		    	google.maps.event.addListener(marker, 'click', function () {
+		        	infowindow.open(map, marker);
+		    	});
+				$('#map').animate({opacity: '1', height: '300px'}, 500, function() {
+					google.maps.event.trigger(map,'resize');
+				});
+			}
+		}
+
+		$scope.editLocation = function() {
+			if(!$('#map')[0]) $('#locationBlock').prepend('<figure id="map"></figure>');
+			$('#locationBlock').removeClass('openArrow');
+			$('.locationEditBtn').show("fast");
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(success);
+			} else {
+				error('Geo Location is not supported');
+			}
+			initMapParams();
+
+			function success(position) {
+				map = new google.maps.Map($('#map')[0], mapParams.options);
+				marker = createMarker();
+				marker.setMap(map);
+				/*This line is to set map center to marker. "+0,003" because in other case mark is over map borders*/
+				map.setCenter(new google.maps.LatLng((mapParams.coordinates.k + 0.003), mapParams.coordinates.D));
+				/*When click on map changes marker position*/
+		    	google.maps.event.addListener(map, 'click', function (event) {
+		    		var pos = event.latLng;
+		    		marker.setMap(null);
+		    		marker = createMarker(pos);
+	    			marker.setMap(map);
+		    	});
+		    	/* When click on markes shows window with location info*/
+				var infowindow = new google.maps.InfoWindow({content: 'Location info: ' + $scope.$parent.obj.header});
+		    	google.maps.event.addListener(marker, 'click', function () {
+		        	infowindow.open(map, marker);
+		    	});
+				$('#map').animate({opacity: '1', height: '300px'}, 500, function() {
+					google.maps.event.trigger(map,'resize');
+				});
+			}
+		}
+		$scope.hideEdit = function() {
+			$('#locationBlock').addClass('openArrow');			
+			$('.locationEditBtn').hide();
+		}
+		$scope.replaceMarker = function() {
+			if( !(confirm('You sure you want to change delivery location?')) ) return;
+			$scope.$parent.obj.location.latitude = marker.position.k;
+			$scope.$parent.obj.location.longitude = marker.position.D;
+			writeInLocalStorage();
+			$scope.hideEdit();
+		}
+
+		function createMarker(coordinates) {
+			return new google.maps.Marker({
+					position: coordinates || mapParams.coordinates,
+					title: $scope.$parent.obj.header
+				});
+		}		
+
+		function writeInLocalStorage() {
+			var tasks = localStorageService.get('tasks');
+			for (var i = 0; i < tasks.length; i++) {
+				if(tasks[i].id == $scope.$parent.obj.id) {
+					tasks[i] = $scope.$parent.obj; 
+					localStorageService.set('tasks',tasks);
+					break;
+				}
+			}			
+		}
+
+		function initMapParams() {
+			mapParams.coordinates = new google.maps.LatLng($scope.$parent.obj.location.latitude, $scope.$parent.obj.location.longitude);
+			mapParams.options.center = mapParams.coordinates;
+		}
+
+>>>>>>> Geolocation
 		$scope.returnBtnHead = function() {
 			var taskUrl = $location.path().split("/");
 
@@ -113,6 +230,8 @@
 				$('#mainContent').addClass('slideMore');
 
 				addReassignSection();
+			} else if(button.name == 'changeLocation') {
+				$scope.editLocation();
 			}
 		}
 

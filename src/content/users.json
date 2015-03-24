@@ -2,36 +2,41 @@
 	{
 		"id" : "0",
 		"avatar" : "src/images/avatar.jpg",
-		"name" : "Kim"
+		"name" : "Kim Asdfds"
 	},
 	{
 		"id" : "1",
 		"avatar" : "src/images/avatar1.jpg",
-		"name" : "Tom"
+		"name" : "Tom Qwerfds"
 	},
 	{
 		"id" : "2",
 		"avatar" : "src/images/avatar2.jpg",
-		"name" : "Edward"
+		"name" : "Edward Sdasdas"
 	},
 	{
 		"id" : "3",
 		"avatar" : "src/images/avatar3.jpg",
-		"name" : "Fred"
+		"name" : "Fred Ssdasad"
 	},
 	{
 		"id" : "4",
 		"avatar" : "src/images/avatar4.jpg",
-		"name" : "Jhon"
+		"name" : "John Lennon"
 	},
 	{
 		"id" : "5",
 		"avatar" : "src/images/avatar5.jpg",
-		"name" : "Criss"
+		"name" : "Criss Sdsasd"
 	},
 	{
 		"id" : "6",
 		"avatar" : "src/images/avatar6.jpg",
-		"name" : "Homer"
+		"name" : "Homer Simpson"
+	},
+	{
+		"id" : "7",
+		"avatar" : "src/images/avatar0.jpg",
+		"name" : "Natalie Portman"
 	}
 ]

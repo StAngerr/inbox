@@ -734,15 +734,17 @@ li[category=unassigned] {
 .filterWrap .userOverviewHeader .userOverviewAvatar {
   width: 30%;
   float: left;
-  margin: 4% 0 0 9%;
+  margin: 3% 0 0 5%;
 }
 .filterWrap .userOverviewHeader .userOverviewAvatar img {
-  border-radius: 4px;
+  width: 60%;
+  border-radius: 50%;
 }
 .filterWrap .userOverviewHeader .userOverviewInfo {
   width: 60%;
   float: right;
   cursor: default;
+  margin-top: 3%;
 }
 .filterWrap .userOverviewHeader .userOverviewInfo .subTag {
   display: inline-block;
@@ -750,6 +752,10 @@ li[category=unassigned] {
   font-weight: bold;
   font-size: 1.1em;
   color: #727070;
+}
+.filterWrap .userOverviewHeader .userOverviewInfo .subTagName {
+  font-size: 1.2em;
+  font-weight: bold;
 }
 .filterWrap .userOverviewHeader .userOverviewInfo .userName, .filterWrap .userOverviewHeader .userOverviewInfo .userId, .filterWrap .userOverviewHeader .userOverviewInfo .userTasksCount {
   margin-bottom: 10px;

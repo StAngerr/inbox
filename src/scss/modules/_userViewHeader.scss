@@ -22,10 +22,12 @@
  		
 		.userOverviewAvatar {
 			width: 30%;
+
 			float: left;
-			margin: 4% 0 0 9%;
+			margin: 3% 0 0 5%;
 			img {
-				border-radius: 4px;
+				width: 60%;
+				border-radius: 50%;
 			}
 		}
 
@@ -33,12 +35,17 @@
 			width: 60%;
 			float: right;
 			cursor: default;
+			margin-top: 3%;
 			.subTag {
 				display: inline-block;
 				margin-right: 5px;
 				font-weight: bold;
 				font-size: 1.1em;
 				color: $darkGrey;
+			}
+			.subTagName {
+				font-size: 1.2em;
+				font-weight: bold;
 			}
 			
 			.userName, .userId, .userTasksCount {

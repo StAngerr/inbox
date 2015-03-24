@@ -25,5 +25,12 @@
 		"authorIcon" : "",
 		"author" : "sam - 7:32 am",
 		"content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+	},
+
+	{ 
+		"userId" : "7",
+		"authorIcon" : "",
+		"author" : "Natalie Portman",
+		"content" : "Hi"
 	}
 ]

@@ -38,7 +38,7 @@
 	
 	app.controller('ExpandedTaskCtrl',['$scope','$location','$http','localStorageService','$compile', function($scope, $location, $http, localStorageService, $compile) {
 		$scope.users;
-
+	/*	localStorageService.clearAll();*/
 		$scope.returnBtnHead = function() {
 			var taskUrl = $location.path().split("/");
 

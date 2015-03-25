@@ -455,6 +455,20 @@ li[category=unassigned] {
   height: 25px;
   border-radius: 50%;
 }
+.tasks .taskItem footer figure .taskAuthorIcon:hover {
+  border: 1px solid #A4A4A4;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 3px;
+  -webkit-transform: scale(1.5, 1.5);
+  -webkit-transition-duration: 200ms;
+  -webkit-transition-timing-function: ease-out;
+  -moz-transform: scale(1.5, 1.5);
+  -moz-transition-duration: 200ms;
+  -moz-transition-timing-function: ease-out;
+  -ms-transform: scale(1.5, 1.5);
+  -ms-transition-duration: 200ms;
+  -ms-transition-timing-function: ease-out;
+  transform: scale(1.5, 1.5);
+}
 .tasks .taskItem.activeTask {
   opacity: 1;
 }
@@ -616,6 +630,20 @@ li[category=unassigned] {
   margin-right: 2%;
   background: #B24FB5;
   border-radius: 50%;
+}
+.assign .authorIcon:hover {
+  border: 1px solid #A4A4A4;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 3px;
+  -webkit-transform: scale(1.5, 1.5);
+  -webkit-transition-duration: 200ms;
+  -webkit-transition-timing-function: ease-out;
+  -moz-transform: scale(1.5, 1.5);
+  -moz-transition-duration: 200ms;
+  -moz-transition-timing-function: ease-out;
+  -ms-transform: scale(1.5, 1.5);
+  -ms-transition-duration: 200ms;
+  -ms-transition-timing-function: ease-out;
+  transform: scale(1.5, 1.5);
 }
 
 .editWindow {
@@ -847,21 +875,6 @@ li[category=unassigned] {
     font-size: 0.9em;
   }
 }
-.XD {
-  border: 1px solid #A4A4A4;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 3px;
-  -webkit-transform: scale(1, 1);
-  -webkit-transition-duration: 200ms;
-  -webkit-transition-timing-function: ease-out;
-  -moz-transform: scale(1, 1);
-  -moz-transition-duration: 200ms;
-  -moz-transition-timing-function: ease-out;
-  -ms-transform: scale(1, 1);
-  -ms-transition-duration: 200ms;
-  -ms-transition-timing-function: ease-out;
-  transform: scale(1.5, 1.5);
-}
-
 /* NEW COMMENT BLOCK.  SIMPLE AND EXPANDED */
 .newComment {
   height: 4%;
@@ -1087,6 +1100,20 @@ li[category=unassigned] {
   margin-right: 2%;
   background: #B24FB5;
   border-radius: 50%;
+}
+.commentList .commentItem .authorIcon:hover {
+  border: 1px solid #A4A4A4;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 3px;
+  -webkit-transform: scale(1.5, 1.5);
+  -webkit-transition-duration: 200ms;
+  -webkit-transition-timing-function: ease-out;
+  -moz-transform: scale(1.5, 1.5);
+  -moz-transition-duration: 200ms;
+  -moz-transition-timing-function: ease-out;
+  -ms-transform: scale(1.5, 1.5);
+  -ms-transition-duration: 200ms;
+  -ms-transition-timing-function: ease-out;
+  transform: scale(1.5, 1.5);
 }
 .commentList .commentItem .meta {
   display: inline-block;

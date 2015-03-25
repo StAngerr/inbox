@@ -2,7 +2,7 @@
 	<li ng-repeat="comment in commentsToTask">
 		<article class="commentItem">
 			<figure>
-				<img user="{{comment.userId}}" class="authorIcon" ng-src="{{comment.authorIcon}}" ng-mouseover="zoomAvatarExpTask($event)" ng-click="openUserExpTask(comment.userId || 0)">
+				<img user="{{comment.userId}}" class="authorIcon" ng-src="{{comment.authorIcon}}" ng-click="openUserExpTask(comment.userId || 0)">
 			</figure>
 			<aside class="meta"><span>{{comment.author}}</span></aside>
 			<div class="content">

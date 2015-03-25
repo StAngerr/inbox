@@ -46,6 +46,7 @@
 						<span>{{obj.author}}</span>
 						<span>{{obj.date}}</span>
 					</aside>
+					<!--Menu sandwich -->
 					<div class="taskMenu">
 						<div class="wrap">
 							<span class="sandwich"></span>
@@ -59,17 +60,12 @@
 						<button name="changeLocation" class="taskMenuBtn" ng-click="menuBtnEvents($event)">Change location<span class="glyphicon glyphicon-map-marker"></span></button>
 					</div>
 					</div>
-					<!-- <div class="dropDownMenu" >
-						<button name="edit" class="taskMenuBtn" ng-click="openWindow($event)">Rename<span class="glyphicon glyphicon-pencil"></button>
-						<button name="reassign" class="taskMenuBtn" ng-click="menuBtnEvents($event)">EditResp<span class="glyphicon glyphicon-refresh"></span></button>						
-						<button name="changeLocation" class="taskMenuBtn" ng-click="menuBtnEvents($event)">Relocate<span class="glyphicon glyphicon-map-marker"></span></button>
-					</div> -->
 					<h2>{{obj.header}}</h2>
 				</header>
 					
 				<div class="assign">
 					<figure>
-						<img class="authorIcon" ng-src="{{obj.user.avatar}}" ng-mouseover="zoomAvatarExpTask($event)" ng-click="openUserExpTask(obj.user.id)">
+						<img class="authorIcon" ng-src="{{obj.user.avatar}}" ng-click="openUserExpTask(obj.user.id)">
 					</figure>
 					<aside><p>Assigned: {{obj.user.name}}</p></cite>
 				</div>

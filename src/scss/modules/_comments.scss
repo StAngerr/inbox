@@ -19,6 +19,20 @@
 			margin-right: 2%;
 			background: $violet;
 			border-radius: 50%;
+			&:hover {
+				border: 1px solid #A4A4A4;
+				box-shadow: rgba(0,0,0,0.2) 0px 2px 3px;
+				-webkit-transform: scale(1.5, 1.5); 
+				-webkit-transition-duration: 200ms;
+				-webkit-transition-timing-function: ease-out;
+				-moz-transform: scale(1.5, 1.5);
+				-moz-transition-duration: 200ms;
+				-moz-transition-timing-function: ease-out;
+				-ms-transform: scale(1.5, 1.5);
+				-ms-transition-duration: 200ms;
+				-ms-transition-timing-function: ease-out;
+				transform: scale(1.5,1.5);
+			}
 		}
 		.meta {
 			display: inline-block;

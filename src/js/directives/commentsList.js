@@ -157,14 +157,11 @@
 			mapParams.options.center = mapParams.coordinates;
 		}
 
-
 		$scope.returnBtnHead = function() {
 			var taskUrl = $location.path().split("/");
 
 			taskUrl[4]='none';
-
 			$location.path(taskUrl.join("/"));
-
 			$('*').removeClass('slideLeft');
 			$('#navigation').addClass('slideRight');
 			$('#mainContent').addClass('slideRight');
@@ -190,13 +187,9 @@
 
 			newComment.authorIcon = $('.newCommentExpanded figure .authorIcon').attr('src');
 			newComment.author += time.getHours() + ':' + time.getMinutes();
-			
 			$('.newCommentExpanded .commentInput').val('');
-			
 			$scope.$parent.commentsToTask.push(newComment);
-
 			localStorageService.set('comments' + $scope.$parent.obj.id + '', $scope.$parent.commentsToTask);
-
 			$('.newComment').removeClass('newCommentExpanded');
 		};
 
@@ -214,7 +207,6 @@
 
 		$scope.closeReassign = function() {
 			$('#reassignSection').removeClass('slideMore');
- 			
  			$('#navigation').removeClass('slideMore');
 			$('#mainContent').removeClass('slideMore');
 			setTimeout(function(){
@@ -227,10 +219,8 @@
 
 			if(button.name == 'reassign') {
 				initUsers();
-
 				$('#navigation').addClass('slideMore');
 				$('#mainContent').addClass('slideMore');
-
 				addReassignSection();
 			} else if(button.name == 'changeLocation') {
 				$scope.editLocation();
@@ -254,20 +244,16 @@
 
 		$scope.reassignTask = function(event) {
 			var  check = confirm("You sure you want to reassign this task to " + $(event.currentTarget).attr('name'));
+			var currentUserId = event.currentTarget.id; 
+			var users = localStorageService.get('users');
 
 			if(!check) {
 				return;
 			}
-
 			$scope.closeReassign();
-			
-			var currentUserId = event.currentTarget.id; 
-			var users = localStorageService.get('users');
-			
 			for (var i=0; i < users.length; i++) {
 				if( users[i].id == currentUserId) $scope.$parent.obj.user = users[i];	
 			}
-
 			writeReasingInStorage();
 		};
 
@@ -294,15 +280,6 @@
 			$('.users').remove();
 			$('.editWindow').remove();
 		};
-
-		/*Events for avatar icons in main content block*/
-	 	$scope.zoomAvatarExpTask = function(event) {
-	 		$(event.target).addClass('XD');
-
-	 		$(event.target).on('mouseleave', function() {
-	 			$(this).removeClass('XD');
-	 		});
-	 	}
 
 	 	$scope.openUserExpTask = function(id) {
 			$('*').removeClass('slideLeft');

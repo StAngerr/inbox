@@ -33,16 +33,6 @@
 					}
 					scope.$apply();
         	});
-
-			element.on('mouseover', function(event) {
-				var target = event.target;
-
-				if( $(target).hasClass('taskAuthorIcon') ) {
-					$(target).addClass('XD');
-				} else {
-					$('.taskAuthorIcon').removeClass('XD');
-				}
-			});
         	/*button*/
         	function addReturnButton() {
 				angular.element(document.getElementById('navHeader'))
@@ -167,7 +157,6 @@
 			if( !( $('.filterWrap > task-filter').length ) ) {
 				$('.filterWrap > cur-user-tasks').remove();
 				$('.filterWrap > user-overview').remove();
-				
 				addUserTasksFilter();
 			}
 		};
@@ -260,10 +249,10 @@
 
 		function openUser(userID) {
 			var lem = $('.userOverviewHeader')[0];
+
 			if( ($('.filterWrap > user-overview').length)  && ($(lem).attr('userid') == userID) ) {
 				return;
 			}
-
 			$scope.currentUser = {};
 			$scope.assignedTasksCount = 0;
 			/*For refresh only when filterParams are default*/
@@ -274,21 +263,19 @@
 				angular.element(document.getElementById('navHeader'))
 						.append($compile('<button ng-click="actorViewReturnBtn()" class="returnBtn" > </button>')($scope.$parent));
 			}
-			
 			refreshTaskList();		
 			//$scope.$parent.currentUser = findUser(userID);
 			$scope.$parent.currentUser = findUser(userID);
-
 			initAssignedTaskCount(userID);
 			/* CLEAR ALL SECTIONS*/
 			$('.filterWrap > task-filter').remove();
 			$('.filterWrap > user-overview').remove();
-
 			addUserOverviewHeader();
 		};
 /*refresh tasks if some tasks were reassigned (!!!!!!!!!!!!!!!!!!!!!!!!!!!!!)*/
 		function refreshTaskList() {
 			var temp = localStorageService.get('tasks');
+
 			for (var i=0; i < $scope.tasks.length; i++) {
 				$scope.tasks[i].userId = temp[i].userId;
 			}	
@@ -296,6 +283,7 @@
 /* Just counts how many tasksare assigned to  user*/
 		function initAssignedTaskCount(userId) {
 			var tasks = localStorageService.get('tasks');
+
 			$scope.$parent.assignedTasksCount = 0;
 			for (var i=0; i < tasks.length; i++) {
 					if(tasks[i].userId == userId) $scope.$parent.assignedTasksCount++;
@@ -397,19 +385,16 @@
 
 				setAuthorsToComments(comments,users);
 			} else {
-
 				$http.get($scope.$parent.obj.comments).success(function(data, status, headers, config) {
-				     	var comments = data;
-				     	var str = 'comments' + $scope.$parent.obj.id;
-				     	
-				     	localStorageService.set('comments' + $scope.$parent.obj.id, comments);
+			     	var comments = data;
+			     	var str = 'comments' + $scope.$parent.obj.id;   
 
-				     	$http.get('src/content/users.json').success(function(data, status, headers, config) { 
-				     		var users = data;
-				     		setAuthorsToComments(comments,users);
-
-				     		localStorageService.set('users',users);
-				     	});
+			     	localStorageService.set('comments' + $scope.$parent.obj.id, comments);
+			     	$http.get('src/content/users.json').success(function(data, status, headers, config) { 
+			     		var users = data;
+			     		setAuthorsToComments(comments,users);
+			     		localStorageService.set('users',users);
+			     	});
 				});
 			}
 		};

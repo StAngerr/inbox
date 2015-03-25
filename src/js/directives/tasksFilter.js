@@ -56,8 +56,7 @@
 				for (var id in scope.$parent.activeTasks) {
 					scope.$parent.activeTasks[id] = true;
 				}
-
-				$location.path('/state/' + ($(".taskFilter > div").index(target) + 1) + '/task/none');
+				$location.path('/state/' + $(target).attr('name') + '/task/none');
 				scope.$apply();
 			});
 
@@ -103,7 +102,7 @@
 	}]);
 
 	app.controller('TasksFilterCtrl',['$scope','$http','$routeParams','$location','$rootScope','localStorageService','$compile',  function($scope, $http, $routeParams, $location, $rootScope, localStorageService,$compile) {
-		$scope.active = 1;
+		$scope.active = 'your';
 		
 		$scope.yoursTasks = 0;
 		$scope.unassignedTasks = 0;
@@ -132,16 +131,12 @@
 		};
 
 		$scope.setActive = function(value) {
-			checkStateBlockExistence();
-
 			var openedElem;
-
-			if(value == "null") {
-				return;
-			}
-			if(value == 1) {
+			checkStateBlockExistence();
+			
+			if(value == 'your') {
 				$scope.changeFilterTo('status','your');				
-			} else if(value == 2) {
+			} else if(value == 'unassigned') {
 				$scope.changeFilterTo('status','unassigned');				
 			} else {
 				$scope.changeFilterTo('status','');

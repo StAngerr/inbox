@@ -46,16 +46,24 @@
 						<span>{{obj.author}}</span>
 						<span>{{obj.date}}</span>
 					</aside>
-					<a class="taskMenu" ng-click="dropDownShowHide(); ">
-						<span></span>
-						<span></span>
-						<span></span>
-					</a>
+					<div class="taskMenu">
+						<div class="wrap">
+							<span class="sandwich"></span>
+							<span class="sandwich"></span>
+							<span class="sandwich"></span>
+						</div>
+				 <!-- ng-click="openWindow($event)" -->
 					<div class="dropDownMenu" >
-						<button name="edit" class="taskMenuBtn" ng-click="openWindow($event)">Edit</button>
-						<button name="reassign" class="taskMenuBtn" ng-click="menuBtnEvents($event)">EditResp</button>
-						<button name="changeLocation" class="taskMenuBtn" ng-click="menuBtnEvents($event)">Relocate</button>
+						<button name="edit" class="taskMenuBtn" >Rename<span class="glyphicon glyphicon-pencil"></button>
+						<button name="reassign" class="taskMenuBtn" ng-click="menuBtnEvents($event)">Reassign<span class="glyphicon glyphicon-refresh"></span></button>						
+						<button name="changeLocation" class="taskMenuBtn" ng-click="menuBtnEvents($event)">Change location<span class="glyphicon glyphicon-map-marker"></span></button>
 					</div>
+					</div>
+					<!-- <div class="dropDownMenu" >
+						<button name="edit" class="taskMenuBtn" ng-click="openWindow($event)">Rename<span class="glyphicon glyphicon-pencil"></button>
+						<button name="reassign" class="taskMenuBtn" ng-click="menuBtnEvents($event)">EditResp<span class="glyphicon glyphicon-refresh"></span></button>						
+						<button name="changeLocation" class="taskMenuBtn" ng-click="menuBtnEvents($event)">Relocate<span class="glyphicon glyphicon-map-marker"></span></button>
+					</div> -->
 					<h2>{{obj.header}}</h2>
 				</header>
 					

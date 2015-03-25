@@ -26,7 +26,7 @@ inbox.controller('mainCtrl',['$scope','$routeParams','$location','$rootScope', f
 		$('.filterWrap > cur-user-tasks').remove();
 		$('.filterWrap > user-overview').remove();
 
-		$location.path('/state/1/task/none');
+		$location.path('/state/your/task/none');
 
 		$('.navHeader > .returnBtn').remove();
 	} 	

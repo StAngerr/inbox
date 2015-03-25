@@ -52,6 +52,7 @@
 			element.on('click', function(event) {
 				var url = $location.path().split("/");
 				var target = $(event.target).closest('.categories')[0];
+				if(!target) return; /*if event fired between state buttons*/
 				/*reset all tasks to default */
 				for (var id in scope.$parent.activeTasks) {
 					scope.$parent.activeTasks[id] = true;

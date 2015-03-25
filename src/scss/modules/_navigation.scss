@@ -28,19 +28,17 @@
 				margin-right: 2%;
 				border: 1px solid #fff;
 				transition: border-color 0.5s;
-
+				&.showSearch {
+					display: block;
+				}
 				&:focus {
 					outline: none;
 					border-color: #ccc;						
 				}
-				&:not(:focus) {
-					display: none;
-				}
 				&:focus + span.glyphicon-search {
 					display: none;
 				}
-			}
-			
+			}			
 			 .glyphicon-search {
 				position: absolute;
 				top: 40%;
@@ -49,13 +47,9 @@
 			}
 		}
 	}
-
-/* _________________________________________ */
-
-/*   TASKS  CTEGORIES  YOURS UNSIGNED .....   */
-/* 	
-	} */
 }
+
+
 .filterWrap {
 	width: 100%;
 	height: 95%;

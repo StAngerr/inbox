@@ -93,11 +93,10 @@
 /*CONTROLLERS*/
 	app.controller('SearchFieldCtrl',['$scope', function($scope) {
 		$scope.searchAnimationEvent = function() {
-			$('#searchField').css({'display' : 'block'}).focus();
-			
+			$('#searchField').addClass('showSearch').focus();
 			$('#searchField').blur(function() {
 				$scope.$parent.searchFieldInput = '';
-			 	$(this).css({'display' : 'none'}); 	
+				$(this).removeClass('showSearch');
 			});
 		};
 	}]);

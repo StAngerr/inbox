@@ -237,10 +237,6 @@ li[category=unassigned] {
 .navHeader {
   height: 5%;
   width: 100%;
-  /* _________________________________________ */
-  /*   TASKS  CTEGORIES  YOURS UNSIGNED .....   */
-  /* 	
-  	} */
 }
 .navHeader .search {
   position: relative;
@@ -266,12 +262,12 @@ li[category=unassigned] {
   border: 1px solid #fff;
   transition: border-color 0.5s;
 }
+.navHeader .search .searchWrap .searchField.showSearch {
+  display: block;
+}
 .navHeader .search .searchWrap .searchField:focus {
   outline: none;
   border-color: #ccc;
-}
-.navHeader .search .searchWrap .searchField:not(:focus) {
-  display: none;
 }
 .navHeader .search .searchWrap .searchField:focus + span.glyphicon-search {
   display: none;

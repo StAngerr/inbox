@@ -5,15 +5,17 @@
         var link = function(scope, element, attr) {
         	var ssss = scope.tasks;
 	        	element.on('click', function(event) {
+	        		var state = $routeParams.state;
+					var taskID = $routeParams.id;
+					var user = $routeParams.userID;
 	        		var task;
 	        		var elem = event.target;
 	        		var userId = $(elem).attr('user');
-	        		var url = $location.path().split("/");
 	        		/*Check if event didn't fired on user*/
 		      		if ( $(elem).hasClass('taskAuthorIcon') ) {
 		      				scope.changeFilterTo('user',userId);
 							addReturnButton();
-							$location.path('user/' + userId + '/' + (url[3] || 'task') + '/'  + (url[4] || 'none'));
+							$location.path('user=' + userId + '/task=none');
 							scope.$apply();
 							return;
 		        	}	        	
@@ -24,12 +26,20 @@
 		        		task = $(event.target).closest('.taskItem')[0];
 		        	}
 		       		/* Change url */
-					if (url.length < 3) {
-						$location.path('/state/your/task/' + task.id);
-					} else if(task.id == url[4]) {
-						$location.path(url[1] + '/' + url[2] + '/task/' + 'none');
+					if ( !state && !user) {
+						$location.path('/state=your/task=' + task.id);
+					} else if(task.id == taskID) {
+						if(user){
+							$location.path('user=' + user + '/task=' + 'none');
+						}else {
+							$location.path('state=' + state + '/task=' + 'none');
+						}
 					} else {
-						$location.path(url[1] + '/' + url[2] + '/task/' + task.id);
+						if(user){
+							$location.path('user=' + user  + '/task=' + task.id);
+						}else {
+							$location.path('state=' + state +  '/task=' + task.id);
+						}
 					}
 					scope.$apply();
         	});
@@ -50,14 +60,14 @@
 	app.directive('taskFilter',['$location', function($location) {
 		var link = function(scope, element, attr) {	
 			element.on('click', function(event) {
-				var url = $location.path().split("/");
+				var url = $location.path().split("/"); /* ??????????????????????????????????????????*/
 				var target = $(event.target).closest('.categories')[0];
 				if(!target) return; /*if event fired between state buttons*/
 				/*reset all tasks to default */
 				for (var id in scope.$parent.activeTasks) {
 					scope.$parent.activeTasks[id] = true;
 				}
-				$location.path('/state/' + $(target).attr('name') + '/task/none');
+				$location.path('/state=' + $(target).attr('name') + '/task=none');
 				scope.$apply();
 			});
 

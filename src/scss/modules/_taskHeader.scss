@@ -34,6 +34,7 @@
 .taskMenu {
 	display: block;
 	position: absolute;
+	z-index: 15;
 	right: 0;
 	&:hover {
 		cursor: pointer;
@@ -92,7 +93,7 @@
 		&:first-child {
 			border-top-right-radius: 3px;
 			border-top-left-radius: 3px;
-			/* Pain triangle  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+			/* Color triangle  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 			&:hover {
 				&:before {
 					content: "";

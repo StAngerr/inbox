@@ -160,7 +160,7 @@
 		$scope.returnBtnHead = function() {
 			var taskUrl = $location.path().split("/");
 
-			taskUrl[4]='none';
+			taskUrl[2]='task=none';
 			$location.path(taskUrl.join("/"));
 			$('*').removeClass('slideLeft');
 			$('#navigation').addClass('slideRight');
@@ -286,7 +286,7 @@
 			$('#navigation').addClass('slideRight');
 			$('#mainContent').addClass('slideRight');
 			$('.taskItem').addClass('activeTask');
-			$location.path('user/'+ id +'/task/none');
+			$location.path('user='+ id +'/task=none');
 	 	}
   
 	}]);

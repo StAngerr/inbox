@@ -2,11 +2,11 @@ var inbox = angular.module('inbox',['tastks-filter','comments-list','ngRoute','L
 
 inbox.config(['$routeProvider',function($routeProvide) {
 	$routeProvide
-		.when('/state/:state/task/:id', {
+		.when('/state=:state/task=:id', {
 			template : ' ',
 			controller : 'subCtrl'
 		})
-		.when('/user/:userID/task/:id', {
+		.when('/user=:userID/task=:id', {
 			template : ' ',
 			controller : 'subCtrl'
 		})
@@ -26,7 +26,7 @@ inbox.controller('mainCtrl',['$scope','$routeParams','$location','$rootScope', f
 		$('.filterWrap > cur-user-tasks').remove();
 		$('.filterWrap > user-overview').remove();
 
-		$location.path('/state/your/task/none');
+		$location.path('/state=your/task=none');
 
 		$('.navHeader > .returnBtn').remove();
 	} 	

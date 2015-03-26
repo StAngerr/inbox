@@ -519,6 +519,7 @@ li[category=unassigned] {
 .taskMenu {
   display: block;
   position: absolute;
+  z-index: 15;
   right: 0;
 }
 .taskMenu:hover {
@@ -577,7 +578,7 @@ li[category=unassigned] {
 .dropDownMenu .taskMenuBtn:first-child {
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
-  /* Pain triangle  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+  /* Color triangle  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 }
 .dropDownMenu .taskMenuBtn:first-child:hover:before {
   content: "";

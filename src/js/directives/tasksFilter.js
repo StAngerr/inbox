@@ -1,5 +1,5 @@
-(function() {
-	var app=angular.module('tastks-filter',[]);
+(function() { 
+	var app = angular.module('tastks-filter', []);
 /*DIRS*/
 	app.directive('tasksList',['$compile','$routeParams','$location', function($compile, $routeParams, $location) {
         var link = function(scope, element, attr) {
@@ -60,7 +60,6 @@
 	app.directive('taskFilter',['$location', function($location) {
 		var link = function(scope, element, attr) {	
 			element.on('click', function(event) {
-				var url = $location.path().split("/"); /* ??????????????????????????????????????????*/
 				var target = $(event.target).closest('.categories')[0];
 				if(!target) return; /*if event fired between state buttons*/
 				/*reset all tasks to default */
@@ -70,13 +69,8 @@
 				$location.path('/state=' + $(target).attr('name') + '/task=none');
 				scope.$apply();
 			});
-
-			$('.taskFilter').css({
-				'position' : 'relative',
-				'left' : '100%'
-			});
-
-			$('.taskFilter').animate({'left' : '0'}, 300);
+			$('.taskFilter').addClass('disabled');
+			setTimeout( function() { $('.taskFilter').addClass('enabled'); }, 10);
         };
 		return {
 			strict : 'E',
@@ -87,12 +81,8 @@
 
 	app.directive('userOverview', function() {
 		var link = function(scope, element, attr) {	
-			$('.userOverviewHeader').css({
-				'position' : 'relative',
-				'left' : '-100%'
-			});
-
-			$('.userOverviewHeader').animate({'left' : '0'},300);
+			$('.userOverviewHeader').addClass('disabled');
+			setTimeout(function() { $('.userOverviewHeader').addClass('enabled'); }, 10);
 		};
 		return {
 			strict : 'E',
@@ -134,10 +124,8 @@
 	    };
 
 		$scope.addLogo = function() {
-			$('#mainContent').css({
-				'opacity' : '0',
-				'background' : '#fff url("src/images/inboxLogo1.png") no-repeat 50% 50%',
-			}).animate({'opacity' : '1'},  1500);
+			$('#mainContent').addClass('widthLogo');
+			setTimeout(function() {$('#mainContent').addClass('logoAnim')}, 10);
 		};
 
 		$scope.setActive = function(value) {
@@ -187,7 +175,6 @@
 
 				setUsersToTasks();
 				initCategories();
-
 				localStorageService.set('tasks', $scope.tasks);
 			});
 		};
@@ -330,15 +317,8 @@
 				initClickedObj(curElemID);
 				initComments();
 				removePreloader();
-				if($(window).width() > 620 ) addPreloader();
+				if( $(window).width() > 620 ) addPreloader();
 				openNewTaskAnimation();
-
-			} else if ( id == 'underfined' ) { 
-				for (var id in $scope.activeTasks) {
-					$scope.activeTasks[id] = true;
-				}
-				hideMainContent();
-				$scope.addLogo();	
 
 			} else if ( $('.activeTask').length == 1 ) {
 				for (var id in $scope.activeTasks) {
@@ -421,20 +401,16 @@
 		};
 
 		function removeLogo() {
-			$('#mainContent').css({
-				'background' : '#fff',
-				'opacity' : '1'
-			});
+			$('#mainContent').removeClass('widthLogo').removeClass('logoAnim');
 		};
 
 		function openNewTaskAnimation() {
-			$('.mainContentInner').css({'display' : 'none','opacity' : '0'});
-			$('.mainContentInner').css({'display' : 'block'}).animate({'opacity' : '1'}, 600);
+			$('.mainContentInner').css({'display' : 'block', 'opacity' : '0'}).animate({'opacity' : '1'}, 600);
 		};
 
 		function hideMainContent() {
-			$('.mainContentInner').animate({'opacity' : '0'}, 300,function() {
-				$(this).css({'display' : 'none','opacity' : '0'});
+			$('.mainContentInner').animate({'opacity' : '0'}, 300, function() {
+				$(this).css({'display' : 'none'});
 			});
 		};
 
@@ -448,9 +424,9 @@
 		};
 
 		function closeEditWindow() {
-			if( $('.mainContentInner > .window').css('display') == 'block' ) {
+			if( $('.mainContentInner > .window:visible')) {
 				$('.users').remove();
-				$('.mainContentInner > .window').css({'display' : 'none'});
+				$('.mainContentInner > .window').hide();;
 			}
 		};
 

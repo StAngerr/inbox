@@ -112,7 +112,18 @@
 		}
 	}
 }
-	/* RESPONSIVE */
+
+.disabled {
+	position: relative;
+	left: 100%;
+	transition: left .3s;
+}
+
+.enabled {
+	left: 0;
+}
+/* RESPONSIVE */
+
 @media only screen and (max-width: $xLarge) {
 	/* SEARCH n NAVIGATION */
 	.navHeader {

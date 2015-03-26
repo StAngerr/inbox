@@ -159,7 +159,16 @@ li[category=unassigned] {
 
 .mainContentInner {
   display: none;
+}
+
+/* total classes */
+.widthLogo {
   opacity: 0;
+  background: #fff url("../../src/images/inboxLogo1.png") no-repeat 50% 50%;
+  transition: opacity 1s;
+}
+.widthLogo.logoAnim {
+  opacity: 1;
 }
 
 @media only screen and (max-width: 1453px) {
@@ -335,6 +344,16 @@ li[category=unassigned] {
 }
 .taskFilter .categories.active .categoryName {
   color: #000 !important;
+}
+
+.disabled {
+  position: relative;
+  left: 100%;
+  transition: left .3s;
+}
+
+.enabled {
+  left: 0;
 }
 
 /* RESPONSIVE */

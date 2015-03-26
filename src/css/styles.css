@@ -1164,6 +1164,7 @@ li[category=unassigned] {
   }
   #reassignSection .userList .userItem {
     width: 100%;
+    height: 8%;
     padding: 0 0 0% 0%;
     transition: background .5s;
     cursor: pointer;
@@ -1172,10 +1173,9 @@ li[category=unassigned] {
     background: #F0F0F0;
   }
   #reassignSection .userList .userItem .singleUserAvatar {
-    display: inline-block;
-    width: 4%;
-    margin-right: 9%;
-    padding-left: 5%;
+    display: block;
+    float: right;
+    margin: 3% 2% 0 0;
   }
   #reassignSection .userList .userItem .singleUserAvatar > img {
     width: 40px;
@@ -1183,11 +1183,38 @@ li[category=unassigned] {
     border-radius: 50%;
   }
   #reassignSection .userList .userItem .singleUserName {
-    display: inline-block;
+    display: block;
     width: 85%;
+    float: right;
     border-bottom: 2px solid #cacaca;
     font-size: 1.5em;
     padding: 20px 0 20px 0px;
+  }
+}
+@media only screen and (max-width: 325px) {
+  #reassignSection .userList .userItem {
+    height: 15%;
+  }
+  #reassignSection .userList .userItem .singleUserAvatar {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+    float: none;
+  }
+  #reassignSection .userList .userItem .singleUserAvatar > img {
+    display: block;
+    margin: 0 auto;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+  #reassignSection .userList .userItem .singleUserName {
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    float: none;
+    border-bottom: none;
+    font-size: 1.3em;
   }
 }
 #locationBlock {

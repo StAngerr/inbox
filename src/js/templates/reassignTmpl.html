@@ -5,10 +5,10 @@
 	</header>
 	<ul class="userList">
 		<li class="userItem" ng-repeat="user in users" id="{{user.id}}" name="{{user.name}}" ng-click="reassignTask($event)">
+			<p class="singleUserName">{{user.name}}</p>
 			<figure class="singleUserAvatar">
 				<img ng-src="{{user.avatar}}">
 			</figure>
-			<p class="singleUserName">{{user.name}}</p>
 		</li>
 	</ul>
 </section>

@@ -25,7 +25,7 @@
 		        	}
 		       		/* Change url */
 					if (url.length < 3) {
-						$location.path('/state/1/task/' + task.id);
+						$location.path('/state/your/task/' + task.id);
 					} else if(task.id == url[4]) {
 						$location.path(url[1] + '/' + url[2] + '/task/' + 'none');
 					} else {

@@ -1153,8 +1153,10 @@ li[category=unassigned] {
   }
   #reassignSection .reassignSectHeader .title {
     width: 80%;
-    margin-top: 5%;
+    /* margin-top: 5%; */
+    height: 100%;
     display: inline-block;
+    padding-top: 27px;
     text-align: center;
     float: left;
   }
@@ -1194,6 +1196,7 @@ li[category=unassigned] {
 @media only screen and (max-width: 325px) {
   #reassignSection .userList .userItem {
     height: 15%;
+    border-bottom: 2px solid #cacaca;
   }
   #reassignSection .userList .userItem .singleUserAvatar {
     display: block;
@@ -1215,6 +1218,11 @@ li[category=unassigned] {
     float: none;
     border-bottom: none;
     font-size: 1.3em;
+    padding: 0px 0 18px 0px;
+  }
+  #reassignSection .reassignSectHeader .title {
+    padding-top: 30px;
+    font-size: 2.4em;
   }
 }
 #locationBlock {

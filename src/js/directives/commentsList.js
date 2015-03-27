@@ -188,10 +188,13 @@
 
 			newComment.authorIcon = $('.newCommentExpanded figure .authorIcon').attr('src');
 			newComment.author += time.getHours() + ':' + time.getMinutes();
-			$('.newCommentExpanded .commentInput').val('');
+		
 			$scope.$parent.commentsToTask.push(newComment);
 			localStorageService.set('comments' + $scope.$parent.obj.id + '', $scope.$parent.commentsToTask);
 			$('.newComment').removeClass('newCommentExpanded');
+			/*Clear text area and disabled reply button*/
+			$('.newCommentExpanded .commentInput').val('');
+			$('.reply').prop("disabled", false);
 		};
 
 		$scope.dropDownShowHide = function() {
@@ -291,7 +294,7 @@
 	 	}
 
 	 	$scope.preventBtn = function() {
-	 		$('.reply').prop("disabled", false);
+	 		$('.commentInput').val() ? $('.reply').prop("disabled", false) : $('.reply').prop("disabled", true);
 	 	}
   
 	}]);

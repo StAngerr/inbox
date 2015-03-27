@@ -1204,7 +1204,7 @@ li[category=unassigned] {
   }
   #reassignSection .reassignSectHeader .returnButton {
     display: inline-block;
-    width: 25px;
+    width: 24px;
     height: 100%;
     border: none;
     background: #fff url("../images/arrow-left.png") no-repeat 50% 50%;
@@ -1213,7 +1213,6 @@ li[category=unassigned] {
   }
   #reassignSection .reassignSectHeader .title {
     width: 80%;
-    /* margin-top: 5%; */
     height: 100%;
     display: inline-block;
     padding-top: 27px;
@@ -1227,36 +1226,37 @@ li[category=unassigned] {
   #reassignSection .userList .userItem {
     width: 100%;
     height: 8%;
-    padding: 0 0 0% 0%;
     transition: background .5s;
     cursor: pointer;
   }
   #reassignSection .userList .userItem:hover {
     background: #F0F0F0;
   }
-  #reassignSection .userList .userItem .singleUserAvatar {
-    display: block;
+  #reassignSection .userList .userItem .singleUserName {
+    display: inline-block;
     float: right;
-    margin: 3% 2% 0 0;
+    height: 100%;
+    width: 80%;
+    border-bottom: 2px solid #cacaca;
+    font-size: 1.5em;
+    padding: 13px 0 13px 0px;
+  }
+  #reassignSection .userList .userItem .singleUserAvatar {
+    display: inline-block;
+    margin: 3% 1% 0 3%;
+    float: left;
   }
   #reassignSection .userList .userItem .singleUserAvatar > img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
   }
-  #reassignSection .userList .userItem .singleUserName {
-    display: block;
-    width: 85%;
-    float: right;
-    border-bottom: 2px solid #cacaca;
-    font-size: 1.5em;
-    padding: 20px 0 20px 0px;
-  }
 }
 @media only screen and (max-width: 325px) {
   #reassignSection .userList .userItem {
-    height: 15%;
+    height: 19%;
     border-bottom: 2px solid #cacaca;
+    padding: 10% 0 0 0;
   }
   #reassignSection .userList .userItem .singleUserAvatar {
     display: block;
@@ -1272,13 +1272,13 @@ li[category=unassigned] {
     border-radius: 50%;
   }
   #reassignSection .userList .userItem .singleUserName {
+    display: block;
     text-align: center;
     width: 50%;
-    margin: 0 auto;
     float: none;
     border-bottom: none;
-    font-size: 1.3em;
-    padding: 0px 0 18px 0px;
+    margin: 0 auto;
+    padding: 5px 0 0 0;
   }
   #reassignSection .reassignSectHeader .title {
     padding-top: 30px;
@@ -1296,6 +1296,23 @@ li[category=unassigned] {
   color: #555555;
   font-weight: 1.3em;
   letter-spacing: 7px;
+}
+#locationBlock .glyphicon.glyphicon-record {
+  position: absolute;
+  left: 10px;
+  top: 7px;
+  font-size: 1.5em;
+  float: left;
+  transition: opacity .3s;
+}
+#locationBlock .glyphicon.glyphicon-record:after {
+  content: "Map";
+  position: absolute;
+  top: 0;
+  left: 25px;
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 2px;
 }
 #locationBlock.openArrow:after {
   content: "";
@@ -1315,6 +1332,9 @@ li[category=unassigned] {
   cursor: pointer;
   /*  */
   /*  */
+}
+#locationBlock:hover .glyphicon.glyphicon-record {
+  opacity: 0;
 }
 #locationBlock:hover:after {
   content: "";

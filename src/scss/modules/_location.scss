@@ -9,6 +9,27 @@
 	color: #555555;
 	font-weight: 1.3em;
 	letter-spacing: 7px;
+	
+	.glyphicon.glyphicon-record {
+		position: absolute;
+		left: 10px;
+		top: 7px;
+		font-size: 1.5em;
+		float: left;
+		transition: opacity .3s;
+		
+		&:after {
+			content: "Map";
+			position: absolute;
+			top: 0;
+			left: 25px;			
+			font-weight: bold;
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+			letter-spacing: 2px;
+			
+		}	
+	}
+
 	&.openArrow {
 		&:after {
 			content: "";
@@ -29,6 +50,9 @@
 		background: #C1C1C1;
 		cursor: pointer;
 		
+		& .glyphicon.glyphicon-record {
+			opacity: 0;
+		}
 		&:after {
 			content: "";
 			visibility: visible;

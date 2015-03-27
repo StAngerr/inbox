@@ -356,6 +356,10 @@ li[category=unassigned] {
   left: 0;
 }
 
+.blue1 {
+  background: green;
+}
+
 /* RESPONSIVE */
 @media only screen and (max-width: 1453px) {
   /* SEARCH n NAVIGATION */
@@ -424,6 +428,7 @@ li[category=unassigned] {
 .tasks {
   width: 100%;
   height: 85%;
+  background: #fff url("../../src/images/no_tasks.png") no-repeat 50% 5%;
 }
 .tasks .taskItem {
   display: block;
@@ -434,6 +439,7 @@ li[category=unassigned] {
   color: #000;
   opacity: 0.4;
   transition: opacity 0.3s;
+  z-index: 3;
 }
 .tasks .taskItem header {
   margin: 0px;
@@ -1304,6 +1310,7 @@ li[category=unassigned] {
   font-size: 1.5em;
   float: left;
   transition: opacity .3s;
+  color: #797575;
 }
 #locationBlock .glyphicon.glyphicon-record:after {
   content: "Map";

@@ -289,6 +289,10 @@
 			$('.taskItem').addClass('activeTask');
 			$location.path('user='+ id +'/task=none');
 	 	}
+
+	 	$scope.preventBtn = function() {
+	 		$('.reply').prop("disabled", false);
+	 	}
   
 	}]);
 })();

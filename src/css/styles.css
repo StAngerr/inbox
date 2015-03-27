@@ -980,7 +980,7 @@ li[category=unassigned] {
   float: left;
   width: 40px;
   height: 40px;
-  margin-right: 2%;
+  margin-left: 3%;
   border-radius: 50%;
 }
 .newComment.newCommentExpanded .commentInput {
@@ -1330,7 +1330,6 @@ li[category=unassigned] {
 #locationBlock:hover {
   background: #C1C1C1;
   cursor: pointer;
-  /*  */
   /*  */
 }
 #locationBlock:hover .glyphicon.glyphicon-record {

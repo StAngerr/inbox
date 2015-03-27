@@ -79,7 +79,7 @@
 	</section>
 <!--  -->
 		<!-- NEW COMMENT BLOCK -->
-				<div class="newComment ">
+				<div class="newComment">
 					<div class="newCommentSimple">
 						<p> Add <a ng-click="writeCommentInput()">internal node</a> or 
 						<a ng-click="writeCommentInput()">public reply</a> 
@@ -89,10 +89,10 @@
 					<figure>
 						<img class="authorIcon" ng-src="src/images/avatar.jpg">
 					</figure>
-				 		<textarea class="commentInput"  rows="1" ng-model="comment.value"></textarea>
+				 		<textarea class="commentInput"  rows="1" ng-model="comment.value" ng-change="preventBtn()"></textarea>
 
 				 		<menu class="controls">
-				 			<button ng-click="addComment(comment)" class="reply">Reply</button>
+				 			<button ng-click="addComment(comment)" class="reply" disabled>Reply</button>
 				 			<button class="replyNSolve">Reply and solve</button> 		
 				 		</menu>
 				 		

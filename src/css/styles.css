@@ -566,20 +566,20 @@ li[category=unassigned] {
   margin: 30px 5px 0 0;
   z-index: 8;
   transition: opacity 1s;
-}
-.dropDownMenu:before {
-  content: "";
-  position: absolute;
-  right: 0;
-  display: block;
-  float: right;
-  width: 0px;
-  height: 0px;
-  border-bottom: 8px solid #A1A1A1;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  margin: -8px 13px 0 0;
-  z-index: 5;
+  /* 	&:before {
+  		content: "";
+  		position: absolute;
+  		right: 0;
+  		display: block;
+  		float: right;
+  		width: 0px;
+  		height: 0px;
+  		border-bottom: 8px solid #A1A1A1;
+  		border-left: 8px solid transparent;
+  		border-right: 8px solid transparent;
+  		margin:-8px 13px 0 0;
+  		z-index: 5;
+  	} */
 }
 .dropDownMenu .taskMenuBtn {
   width: 80%;
@@ -599,8 +599,24 @@ li[category=unassigned] {
   border-top-left-radius: 3px;
   /* Color triangle  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 }
+.dropDownMenu .taskMenuBtn:first-child:before {
+  content: "";
+  position: absolute;
+  right: 0;
+  display: block;
+  float: right;
+  width: 0px;
+  height: 0px;
+  border-bottom: 8px solid #A1A1A1;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  margin: -24px 13px 0 0;
+  z-index: 6;
+}
 .dropDownMenu .taskMenuBtn:first-child:hover:before {
   content: "";
+  border-bottom-color: #FAF8F8;
+  /* content: "";
   position: absolute;
   right: 0;
   display: block;
@@ -610,8 +626,8 @@ li[category=unassigned] {
   border-bottom: 8px solid #FAF8F8;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  margin: -24px 13px 0 0;
-  z-index: 6;
+  margin:-24px 13px 0 0;
+  z-index: 6; */
 }
 .dropDownMenu .taskMenuBtn:last-child {
   border-bottom-right-radius: 3px;
@@ -822,16 +838,18 @@ li[category=unassigned] {
   opacity: 1;
 }
 .filterWrap .userOverviewHeader .userOverviewAvatar {
-  width: 30%;
+  width: 85px;
+  height: 80%;
   float: left;
   margin: 3% 0 0 5%;
 }
 .filterWrap .userOverviewHeader .userOverviewAvatar img {
-  width: 60%;
+  width: 100%;
+  height: 90%;
   border-radius: 50%;
 }
 .filterWrap .userOverviewHeader .userOverviewInfo {
-  width: 60%;
+  width: 50%;
   float: right;
   cursor: default;
   margin-top: 3%;
@@ -858,10 +876,12 @@ li[category=unassigned] {
 }
 @media only screen and (max-width: 890px) {
   .filterWrap .userOverviewHeader .userOverviewAvatar {
-    margin: 4% 0 0 5%;
+    margin: 11% 0 0 6%;
+    width: 60px;
+    height: 60%;
   }
   .filterWrap .userOverviewHeader .userOverviewInfo {
-    font-size: 1em;
+    font-size: 0.9em;
   }
   .filterWrap .userOverviewHeader .userOverviewInfo .subTag {
     font-size: 0.9em;
@@ -869,23 +889,43 @@ li[category=unassigned] {
 }
 @media only screen and (max-width: 768px) {
   .filterWrap .userOverviewHeader .userOverviewInfo {
-    font-size: 0.9em;
+    margin-top: 8%;
+    font-size: 0.8em;
   }
 }
 @media only screen and (max-width: 620px) {
   .filterWrap .userOverviewHeader .userOverviewAvatar {
-    margin: 4% 0 0 10%;
+    margin: 3% 0 0 10%;
+    width: 100px;
+    height: 90%;
   }
   .filterWrap .userOverviewHeader .userOverviewInfo {
+    margin-top: 1%;
     font-size: 1.1em;
   }
 }
 @media only screen and (max-width: 320px) {
   .filterWrap .userOverviewHeader .userOverviewAvatar {
-    margin: 4% 0 0 5%;
+    margin: 6% 0 0 7%;
+    width: 70px;
+    height: 70%;
   }
   .filterWrap .userOverviewHeader .userOverviewInfo {
-    font-size: 1em;
+    margin-top: 3%;
+    font-size: 0.9em;
+  }
+  .filterWrap .userOverviewHeader .userOverviewInfo .subTag {
+    font-size: 0.9em;
+  }
+}
+@media only screen and (max-width: 245px) {
+  .filterWrap .userOverviewHeader .userOverviewAvatar {
+    margin: 12% 0 0 10%;
+    width: 50px;
+    height: 50%;
+  }
+  .filterWrap .userOverviewHeader .userOverviewInfo {
+    font-size: 0.8em;
   }
   .filterWrap .userOverviewHeader .userOverviewInfo .subTag {
     font-size: 0.9em;

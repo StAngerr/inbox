@@ -21,18 +21,19 @@
 		opacity: 1;
  		
 		.userOverviewAvatar {
-			width: 30%;
-
+			width: 85px;
+			height: 80%;
 			float: left;
 			margin: 3% 0 0 5%;
 			img {
-				width: 60%;
+				width: 100%;
+				height: 90%;
 				border-radius: 50%;
 			}
 		}
 
 		.userOverviewInfo {
-			width: 60%;
+			width: 50%;
 			float: right;
 			cursor: default;
 			margin-top: 3%;
@@ -50,12 +51,9 @@
 			
 			.userName, .userId, .userTasksCount {
 				margin-bottom: 10px;
-				
 			}
 		}
 	}
-
-
 }
 
 @media only screen and (max-width: $xMedium)  {
@@ -72,10 +70,13 @@
 	.filterWrap {	
 		.userOverviewHeader {
 			.userOverviewAvatar {
-				margin: 4% 0 0 5%;
+				margin: 11% 0 0 6%;
+				width: 60px;
+				height: 60%;
 			}
 			.userOverviewInfo {
-				font-size: 1em;
+
+				font-size: 0.9em;
 				.subTag {
 					font-size: 0.9em;	
 				}
@@ -89,7 +90,8 @@
 	.filterWrap {	
 		.userOverviewHeader {
 			.userOverviewInfo {
-				font-size: 0.9em;
+				margin-top: 8%;
+				font-size: 0.8em;
 			}
 		}
 	}
@@ -99,9 +101,12 @@
 	.filterWrap {	
 		.userOverviewHeader {
 			.userOverviewAvatar {
-				margin: 4% 0 0 10%;
+				margin: 3% 0 0 10%;
+				width: 100px;
+				height: 90%;
 			}
 			.userOverviewInfo {
+					margin-top: 1%;
 				font-size: 1.1em;
 			}
 		}
@@ -112,10 +117,34 @@
 	.filterWrap {	
 		.userOverviewHeader {
 			.userOverviewAvatar {
-				margin: 4% 0 0 5%;
+				margin: 6% 0 0 7%;
+					width: 70px;
+					height: 70%;
+
 			}
 			.userOverviewInfo {
-				font-size: 1em;
+				margin-top: 3%;
+				font-size: 0.9em;
+				.subTag {
+					font-size: 0.9em;	
+				}
+				
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 245px)  {
+	.filterWrap {	
+		.userOverviewHeader {
+			.userOverviewAvatar {
+				margin: 12% 0 0 10%;
+					width: 50px;
+					height: 50%;
+
+			}
+			.userOverviewInfo {
+				font-size: 0.8em;
 				.subTag {
 					font-size: 0.9em;	
 				}

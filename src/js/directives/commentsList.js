@@ -131,6 +131,7 @@
 			$scope.$parent.obj.location.latitude = marker.position.k;
 			$scope.$parent.obj.location.longitude = marker.position.D;
 			writeInLocalStorage();
+			initMapParams();
 			$scope.hideEdit();
 		}
 

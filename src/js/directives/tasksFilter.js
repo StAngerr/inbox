@@ -1,6 +1,6 @@
 (function() { 
 	var app = angular.module('tastks-filter', []);
-/*DIRS*/
+/* DIRS */
 	app.directive('tasksList',['$compile','$routeParams','$location', function($compile, $routeParams, $location) {
         var link = function(scope, element, attr) {
         	var ssss = scope.tasks;
@@ -25,21 +25,15 @@
 		        	} else {
 		        		task = $(event.target).closest('.taskItem')[0];
 		        	}
+		        	var userStr = user ? '/user=' + user : '';
+		        	var stateStr = state ? '/state=' + state : '';
+		        	var taskStr = task.id == taskID ? '/task=none' : '/task=' + task.id;
+		        	
 		       		/* Change url */
 					if ( !state && !user) {
 						$location.path('/state=your/task=' + task.id);
-					} else if(task.id == taskID) {
-						if(user){
-							$location.path('user=' + user + '/task=' + 'none');
-						}else {
-							$location.path('state=' + state + '/task=' + 'none');
-						}
 					} else {
-						if(user){
-							$location.path('user=' + user  + '/task=' + task.id);
-						}else {
-							$location.path('state=' + state +  '/task=' + task.id);
-						}
+						$location.path(stateStr + userStr + taskStr);
 					}
 					scope.$apply();
         	});
